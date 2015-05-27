@@ -1,0 +1,16 @@
+{
+  "name": "WAAC",
+  "version": "0.0.0",
+  "description": "WAAC",
+  "main": "server.js",
+  "author": {
+    "name": "Ralex",
+    "email": ""
+  },
+  "dependencies": {
+    "hapi": "~8.5.2",
+    "mongodb": "~2.0.33",
+    "hapi-mongodb": "~3.0.0",
+    "handlebars": "~3.0.3"
+  }
+}
