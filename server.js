@@ -13,15 +13,18 @@ var dbOpts = {
     }
 };
 
-server.register({
-    register: require('hapi-mongodb'),
-    options: dbOpts
-}, function (err) {
-    if (err) {
-        console.error(err);
-        throw err;
+server.register(
+    {
+        register: require('hapi-mongodb'),
+        options: dbOpts
+    }, 
+    function (err) {
+        if (err) {
+            console.error(err);
+            throw err;
+        }
     }
-});
+);
     
 for (var route in routes) {
     console.log(route);
@@ -32,7 +35,9 @@ server.views({
     engines: {
         html: require('handlebars')
     },
-    path: './src/views'
+    path: './src/views',
+    layoutPath: './src/views/layout',
+    layout: 'default'
 });
 
 server.start(function () {

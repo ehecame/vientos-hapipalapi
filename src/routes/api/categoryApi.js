@@ -4,13 +4,6 @@ module.exports = function () {
     return [
         {
             method: 'GET',
-            path: '/api/category/{id}',
-            config : {
-                handler: CategoryController.find
-            }
-        },
-        {
-            method: 'GET',
             path: '/api/category',
             config : {
                 handler: CategoryController.findAll

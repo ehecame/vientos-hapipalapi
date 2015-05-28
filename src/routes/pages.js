@@ -1,10 +1,26 @@
-﻿module.exports = function () {
+﻿
+
+module.exports = function () {
     return [
         {
             method: 'GET',
-            path: '/test',
+            path: '/',
             handler: function (request, reply) {
-                reply.view('test');
+            	var data = {
+	                title: 'This is Index!',
+	                message: 'Hello, World. You crazy handlebars layout'
+	            };
+                reply.view('home', data);
+            }
+        },{
+            method: 'GET',
+            path: '/search',
+            handler: function (request, reply) {
+                var data = {
+                    title: 'This is Index!',
+                    message: 'Hello, World. You crazy handlebars layout'
+                };
+                reply.view('search', data);
             }
         }
     ];

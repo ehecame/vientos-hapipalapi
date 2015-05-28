@@ -7,18 +7,19 @@ CategoryManager.prototype = (function () {
             });
         },
         insert: function insert(db, category, callback) {
-            db.collection('categories').insert(category, function (err, doc) {
-                callBack(doc);
+            console.log(category);
+            db.collection('categories').insert(category, {w:1},function (err, doc) {
+                callback(doc);
             });  
         },
         update: function update(db, updatedCategory, id, callback) {
-            db.collection('categories').insert({ _id: id }, updatedCategory, function (err, doc) {
-                callBack(doc);
+            db.collection('categories').update({ _id: id }, updatedCategory, function (err, doc) {
+                callback(doc);
             });  
         },
         delete: function (db, id, category, callback) {
             db.collection('categories').remove({ _id: id }, function (err, doc) {
-                callBack(doc);
+                callback(doc);
             });  
         }
     }

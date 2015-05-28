@@ -1,4 +1,4 @@
-﻿var CategoryManager = require('./../../managers/category');
+var CategoryManager = require('./../../managers/category');
 
 function CategoryController() { };
 CategoryController.prototype = (function () {
@@ -13,18 +13,27 @@ CategoryController.prototype = (function () {
             var db = request.server.plugins['hapi-mongodb'].db;
             var newCategory = {
                 name: request.payload.name,
-                language: requests.payload.language
+                language: request.payload.language
             };  
             if(request.payload.parent){
                 console.log(request.payload.parent);
             }
-            CategoryManager.insert(db, function (res) {
+            else{
+                console.log("no parent");
+            }
+            CategoryManager.insert(db, newCategory, function (res) {
                 reply(res);
             });
         },
         update: function update(request, reply) {
             var db = request.server.plugins['hapi-mongodb'].db;  
-            CategoryManager.update(db, request.payload.name, request.params.id, function (res) {
+            if(request.payload.parent){
+                console.log(request.payload.parent);
+            }
+            else{
+                console.log("no parent");
+            }
+            CategoryManager.update(db, updatedCategory, function (res) {
                 reply(res);
             });
         },
