@@ -4,14 +4,12 @@ module.exports = function () {
 			method: 'GET',
 			path: '/js/{file}',
 			handler: function (request, reply) {
-				console.log("js " + request.params.file);
 				reply.file("public/js/"+request.params.file+".js");
 			}
 		},{
 			method: 'GET',
 			path: '/css/{file}',
 			handler: function (request, reply) {
-				console.log("css " + request.params.file);
 				reply.file("public/css/"+request.params.file+".css");
 			}
 		},{
@@ -19,6 +17,12 @@ module.exports = function () {
 			path: '/img/{file}',
 			handler: function (request, reply) {
 				reply.file("public/img/"+request.params.file);
+			}
+		},{
+			method: 'GET',
+			path: '/svg/{file}',
+			handler: function (request, reply) {
+				reply.file("public/svg/"+request.params.file+".svg");
 			}
 		}
 	];

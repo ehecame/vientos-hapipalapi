@@ -1,2 +1,9 @@
-﻿<h1>{{title}}</h1>
-<p>{{message}}</p>
+﻿<div id="backgroundImage">
+	<h1>{{title}}</h1>
+	<p>{{message}}</p>
+	<div>
+		{{#categories}}
+	        <p>{{name}} at {{icon}}</p>
+	    {{/categories}}
+	</div>
+</div>

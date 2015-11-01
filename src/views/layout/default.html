@@ -8,16 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="css/main" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
 	<script src="js/main"></script>
 </head>
 <body>
-
-    <div class="container">
-
-        {{! Every view gets inserted here }}
-        {{{content}}}
-
+    <div class="header">
+        <img class="logo" />
+        <span class="name">Nombre cool</span>
+        <span class="headerLinks">
+            <a href="/">Home</a>
+            <a href="/search">Búsqueda</a>
+            <a href="/about">Acerca</a>
+        <span>
     </div>
-
+    <div class="background">
+        <div class="content">
+            {{{content}}}
+        </div>
+    </div>
+    <div class="footer">Todos los derechos liberados</div>
 </body>
 </html>
