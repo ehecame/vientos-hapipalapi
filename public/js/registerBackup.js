@@ -34,18 +34,14 @@ function addAllProjects(){
 		}
 	);
 	map.on('click', function (e) {
-		var marker = L.marker([e.latlng.lat, e.latlng.lng]);
-		marker.bindPopup($("input[name=name]")[0].value, {
-		            	showOnMouseOver: true
-		        	});
-        map.addLayer(marker);
+        map.addLayer(L.marker([e.latlng.lat, e.latlng.lng]));
         $("#hdnInputLat").val(e.latlng.lat);
         $("#hdnInputLng").val(e.latlng.lng);
 	});
 }
 
 function initializeMap(){
-	map = L.map('map').setView([19.34, -99.15], 12);
+	map = L.map('map').setView([19.5, -98.4], 12);
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 	    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 	    maxZoom: 18,

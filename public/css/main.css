@@ -1,14 +1,19 @@
 h1 {
-	color: #211103;
+	color: #566D7B;
+}
+
+html{
+	background-color: white;
 }
 
 body{
 	margin: 0px;
+	color: white;
 }
 
 .header{
 	margin: 0px;
-	padding: opx;
+	padding: 0px;
 	width: 100%;
 	height: 40px;
 	padding: 10px
@@ -22,6 +27,10 @@ body{
 	font-family: 
 }
 
+.logo{
+	background-image: url("/img/vientos_logo_verdeazul.png");
+}
+
 .headerLinks{
 	float: right;
 	margin-top: 10px;
@@ -30,8 +39,8 @@ body{
 
 .headerLinks a{
 	text-decoration: none;
-	color: #211103;
-	background-color: #79b791;
+	color: white;
+	background-color: #0090AE;
 	padding: 10px;
 	margin-right: 10px;
 	border-radius: 10px;
@@ -40,7 +49,7 @@ body{
 .content{
 	margin: 20px;
 	padding: 20px;
-  	color:#211103;
+  	color:#566D7B;
 }
 
 .footer{
@@ -54,7 +63,7 @@ body{
 	text-align: center;
 }
 
-/*Search page*/
+/*Map page*/
 .projectType{
 	border-radius: 5px;
 	display: inline-block;
@@ -76,18 +85,9 @@ body{
 	opacity: 1.0;
 }
 
-#introText{
-	height: 300px;
-	opacity: 0.7;
-}
-
-html{
-	background: url(/img/ciudad3.png) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: 0% 90%; 
+#introParagraph{
+	margin: 30px;
+	font-size: 25px;
 }
 
 .categoryBtnTodos{
@@ -127,4 +127,36 @@ html{
 #keyWords{
 	width: 400px;
 	font-style: oblique;
+}
+
+/*Register page*/
+#registerContainer{
+	margin-left: 50px;
+}
+
+.tagsContainer{
+	display: inline-block;
+	margin: 5px;
+	text-align: right;
+	vertical-align: top;
+	width: 100px;
+}
+
+.inputsContainer{
+	display: inline-block;
+	margin: 5px;
+}
+
+.categoryInputColumn{
+	display: inline-block;
+	vertical-align: top;
+}
+	
+textarea{
+	width: 400px;
+	height: 100px;
+}
+
+input[type=text]{
+	width: 400px;
 }

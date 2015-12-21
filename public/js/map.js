@@ -1,7 +1,12 @@
 var map;
 var markers = new L.FeatureGroup();
+var source ;
+var projectNoLocTemplate;
 
 $( document ).ready(function() {
+	source = $("#projectNoLocation-template").html();
+	projectNoLocTemplate = Handlebars.compile(source);	
+	$("#btnCloseToMe").click(centerMapMyLocation);
 	initializeMap();
 	addAllProjects();
 });
@@ -9,17 +14,25 @@ $( document ).ready(function() {
 function addAllProjects(){
 	removeAllMarkers();
 	$.get( 
-		"/api/project", 
+		"/api/projects", 
 		function( data ) {
 			console.log(data);
 			data.forEach(function(project){
-				console.log(project);
 				if (project.latitutde){ 
 					var marker = L.marker([project.latitutde, project.longitude]);
-					marker.bindPopup(project.name, {
+					marker.bindPopup('<a href="/project/'+project._id+'">'+project.name+'</a>', {
 		            	showOnMouseOver: true
 		        	});
 					markers.addLayer(marker);
+				}
+				else{
+					var categories = [];
+					$.each(project.categories_ids, function(i, val){
+						categories.push($("#"+val).text());
+					})
+					project.categories = categories.join("<br>");					
+					$("#projectsNoLocation").html("");					
+					$("#projectsNoLocation").append(projectNoLocTemplate(project));
 				}
 			})
 		}
@@ -28,7 +41,7 @@ function addAllProjects(){
 }
 
 function initializeMap(){
-	map = L.map('map').setView([19.3925, -99.1412], 12);
+	map = L.map('map').setView([19.34, -99.15], 12);
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 	    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 	    maxZoom: 18,
@@ -52,10 +65,19 @@ function filterCategory(e){
 				console.log(project);
 				if (project.latitutde){ 
 					var marker = L.marker([project.latitutde, project.longitude]);
-					marker.bindPopup('<a href="'+project.facebook+'">'+project.name+'</a>', {
+					marker.bindPopup('<a href="/project/'+project._id+'">'+project.name+'</a>', {
 		            	showOnMouseOver: true
 		        	});
 					markers.addLayer(marker);
+				}
+				else{
+					var categories = [];
+					$.each(project.categories_ids, function(i, val){
+						categories.push($("#"+val).text());
+					})
+					project.categories = categories.join("<br>");
+					$("#projectsNoLocation").html("");					
+					$("#projectsNoLocation").append(projectNoLocTemplate(project));
 				}
 			})
 		}
@@ -73,9 +95,8 @@ function filterByKeyWords(){
 			console.log(data);
 			data.forEach(function(project){
 				if (project.latitutde){ 
-					console.log("sí entro");
 					var marker = L.marker([project.latitutde, project.longitude]);
-					marker.bindPopup('<a href="'+project.facebook+'">'+project.name+'</a>', {
+					marker.bindPopup('<a href="/project/'+project._id+'">'+project.name+'</a>', {
 		            	showOnMouseOver: true
 		        	});
 					markers.addLayer(marker);
@@ -86,3 +107,10 @@ function filterByKeyWords(){
 	map.addLayer(markers);
 }
 
+function centerMapMyLocation(e){
+	navigator.geolocation.getCurrentPosition(setMapView);
+}
+
+function setMapView(location) {
+    map.setView([location.coords.latitude, location.coords.longitude], 15)
+}

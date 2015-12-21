@@ -1,0 +1,24 @@
+
+{{#project}}
+<div >
+	<img src="/logo/{{_id}}" height="60" width="60">
+	<h1>{{name}}</h1>
+	<div>Descripción: {{description}}</div>
+	<div>Categorias: {{categories_ids}}</div>
+	<div>Facebook: {{facebook}}</div>
+	<div>Twitter: {{twitter}}</div>
+	<div>Página Web: {{webpage}}</div>
+	<div>Teléfono: {{telephone}}</div>
+	<div>Email: {{email}}</div>
+	<div>Dirección: {{address}}</div>
+	<div>
+		<span>Maneras de colaborar:</span>
+		<span>
+			{{#each waysOfCollaboration}}
+	        <div><span>{{collaborationDescription}}</span> tipo: <span>{{collaborationType}}</span></div>
+	    	{{/each}}
+		</span>
+	</div>
+	<div id="mapa"></div>
+</div>
+{{/project}}

@@ -16,7 +16,14 @@ module.exports = function () {
 			method: 'GET',
 			path: '/img/{file}',
 			handler: function (request, reply) {
+				console.log(request.params.file);
 				reply.file("public/img/"+request.params.file);
+			}
+		},{
+			method: 'GET',
+			path: '/logo/{id}',
+			handler: function (request, reply) {
+				reply.file("public/img/"+request.params.id+"-logo.png");
 			}
 		},{
 			method: 'GET',

@@ -1,17 +1,16 @@
  <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
  <script src="js/map"></script>
- <div id="introText">
- 	Párrafo
- </div>
- <div id="map"></div>
-<div>
+<div id="introParagraph">
+	Comunidad de colaboración entre proyectos, colectivos, cooperativas, iniciativas ciudadanas, asociaciones civiles, ONGs, grupos de economía solidaria, individuos.
+</div>
+<div id="categoriesContainer">
 	<div class="categoryBtnTodos" onclick="addAllProjects()">TODOS</div>
 	<div class="categoryBtn" id="55663309a660da482b648a33" onclick="filterCategory(this)">Salud</div>
 	<div class="categoryBtn" id="556644179cfb86a021e5a150" onclick="filterCategory(this)">Educación</div>
 	<div class="categoryBtn" id="559e90cd46343c3bccee7fbc" onclick="filterCategory(this)">Agua</div>
 	<div class="categoryBtn" id="559e90f046343c3bccee7fbd" onclick="filterCategory(this)">Alimentación</div>
 	<div class="categoryBtn" id="5628145fb82163c71dea5f9d" onclick="filterCategory(this)">Arte y Cultura</div>
-	<div class="categoryBtn" id="559e910a46343c3bccee7fbe" onclick="filterCategory(this)">Empresa responsable</div>
+	<div class="categoryBtn" id="56281497b82163c71dea5f9e" onclick="filterCategory(this)">Productos y Servicios</div>
 	<div class="categoryBtn" id="559e910a46343c3bccee7fbe" onclick="filterCategory(this)">Comunidad</div>
 	<div class="categoryBtn" id="562814bbb82163c71dea5f9f" onclick="filterCategory(this)">Comunicación</div>
 	<div class="categoryBtn" id="56281547b82163c71dea5fa0" onclick="filterCategory(this)">Derechos Humanos</div>
@@ -19,8 +18,21 @@
 	<div class="categoryBtn" id="5628158bb82163c71dea5fa2" onclick="filterCategory(this)">Medio Ambiente</div>
 	<div class="categoryBtn" id="562815b2b82163c71dea5fa3" onclick="filterCategory(this)">Tecnología</div>
 	<div class="categoryBtn" id="562815bfb82163c71dea5fa4" onclick="filterCategory(this)">Transporte</div>
+	<div class="categoryBtn" id="5660de8ca17bb1a413dd1add" onclick="filterCategory(this)">Género</div>
 </div>
 <div>
-	<input id="keyWords" placeholder="nombre, descripción, manera de colaborar, objeto/producto..."></input> <div class="categoryBtn" id="searchKeyWordsBtn" onclick="filterByKeyWords()">Buscar por palabra</div>
+	<input id="keyWords" placeholder="nombre, descripción, manera de colaborar, objeto/producto..."></input> 
+	<div class="categoryBtn" id="searchKeyWordsBtn" onclick="filterByKeyWords()">Buscar por palabra</div>
 </div>
+<div id="map"></div>
+<div id="projectsNoLocation">
+</div>
+<script id="projectNoLocation-template" type="text/x-handlebars-template">
+  <div class="projectNoLocation">
+    <div class="projectName">\{{name}}</div>
+    <div class="projectCategories">\{{{categories}}}</div>
+    <div class="projectDescription">\{{description}}</div>
+  </div>
+</script>
+
 

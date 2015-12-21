@@ -1,4 +1,5 @@
 var CategoryManager = require('./../managers/category');
+var ProjectManager = require('./../managers/project');
 
 module.exports = function () {
     return [
@@ -25,6 +26,20 @@ module.exports = function () {
                     ]
 	            };
                 reply.view('home', data);
+            }
+        },{
+            method: 'GET',
+            path: '/project/{project_id}',
+            handler: function (request, reply) {
+                var db = request.server.plugins['hapi-mongodb'].db;
+                var objID = request.server.plugins['hapi-mongodb'].ObjectID;
+                ProjectManager.findById(db, objID(request.params.project_id),function(res){
+                    var data = {
+                        project: res
+                    }
+                    console.log(data);
+                    reply.view('projectProfile', data);
+                });                
             }
         },{
             method: 'GET',
@@ -56,6 +71,12 @@ module.exports = function () {
             path: '/register',
             handler: function (request, reply) {
                 reply.view('register');              
+            }
+        },{
+            method: 'GET',
+            path: '/needs',
+            handler: function (request, reply) {
+                reply.view('needs');              
             }
         }
     ];

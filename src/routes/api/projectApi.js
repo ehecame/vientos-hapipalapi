@@ -4,9 +4,23 @@ module.exports = function () {
     return [
         {
             method: 'GET',
-            path: '/api/project',
+            path: '/api/projects',
             config : {
                 handler: ProjectController.findAll
+            }
+        },
+        {
+            method: 'GET',
+            path: '/api/project/{project_id}',
+            config : {
+                handler: ProjectController.findById
+            }
+        },
+        {
+            method: 'GET',
+            path: '/api/projects/autogestival',
+            config : {
+                handler: ProjectController.findAutogestival
             }
         },
         {

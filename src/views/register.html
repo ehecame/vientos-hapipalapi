@@ -1,44 +1,71 @@
+<script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
 <script src="js/register"></script>
 
-<h1>Register</h1>
-<form id="registerForm">
-<div>Name:<input name="name" type="text"/></div>
-<div>Description:<textarea name="description"></textarea></div>
-<div>Categoria:</div>
-<div>
-	<input type="checkbox" name="categories" value="55663309a660da482b648a33"> Salud<br>
-	<div>
-		<input type="checkbox" name="subcategories" value="559e946b46343c3bccee7fbf"> Medicina Alternativa
-		<input type="checkbox" name="subcategories" value="559e949846343c3bccee7fc0"> Prevención
-		<input type="checkbox" name="subcategories" value="559e94c246343c3bccee7fc1"> Medicina Tradicional
-	</div>
-  	<input type="checkbox" name="categories" value="556644179cfb86a021e5a150"> Educación<br>
-	<div>
-		<input type="checkbox" name="subcategories" value="559e94ec46343c3bccee7fc2"> Educación alternativa
-		<input type="checkbox" name="subcategories" value="559e950046343c3bccee7fc3"> Educación en casa
-		<input type="checkbox" name="subcategories" value="559e950d46343c3bccee7fc4"> Educación Online
-	</div>
-  	<input type="checkbox" name="categories" value="559e90cd46343c3bccee7fbc"> Agua<br>
-	<div>
-		<input type="checkbox" name="subcategories" value="559e953746343c3bccee7fc5"> Recolección de Agua<br>
-		<input type="checkbox" name="subcategories" value="559e971a46343c3bccee7fcb"> Purificación del Agua<br>
-		<input type="checkbox" name="subcategories" value="559e95c046343c3bccee7fcc"> Defensa del Agua<br>
-	</div>
-  	<input type="checkbox" name="categories" value="559e90f046343c3bccee7fbd"> Alimentación<br>
-	<div>
-		<input type="checkbox" name="subcategories" value="559e953746343c3bccee7fc6"> Alimentación Consciente
-		<input type="checkbox" name="subcategories" value="559e953746343c3bccee7fc7"> Producción Autónoma
-		<input type="checkbox" name="subcategories" value="559e953746343c3bccee7fc8"> Productos Sustenatables
-	</div>
-  	<input type="checkbox" name="categories" value="559e910a46343c3bccee7fbe"> Sociedad<br>
-	<div>
-		<input type="checkbox" name="subcategories" value="559e953746343c3bccee7fc9"> Organización Colectiva<br>
-		<input type="checkbox" name="subcategories" value="559e953746343c3bccee7fca"> Productos Locales<br>
-		<input type="checkbox" name="subcategories" value="559e953746343c3bccee7fcb"> Autonomía<br>
-	</div>
+<h1>Registro</h1>
+<div id="registerContainer">
+	<form id="registerForm">
+		<div class="fieldContainer">
+			<div class="tagsContainer">Nombre:</div>
+			<div class="inputsContainer"><input name="name" type="text"/></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Descripción:</div>
+			<div class="inputsContainer"><textarea name="description"></textarea></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Categoria:</div>
+			<div class="inputsContainer">
+				<div class="categoryInputColumn">
+					<div><input type="checkbox" name="categories_ids" value="55663309a660da482b648a33">Salud</div>
+					<div><input type="checkbox" name="categories_ids" value="556644179cfb86a021e5a150">Educación</div>
+					<div><input type="checkbox" name="categories_ids" value="559e90cd46343c3bccee7fbc">Agua</div>
+					<div><input type="checkbox" name="categories_ids" value="559e90f046343c3bccee7fbd">Alimentación</div>
+					<div><input type="checkbox" name="categories_ids" value="5628145fb82163c71dea5f9d">Arte y Cultura</div>
+				</div>
+				<div class="categoryInputColumn">
+					<div><input type="checkbox" name="categories_ids" value="559e910a46343c3bccee7fbe">Comunidad</div>
+					<div><input type="checkbox" name="categories_ids" value="562814bbb82163c71dea5f9f">Comunicación</div>
+					<div><input type="checkbox" name="categories_ids" value="56281547b82163c71dea5fa0">Derechos Humanos</div>
+					<div><input type="checkbox" name="categories_ids" value="5628156cb82163c71dea5fa1">Economía</div>
+				</div>
+				<div class="categoryInputColumn">
+					<div><input type="checkbox" name="categories_ids" value="559e910a46343c3bccee7fbe">Productos y Servicios</div>
+					<div><input type="checkbox" name="categories_ids" value="5628158bb82163c71dea5fa2">Medio Ambiente</div>
+					<div><input type="checkbox" name="categories_ids" value="562815b2b82163c71dea5fa3">Tecnología</div>
+					<div><input type="checkbox" name="categories_ids" value="562815bfb82163c71dea5fa4">Transporte</div>
+					<div><input type="checkbox" name="categories_ids" value="5660de8ca17bb1a413dd1add">Género</div>
+				</div>
+			</div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Página web:</div>
+			<div class="inputsContainer"><input name="webpage" type="text"/></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Twitter:</div>
+			<div class="inputsContainer"><input name="twitter" type="text"/></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Facebook:</div>
+			<div class="inputsContainer"><input name="facebook" type="text"/></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Email:</div>
+			<div class="inputsContainer"><input name="email" type="text"/></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Telefono:</div>
+			<div class="inputsContainer"><input name="telephone" type="text"/></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Dirección:</div>
+			<div class="inputsContainer"><input name="address" type="text"/></div>
+		</div>
+		<div>
+			<input type="hidden" id="hdnInputLat" name="latitutde"/>
+			<input type="hidden" id="hdnInputLng" name="longitude"/>
+		</div>
+		<div id="map"></div>
+	</form>
 </div>
-<div>Página web:<input name="webpage" type="text"/></div>
-<div>Twitter:<input name="twitter" type="text"/></div>
-<div>Facebook:<input name="facebook" type="text"/></div>
-</form>
 <button id="registerBtn" onclick="onRegisterBtnClicked()">Registrar</button>
