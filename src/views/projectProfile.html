@@ -1,24 +1,71 @@
+<script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+<script src="js/register"></script>
 
-{{#project}}
-<div >
-	<img src="/logo/{{_id}}" height="60" width="60">
-	<h1>{{name}}</h1>
-	<div>Descripción: {{description}}</div>
-	<div>Categorias: {{categories_ids}}</div>
-	<div>Facebook: {{facebook}}</div>
-	<div>Twitter: {{twitter}}</div>
-	<div>Página Web: {{webpage}}</div>
-	<div>Teléfono: {{telephone}}</div>
-	<div>Email: {{email}}</div>
-	<div>Dirección: {{address}}</div>
-	<div>
-		<span>Maneras de colaborar:</span>
-		<span>
-			{{#each waysOfCollaboration}}
-	        <div><span>{{collaborationDescription}}</span> tipo: <span>{{collaborationType}}</span></div>
-	    	{{/each}}
-		</span>
-	</div>
-	<div id="mapa"></div>
+<h1>Registro</h1>
+<div id="registerContainer">
+	<form id="registerForm">
+		<div class="fieldContainer">
+			<div class="tagsContainer">Nombre:</div>
+			<div class="inputsContainer"><input name="name" type="text"/></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Descripción:</div>
+			<div class="inputsContainer"><textarea name="description"></textarea></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Categoria:</div>
+			<div class="inputsContainer">
+				<div class="categoryInputColumn">
+					<div><input type="checkbox" name="categories_ids" value="55663309a660da482b648a33">Salud</div>
+					<div><input type="checkbox" name="categories_ids" value="556644179cfb86a021e5a150">Educación</div>
+					<div><input type="checkbox" name="categories_ids" value="559e90cd46343c3bccee7fbc">Agua</div>
+					<div><input type="checkbox" name="categories_ids" value="559e90f046343c3bccee7fbd">Alimentación</div>
+					<div><input type="checkbox" name="categories_ids" value="5628145fb82163c71dea5f9d">Arte y Cultura</div>
+				</div>
+				<div class="categoryInputColumn">
+					<div><input type="checkbox" name="categories_ids" value="559e910a46343c3bccee7fbe">Comunidad</div>
+					<div><input type="checkbox" name="categories_ids" value="562814bbb82163c71dea5f9f">Comunicación</div>
+					<div><input type="checkbox" name="categories_ids" value="56281547b82163c71dea5fa0">Derechos Humanos</div>
+					<div><input type="checkbox" name="categories_ids" value="5628156cb82163c71dea5fa1">Economía</div>
+				</div>
+				<div class="categoryInputColumn">
+					<div><input type="checkbox" name="categories_ids" value="559e910a46343c3bccee7fbe">Productos y Servicios</div>
+					<div><input type="checkbox" name="categories_ids" value="5628158bb82163c71dea5fa2">Medio Ambiente</div>
+					<div><input type="checkbox" name="categories_ids" value="562815b2b82163c71dea5fa3">Tecnología</div>
+					<div><input type="checkbox" name="categories_ids" value="562815bfb82163c71dea5fa4">Transporte</div>
+					<div><input type="checkbox" name="categories_ids" value="5660de8ca17bb1a413dd1add">Género</div>
+				</div>
+			</div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Página web:</div>
+			<div class="inputsContainer"><input name="webpage" type="text"/></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Twitter:</div>
+			<div class="inputsContainer"><input name="twitter" type="text"/></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Facebook:</div>
+			<div class="inputsContainer"><input name="facebook" type="text"/></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Email:</div>
+			<div class="inputsContainer"><input name="email" type="text"/></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Telefono:</div>
+			<div class="inputsContainer"><input name="telephone" type="text"/></div>
+		</div>
+		<div class="fieldContainer">
+			<div class="tagsContainer">Dirección:</div>
+			<div class="inputsContainer"><input name="address" type="text"/></div>
+		</div>
+		<div>
+			<input type="hidden" id="hdnInputLat" name="latitutde"/>
+			<input type="hidden" id="hdnInputLng" name="longitude"/>
+		</div>
+		<div id="map"></div>
+	</form>
 </div>
-{{/project}}
+<button id="registerBtn" onclick="onRegisterBtnClicked()">Registrar</button>

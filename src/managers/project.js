@@ -1,6 +1,11 @@
 function ProjectManager() { };
 ProjectManager.prototype = (function () {
     return {
+        find: function find(db, query, fields , callback){
+            db.collection('projects').find(query, fields).toArray(function (err,docs){
+                callback(docs);
+            });
+        },
         findAll: function findAll(db, callback) {
             db.collection('projects').find().toArray(function (err, docs) {
                 callback(docs);
@@ -22,7 +27,8 @@ ProjectManager.prototype = (function () {
             });
         },
         findByKeyWords: function findAll(db, keyWords,callback) {
-            db.collection('projects').find( { $text: { $search: keyWords } } ).toArray(function (err, docs) {
+            var query =  { $text: { $search: keyWords } } ;
+            db.collection('projects').find(query).toArray(function (err, docs) {
                 callback(docs);
             });
         },
@@ -38,7 +44,7 @@ ProjectManager.prototype = (function () {
                 callback(doc);
             });  
         },
-        delete: function (db, id, project, callback) {
+        delete: function (db, id, callback) {
             db.collection('projects').remove({ _id: id }, function (err, doc) {
                 callback(doc);
             });  

@@ -4,13 +4,13 @@ function CategoryController() { };
 CategoryController.prototype = (function () {
     return {
         findAll: function findAll(request, reply) {
-            var db = request.server.plugins['hapi-mongodb'].db;  
+            var db = request.mongo.db;  
             CategoryManager.findAll(db, function (res) {
                 reply(res);
             });
         },
         insert: function insert(request, reply) {
-            var db = request.server.plugins['hapi-mongodb'].db;
+            var db = request.mongo.db;
             var newCategory = {
                 name: request.payload.name,
                 language: request.payload.language
@@ -26,7 +26,7 @@ CategoryController.prototype = (function () {
             });
         },
         update: function update(request, reply) {
-            var db = request.server.plugins['hapi-mongodb'].db;  
+            var db = request.mongo.db;  
             if(request.payload.parent){
                 console.log(request.payload.parent);
             }
@@ -38,7 +38,7 @@ CategoryController.prototype = (function () {
             });
         },
         delete: function (request, reply) {
-            var db = request.server.plugins['hapi-mongodb'].db;  
+            var db = request.mongo.db;  
             CategoryManager.delete(db, request.params.id, function (res) {
                 reply(res);
             });

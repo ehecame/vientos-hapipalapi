@@ -6,33 +6,35 @@ module.exports = function () {
         {
             method: 'GET',
             path: '/',
-            handler: function (request, reply) {
-            	var data = {
-	                title: 'This is Index!',
-	                message: 'Hello, World. You crazy handlebars layout',
-                    categories: [
-                        {
-                            name: 'cat 1',
-                            icon: 'icon 1'
-                        },
-                        {
-                            name: 'cat 2',
-                            icon: 'icon 2'
-                        },
-                        {
-                            name: 'cat 3',
-                            icon: 'icon 3'
-                        }
-                    ]
-	            };
-                reply.view('home', data);
+            config: {
+                handler: function (request, reply) {
+                	var data = {
+    	                title: 'This is Index!',
+    	                message: 'Hello, World. You crazy handlebars layout',
+                        categories: [
+                            {
+                                name: 'cat 1',
+                                icon: 'icon 1'
+                            },
+                            {
+                                name: 'cat 2',
+                                icon: 'icon 2'
+                            },
+                            {
+                                name: 'cat 3',
+                                icon: 'icon 3'
+                            }
+                        ]
+    	            };
+                    reply.view('home', data);
+                }
             }
         },{
             method: 'GET',
             path: '/project/{project_id}',
             handler: function (request, reply) {
-                var db = request.server.plugins['hapi-mongodb'].db;
-                var objID = request.server.plugins['hapi-mongodb'].ObjectID;
+                var db = request.mongo.db;
+                var objID = request.mongo.ObjectID;
                 ProjectManager.findById(db, objID(request.params.project_id),function(res){
                     var data = {
                         project: res
@@ -45,7 +47,7 @@ module.exports = function () {
             method: 'GET',
             path: '/search',
             handler: function (request, reply) {
-                var db = request.server.plugins['hapi-mongodb'].db;
+                var db = request.mongo.db;
                 CategoryManager.findAll(db, function(res){
                     var data = {
                         categories: res
@@ -77,6 +79,24 @@ module.exports = function () {
             path: '/needs',
             handler: function (request, reply) {
                 reply.view('needs');              
+            }
+        },{
+            method: 'GET',
+            path: '/login',
+            config: {
+                handler: function (request, reply) {
+                    var data={};
+                    console.log(request.auth);
+                    if( request.auth.credentials){
+                        console.log(request.auth.credentials);
+                        data = {
+                            id: request.auth.credentials.id,
+                            name: request.auth.credentials.name
+                        };
+                    }
+                    reply.view('login', data);
+                },
+                auth: 'session'
             }
         }
     ];

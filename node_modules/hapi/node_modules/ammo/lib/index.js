@@ -1,36 +1,38 @@
+'use strict';
+
 // Load modules
 
-var Stream = require('stream');
-var Hoek = require('hoek');
+const Stream = require('stream');
+const Hoek = require('hoek');
 
 
 // Declare internals
 
-var internals = {};
+const internals = {};
 
 
 exports.header = function (header, length) {
 
     // Parse header
 
-    var parts = header.split('=');
+    const parts = header.split('=');
     if (parts.length !== 2 ||
         parts[0] !== 'bytes') {
 
         return null;
     }
 
-    var lastPos = length - 1;
+    const lastPos = length - 1;
 
-    var result = [];
-    var ranges = parts[1].match(/\d*\-\d*/g);
-    for (var i = 0, il = ranges.length; i < il; ++i) {
-        var range = ranges[i];
+    const result = [];
+    const ranges = parts[1].match(/\d*\-\d*/g);
+    for (let i = 0; i < ranges.length; ++i) {
+        let range = ranges[i];
         if (range.length === 1) {               // '-'
             return null;
         }
 
-        var set = {};
+        const set = {};
         range = range.split('-');
         if (range[0]) {
             set.from = parseInt(range[0], 10);
@@ -68,15 +70,12 @@ exports.header = function (header, length) {
 
     // Sort and consolidate ranges
 
-    result.sort(function (a, b) {
+    result.sort((a, b) => a.from - b.from);
 
-        return a.from - b.from;
-    });
-
-    var consolidated = [];
-    for (i = result.length - 1; i > 0; --i) {
-        var current = result[i];
-        var before = result[i - 1];
+    const consolidated = [];
+    for (let i = result.length - 1; i > 0; --i) {
+        const current = result[i];
+        const before = result[i - 1];
         if (current.from <= before.to + 1) {
             before.to = current.to;
         }
@@ -104,8 +103,8 @@ Hoek.inherits(internals.Stream, Stream.Transform);
 
 internals.Stream.prototype._transform = function (chunk, encoding, done) {
 
-    var pos = this._next;
-    this._next += chunk.length;
+    const pos = this._next;
+    this._next = this._next + chunk.length;
 
     if (this._next <= this._range.from ||       // Before range
         pos > this._range.to) {                 // After range
@@ -113,8 +112,8 @@ internals.Stream.prototype._transform = function (chunk, encoding, done) {
         return done();
     }
 
-    var from = Math.max(0, this._range.from - pos);
-    var to = Math.min(chunk.length, this._range.to - pos + 1);
+    const from = Math.max(0, this._range.from - pos);
+    const to = Math.min(chunk.length, this._range.to - pos + 1);
 
     this.push(chunk.slice(from, to));
     return done();

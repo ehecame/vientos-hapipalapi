@@ -1,0 +1,28 @@
+<script type="text/javascript" src="js/login"></script>
+
+<div>
+	{{#if id}}
+		{{id}}
+	{{/if}}
+</div>
+<div>
+	{{#if name}}
+		{{name}}
+	{{/if}}
+</div>
+<div>
+	<form id="loginForm">
+		<div>
+			Id:<input name="id"/>
+		</div>
+		<div>
+			Name: <input name="name">
+		</div>
+		<div>
+			Password:<input name="password"/>
+		</div>
+		<div>
+			<button onclick="login()">Login</button>
+		</div>
+	</form>
+</div>

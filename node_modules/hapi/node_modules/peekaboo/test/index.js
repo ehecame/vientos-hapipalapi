@@ -1,33 +1,35 @@
+'use strict';
+
 // Load modules
 
-var Events = require('events');
-var Stream = require('stream');
-var Util = require('util');
-var Code = require('code');
-var Lab = require('lab');
-var Peekaboo = require('..');
+const Events = require('events');
+const Stream = require('stream');
+const Util = require('util');
+const Code = require('code');
+const Lab = require('lab');
+const Peekaboo = require('..');
 
 
 // Declare internals
 
-var internals = {};
+const internals = {};
 
 
 // Test shortcuts
 
-var lab = exports.lab = Lab.script();
-var describe = lab.describe;
-var it = lab.it;
-var expect = Code.expect;
+const lab = exports.lab = Lab.script();
+const describe = lab.describe;
+const it = lab.it;
+const expect = Code.expect;
 
 
-describe('Peek', function () {
+describe('Peek', () => {
 
-    it('taps into pass-through stream', function (done) {
+    it('taps into pass-through stream', (done) => {
 
         // Source
 
-        var Source = function (values) {
+        const Source = function (values) {
 
             this.data = values;
             this.pos = 0;
@@ -49,7 +51,7 @@ describe('Peek', function () {
 
         // Target
 
-        var Target = function () {
+        const Target = function () {
 
             this.data = [];
 
@@ -66,20 +68,20 @@ describe('Peek', function () {
 
         // Peek
 
-        var emitter = new Events.EventEmitter();
-        var peek = new Peekaboo(emitter);
+        const emitter = new Events.EventEmitter();
+        const peek = new Peekaboo(emitter);
 
-        var chunks = ['abcd', 'efgh', 'ijkl', 'mnop', 'qrst', 'uvwx'];
-        var source = new Source(chunks);
-        var target = new Target();
+        const chunks = ['abcd', 'efgh', 'ijkl', 'mnop', 'qrst', 'uvwx'];
+        const source = new Source(chunks);
+        const target = new Target();
 
-        var seen = [];
-        emitter.on('peek', function (chunk, encoding) {
+        const seen = [];
+        emitter.on('peek', (chunk, encoding) => {
 
             seen.push(chunk.toString());
         });
 
-        emitter.once('finish', function () {
+        emitter.once('finish', () => {
 
             expect(seen).to.deep.equal(chunks);
             expect(target.data).to.deep.equal(chunks);

@@ -16,7 +16,6 @@ module.exports = function () {
 			method: 'GET',
 			path: '/img/{file}',
 			handler: function (request, reply) {
-				console.log(request.params.file);
 				reply.file("public/img/"+request.params.file);
 			}
 		},{

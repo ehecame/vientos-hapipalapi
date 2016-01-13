@@ -1,19 +1,21 @@
+'use strict';
+
 // Load modules
 
-var Stream = require('stream');
-var Util = require('util');
+const Stream = require('stream');
+const Util = require('util');
 
 
 // Declare internals
 
-var internals = {};
+const internals = {};
 
 
 exports = module.exports = internals.Peek = function (emitter) {
 
     Stream.Transform.call(this);
     this._emmiter = emitter;
-    this.once('finish', function () {
+    this.once('finish', () => {
 
         emitter.emit('finish');
     });

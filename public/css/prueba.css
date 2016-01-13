@@ -3,8 +3,7 @@ body{
 }
 
 #title{
-	position: fixed;
-	z-index: 10000;
+	margin-bottom: 100px;
 }
 
 #title img{
@@ -42,54 +41,91 @@ body{
 	width: 40px; 
 	border-radius: 30px;
 	padding: 20px 12px 0px 12px;
+	right: 20px;
+	top: 20px;
+	transition: width 2s;
+	-moz-transition: width 2s; /* Firefox 4 */
+    -webkit-transition: width 2s; /* Safari and Chrome */
+    -o-transition: width 2s; /* Opera */
+    -ms-transition: width 2s; 
+}
+
+#joinBtn:hover{
+	width: 80px; 
+	background-color: yellow;
 }
 
 #sideMenu{
-	background-color: #F1F1F1;
+	background-color: #9CA2B1;
 	width: 200px;
 	height: 100%;
 	position: fixed;
 	margin: 0px;
-	padding: 100px 0px 50px 0px;
+	padding: 20px 0px 50px 0px;
 }
 
 #sideMenu .sideMenuTab{
 	padding: 20px;
 	cursor: pointer;
 	color: #555555;
-	background-color: #F1F1F1;
+	background-color: #9CA2B1;
+	font-weight: bold;
+	transition: height 1s;
 }
 
 #sideMenu .sideMenuTab a{
 	color: #272727;
 	text-decoration: none;	
+	height: 50px;
 }
 
 #sideMenu .sideMenuTab:hover{
-	background-color: #555555;
+	background-color: #bbbbbb;
 }
 
 #sideMenu .sideMenuTab a:hover{
-	background-color: #555555;
+	background-color: #bbbbbb;
 	color: 272727;
 }
 
 #secIntro{
 	width: 100%;
-	height: 100vh;
-	background-color: blue;
+	height: 70vh;
+	background-image: url("/img/fondomapa.png");
+}
+
+#secIntro #introText{
+    padding-top: 25vh;
+    /*padding-bottom: 5vh;*/
+    padding-left: 25%;
+    padding-right: 25%;
+    /*border: solid #ACAEE6 2.5vh;*/
+    /*border-radius: 15px;*/
+	position: relative;
+    /*top: 20vh;*/
+    /*left: 10%;*/
+    /*width: 70%;*/
+    height: 45vh;
+    font-size: 1.3em;
+    background-color: rgba(255,255,255,0.5);
 }
 
 #secWhat{
-	width: 100%;
 	height: 100vh;
-	background-color: green;
+	background-color: #6B9E20;
 	text-align: center;
+	padding: 10px;
+}
+
+#secWhat #whatTitle{
+	font-size: 30px;
+	color: #CFE4CF;
+	text-align: left;
 }
 
 #secWhat #circlesContainer{
 	display: inline-block;
-	padding-top: 10%
+	padding-top: 5%
 }
 
 #secWhat #circlesContainer ul{
@@ -119,32 +155,166 @@ body{
 }
 
 #secWhat #circlesContainer #projectCircle{
-	background-color: lightgreen;
+	background-color: #fcc755;
 	opacity: .6;
 	left:-100px;
 }
 
 #secWhat #circlesContainer .circleTitle{
 	font-size: 2em;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 #secWhat #circlesContainer .circleKeyWords{
+	margin: 2px;	
+}
 
+#secWhat #circlesContainer #collaborationTitle{
+	margin-top: 10px;
+}
+
+
+#secWhat #detailsContainer .keywordDetails{
+	display: none;
 }
 
 #secUs{
-	width: 100%;
 	height: 100vh;
-	background-color: pink;
+	background-color: #ffde75;
+}
+
+#secUs #usText{
+	padding-top: 5vh;
+    padding-bottom: 5vh;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: solid #ACAEE6 2.5vh;
+    border-radius: 15px;
+	position: relative;
+    top: 20vh;
+    left: 10%;
+    width: 70%;
+    height: 40vh;
+    font-size: 1.3em;
 }
 
 #secMap{
-	width: 100%;
 	height: 100vh;
-	background-color: red;
+	background-color: #9F84BD;
 }
 
-#secIntro #introText{
-	padding: 50px;
-	border: solid black 1px ;
+#secMap #categoriesSection{
+	float: left;
+	width: 25%;
+	height: 100%;
+}
+
+#secMap #categoriesSection .allBtn{
+	opacity: .9;
+	height: 25px; 
+	color: White;
+	-moz-border-radius: 50px / 25px;; 
+	-webkit-border-radius: 50px / 25px;; 
+	border-radius: 50px / 25px;
+	border: 1px;
+	margin: 5px;
+	padding: 3px 10px 0px 10px;
+	font-family: Tahoma, Verdana, Segoe, sans-serif;
+	background-color: darkgreen;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+#secMap #categoriesSection .categoryBtn{
+	opacity: .9;
+	height: 25px; 
+	color: White;
+	-moz-border-radius: 50px / 25px;; 
+	-webkit-border-radius: 50px / 25px;; 
+	border-radius: 50px / 25px;
+	border: 1px;
+	margin: 5px;
+	padding: 3px 10px 0px 10px;
+	font-family: Tahoma, Verdana, Segoe, sans-serif;
+	background-color: green;
+	font-size: 1.2em;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#secMap #categoriesSection .categoryBtn span{
+	display: block;
+	text-align: center;
+}
+
+
+#secMap #mapSection{
+	float: right;
+	height: 100%;
+	width: 75%;
+}
+
+#map { height: 100vh; }
+
+.markerTest {
+	background-color: black;
+	height: 20px; 
+}
+
+.overlay{
+  	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.7);
+	transition: opacity 500ms;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.overlay:target {
+	visibility: visible;
+	opacity: 1;
+}
+
+.popup {
+	margin: 70px auto;
+	padding: 20px;
+	background: #fff;
+	border-radius: 5px;
+	width: 30%;
+	position: relative;
+	transition: all 5s ease-in-out;
+}
+
+.popup .popupBtn{
+	-moz-border-radius: 25px;; 
+	-webkit-border-radius: 25px;; 
+	border-radius: 25px;
+	border: 1px;
+	margin: 5px;
+	background-color: lightblue;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.close {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
 }

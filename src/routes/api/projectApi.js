@@ -18,13 +18,6 @@ module.exports = function () {
         },
         {
             method: 'GET',
-            path: '/api/projects/autogestival',
-            config : {
-                handler: ProjectController.findAutogestival
-            }
-        },
-        {
-            method: 'GET',
             path: '/api/project/category/{category_id}',
             config : {
                 handler: ProjectController.findByCategoryId
@@ -41,7 +34,14 @@ module.exports = function () {
             method: 'POST',
             path: '/api/project',
             config : {
-                handler : ProjectController.insert
+                handler : ProjectController.register
+            }
+        },
+        {
+            method: 'POST',
+            path: '/api/project/shortregister',
+            config : {
+                handler : ProjectController.shortRegister
             }
         },
         {
@@ -56,6 +56,13 @@ module.exports = function () {
             path: '/api/project/{id}',
             config : {
                 handler: ProjectController.delete
+            }
+        },
+        {
+            method: 'POST',
+            path: '/api/project/login',
+            config : {
+                handler: ProjectController.login
             }
         }
     ];

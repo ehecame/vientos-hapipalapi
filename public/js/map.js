@@ -48,6 +48,13 @@ function initializeMap(){
 	    id: 'ralexrdz.nnh64i75',
 	    accessToken: 'pk.eyJ1IjoicmFsZXhyZHoiLCJhIjoiY2lmdHB2aGo2MTZ4MnQ1bHkzeDJyaDMzNyJ9.UHhEm9gA1_uwAztXjb7iTQ'
 	}).addTo(map);
+   	L.AwesomeMarkers.Icon.prototype.options.prefix = 'fa';
+	var redMarker = L.AwesomeMarkers.icon({
+	    icon: 'coffee',
+	    markerColor: 'red'
+	});
+	console.log(redMarker);
+	L.marker([19.34,-99.15], {icon: redMarker}).addTo(map);
 }
 
 function removeAllMarkers(){
