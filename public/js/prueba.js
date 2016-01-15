@@ -34,7 +34,6 @@ function initializeMap(){
       id: 'ralexrdz.nnh64i75',
       accessToken: 'pk.eyJ1IjoicmFsZXhyZHoiLCJhIjoiY2lpZ2prZWV1MDJndXZ0bTFnMjlqNzNqciJ9.3oLuB9mb5jJlL5nYhlibZw'
   }).addTo(map);
-  console.log("hola");
    L.AwesomeMarkers.Icon.prototype.options.prefix = 'fa';
   var redMarker = L.AwesomeMarkers.icon({
     icon: 'coffee',

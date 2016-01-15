@@ -1,6 +1,6 @@
 ﻿# VIENTOS
 
-Web plataform aiming to create a collaboration community between social projects, ethic companies, elements of the solidarity econonomy, and conscious citizens.
+Web plataform aiming to create a collaboration community between social projects, ethical companies, elements of the solidarity econonomy, and conscious citizens.
 
 Developed using these free and open source technologies:
 

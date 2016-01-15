@@ -1,21 +1,20 @@
 <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
 <script src="js/register"></script>
 
-<h1>Registro</h1>
+<h1>{{name}}</h1>
 <div id="registerContainer">
 	<form id="registerForm">
 		<div class="fieldContainer">
-			<div class="tagsContainer">Nombre:</div>
-			<div class="inputsContainer"><input name="name" type="text"/></div>
-		</div>
-		<div class="fieldContainer">
 			<div class="tagsContainer">Descripción:</div>
-			<div class="inputsContainer"><textarea name="description"></textarea></div>
+			<div class="inputsContainer">{{description}}</div>
 		</div>
 		<div class="fieldContainer">
 			<div class="tagsContainer">Categoria:</div>
 			<div class="inputsContainer">
-				<div class="categoryInputColumn">
+				{{#each categories_ids}}
+			        <p>{{this}}</p>
+			    {{/each}}
+				<!-- <div class="categoryInputColumn">
 					<div><input type="checkbox" name="categories_ids" value="55663309a660da482b648a33">Salud</div>
 					<div><input type="checkbox" name="categories_ids" value="556644179cfb86a021e5a150">Educación</div>
 					<div><input type="checkbox" name="categories_ids" value="559e90cd46343c3bccee7fbc">Agua</div>
@@ -34,38 +33,37 @@
 					<div><input type="checkbox" name="categories_ids" value="562815b2b82163c71dea5fa3">Tecnología</div>
 					<div><input type="checkbox" name="categories_ids" value="562815bfb82163c71dea5fa4">Transporte</div>
 					<div><input type="checkbox" name="categories_ids" value="5660de8ca17bb1a413dd1add">Género</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="fieldContainer">
 			<div class="tagsContainer">Página web:</div>
-			<div class="inputsContainer"><input name="webpage" type="text"/></div>
+			<div class="inputsContainer">{{webpage}}</div>
 		</div>
 		<div class="fieldContainer">
 			<div class="tagsContainer">Twitter:</div>
-			<div class="inputsContainer"><input name="twitter" type="text"/></div>
+			<div class="inputsContainer">{{twitter}}</div>
 		</div>
 		<div class="fieldContainer">
 			<div class="tagsContainer">Facebook:</div>
-			<div class="inputsContainer"><input name="facebook" type="text"/></div>
+			<div class="inputsContainer">{{facebook}}</div>
 		</div>
 		<div class="fieldContainer">
 			<div class="tagsContainer">Email:</div>
-			<div class="inputsContainer"><input name="email" type="text"/></div>
+			<div class="inputsContainer">{{email}}</div>
 		</div>
 		<div class="fieldContainer">
 			<div class="tagsContainer">Telefono:</div>
-			<div class="inputsContainer"><input name="telephone" type="text"/></div>
+			<div class="inputsContainer">{{telephone}}</div>
 		</div>
 		<div class="fieldContainer">
 			<div class="tagsContainer">Dirección:</div>
-			<div class="inputsContainer"><input name="address" type="text"/></div>
+			<div class="inputsContainer">{{address}}</div>
 		</div>
 		<div>
-			<input type="hidden" id="hdnInputLat" name="latitutde"/>
-			<input type="hidden" id="hdnInputLng" name="longitude"/>
+			<input type="hidden" id="hdnInputLat" name="latitutde" value="{{latitutde}}"/>
+			<input type="hidden" id="hdnInputLng" name="longitude" value="{{longitude}}"/>
 		</div>
 		<div id="map"></div>
 	</form>
 </div>
-<button id="registerBtn" onclick="onRegisterBtnClicked()">Registrar</button>

@@ -31,14 +31,12 @@ module.exports = function () {
             }
         },{
             method: 'GET',
-            path: '/project/{project_id}',
+            path: '/project/profile/{project_id}',
             handler: function (request, reply) {
                 var db = request.mongo.db;
                 var objID = request.mongo.ObjectID;
                 ProjectManager.findById(db, objID(request.params.project_id),function(res){
-                    var data = {
-                        project: res
-                    }
+                    var data = res[0];
                     console.log(data);
                     reply.view('projectProfile', data);
                 });                

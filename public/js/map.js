@@ -20,7 +20,7 @@ function addAllProjects(){
 			data.forEach(function(project){
 				if (project.latitutde){ 
 					var marker = L.marker([project.latitutde, project.longitude]);
-					marker.bindPopup('<a href="/project/'+project._id+'">'+project.name+'</a>', {
+					marker.bindPopup('<a href="/project/profile/'+project._id+'">'+project.name+'</a>', {
 		            	showOnMouseOver: true
 		        	});
 					markers.addLayer(marker);
@@ -72,7 +72,7 @@ function filterCategory(e){
 				console.log(project);
 				if (project.latitutde){ 
 					var marker = L.marker([project.latitutde, project.longitude]);
-					marker.bindPopup('<a href="/project/'+project._id+'">'+project.name+'</a>', {
+					marker.bindPopup('<a href="/project/profile/'+project._id+'">'+project.name+'</a>', {
 		            	showOnMouseOver: true
 		        	});
 					markers.addLayer(marker);
@@ -103,7 +103,7 @@ function filterByKeyWords(){
 			data.forEach(function(project){
 				if (project.latitutde){ 
 					var marker = L.marker([project.latitutde, project.longitude]);
-					marker.bindPopup('<a href="/project/'+project._id+'">'+project.name+'</a>', {
+					marker.bindPopup('<a href="/project/profile/'+project._id+'">'+project.name+'</a>', {
 		            	showOnMouseOver: true
 		        	});
 					markers.addLayer(marker);
