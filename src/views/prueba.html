@@ -2,125 +2,289 @@
 
 <div id="sideMenu">
 	<div id="title"><img src="/img/vientos_logo_verdeazul.png"></div>
-	<div><a href="#registerPopUp">Únete</a></div>
-	<div><a href="#loginPopUp">Ingresa</a></div>
-	<div class="sideMenuTab"><a href="#secIntro">Home</a></div>
-    <div class="sideMenuTab"><a href="#secWhat">¿Qué puedo hacer aquí?</a></div>	
-    <div class="sideMenuTab"><a href="#secUs">Nosotr@s</a></div>
-    <div class="sideMenuTab"><a href="#secMap">Mapa</a></div>
+	<div class="sideMenuTab"><a href="#secIntro">{{sideBar_Intro}}</a></div>
+    <div class="sideMenuTab"><a href="#secWhat">{{sideBar_What}}</a></div>	
+    <div class="sideMenuTab"><a href="#secMap">{{sideBar_Map}}</a></div>
+    <div class="sideMenuTab"><a href="#secCollaboration">{{sideBar_Collaboration}}</a></div>
+    <div class="sideMenuTab"><a href="#secUs">{{sideBar_Us}}</a></div>
+    <div id="btnsContainer">
+    	<a href="#registerPopUp" id="joinBtn">Únete</a>
+    	<a href="#loginPopUp" id="loginBtn">Ingresa</a>
+    </div>
 </div>
-<div id="joinBtn">
-	<div id="joinTag">Únete</div>
-</div>
-
 <div id="content">
 	<div id="secIntro">
-		<div id="introText">
-			Lorem ipsum dolor sit amet, qui ei soluta consetetur disputationi. Platonem euripidis ne sea. Eu eum error admodum, no ferri percipitur repudiandae ius. Ex nam atqui adivquid pertinacia. Pro te meis persius, dicant quidam ad per, ex vel facidivsi pertinacia.
+		<div id="introCommunity">
+			Comunidad de Colaboración
 		</div>
+		<div id="introMap">Mapa de proyectos en tu zona</div>
+		<div id="introCollaboration">40 Maneras de Colaborar</div><!-- TODO Ponerle un contador animado que vaya subiendo hasta un numerote de maneras de colaborar 3seg lag-->
+		<div id="introUs">Nosotros</div>
+		<div id="introVideo"><i class="fa fa-play"></i></div>
 	</div>
 	<div id="secWhat">
-		<div id="whatTitle">
-			¿Qué pueden hacer aquí...?
-		</div>
+		<div id="whatTitle">¿Qué puedo hacer aquí?</div>
+		<div id="needOfferText">Busco<br>Y<br>Ofrezco</div>
 		<div id="circlesContainer">
-			<div class="circle" id="individualCircle">
-				<div class="circleTitle">Individuos</div>
-				<div class="circleKeyWords">
-					<div id="individualNeedsKeyWord" class="keyWord">Necesidades</div>
-					<div id="individualFreeTimeKeyWord" class="keyWord">Tiempo libre</div>
-					<div id="individualLearnAndTeachKeyWord" class="keyWord">Enseña y Aprende</div>
-					<div id="individualInterestsKeyWord" class="keyWord">Mismos Intereses</div>
-					<div>
-						
+			<div>
+				<div class="circle" id="projectCircle">
+					<div class="circleTitle">Projectos</div>
+					<div class="circleKeyWords">
+						<div id="projectResourcesNearByKeyWord" class="keyWord">Recursos cercanos</div>
+						<div id="projectSimilarProjectsKeyWord" class="keyWord">Proyectos Similares</div>
+						<div id="projectEventsKeyWord" class="keyWord">Eventos</div>
+						<div id="projectWorkshopsKeyWord" class="keyWord">Talleres y Clases</div>
+						<div id="projectFundingKeyWord" class="keyWord">Fondeo y Tequios</div>
+						<div id="projectSpacesMaterialsKeyWord" class="keyWord">Espacios y Material</div>
+					</div>
+				</div>
+				<div class="circle" id="businessCircle">
+					<div class="circleTitle" >Negocios<br>Éticos</div>
+					<div class="circleKeyWords">
+						<div id="businessRetailingKeyWord" class="keyWord">Puntos de venta</div>
+						<div id="businessAdvertisingKeyWord" class="keyWord">Publicidad</div>
+						<div id="businessDistributionKeyWord" class="keyWord">Distribución</div>
+						<div id="businessLocalProductsKeyWord" class="keyWord">Productos Locales</div>
+						<div id="businessEventsKeyWord" class="keyWord">Compra y Venta</div>
+					</div>
+				</div>
+				<div class="circle" id="individualCircle">
+					<div class="circleTitle">Individuo</div>
+					<div class="circleKeyWords">
+						<div id="individualNeedsKeyWord" class="keyWord">Productos y Servicios éticos</div>
+						<div id="individualInterestsKeyWord" class="keyWord">Gente con mismos intereses</div>
+						<div id="individualLearnAndTeachKeyWord" class="keyWord">Clases y Talleres</div>
+						<div id="individualFreeTimeKeyWord" class="keyWord">Colaboracíón con Proyectos</div>
+						<div id="individualFreeTimeKeyWord" class="keyWord">Chambas</div>
+						<div id="individualFreeTimeKeyWord" class="keyWord">Eventos cerca de mí</div>
 					</div>
 				</div>
 			</div>
-			<div class="circle" id="whatCanIDoCircle">
-				<div class="circleKeyWords">
-					<div class="circleTitle">&nbsp;</div>
-					<div id="contributeWithIdeasKeyWord" class="keyWord">Ideas</div>
-					<div id="contributeWithResourcesKeyWord" class="keyWord">Recursos</div>
-					<div id="contributeWithKnowledgeKeyWord" class="keyWord">Conocimientos</div>
-					<div id="contributeWithSkillKeyWord" class="keyWord">Habilidades</div>
-					<div id="contributeWithSpaceKeyWord" class="keyWord">Espacios</div>
-					<div id="contributeWithTimeKeyWord" class="keyWord">Tiempo</div>
-					<div class="circleTitle" id="collaborationTitle">Maneras de Colaboración</div>
+			<div style="position: relative">
+				<div class="circle" id="whatCanIDoCircle">
+					<svg id="lineContainer" height="300" width="700">
+					  	<path d="M240 20 Q 240 100 330 120" stroke="#0078A8" fill="transparent" stroke-width="3"></path>
+					  	<path d="M440 5 V 45" stroke="#0078A8" fill="transparent" stroke-width="3"></path>
+					  	<path d="M640 20 Q 640 100 560 120" stroke="#0078A8" fill="transparent" stroke-width="3"></path>
+					</svg>
+					<div class="circleKeyWords">
+						<div class="circleTitle">Colaboración</div>
+						<div id="contributeWithKnowledgeKeyWord" class="keyWord">Conocimientos</div>
+						<div id="contributeWithResourcesKeyWord" class="keyWord">Materiales</div>
+						<div id="contributeWithIdeasKeyWord" class="keyWord">Arte y creatividad</div>
+						<div id="contributeWithSkillKeyWord" class="keyWord">Habilidades</div>
+						<div id="contributeWithSpaceKeyWord" class="keyWord">Espacios</div>
+						<div id="contributeWithTimeKeyWord" class="keyWord">Tiempo</div>
+						<div id="contributeWithWorkKeyWord" class="keyWord">Trabajo</div>
+						<div id="contributeWithWorkKeyWord" class="keyWord">Difusión</div>
+					</div>
 				</div>
 			</div>
-			<div class="circle" id="projectCircle">
-				<div class="circleTitle">Proyectos</div>
-				<div class="circleKeyWords">
-					<div id="projectFundingKeyWord" class="keyWord">Fondeo</div>
-					<div id="projectEventKeyWord" class="keyWord">Eventos</div>
-					<div id="projectVisibilityKeyWord" class="keyWord">Visibidivdad</div>
-					<div id="projectWorkshopKeyWord" class="keyWord">Talleres</div>
-					<div id="projectGroupWorkKeyWord" class="keyWord">Tequio</div>
-				</div>
-			</div>
-		</div>
-		<div id="detailsContainer">
-			<div id="individualNeedsDetails" class="keywordDetails">
-				Encuentra proyectos dónde puedas satisfacer necesidades como: alimentación, vestido, salud, educación, vivienda, cuidado personal, eventos, clases, talleres, entretenimiento, arte, cultura, herramientas, espacios 
-			</div>
-			<div id="individualFreeTimeDetails" class="keywordDetails"> 
-			</div>
-			<div id="individualLearnAndTeachDetails" class="keywordDetails"> 
-			</div>
-			<div id="individualInterestsDetails" class="keywordDetails"> 
-			</div>
-			<div id="contributeWithIdeasDetails" class="keywordDetails">
-			</div>
-			<div id="contributeWithResourcesDetails" class="keywordDetails">
-			</div>
-			<div id="contributeWithKnowledgeDetails" class="keywordDetails">
-			</div>
-			<div id="contributeWithSkillDetails" class="keywordDetails">
-			</div>
-			<div id="contributeWithSpaceDetails" class="keywordDetails">
-			</div>
-			<div id="contributeWithTimeDetails" class="keywordDetails">
-			</div>
-			<div id="projectFundingDetails" class="keywordDetails">
-			</div>
-			<div id="projectEventDetails" class="keywordDetails">
-			</div>
-			<div id="projectVisibilityDetails" class="keywordDetails">
-			</div>
-			<div id="projectWorkshopDetails" class="keywordDetails">
-			</div>
-			<div id="projectGroupWorkDetails" class="keywordDetails">
-			</div>
-		</div>
-	</div>
-	<div id="secUs">
-		<div id="usText">
-			<i class="fa fa-camera-retro fa-lg"></i> Lorem ipsum dolor sit amet, qui ei soluta consetetur disputationi. Platonem euripidis ne sea. Eu eum error admodum, no ferri percipitur repudiandae ius. Ex nam atqui adivquid pertinacia. Pro te meis persius, dicant quidam ad per, ex vel facidivsi pertinacia.
 		</div>
 	</div>
 	<div id="secMap">
 		<div id="categoriesSection">
-			<div class="allBtn"><span>Todos</span></div>
-			<div class="categoryBtn"><span>Salud</span></div>
-			<div class="categoryBtn"><span>Educación</span></div>
-			<div class="categoryBtn"><span>Agua</span></div>
-			<div class="categoryBtn"><span>Alimentación</span></div>
-			<div class="categoryBtn"><span>Vivienda</span></div>
-			<div class="categoryBtn"><span>Ropa</span></div>
-			<div class="categoryBtn"><span>Arte y Cultura</span></div>
-			<div class="categoryBtn"><span>Productos y Servicios</span></div>
-			<div class="categoryBtn"><span>Clases y Talleres</span></div>
-			<div class="categoryBtn"><span>Comunidad</span></div>
-			<div class="categoryBtn"><span>Comunicación</span></div>
-			<div class="categoryBtn"><span>Derechos Humanos</span></div>
-			<div class="categoryBtn"><span>Economía</span></div>
-			<div class="categoryBtn"><span>Medio Ambiente</span></div>
-			<div class="categoryBtn"><span>Tecnología</span></div>
-			<div class="categoryBtn"><span>Transporte</span></div>
-			<div class="categoryBtn"><span>Género</span></div>
+			<div class="allBtn" onclick="rmAllMarkers(); addAllMarkers();"><span>Todas las categorías</span></div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addHumanRigthsMarkers();">
+				<div class="categoryIcon"><i class="fa fa-globe fa-inverse"></i></div>
+				<span>Human Rights</span>
+			</div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addProductsServicesMarkers();">
+				<div class="categoryIcon"><i class="fa fa-shopping-basket fa-inverse"></i></div>
+				<span>Products and Services</span>
+			</div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addEnvironmentMarkers();">
+				<div class="categoryIcon"><i class="fa fa-pagelines fa-inverse"></i></div>
+				<span>Environment</span>
+			</div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addArtCultureMarkers();">
+				<div class="categoryIcon"><i class="fa fa-paint-brush fa-inverse"></i></div>
+				<span>Art and Culture</span>
+			</div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addGenderMarkers();">
+				<div class="categoryIcon"><i class="fa fa-transgender-alt fa-inverse"></i></div>
+				<span>Gender</span>
+			</div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addHealthMarkers();">
+				<div class="categoryIcon"><i class="fa fa-medkit fa-inverse"></i></div>
+				<span>Health</span>
+			</div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addEducationMarkers();">
+				<div class="categoryIcon"><i class="fa fa-book fa-inverse"></i></div>
+				<span>Education</span>
+			</div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addWorkshopsCoursesMarkers();">
+				<div class="categoryIcon"><i class="fa fa-puzzle-piece fa-inverse"></i></div>
+				<span>Workshops and Courses</span>
+			</div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addCommunityMarkers();">
+				<div class="categoryIcon"><i class="fa fa-users fa-inverse"></i></div>
+				<span>Community</span>
+			</div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addFoodMarkers();">
+				<div class="categoryIcon"><i class="fa fa-cutlery fa-inverse"></i></div>
+				<span>Food</span>
+			</div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addHousingMarkers();">
+				<div class="categoryIcon"><i class="fa fa-home fa-inverse"></i></div>
+				<span>Housing</span>
+			</div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addClothingMarkers();">
+				<div class="categoryIcon"><i class="fa fa-scissors fa-inverse"></i></div>
+				<span>Clothing</span>
+			</div>			
+			<div class="categoryBtn" onclick="rmAllMarkers(); addCommunicationMarkers();">
+				<div class="categoryIcon"><i class="fa fa-bullhorn fa-inverse"></i></div>
+				<span>Comunication</span>
+			</div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addTechnologyMarkers();">
+				<div class="categoryIcon"><i class="fa fa-cogs fa-inverse"></i></div>
+				<span>Technology</span>
+			</div>
+			<div class="categoryBtn" onclick="rmAllMarkers(); addTransportationMarkers();">
+				<div class="categoryIcon"><i class="fa fa-bicycle fa-inverse"></i></div>
+				<span>Transportation</span>
+			</div>
+			<div id="keyWordSearch">
+				<div>Search by keywords</div>
+				<input id="keyWords" placeholder="name, description, need, offer, objet/product..."></input> 
+			</div>
 		</div>
 		<div id="mapSection">
 			<div id="map"></div>
+		</div>
+		<div id="btnCloseToMe">
+			Cerca de mí
+		</div>
+		<div id="mapSideBar">
+			<div id="projectDetails">
+				<div id="projectLogo"><span>LOGO</span></div><h2 id="projectName"></h2>
+				<div id="projectDescription"></div>
+				<div id="projectType"></div>
+				<hr/>
+				<div id="projectContactData">
+					<div>
+						<a id="projectFacebook" href="#" title="Go to Facebook" style="color: #3a5795" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+						<a id="projectTwitter" href="#" title="Go to Twitter" style="color: #4099FF" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+					</div>
+					<div><i class="fa fa-phone-square fa-lg"></i><span id="projectPhone"></span></div>
+					<div><i class="fa fa-mobile fa-lg"></i><span id="projectMobile"></span></div>
+					<div><i class="fa fa-envelope fa-lg"></i><span id="projectEmail"></span></div>
+					<div><i class="fa fa-map-signs fa-lg"></i><span id="projectAddress"></span></div>
+				</div>				
+				<hr/>
+				<div><h3 class="offersNeedsTitles">Ofrece:</h3></div>
+				<div id="projectOffers">
+					<div class="need"><i class="fa fa-home"></i>Hola</div>
+				</div>
+				<hr/>
+				<div><h3 class="offersNeedsTitles">Necesita:</h3></div>
+				<div id="projectNeeds">
+					<div class="need"><i class="fa fa-home"></i>Hola</div>
+				</div>					 
+			</div>
+		</div>
+	</div>
+	<div id="secCollaboration">
+		<div id="collaborationContainer">
+			<div id="collaborationTitle">Colaboración</div>
+			<div id="collaborationCategories">
+				<div class="collaborationCategoryContainer">
+					<span class="collaborationCategory">Materiales</span>
+					<span class="collaborationSubCategory">Subcategory 1</span>
+					<span class="collaborationSubCategory">Subcategory 2</span>
+					<span class="collaborationSubCategory">Subcategory 3</span>
+					<span class="collaborationSubCategory">Subcategory 4</span>
+					</span>
+				</div> 
+				<div class="collaborationCategoryContainer">
+					<span class="collaborationCategory">Conocimientos y Habilidades</span>
+					<span class="collaborationSubCategory">Subcategory 1</span>
+					<span class="collaborationSubCategory">Subcategory 2</span>
+					<span class="collaborationSubCategory">Subcategory 3</span>
+					<span class="collaborationSubCategory">Subcategory 4</span>
+					</span>
+				</div>
+				<div class="collaborationCategoryContainer">
+					<span class="collaborationCategory">Productos y Servicios</span>
+					<span class="collaborationSubCategory">Subcategory 1</span>
+					<span class="collaborationSubCategory">Subcategory 2</span>
+					<span class="collaborationSubCategory">Subcategory 3</span>
+					<span class="collaborationSubCategory">Subcategory 4</span>
+					</span>
+				</div>
+				<div class="collaborationCategoryContainer">
+					<span class="collaborationCategory">Fondeo Colectivo</span>
+					<span class="collaborationSubCategory">Subcategory 1</span>
+					<span class="collaborationSubCategory">Subcategory 2</span>
+					<span class="collaborationSubCategory">Subcategory 3</span>
+					<span class="collaborationSubCategory">Subcategory 4</span>
+					</span>
+				</div>
+				<div class="collaborationCategoryContainer">
+					<span class="collaborationCategory">Chambas</span>
+					<span class="collaborationSubCategory">Subcategory 1</span>
+					<span class="collaborationSubCategory">Subcategory 2</span>
+					<span class="collaborationSubCategory">Subcategory 3</span>
+					<span class="collaborationSubCategory">Subcategory 4</span>
+					</span>
+				</div>
+				<div class="collaborationCategoryContainer">
+					<span class="collaborationCategory">Eventos</span>
+					<span class="collaborationSubCategory">Subcategory 1</span>
+					<span class="collaborationSubCategory">Subcategory 2</span>
+					<span class="collaborationSubCategory">Subcategory 3</span>
+					<span class="collaborationSubCategory">Subcategory 4</span>
+					</span>
+				</div>
+				<div class="collaborationCategoryContainer">
+					<span class="collaborationCategory">Voluntariado</span>
+					<span class="collaborationSubCategory">Subcategory 1</span>
+					<span class="collaborationSubCategory">Subcategory 2</span>
+					<span class="collaborationSubCategory">Subcategory 3</span>
+					<span class="collaborationSubCategory">Subcategory 4</span>
+					</span>
+				</div>
+				<div class="collaborationCategoryContainer">
+					<span class="collaborationCategory">Difundir proyectos</span>
+					<span class="collaborationSubCategory">Subcategory 1</span>
+					<span class="collaborationSubCategory">Subcategory 2</span>
+					<span class="collaborationSubCategory">Subcategory 3</span>
+					<span class="collaborationSubCategory">Subcategory 4</span>
+					</span>
+				</div>
+				<div class="collaborationCategoryContainer">
+					<span class="collaborationCategory">Espacios</span>
+					<span class="collaborationSubCategory">Subcategory 1</span>
+					<span class="collaborationSubCategory">Subcategory 2</span>
+					<span class="collaborationSubCategory">Subcategory 3</span>
+					<span class="collaborationSubCategory">Subcategory 4</span>
+					</span>
+				</div>
+				<div class="collaborationCategoryContainer">
+					<span class="collaborationCategory">Recomienda y vincula</span>
+					<span class="collaborationSubCategory">Subcategory 1</span>
+					<span class="collaborationSubCategory">Subcategory 2</span>
+					<span class="collaborationSubCategory">Subcategory 3</span>
+					<span class="collaborationSubCategory">Subcategory 4</span>
+					</span>
+				</div>
+				<div class="collaborationCategoryContainer">
+					<span class="collaborationCategory">Comparte tu arte</span>
+					<span class="collaborationSubCategory">Subcategory 1</span>
+					<span class="collaborationSubCategory">Subcategory 2</span>
+					<span class="collaborationSubCategory">Subcategory 3</span>
+					<span class="collaborationSubCategory">Subcategory 4</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="secUs">
+		<div id="usContainer">
+			<div id="usText">
+				Vientos is a not-for-profit organization that does not sell advertisement spots or information related to projects,businesses, or individuals on our site. Rather, the visibility of each project is determined by the number of ethical criteria they fulfill and the number and quality of collaborations with other projects on the map.
+			</div>
 		</div>
 	</div>
 </div>
@@ -130,24 +294,24 @@
 		<form id="registerForm">
 			<div>Nombre del proyecto</div>
 			<div><input name="name" /></div>
-			<div>Email</div>
+			<div>Correo Electrónico</div>
 			<div><input name="email" /></div>
 			<div>Contraseña</div>
 			<div><input name="password"></div>
 			<div>Confirma Contraseña</div>
 			<div><input name="password2"></div>
 		</form>
-		<div class="popupBtn" onclick="onRegisterBtnClicked()">Regístrame</div>
+		<div class="popupBtn" onclick="onRegisterBtnClicked()">¡Únete!</div>
 	</div>
 </div>
 <div id="loginPopUp" class="overlay">
 	<div class="popup">
 		<a class="close" href="#close">X</a>
 		<form id="loginForm">
-			<span>Email</span><input name="email" />
-			<span>Password</span><input name="password">
+			<span>Correo Electrónico</span><input name="email" />
+			<span>Contraseña</span><input name="password">
 		</form>
 		<div class="popupBtn">Ingresa</div>
 	</div>
 </div>
-
+d

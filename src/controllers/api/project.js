@@ -70,7 +70,7 @@ ProjectController.prototype = (function () {
             console.log(request.payload.categories_ids.length);
             console.log(request.payload.categories_ids);
             var categories_objids = [];
-            if(typeof stringValue=="string"){
+            if(typeof request.payload.categories_ids=="string"){
                 categories_objids[0] = new objID(request.payload.categories_ids);
             }
             else{
@@ -79,9 +79,12 @@ ProjectController.prototype = (function () {
                 };
             }
             console.log(categories_objids);
+            console.log(request.payload);
+            console.log(require('bcrypt').hashSync(request.payload.password, 10));
             var newProject = {  
                 email: request.payload.email,
-                password: require('bcrypt').hashSync(request.payload.password, 10),
+                //password: require('bcrypt').hashSync(request.payload.password, 10),
+                password: request.payload.password, 
                 name: request.payload.name,
                 description: request.payload.description,
                 categories_ids: categories_objids,
@@ -90,10 +93,11 @@ ProjectController.prototype = (function () {
                 longitude: request.payload.longitude,
                 webpage: request.payload.webpage,
                 facebook: request.payload.facebook
-            };  
-            ProjectManager.insert(db, newProject, function (res) {
-                reply(res);
-            });
+            };
+            reply("hola");  
+            //ProjectManager.insert(db, newProject, function (res) {
+            //    reply(res);
+            //});
         },
         update: function update(request, reply) {
             var db = request.mongo.db;  

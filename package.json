@@ -1,0 +1,30 @@
+{
+  "name": "waac",
+  "version": "1.0.0",
+  "description": "Web plataform aiming to create a collaboration community between social projects, ethical companies, elements of the solidarity econonomy, and conscious citizens.",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "handlebars": "^3.0.3",
+    "hapi": "^12.0.0",
+    "hapi-auth-cookie": "^4.0.0",
+    "hapi-mongodb": "^4.1.0",
+    "inert": "^3.2.0",
+    "vision": "^4.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ralexrdz/waac.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ralexrdz/waac/issues"
+  },
+  "homepage": "https://github.com/ralexrdz/waac#readme"
+}

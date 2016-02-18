@@ -1,5 +1,6 @@
 body{
 	margin: 0px;
+	font-family: Mate, Tahoma, Verdana;
 }
 
 #title{
@@ -8,6 +9,17 @@ body{
 
 #title img{
 	width: 200px;
+}
+
+@font-face {
+	font-family: Mate;
+	src: url("/fonts/Mate-Regular.otf") format("opentype");
+}
+
+@font-face {
+	font-family: Mate;
+	font-weight: bold;
+	src: url("/fonts/Mate-Regular.otf") format("opentype");
 }
 
 /*@keyframes beat {
@@ -31,32 +43,8 @@ body{
 	margin-left: 200px;
 }
 
-#joinBtn{
-    box-shadow: 1px 1px 1px black;
-    color: white; 
-    text-align: center;
-    position: fixed;
-    background-color: red; 
-	height: 40px; 
-	width: 40px; 
-	border-radius: 30px;
-	padding: 20px 12px 0px 12px;
-	right: 20px;
-	top: 20px;
-	transition: width 2s;
-	-moz-transition: width 2s; /* Firefox 4 */
-    -webkit-transition: width 2s; /* Safari and Chrome */
-    -o-transition: width 2s; /* Opera */
-    -ms-transition: width 2s; 
-}
-
-#joinBtn:hover{
-	width: 80px; 
-	background-color: yellow;
-}
-
 #sideMenu{
-	background-color: #9CA2B1;
+	background-color: #A5A9B5;
 	width: 200px;
 	height: 100%;
 	position: fixed;
@@ -68,7 +56,7 @@ body{
 	padding: 20px;
 	cursor: pointer;
 	color: #555555;
-	background-color: #9CA2B1;
+	background-color: #A5A9B5;
 	font-weight: bold;
 	transition: height 1s;
 }
@@ -88,44 +76,142 @@ body{
 	color: 272727;
 }
 
+#sideMenu #btnsContainer{
+	position: absolute;
+    bottom: 100px;
+    width: 100%;
+}
+
+#sideMenu #btnsContainer #joinBtn{
+	text-decoration: none;
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 20px;
+    background-color: #38988C;
+    float: left;
+    line-height: 25px;
+}
+
+#sideMenu #btnsContainer #loginBtn{
+	text-decoration: none;
+    height: 25px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 20px;
+    background-color: #38988C;
+    float: right;
+    line-height: 25px;
+}
+
 #secIntro{
 	width: 100%;
 	height: 70vh;
 	background-image: url("/img/fondomapa.png");
+	position: relative;
 }
 
-#secIntro #introText{
-    padding-top: 25vh;
-    /*padding-bottom: 5vh;*/
-    padding-left: 25%;
-    padding-right: 25%;
-    /*border: solid #ACAEE6 2.5vh;*/
-    /*border-radius: 15px;*/
-	position: relative;
-    /*top: 20vh;*/
-    /*left: 10%;*/
-    /*width: 70%;*/
-    height: 45vh;
+#secIntro #introCommunity{
+    top: 50px;
+    left: 50px;
+    padding: 20px;
+    position: absolute;
     font-size: 1.3em;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(5,255,255,0.7);
+    border-radius: 10px;
+    display: inline-block;
+}
+
+#secIntro #introMap{
+    top: 200px;
+    left: 50px;
+    padding: 20px;
+    position: absolute;
+    font-size: 1.3em;
+    background-color: rgba(5,255,255,0.7);
+    border-radius: 10px;
+    display: inline-block;
+}
+
+#secIntro #introCollaboration{
+    top: 350px;
+    left: 50px;
+    padding: 20px;
+    position: absolute;
+    font-size: 1.3em;
+    background-color: rgba(5,255,255,0.7);
+    border-radius: 10px;
+    display: inline-block;
+}
+
+#secIntro #introUs{
+    top: 100px;
+    right: 100px;
+    padding: 20px;
+    position: absolute;
+    font-size: 1.3em;
+    background-color: rgba(5,255,255,0.7);
+    border-radius: 10px;
+    display: inline-block;
+}
+
+#secIntro #introVideo{
+	position: absolute;
+    bottom: 20px;
+    height: 80px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid darkgrey 5px;
+    border-radius: 15px;
+    background-color: white;
+    width: 180px;
+    opacity: .6;
+}
+
+#secIntro #introVideo i{
+	color: #F1A3A3;
+	font-size: 4em;
+	margin: 10px 73px;
 }
 
 #secWhat{
 	height: 100vh;
-	background-color: #6B9E20;
+	background-image: url("/img/grafo2.jpg");
+	background-size:cover;
 	text-align: center;
-	padding: 10px;
+	position: relative;
 }
 
 #secWhat #whatTitle{
-	font-size: 30px;
-	color: #CFE4CF;
-	text-align: left;
+	font-size: 35px;
+	color: #0078A8;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+
+#secWhat #needOfferText{
+	font-size: 25px;
+	position: absolute;
+	top: 200px;
+	left: 120px;
 }
 
 #secWhat #circlesContainer{
-	display: inline-block;
-	padding-top: 5%
+	height: 100%;
+	padding-top: 80px;
+	padding-left: 115px;
+	background-color: rgba(255,255,255,0.8);
 }
 
 #secWhat #circlesContainer ul{
@@ -144,26 +230,45 @@ body{
 }
 
 #secWhat #circlesContainer #individualCircle{
+	background-color: #fcc755;
+	opacity: .6;
+	left:-100px;
+}
+
+#secWhat #circlesContainer #whatCanIDoCircle{
+	background-color: limegreen;
+	opacity: .6;
+	left:-50px;
+	top: 50px;
+}
+
+#secWhat #circlesContainer #projectCircle{
+	
 	background-color: yellow;
 	opacity: .6;
 }
 
-#secWhat #circlesContainer #whatCanIDoCircle{
+#secWhat #circlesContainer #businessCircle{
 	background-color: lightblue;
 	opacity: .6;
 	left: -50px;
 }
 
-#secWhat #circlesContainer #projectCircle{
-	background-color: #fcc755;
-	opacity: .6;
-	left:-100px;
+#secWhat #circlesContainer #whatCanIDoCircle #lineContainer{
+    position: absolute;
+    left: -320px;
+    top: -50px;
 }
 
 #secWhat #circlesContainer .circleTitle{
 	font-size: 2em;
     margin-top: 40px;
     margin-bottom: 20px;
+    line-height: 90%;
+}
+
+#secWhat #circlesContainer .keyWord{
+	font-size: 1.2em;
 }
 
 #secWhat #circlesContainer .circleKeyWords{
@@ -181,10 +286,18 @@ body{
 
 #secUs{
 	height: 100vh;
-	background-color: #ffde75;
+	/*background-color: #ffde75;*/
+	background-image: url("/img/vientosink.jpg");
+	background-size:cover;
 }
 
-#secUs #usText{
+#secUs #usContainer{
+	height: 100%;
+	width: 100%;
+	background-color: rgba(255,255,255, .9);
+} 
+
+#secUs #usContainer #usText{
 	padding-top: 5vh;
     padding-bottom: 5vh;
     padding-left: 5%;
@@ -196,12 +309,13 @@ body{
     left: 10%;
     width: 70%;
     height: 40vh;
-    font-size: 1.3em;
+    font-size: 1.8em;
 }
 
 #secMap{
 	height: 100vh;
-	background-color: #9F84BD;
+	background-color: #E8EEDC;
+	position: relative;
 }
 
 #secMap #categoriesSection{
@@ -220,10 +334,15 @@ body{
 	border: 1px;
 	margin: 5px;
 	padding: 3px 10px 0px 10px;
-	font-family: Tahoma, Verdana, Segoe, sans-serif;
 	background-color: darkgreen;
 	font-size: 1.2em;
 	font-weight: bold;
+	cursor: pointer;
+}
+
+#secMap #categoriesSection .allBtn span{
+	display: block;
+	text-align: center;
 }
 
 #secMap #categoriesSection .categoryBtn{
@@ -236,7 +355,6 @@ body{
 	border: 1px;
 	margin: 5px;
 	padding: 3px 10px 0px 10px;
-	font-family: Tahoma, Verdana, Segoe, sans-serif;
 	background-color: green;
 	font-size: 1.2em;
 	font-weight: bold;
@@ -246,6 +364,27 @@ body{
 #secMap #categoriesSection .categoryBtn span{
 	display: block;
 	text-align: center;
+	padding-left: 5px;
+}
+
+#secMap #categoriesSection .categoryBtn .categoryIcon{
+	position: absolute;
+	left: 17px;
+}
+
+#secMap #categoriesSection #keyWordSearch{
+	opacity: .9;
+	height: 70px; 
+	color: White;
+	-moz-border-radius: 50px / 25px;; 
+	-webkit-border-radius: 50px / 25px;; 
+	border-radius: 50px / 25px;
+	border: 1px;
+	margin: 5px;
+	padding: 10px 10px 0px 40px;
+	background-color: #A2431D;
+	font-size: 1.2em;
+	font-weight: bold;
 }
 
 
@@ -255,11 +394,175 @@ body{
 	width: 75%;
 }
 
+#secMap #mapSideBar{
+	position: absolute;
+	top:0px;
+	right: 0px;
+	width: 0px;
+	border-radius: 20px;
+    border: solid lightblue 3px;
+    padding: 20px;
+    background: rgba(255,255,255,0.9);
+	height: 95%;
+	display: none;
+	overflow: scroll;
+}
+
+#secMap #btnCloseToMe{
+	position: absolute;
+	top:20px;
+	left: 30%;
+    color: white;
+    background-color: #0090AE;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+#secMap #mapSideBar #projectName,
+#secMap #mapSideBar .offersNeedsTitles	{
+	margin: 0px;
+}
+
+#secMap #mapSideBar #projectLogo{
+	float: left;
+	height: 50px;
+	width: 50px;
+	border: solid black 3px;
+	border-radius: 25px;
+	font-size: small;
+	text-align: center;
+	margin-right: 15px;
+}
+
+#secMap #mapSideBar #projectLogo span{
+	line-height: 50px;
+}
+
+#secMap #mapSideBar #projectType {
+	height: 20px;
+	border-radius: 10px;
+	border: none;
+	color: white;
+	display: inline-block;
+	margin-top: 5px;
+    padding: 3px;		
+}
+
+#secMap #mapSideBar #projectContactData div{
+	margin: 10px;
+	padding-left: 30px;
+}
+
+#secMap #mapSideBar #projectFacebook,
+#secMap #mapSideBar #projectTwitter{
+	margin-right: 10px;
+}
+#secMap #mapSideBar #projectPhone,
+#secMap #mapSideBar #projectMobile,
+#secMap #mapSideBar #projectEmail,
+#secMap #mapSideBar #projectAddress{
+	margin: 10px;
+}
+
 #map { height: 100vh; }
 
-.markerTest {
-	background-color: black;
-	height: 20px; 
+#map .myIcon{
+	margin-top: -40px;
+	margin-left: -25px;
+}
+
+#map .leaflet-div-icon {
+     background: none; 
+     border: none; 
+}
+
+
+#secCollaboration{
+	height: 100vh;
+	background-image: url("/img/telar.jpg");
+	position: relative;
+	background-size:cover;
+}
+
+#secCollaboration #collaborationContainer{
+	height: 100%;
+	width: 100%;
+	background-color: rgba(255,255,255, .8);
+}
+
+#secCollaboration #collaborationContainer #collaborationTitle{
+	    font-size: 35px;
+	    color: #0078A8;
+	    padding-top: 40px;
+	    padding-left: 110px;
+}
+
+#secCollaboration #collaborationContainer #collaborationCategories{
+	padding: 50px;
+}
+
+#secCollaboration #collaborationContainer #collaborationCategories .collaborationCategoryContainer{
+	margin: 20px;
+}		
+
+#secCollaboration #collaborationContainer #collaborationCategories .collaborationCategoryContainer .collaborationCategory{
+	margin-bottom: 7px;
+    margin-left: 10px;
+    margin-right: 50px;
+    padding: 5px;
+    border-radius: 20px;
+    border: solid lightblue 3px;
+    font-size: 1.2em;
+    color: white;
+    background: rgba(134,89,74,0.5);
+}
+
+#secCollaboration #collaborationContainer #collaborationCategories .collaborationCategoryContainer .collaborationSubCategory{
+	margin-bottom: 7px;
+    margin-left: 20px;
+    padding: 5px;
+    border-radius: 20px;
+    border: solid lightblue 3px;
+    font-size: 1.2em;
+    color: white;
+    background: rgba(76, 134, 74, 0.5);
+    visibility: hidden;
+}
+
+.markerPopUp {
+	background-color: rgba(255,255,255, .9);
+	max-width: 300px;
+	font-size: .5em;
+	position: absolute;
+	left: 50px;
+	border-radius: 5px;
+	padding: 5px;
+	display: none;
+}
+
+.markerPopUp .markerPopUpTriangle{
+	width: 0;
+	height: 0;
+	opacity: .9;
+	position: absolute;
+	left: -20px;
+	top: 5px;
+	border-top: 10px solid transparent;
+	border-right: 10px solid white;
+	border-bottom: 10px solid transparent;
+	border-left: 10px solid transparent;
+}
+
+.markerPopUp .markerPopUpName{
+	line-height: 95%;
+	display: none;
+}
+
+.markerPopUp .markerPopUpDescription{
+	display: none;
+	line-height: 95%;
+	width: 300px;
 }
 
 .overlay{

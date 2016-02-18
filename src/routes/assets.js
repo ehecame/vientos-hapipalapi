@@ -30,6 +30,12 @@ module.exports = function () {
 			handler: function (request, reply) {
 				reply.file("public/svg/"+request.params.file+".svg");
 			}
+		},{
+			method: 'GET',
+			path: '/fonts/{file}',
+			handler: function (request, reply) {
+				reply.file("public/fonts/"+request.params.file);
+			}
 		}
 	];
 }();
