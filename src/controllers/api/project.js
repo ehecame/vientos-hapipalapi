@@ -4,11 +4,13 @@ function ProjectController() { };
 ProjectController.prototype = (function () {
     return {
         login: function login(request,reply){
+            console.log("login");
             ProjectManager.find(
                 request.mongo.db, 
                 {email: request.payload.email}, 
                 {password: 1}, 
                 function(res){
+                    console.log("project find login");
                     console.log(res);
                     reply("login");
                     var account = {
@@ -18,8 +20,7 @@ ProjectController.prototype = (function () {
                     };
                     request.auth.session.set(account);
                 }
-            );            
-            reply("login");
+            );
         },
         findAll: function findAll(request, reply) {
             var db = request.mongo.db;  
