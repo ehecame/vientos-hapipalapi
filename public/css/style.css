@@ -1,0 +1,483 @@
+/*---------------------------------------------ESTILOS NO DEFINITIVOS*/
+.foto1 {
+  background-image: url(../images/1.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+.foto2 {
+  background-image: url(../images/2.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+.foto3 {
+  background-image: url(../images/3.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+/*---------------------------------------------FONTS*/
+@font-face {
+  font-family: circular_black;
+  src: url("../fonts/circular_black.ttf"); }
+
+@font-face {
+  font-family: circular_bold;
+  src: url("../fonts/circular_bold.ttf"); }
+
+@font-face {
+  font-family: circular_book;
+  src: url("../fonts/circular_book.ttf"); }
+
+@font-face {
+  font-family: circular_medium;
+  src: url("../fonts/circular_medium.ttf"); }
+
+/*--------------------------------------------COLORS*/
+/* BASICS */
+/* PRINCIPAL Colors*/
+/* OVERS */
+/* Secondary Colors */
+/* blacks */
+/* Secciones */
+/*------------------------------------------Elemental Styles*/
+body {
+  font-family: circular_book;
+  margin: 0px;
+  padding: 0px;
+}
+
+strong {
+  font-family: circular_black; }
+
+li {
+  display: inherit; }
+
+a {
+  color: inherit; }
+
+a:hover, a:active, a:focus {
+  text-decoration: none !important;
+  color: inherit;
+  opacity: .5; }
+
+h1 {
+  font-family: circular_bold;
+  padding-left: 15px !important; }
+
+#map {
+  cursor: pointer; }
+
+.upper {
+  text-transform: uppercase; }
+
+/* GENERAL CONTAINERS INDEX */
+/* ------------------ ----------------- ----------------- ----------------- TOP MENU */
+.navbar-right {
+  margin-right: 0px !important;
+  height: 55px; }
+
+.navbar-nav > li > div > a {
+  padding-top: 16px;
+  padding-bottom: 15px;
+  min-height: 80px;
+  letter-spacing: 1px; }
+
+.navbar-default {
+  color: #F5F6F7; }
+
+.logo img {
+  height: 59px;
+  margin-top: -17px; }
+
+.navbar-toggle {
+  border: 0px;
+  margin-top: 20px; }
+
+#map_btn :hover {
+  background-color: #2FAF52; }
+
+#map_btn a {
+  padding: 0px; }
+
+#map_btn img {
+  cursor: pointer;
+  padding-top: 11px;
+  padding-bottom: 9px;
+  background-color: #42F475;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 52px;
+  border-radius: 29px; }
+
+/* ------------------  */
+/* ------------------------------------------------------------------------ HOME CONTAINER */
+#home-container {
+  padding-top: 120px;
+  height: 100vh;
+  background-color: #28282D;
+  background-image: url("../images/map.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-blend-mode: multiply; }
+
+.form-control {
+  border: 0px;
+  font-size: 20px; }
+
+.call_to_action {
+  font-family: circular_black;
+  font-size: 60px;
+  color: #F5F6F7;
+  letter-spacing: 1px;
+  text-align: center;
+  padding-top: 10%; }
+
+.second_phrase {
+  font-size: 33px; }
+
+.btns_home {
+  margin-top: 40px; }
+
+.form-home {
+  height: 65px;
+  border-radius: 8px; }
+
+.input-group-addon {
+  border: 0px;
+  border-radius: 8px;
+  padding: 6px 20px;
+  font-size: 24px; }
+
+.need {
+  background-color: #42F475;
+  color: #2FAF52; }
+
+.offer {
+  background-color: #E6EA59;
+  color: #A2A43E; }
+
+.btns_home .col-md-6 {
+  margin-top: 30px; }
+
+#ofrezco, #necesito {
+  cursor: pointer; }
+
+/* ------------------  */
+/* ----------------------------------------------------------------------- BENEFITS CONTAINER */
+/*-----------COLORS 4 THIS SECTION*/
+/*-------*/
+.benefits-container {
+  background-color: #33AA96; }
+  .benefits-container .col-md-4 {
+    padding-left: 40px;
+    padding-right: 40px; }
+  .benefits-container .title {
+    position: relative;
+    top: -90px;
+    font-size: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    background-color: #33AA96;
+    color: #F5F6F7; }
+  .benefits-container h1 {
+    margin: 0px;
+    padding: 0px;
+    font-family: circular_black;
+    padding-bottom: 30px; }
+  .benefits-container li {
+    font-size: 20px; }
+  .benefits-container img {
+    height: 100px;
+    margin-bottom: 30px; }
+
+.projects, .business, .individual {
+  padding-top: 40px;
+  min-height: 560px; }
+
+.projects {
+  background-color: #43C9B5; }
+
+.business {
+  background-color: #3FBCA7; }
+
+.individual {
+  background-color: #39B79F; }
+
+.btn_registrate {
+  z-index: 100;
+  background-color: #5151F4;
+  color: #1D1D57;
+  border: 0px;
+  padding: 15px;
+  border-radius: 6px; }
+
+.arrow {
+  position: absolute;
+  left: 40%;
+  bottom: -119px;
+  z-index: 1; }
+
+.colaborar {
+  min-height: 100px;
+  background-color: #EDFCF9;
+  text-align: center;
+  z-index: -1;
+  padding-top: 190px;
+  padding-bottom: 40px;
+  color: #0D4239; }
+  .colaborar p {
+    font-size: 19px; }
+
+.icn_colab {
+  position: relative;
+  top: -15px;
+  text-align: center;
+  height: 0px; }
+  .icn_colab img {
+    position: relative;
+    height: 200px; }
+
+/* ------------------  */
+/* ----------------------------------------------------------------------- BENEFITS CONTAINER */
+/*-----------COLORS 4 THIS SECTION*/
+/*-------*/
+.category-40ways .left, .category-40ways .right {
+  position: relative;
+  min-height: 500px;
+  padding-top: 30px;
+  padding-bottom: 30px; }
+
+.category-40ways .left {
+  background-color: #F7F7F7; }
+
+.category-40ways .right {
+  background-color: #E2E2E2;
+  text-align: right; }
+
+.circle {
+  margin-top: 15px;
+  height: 10px;
+  width: 10px;
+  background-color: #ABA7A3;
+  border-radius: 5px; }
+
+.circles_right {
+  float: right; }
+
+.circle_active {
+  background-color: #42F475; }
+
+.counter_benefits {
+  padding-left: 15px; }
+
+/* ------------------  */
+/* ----------------------------------------------------------------------- Casos CONTAINER */
+.casos-container {
+  background-color: #B9F6F9;
+  padding-top: 30px;
+  padding-bottom: 30px; }
+  .casos-container h1 {
+    padding-bottom: 20px; }
+
+.casos .foto_project {
+  background-color: black;
+  height: 236px;
+  border-radius: 10px 10px 0px 0px; }
+
+.casos .texto_project {
+  background-color: #F5F6F7;
+  padding: 35px;
+  padding-top: 40px;
+  border-radius: 0px 0px 10px 10px;
+  font-size: 18px; }
+
+.casos .col-md-4 {
+  padding-bottom: 5px; }
+
+.casos .sign {
+  font-size: 22px;
+  padding-top: 20px; }
+
+.casos .brand {
+  color: #42F475; }
+
+.project_options {
+  display: flex; }
+  .project_options .circle {
+    margin: 20px; }
+
+/* ------------------  */
+/* ----------------------------------------------------------------------- WE- CONTAINER */
+.we-container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #F5F6F7; }
+  .we-container .frase {
+    padding-top: 70px;
+    padding-bottom: 50px; }
+
+.foto_we {
+  height: 600px;
+  border-radius: 10px;
+  background-color: #28282D;
+  background-image: url(../images/equipo.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+/* ------------------  */
+/* ----------------------------------------------------------------------- FOOTER */
+.footer-container {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  color: #F5F6F7;
+  background-color: #28282D; }
+  .footer-container li, .footer-container p {
+    padding-bottom: 15px;
+    padding-top: 15px; }
+
+.redes, .links, .datos_contacto {
+  min-height: 100px; }
+
+.redes {
+  font-size: 21px; }
+
+.links, .datos_contacto {
+  border-right: 1px solid #F5F6F7; }
+
+.logo_footer img {
+  width: 45%; }
+
+.facebook {
+  color: #134DDA; }
+
+.twitter {
+  color: #2AB1E8; }
+
+.github {
+  color: #F5F6F7; }
+
+.facebook, .twitter, .github {
+  margin-left: 31px; }
+
+.map_footer {
+  background-color: #28282D;
+  background-image: url("../images/map.png");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-blend-mode: multiply;
+  padding-top: 30px;
+  padding-bottom: 30px; }
+
+#map:hover {
+  background-color: #42F475; }
+
+/* ----------------------------------------------  MEDIAS */
+@media (max-width: 992px) {
+  .no_mobile {
+    display: none; }
+  .benefits-container .text-center {
+    text-align: right; }
+  .redes, .links, .datos_contacto {
+    text-align: center !important;
+    border: 0px; }
+  .footer-container img {
+    height: 100px;
+    padding-top: 30px; } }
+
+@media (max-width: 762px) { 
+  #map_btn img {
+    width: 100vh;
+    height: 80px; } }
+
+.top-bar-map {
+  background-color: #F5F6F7; }
+
+.logo_map img {
+  height: 70px; }
+
+.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
+  max-height: 500px; }
+
+#map_btn {
+  height: 55px;
+  margin-top: 2px; }
+
+#loginFormContainer{
+  height: 100%;
+  padding: 100px;
+}
+
+.overlay{
+    position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup .popupBtn{
+  -moz-border-radius: 25px;; 
+  -webkit-border-radius: 25px;; 
+  border-radius: 25px;
+  border: 1px;
+  margin: 5px;
+  background-color: lightblue;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.closePopUp {
+  background: #606061;
+  color: #FFFFFF;
+  line-height: 25px;
+  position: absolute;
+  right: -12px;
+  text-align: center;
+  top: -10px;
+  width: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;
+}

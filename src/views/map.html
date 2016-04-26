@@ -1,14 +1,8 @@
 <script src="js/map"></script>
 <script src="js/leaflet.awesome-markers"></script>
-<script src="http://cdn.leafletjs.com/leaflet/v0.5.1/leaflet-src.js"></script>
-
-<div id="introParagraph">
-	<div class="fa-stack fa-2x">
-  <i class="fa fa-map-marker fa-stack-2x"></i>
-  <strong class="fa fa-circle fa-stack-1x" style="margin-top: -.2em;"></strong>
-  <i class="fa fa-twitter fa-stack-1x fa-inverse" style="margin-top: -.3em; font-size: .7em;" ></i>
-</div> Comunidad de colaboración entre proyectos, colectivos, cooperativas, iniciativas ciudadanas, asociaciones civiles, ONGs, grupos de economía solidaria, individuos.
-</div>
+</br>
+</br>
+</br>
 <div id="categoriesContainer">
 	<div class="categoryBtnTodos" onclick="addAllProjects()">TODOS</div>
 	<div class="categoryBtn" id="55663309a660da482b648a33" onclick="filterCategory(this)">Salud</div>
@@ -29,7 +23,11 @@
 <div>
 	<input id="keyWords" placeholder="nombre, descripción, manera de colaborar, objeto/producto..."></input> 
 	<div class="categoryBtn" id="searchKeyWordsBtn" onclick="filterByKeyWords()">Buscar por palabra</div>
+	<div id="btnCloseToMe">
+			Cerca de mí
+		</div>
 </div>
+
 <div id="map"></div>
 <div id="projectsNoLocation">
 </div>

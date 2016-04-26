@@ -1,0 +1,41 @@
+{
+  "name": "vientos",
+  "description": "Web plataform aiming to create a collaboration community between social projects, ethical companies, elements of the solidarity econonomy, and conscious citizens.",
+  "main": "server.js",
+  "authors": [
+    "ralex <ralex.rdz@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ralexrdz/vientos",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.3.1",
+    "iron-autogrow-textarea": "PolymerElements/iron-autogrow-textarea#^1.0.0",
+    "iron-collapse": "PolymerElements/iron-collapse#^1.0.0",
+    "iron-dropdown": "PolymerElements/iron-dropdown#^1.0.0",
+    "iron-fit-behavior": "PolymerElements/iron-fit-behavior#^1.0.0",
+    "paper-badge": "PolymerElements/paper-badge#^1.0.0",
+    "paper-button": "PolymerElements/paper-button#^1.0.0",
+    "paper-input": "PolymerElements/paper-input#^1.0.0",
+    "paper-item": "PolymerElements/paper-item#^1.0.0",
+    "paper-listbox": "polymerelements/paper-listbox#^1.0.0",
+    "paper-progress": "PolymerElements/paper-progress#^1.0.0",
+    "paper-radio-button": "PolymerElements/paper-radio-button#^1.0.0",
+    "paper-ripple": "PolymerElements/paper-ripple#^1.0.0",
+    "paper-scroll-header-panel": "PolymerElements/paper-scroll-header-panel#^1.0.0",
+    "paper-slider": "PolymerElements/paper-slider#^1.0.0",
+    "paper-spinner": "PolymerElements/paper-spinner#^1.0.0",
+    "paper-styles": "PolymerElements/paper-styles#^1.0.0",
+    "paper-tabs": "PolymerElements/paper-tabs#^1.0.0",
+    "paper-toast": "PolymerElements/paper-toast#^1.0.0",
+    "paper-toggle-button": "PolymerElements/paper-toggle-button#^1.0.0",
+    "paper-tooltip": "PolymerElements/paper-tooltip#^1.0.0"
+  }
+}

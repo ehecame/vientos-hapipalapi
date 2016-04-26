@@ -10,19 +10,16 @@
 		{{name}}
 	{{/if}}
 </div>
-<div>
+<div id="loginFormContainer">
 	<form id="loginForm">
 		<div>
-			Id:<input name="id"/>
+			Username: <input name="username">
 		</div>
 		<div>
-			Name: <input name="name">
+			Password:<input type="password" name="password"/>
 		</div>
 		<div>
-			Password:<input name="password"/>
-		</div>
-		<div>
-			<button onclick="login()">Login</button>
+			<button onclick="login(event)">Login</button>
 		</div>
 	</form>
 </div>

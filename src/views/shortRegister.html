@@ -1,0 +1,17 @@
+<script src="js/shortRegister"></script>
+<link rel="import" href="bower/paper-button/paper-button.html">
+<form id="registerForm">
+	<div><span>Usuario:</span><input type="text" name="username"/></div>
+	<div><span>Email:</span><input type="text" name="email"/></div>
+	<div><span>Contraseña:</span><input type="password" name="password"/></div>
+	<div><span>Confirma Contraseña:</span><input type="password" name="confirmPassword"/></div>
+	<div>
+		<span>Tipo:</span>
+		<select id="type">
+			<option value="admin">Admin</option>
+			<option value="user">User</option>
+			<option value="project">Project</option>
+		</select>
+	</div>
+</form>
+<paper-button raised onclick="onRegisterBtnClicked()">Registra</paper-button>

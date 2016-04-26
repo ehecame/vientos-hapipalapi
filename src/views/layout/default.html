@@ -1,39 +1,120 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Vientos</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Vientos</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script src="https://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script> 
     <script type="text/javascript" src="https://rawgit.com/maxatwork/form2js/master/src/form2js.js"></script>
     <script type="text/javascript" src="http://rawgit.com/opencagedata/leaflet-opencage-search/master/dist/js/L.Control.OpenCageSearch.dev.js"></script>
-<script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main" />
-    <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+    <script src="js/leaflet-src"></script>
+    <script src="js/main"></script>
+    <link rel="stylesheet" type="text/css" href="css/leaflet" />
     <link rel="stylesheet" type="text/css" href="http://rawgit.com/opencagedata/leaflet-opencage-search/master/dist/css/L.Control.OpenCageSearch.dev.css" />
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
-    <script src="js/main"></script>
-	<script src="js/css3"></script>
+    <link rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel='stylesheet' href='css/animate'>
+    <link rel="stylesheet" href="css/style">
+    <link rel="stylesheet" href="css/main">
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet-src.js"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
 </head>
 <body>
-    <div class="header">
-        <img src="/img/vientos_logo_verdeazul.png">  
-        <span class="headerLinks">
-            <a href="/map">Mapa</a>
-            <a href="/register">Registro</a>
-            <a href="/about">Acerca</a>
-            <a href="#" id="btnCloseToMe">Cerca de Mí</a>
-        <span>
+
+<!--     MENU       -->
+ <div id="top-container ">
+    <nav class="navbar navbar-default navbar-fixed-top animated fadeInDown ">      
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">
+            <span class="logo"><img src="img/logo.svg" alt=""></span>
+          </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right fix-right">
+            <li id="map_btn"><a href="/map"><img src="img/map.svg" alt=""></a></li>
+            <li class="navBarBtn"><a href="#secBenefits">BENEFICIOS</a></li>
+            <li class="navBarBtn"><a href="#secColaborate">COLABORAR</a></li>
+            <li class="navBarBtn"><a href="#secUs">NOSOTROS</a></li>
+            {{#if isAuthorized}}
+                <li>{{name}} {{lastname}}</li>
+                <li><a href="#">LOG OUT</a></li>
+            {{else}}
+                <li><a href="#registerPopUp"><strong>REGíSTRATE</strong></a></li>
+                <li><a href="#loginPopUp">LOGIN</a></li>
+            {{/if}}
+          </ul>
+        </div><!--/.nav-collapse -->    
+    </nav>
+</div>
+<div class="content">
+    {{{content}}}
+</div>
+<div class="footer-container col-md-12">    
+    <div class="col-md-6 text-right datos_contacto">    
+            <a href="#">Faqs</a>
+            <a href="#">Terminos Legales</a>
+            <a href="#">Mapa</a>        
+        <h1></h1>
+        <br><br>
+            <a href="">55-23-12-12</a><br>
+            <a href="">contacto@vientos.com</a>
     </div>
-    <div class="backgroundImage">
-        <div class="content">
-            {{{content}}}
+    <div class="col-md-6 redes">
+        <div class="col-md-6">
+            <p>
+                <span class="facebook"><a href="#"><i class="fa fa-facebook"></i></a> </span> 
+                <span class="twitter"><a href="#"><i class="fa fa-twitter"></i></a> </span>
+                <span class="github"><a href="#"><i class="fa fa-github-alt"></i></a></span>
+            </p>
+            <div class="btn_registrate btn btn-default col-md-offset-2">REGíSTRATE</div>
+        </div>
+        <div class="col-md-6 logo_footer">
+            <img src="img/logo.svg" alt="">
         </div>
     </div>
-    <div class="footer">Todos los derechos liberados</div>
+</div>
+<div id="registerPopUp" class="overlay">
+    <div class="popup">
+        <a class="closePopUp" href="#close">X</a>
+        <form id="registerForm">
+            <div>Nombre del proyecto</div>
+            <div><input name="name" /></div>
+            <div>Correo Electrónico</div>
+            <div><input name="email" /></div>
+            <div>Contraseña</div>
+            <div><input name="password"></div>
+            <div>Confirma Contraseña</div>
+            <div><input name="password2"></div>
+        </form>
+        <div class="popupBtn" onclick="onRegisterBtnClicked()">¡Únete!</div>
+    </div>
+</div>
+<div id="loginPopUp" class="overlay">
+    <div class="popup">
+        <a class="closePopUp" href="#close">X</a>
+        <form id="loginForm">
+            <span>Correo Electrónico</span><input name="email" />
+            <span>Contraseña</span><input name="password">
+        </form>
+        <div class="popupBtn">Ingresa</div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="js/main"></script>
 </body>
 </html>
