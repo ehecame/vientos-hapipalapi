@@ -6,6 +6,10 @@ UserController.prototype = (function () {
   return {
     login: function login (request, reply) {
       console.log('controller login')
+      console.log('cookieAuth: ')
+      console.log(request.cookieAuth)
+      console.log('auth.credentials: ')
+      console.log(request.auth.credentials)
       UserManager.find(
         request.mongo.db,
         {username: request.payload.username},
@@ -50,7 +54,9 @@ UserController.prototype = (function () {
       })
     },
     logout: function logout (request, reply) {
+      console.log('clearing cookie')
       request.cookieAuth.clear()
+      request.auth.clear()
       return reply.redirect('/')
     }
   }

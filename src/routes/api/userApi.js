@@ -8,9 +8,9 @@ module.exports = function () {
       config: {
         handler: UserController.login,
         auth: {
-          mode: 'try',
-          strategy: 'standard'
-        }
+          mode: 'try'
+        },
+        plugins: { 'hapi-auth-cookie': {redirectTo: false}}
       }
     },
     {
@@ -25,8 +25,7 @@ module.exports = function () {
       method: 'DELETE',
       path: '/api/user/logout',
       config: {
-        handler: UserController.logout,
-        auth: false
+        handler: UserController.logout
       }
     }
   ]

@@ -7,8 +7,8 @@ module.exports = function () {
         handler: function (request, reply) {
           console.log('js:' + request.params.file)
           reply.file('public/js/' + request.params.file + '.js')
-        } /*,
-        auth: false*/
+        },
+        auth: false
       }
     }, {
       method: 'GET',
@@ -16,8 +16,8 @@ module.exports = function () {
       config: {
         handler: function (request, reply) {
           reply.file('public/css/' + request.params.file + '.css')
-        } /*,
-        auth: false*/
+        },
+        auth: false
       }
     }, {
       method: 'GET',
@@ -25,8 +25,8 @@ module.exports = function () {
       config: {
         handler: function (request, reply) {
           reply.file('public/img/' + request.params.file)
-        } /*,
-        auth: false*/
+        },
+        auth: false
       }
     }, {
       method: 'GET',
@@ -34,8 +34,8 @@ module.exports = function () {
       config: {
         handler: function (request, reply) {
           reply.file('public/img/' + request.params.id + '-logo.png')
-        } /*,
-        auth: false*/
+        },
+        auth: false
       }
     }, {
       method: 'GET',
@@ -43,8 +43,8 @@ module.exports = function () {
       config: {
         handler: function (request, reply) {
           reply.file('public/svg/' + request.params.file + '.svg')
-        } /*,
-        auth: false*/
+        },
+        auth: false
       }
     }, {
       method: 'GET',
@@ -52,8 +52,8 @@ module.exports = function () {
       config: {
         handler: function (request, reply) {
           reply.file('public/fonts/' + request.params.file)
-        } /*,
-        auth: false*/
+        },
+        auth: false
       }
     }, {
       method: 'GET',
@@ -61,8 +61,8 @@ module.exports = function () {
       config: {
         handler: function (request, reply) {
           reply.file('bower_components/' + request.params.folder + '/' + request.params.file)
-        } /*,
-        auth: false*/
+        },
+        auth: false
       }
     }
   ]

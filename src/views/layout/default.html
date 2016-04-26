@@ -48,9 +48,9 @@
             <li class="navBarBtn"><a href="#secBenefits">BENEFICIOS</a></li>
             <li class="navBarBtn"><a href="#secColaborate">COLABORAR</a></li>
             <li class="navBarBtn"><a href="#secUs">NOSOTROS</a></li>
-            {{#if isAuthorized}}
-                <li>{{name}} {{lastname}}</li>
-                <li><a href="#">LOG OUT</a></li>
+            {{#if isAuthenticated}}
+                <li><a href="">{{credentials.name}} {{credentials.lastname}}</a></li>
+                <li><a href="">LOG OUT</a></li>
             {{else}}
                 <li><a href="#registerPopUp"><strong>REGíSTRATE</strong></a></li>
                 <li><a href="#loginPopUp">LOGIN</a></li>

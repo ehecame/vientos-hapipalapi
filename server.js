@@ -1,6 +1,7 @@
 ﻿'use strict'
 const Hapi = require('hapi')
 var routes = require('./src/routes')
+var credentials = require('./credentials.json')
 
 const server = new Hapi.Server()
 
@@ -34,19 +35,19 @@ server.register(
 
 // Registro de plugin hapi-auth-cokie y definición de estrategia de autenticación
 server.register(require('hapi-auth-cookie'), function (err) {
-  server.auth.strategy('standard', 'cookie', {
+  server.auth.strategy('standard', 'cookie', true, {
     password: 'Habiaunavezunaconstraseñamuydificildeadivinar', // TODO debe de venir de ENV
-    cookie: 'sid-vientos',
+    cookie: 'sidVientos',
     redirectTo: '/login',
     isSecure: false,
-    appendNext: true
+    appendNext: true,
+    clearInvalid: true
   })
 })
 
-// Definición para extra protección de authenticación por default y scope de Administrador
-server.auth.default({
-  strategy: 'standard'
-})
+// Definición para extra protección de authenticación por default 
+
+console.log(credentials)
 
 // Agregar todas las rutas al servidor
 for (var route in routes) {

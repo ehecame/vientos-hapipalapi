@@ -15,10 +15,16 @@ module.exports = function () {
           }
           if (data.isAuthenticated) {
             data.credentials = SessionController.getSession(request)
+            console.log(data.credentials)
           }
           console.log('reply index view')
           reply.view('index', data)
-        }
+        },
+        auth: {
+          mode: 'try',
+          strategy: 'standard'
+        },
+        plugins: { 'hapi-auth-cookie': { redirectTo: false } }
       }
     }, {
       method: 'GET',
@@ -77,27 +83,33 @@ module.exports = function () {
       config: {
         handler: function (request, reply) {
           var data = {}
-          console.log(request.auth)
-          if (request.auth.credentials) {
-            console.log('credentials: ' + request.auth.credentials)
-            data = {
-              id: request.auth.credentials.id,
-              name: request.auth.credentials.name
-            }
-          }
+          // if (request.auth.credentials) {
+          //   console.log('credentials: ' + request.auth.credentials)
+          //   data = {
+          //     id: request.auth.credentials.id,
+          //     name: request.auth.credentials.name
+          //   }
+          // }
           reply.view('login', data)
-        } /*,
-        auth: false*/
+        },
+        auth: {
+          mode: 'try'
+        },
+        plugins: { 'hapi-auth-cookie': {redirectTo: false}}
       }
     }, {
       method: 'GET',
       path: '/logout',
       config: {
         handler: function (request, reply) {
-          if (cookierequest.cookieAuth) {
+          console.log('log out path handler')
+          console.log(request.auth.isAuthenticated)
+          console.log(request.cookieAuth)
+          if (request.auth.isAuthenticated) {
+            console.log('clearingCookie')
             request.cookieAuth.clear()
           }
-          reply.view('login')
+          reply.redirect('/')
         }
       }
     }, {
