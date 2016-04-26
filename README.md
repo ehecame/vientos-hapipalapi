@@ -2,6 +2,8 @@
 
 Web plataform aiming to create a collaboration community between social projects, ethical companies, elements of the solidarity econonomy, and conscious citizens.
 
+[![Build Status](https://travis-ci.org/ralexrdz/vientos.svg?branch=master)](https://travis-ci.org/ralexrdz/vientos)
+
 Developed using these free and open source technologies:
 
 * [NodeJS](http://nodejs.org/en/about) - Asynchronous event driven framework, designed to build scalable network applications
