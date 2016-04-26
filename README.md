@@ -12,6 +12,7 @@ Developed using these free and open source technologies:
 * [MongoDB](http://www.mongodb.org) - Cross-platform JSON-like document-oriented NoSQL database
 * [OpenStreetMaps](https://www.openstreetmap.org) - [Leaflet](http://leafletjs.com) (JS library)  - [MapBox](https://www.mapbox.com/) (Style and Geolocalization)
 
+To load credentials.json, create it and copy from credentials.example.json and fill it with yours
 
 
 

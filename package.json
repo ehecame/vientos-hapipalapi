@@ -14,11 +14,14 @@
   },
   "devDependencies": {
     "code": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-develop-server": "^0.5.1",
     "lab": "^10.3.1"
   },
   "scripts": {
     "test": "./node_modules/lab/bin/lab",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "./node_modules/gulp/bin/gulp.js"
   },
   "repository": {
     "type": "git",
