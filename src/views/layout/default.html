@@ -22,15 +22,16 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel='stylesheet' href='css/animate'>
     <link rel="stylesheet" href="css/style">
-    <link rel="stylesheet" href="css/main">
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet-src.js"></script>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 </head>
 <body>
 
 <!--     MENU       -->
  <div id="top-container ">
-    <nav class="navbar navbar-default navbar-fixed-top animated fadeInDown ">      
+    <nav class="navbar navbar-default navbar-fixed-top">      
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -49,20 +50,21 @@
             <li class="navBarBtn"><a href="#secColaborate">COLABORAR</a></li>
             <li class="navBarBtn"><a href="#secUs">NOSOTROS</a></li>
             {{#if isAuthenticated}}
-                <li><a href="">{{credentials.name}} {{credentials.lastname}}</a></li>
-                <li><a href="">LOG OUT</a></li>
+                <li><a href="/myprofile">{{credentials.name}} {{credentials.lastname}}</a></li>
+                <li><a href="/logout">LOG OUT</a></li>
             {{else}}
-                <li><a href="#registerPopUp"><strong>REGíSTRATE</strong></a></li>
+                <li><a href="/shortregister"><strong>REGíSTRATE</strong></a></li>
                 <li><a href="#loginPopUp">LOGIN</a></li>
             {{/if}}
           </ul>
         </div><!--/.nav-collapse -->    
     </nav>
 </div>
-<div class="content">
+<div>
     {{{content}}}
 </div>
-<div class="footer-container col-md-12">    
+{{#if withOutFooter}}
+<div class="footer-container">    
     <div class="col-md-6 text-right datos_contacto">    
             <a href="#">Faqs</a>
             <a href="#">Terminos Legales</a>
@@ -86,22 +88,7 @@
         </div>
     </div>
 </div>
-<div id="registerPopUp" class="overlay">
-    <div class="popup">
-        <a class="closePopUp" href="#close">X</a>
-        <form id="registerForm">
-            <div>Nombre del proyecto</div>
-            <div><input name="name" /></div>
-            <div>Correo Electrónico</div>
-            <div><input name="email" /></div>
-            <div>Contraseña</div>
-            <div><input name="password"></div>
-            <div>Confirma Contraseña</div>
-            <div><input name="password2"></div>
-        </form>
-        <div class="popupBtn" onclick="onRegisterBtnClicked()">¡Únete!</div>
-    </div>
-</div>
+{{/if}}
 <div id="loginPopUp" class="overlay">
     <div class="popup">
         <a class="closePopUp" href="#close">X</a>
@@ -109,12 +96,13 @@
             <span>Correo Electrónico</span><input name="email" />
             <span>Contraseña</span><input name="password">
         </form>
-        <div class="popupBtn">Ingresa</div>
+        <div class="popupBtn" onclick="login()">Ingresa</div>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="js/main"></script>
+<script src="js/login"></script>
 </body>
 </html>

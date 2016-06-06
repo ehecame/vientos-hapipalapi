@@ -9,15 +9,13 @@ module.exports = function () {
       path: '/',
       config: {
         handler: function (request, reply) {
-          console.log('/ handler')
           var data = {
-            isAuthenticated: SessionController.isAuthenticated(request)
+            isAuthenticated: SessionController.isAuthenticated(request),
+            withOutFooter: true
           }
           if (data.isAuthenticated) {
             data.credentials = SessionController.getSession(request)
-            console.log(data.credentials)
           }
-          console.log('reply index view')
           reply.view('index', data)
         },
         auth: {
@@ -25,18 +23,6 @@ module.exports = function () {
           strategy: 'standard'
         },
         plugins: { 'hapi-auth-cookie': { redirectTo: false } }
-      }
-    }, {
-      method: 'GET',
-      path: '/project/profile/{project_id}',
-      handler: function (request, reply) {
-        var db = request.mongo.db
-        var objID = request.mongo.ObjectID
-        ProjectManager.findById(db, objID(request.params.project_id), function (res) {
-          var data = res[0]
-          console.log(data)
-          reply.view('projectProfile', data)
-        })
       }
     }, {
       method: 'GET',
@@ -62,8 +48,15 @@ module.exports = function () {
       path: '/map',
       config: {
         handler: function (request, reply) {
-          reply.view('map')
+          var data = {
+            isAuthenticated: SessionController.isAuthenticated(request)
+          }
+          if (data.isAuthenticated) {
+            data.credentials = SessionController.getSession(request)
+          }
+          reply.view('map', data)
         }
+      // auth: false
       }
     }, {
       method: 'GET',
@@ -73,9 +66,9 @@ module.exports = function () {
       }
     }, {
       method: 'GET',
-      path: '/needs',
+      path: '/howtocolaborate',
       handler: function (request, reply) {
-        reply.view('needs')
+        reply.view('howToColaborate')
       }
     }, {
       method: 'GET',
@@ -83,6 +76,9 @@ module.exports = function () {
       config: {
         handler: function (request, reply) {
           var data = {}
+          console.log('redirectTo:')
+          console.log(request.query)
+          data.redirect = request.query.next ? request.query.next : '/myprofile'
           // if (request.auth.credentials) {
           //   console.log('credentials: ' + request.auth.credentials)
           //   data = {
@@ -90,23 +86,17 @@ module.exports = function () {
           //     name: request.auth.credentials.name
           //   }
           // }
+
           reply.view('login', data)
         },
-        auth: {
-          mode: 'try'
-        },
-        plugins: { 'hapi-auth-cookie': {redirectTo: false}}
+        auth: false
       }
     }, {
       method: 'GET',
       path: '/logout',
       config: {
         handler: function (request, reply) {
-          console.log('log out path handler')
-          console.log(request.auth.isAuthenticated)
-          console.log(request.cookieAuth)
           if (request.auth.isAuthenticated) {
-            console.log('clearingCookie')
             request.cookieAuth.clear()
           }
           reply.redirect('/')
@@ -118,6 +108,15 @@ module.exports = function () {
       config: {
         handler: function (request, reply) {
           reply.view('shortRegister')
+        } /*,
+        auth: false*/
+      }
+    }, {
+      method: 'GET',
+      path: '/project/pilot',
+      config: {
+        handler: function (request, reply) {
+          reply.view('projectProfile')
         } /*,
         auth: false*/
       }

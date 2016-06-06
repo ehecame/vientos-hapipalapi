@@ -8,6 +8,7 @@ module.exports = function () {
       config: {
         handler: UserController.login,
         auth: {
+          strategy: 'standard',
           mode: 'try'
         },
         plugins: { 'hapi-auth-cookie': {redirectTo: false}}

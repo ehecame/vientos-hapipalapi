@@ -1,36 +1,70 @@
 <script src="js/map"></script>
-<script src="js/leaflet.awesome-markers"></script>
-</br>
-</br>
-</br>
-<div id="categoriesContainer">
-	<div class="categoryBtnTodos" onclick="addAllProjects()">TODOS</div>
-	<div class="categoryBtn" id="55663309a660da482b648a33" onclick="filterCategory(this)">Salud</div>
-	<div class="categoryBtn" id="556644179cfb86a021e5a150" onclick="filterCategory(this)">Educación</div>
-	<div class="categoryBtn" id="559e90cd46343c3bccee7fbc" onclick="filterCategory(this)">Agua</div>
-	<div class="categoryBtn" id="559e90f046343c3bccee7fbd" onclick="filterCategory(this)">Alimentación</div>
-	<div class="categoryBtn" id="5628145fb82163c71dea5f9d" onclick="filterCategory(this)">Arte y Cultura</div>
-	<div class="categoryBtn" id="56281497b82163c71dea5f9e" onclick="filterCategory(this)">Productos y Servicios</div>
-	<div class="categoryBtn" id="559e910a46343c3bccee7fbe" onclick="filterCategory(this)">Comunidad</div>
-	<div class="categoryBtn" id="562814bbb82163c71dea5f9f" onclick="filterCategory(this)">Comunicación</div>
-	<div class="categoryBtn" id="56281547b82163c71dea5fa0" onclick="filterCategory(this)">Derechos Humanos</div>
-	<div class="categoryBtn" id="5628156cb82163c71dea5fa1" onclick="filterCategory(this)">Economía</div>
-	<div class="categoryBtn" id="5628158bb82163c71dea5fa2" onclick="filterCategory(this)">Medio Ambiente</div>
-	<div class="categoryBtn" id="562815b2b82163c71dea5fa3" onclick="filterCategory(this)">Tecnología</div>
-	<div class="categoryBtn" id="562815bfb82163c71dea5fa4" onclick="filterCategory(this)">Transporte</div>
-	<div class="categoryBtn" id="5660de8ca17bb1a413dd1add" onclick="filterCategory(this)">Género</div>
-</div>
-<div>
-	<input id="keyWords" placeholder="nombre, descripción, manera de colaborar, objeto/producto..."></input> 
-	<div class="categoryBtn" id="searchKeyWordsBtn" onclick="filterByKeyWords()">Buscar por palabra</div>
-	<div id="btnCloseToMe">
-			Cerca de mí
+<div class="row"><div id="mapPage">
+	<div id="mapTopBar">
+		<button class="btn btn-default">Categorias</button>
+		<button class="btn btn-default">Tipos</button>
+		<button class="btn btn-default">Maneras de Colaborar</button>
+		<button class="btn btn-default">Proyectos</button>
+		<button class="btn btn-default">Negocios</button>
+		<button class="btn btn-default">Actividades y Eventos</button>
+		<span id="searchInputs">
+			<input type="text" id="keyWordsInput" placeholder="palabras clave" />
+			<input type="text" id="whereSearchInput" placeholder="lugar" />
+			<button class="btn btn-primary" onclick="filterByKeyWords()"><i class="fa fa-search"></i></button>
+		</span>
+	</div>
+	<div id="map"></div>
+	<div id="mapSideBar">
+			<div id="projectDetails">
+				<div id="projectLogo"><span>LOGO</span></div><h2 id="projectName"></h2>
+				<div id="projectDescription"></div>
+				<div id="projectType"></div>
+				<hr/>
+				<div id="projectContactData">
+					<div>
+						<a id="projectFacebook" href="#" title="Go to Facebook" style="color: #3a5795" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+						<a id="projectTwitter" href="#" title="Go to Twitter" style="color: #4099FF" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+					</div>
+					<div><i class="fa fa-phone-square fa-lg"></i><span id="projectPhone"></span></div>
+					<div><i class="fa fa-mobile fa-lg"></i><span id="projectMobile"></span></div>
+					<div><i class="fa fa-envelope fa-lg"></i><span id="projectEmail"></span></div>
+					<div><i class="fa fa-map-signs fa-lg"></i><span id="projectAddress"></span></div>
+				</div>				
+				<hr/>
+				<div><h3 class="offersNeedsTitles">Ofrece:</h3></div>
+				<div id="projectOffers">
+					<div class="need"><i class="fa fa-home"></i>Hola</div>
+				</div>
+				<hr/>
+				<div><h3 class="offersNeedsTitles">Necesita:</h3></div>
+				<div id="projectNeeds">
+					<div class="need"><i class="fa fa-home"></i>Hola</div>
+				</div>					 
+			</div>
 		</div>
-</div>
-
+	<div id="categoriesContainer">
+		<div class="categoryBtn" onclick="addAllProjects()">TODOS</div>
+		<div class="categoryBtn" id="56281547b82163c71dea5fa0" onclick="filterCategory(this)"><i class="fa fa-globe"></i>Derechos Humanos</div>
+		<div class="categoryBtn" id="56281497b82163c71dea5f9e" onclick="filterCategory(this)"><i class="fa fa-shopping-basket"></i>Productos y Servicios</div>
+		<div class="categoryBtn" id="5628158bb82163c71dea5fa2" onclick="filterCategory(this)"><i class="fa fa-pagelines"></i>Medio Ambiente</div>
+		<div class="categoryBtn" id="5628145fb82163c71dea5f9d" onclick="filterCategory(this)"><i class="fa fa-paint-brush"></i>Arte y Cultura</div>
+		<div class="categoryBtn" id="5660de8ca17bb1a413dd1add" onclick="filterCategory(this)"><i class="fa fa-transgender"></i>Género</div>
+		<div class="categoryBtn" id="55663309a660da482b648a33" onclick="filterCategory(this)"><i class="fa fa-medkit"></i>Salud</div>
+		<div class="categoryBtn" id="556644179cfb86a021e5a150" onclick="filterCategory(this)"><i class="fa fa-book"></i>Educación</div>
+		<div class="categoryBtn" id="" onclick="filterCategory(this)"><i class="fa fa-puzzle-piece"></i>Talleres y Clases</div>
+		<div class="categoryBtn" id="559e910a46343c3bccee7fbe" onclick="filterCategory(this)"><i class="fa fa-users"></i>Comunidad</div>
+		<div class="categoryBtn" id="559e90f046343c3bccee7fbd" onclick="filterCategory(this)"><i class="fa fa-cutlery"></i>Comida</div>
+		<div class="categoryBtn" id="" onclick="filterCategory(this)"><i class="fa fa-home"></i>Vivienda</div>
+		<div class="categoryBtn" id="" onclick="filterCategory(this)"><i class="fa fa-scissors"></i>Vestido</div>
+		<div class="categoryBtn" id="562814bbb82163c71dea5f9f" onclick="filterCategory(this)"><i class="fa fa-bullhorn"></i>Comunicación</div>
+		<div class="categoryBtn" id="562815b2b82163c71dea5fa3" onclick="filterCategory(this)"><i class="fa fa-cogs"></i>Tecnología</div>
+		<div class="categoryBtn" id="562815bfb82163c71dea5fa4" onclick="filterCategory(this)"><i class="fa fa-bicycle"></i>Transporte</div>
+	</div>
+	<div id="btnCloseToMe">
+		<i class="fa fa-bullseye fa-2x" title="Cerca de mí"></i>
+	</div>
+</div></div>
 <div id="map"></div>
-<div id="projectsNoLocation">
-</div>
 <script id="projectNoLocation-template" type="text/x-handlebars-template">
   <div class="projectNoLocation">
     <div class="projectName">\{{name}}</div>

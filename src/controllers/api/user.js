@@ -5,23 +5,15 @@ function UserController () { }
 UserController.prototype = (function () {
   return {
     login: function login (request, reply) {
-      console.log('controller login')
-      console.log('cookieAuth: ')
-      console.log(request.cookieAuth)
-      console.log('auth.credentials: ')
-      console.log(request.auth.credentials)
       UserManager.find(
         request.mongo.db,
         {username: request.payload.username},
         {},
         function (res) {
-          console.log('project find login')
-          console.log(res)
           if (res) {
             var user = res[0]
             Bcrypt.compare(request.payload.password, res[0].password, function (err, res) {
               if (res) {
-                console.log(user)
                 var account = {
                   username: request.payload.username,
                   email: user.email,

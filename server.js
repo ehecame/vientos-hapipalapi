@@ -45,10 +45,6 @@ server.register(require('hapi-auth-cookie'), function (err) {
   })
 })
 
-// Definición para extra protección de authenticación por default 
-
-console.log(credentials)
-
 // Agregar todas las rutas al servidor
 for (var route in routes) {
   console.log(route)
