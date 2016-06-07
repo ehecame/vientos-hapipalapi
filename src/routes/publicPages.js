@@ -66,6 +66,7 @@ module.exports = function () {
       }
     }, {
       method: 'GET',
+
       path: '/howtocolaborate',
       handler: function (request, reply) {
         reply.view('howToColaborate')
