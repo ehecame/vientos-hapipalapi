@@ -13,6 +13,20 @@ var dbOpts = {
   }
 }
 
+// Registro de plugin hapi-mongodb
+server.register(
+  {
+    register: require('hapi-mongodb'),
+    options: dbOpts
+  },
+  function (err) {
+    if (err) {
+      console.error(err)
+      throw err
+    }
+  }
+)
+
 server.register(require('hapi-auth-cookie'), function (err) {
   server.auth.strategy('session', 'cookie', {
     password: 'secret',
@@ -49,31 +63,29 @@ server.route([
     config: {
       handler: function (request, reply) {
         if (request.method === 'post') {
-          request.mongo.db.collections('user').find({username: request.payload.username}).toArray(function (err, docs) {
-            if (docs) {
+          request.mongo.db.collection('users').find({username: request.payload.username}).toArray(function (err, docs) {
+            if (docs.length > 0 && docs[0].password2 == request.payload.password) {
               console.log('existe usuario')
-              if (docs[0].password2 == request.payload.password) {
-                request.cookieAuth.set({
-                  name: docs[0].name, // for example just let anyone authenticate
-                  name: docs[0].lastname // for example just let anyone authenticate
-                })
-                return reply.redirect('/hola') // perform redirect
-              } else {
-                return reply.redirect('/error')
-              }
+              console.log(docs)
+              request.cookieAuth.set({
+                name: docs[0].name, // for example just let anyone authenticate
+                lastName: docs[0].lastname // for example just let anyone authenticate
+              })
+              return reply.redirect('/hola') // perform redirect
             } else {
+              console.log('error')
               return reply.redirect('/error')
             }
           })
+        } else {
+          reply(
+            '<html><head><title>Login page</title></head><body>' +
+            '<form method="post">' +
+            '<div><label for="usernameInput">UserName</label><input id="usernameInput" type="text" name="username" /></div>' +
+            '<div><label for="passwordInput">Password</label><input id="passwordInput" type="password" name="password" /></div>' +
+            '<input type="submit" value="login" /></form>' +
+            '</body></html>')
         }
-
-        reply(
-          '<html><head><title>Login page</title></head><body>' +
-          '<form method="post">' +
-          '<div><label for="usernameInput">UserName</label><input id="usernameInput" type="text" name="username" /></div>' +
-          '<div><label for="passwordInput">UserName</label><input id="passwordInput" type="password" name="password" /></div>' +
-          '<input type="submit" value="login" /></form>' +
-          '</body></html>')
       },
       auth: {
         mode: 'try',
