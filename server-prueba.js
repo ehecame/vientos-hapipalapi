@@ -35,22 +35,43 @@ server.route([
     }
   },
   {
+    method: 'GET',
+    path: '/error',
+    config: {
+      handler: function (request, reply) {
+        reply('ERROR')
+      }
+    }
+  },
+  {
     method: ['GET', 'POST'],
     path: '/login',
     config: {
       handler: function (request, reply) {
         if (request.method === 'post') {
-          console.log('loginPost')
-          request.cookieAuth.set({
-            name: request.payload.name // for example just let anyone authenticate
+          request.mongo.db.collections('user').find({username: request.payload.username}).toArray(function (err, docs) {
+            if (docs) {
+              console.log('existe usuario')
+              if (docs[0].password2 == request.payload.password) {
+                request.cookieAuth.set({
+                  name: docs[0].name, // for example just let anyone authenticate
+                  name: docs[0].lastname // for example just let anyone authenticate
+                })
+                return reply.redirect('/hola') // perform redirect
+              } else {
+                return reply.redirect('/error')
+              }
+            } else {
+              return reply.redirect('/error')
+            }
           })
-
-          return reply.redirect('/hola') // perform redirect
         }
 
-        reply('<html><head><title>Login page</title></head><body>' +
+        reply(
+          '<html><head><title>Login page</title></head><body>' +
           '<form method="post">' +
-          '<input type="text" name="name" />' +
+          '<div><label for="usernameInput">UserName</label><input id="usernameInput" type="text" name="username" /></div>' +
+          '<div><label for="passwordInput">UserName</label><input id="passwordInput" type="password" name="password" /></div>' +
           '<input type="submit" value="login" /></form>' +
           '</body></html>')
       },
@@ -66,6 +87,10 @@ server.route([
     }
   }
 ])
+
+server.on('response', function (request) {
+  console.log(request.info.remoteAddress + ': ' + request.method.toUpperCase() + ' ' + request.url.path + ' --> ' + request.response.statusCode)
+})
 
 server.start(function (err) {
   if (err) {
