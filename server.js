@@ -6,11 +6,11 @@ var credentials = require('./credentials.json')
 const server = new Hapi.Server()
 
 // Definición de puerto donde correrá el servidor
-server.connection({ port: 3000 })
+server.connection({ port: credentials.server_port })
 
 // Datos de Configuración de Base de Datos
 var dbOpts = {
-  'url': 'mongodb://localhost:27017/waacdb', // TODO debe de venir de ENV
+  'url': credentials.mongo_url, // TODO debe de venir de ENV
   'decorate': true,
   'settings': {
     'db': {
@@ -36,7 +36,7 @@ server.register(
 // Registro de plugin hapi-auth-cokie y definición de estrategia de autenticación
 server.register(require('hapi-auth-cookie'), function (err) {
   server.auth.strategy('standard', 'cookie', true, {
-    password: 'Habiaunavezunaconstraseñamuydificildeadivinar', // TODO debe de venir de ENV
+    password: credentials.cookie_pass, // TODO debe de venir de ENV
     cookie: 'sidVientos',
     redirectTo: '/login',
     isSecure: false,
