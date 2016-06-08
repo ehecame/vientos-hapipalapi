@@ -1,5 +1,5 @@
 var UserManager = require('./../../managers/user')
-var Bcrypt = require('bcrypt')
+var Bcrypt = require('bcrypt-nodejs')
 
 function UserController () { }
 UserController.prototype = (function () {
@@ -12,7 +12,7 @@ UserController.prototype = (function () {
         function (res) {
           if (res) {
             var user = res[0]
-            Bcrypt.compare(request.payload.password, res[0].password, function (err, res) {
+            Bcrypt.compareSync(request.payload.password, res[0].password, function (err, res) {
               if (res) {
                 var account = {
                   username: request.payload.username,
@@ -36,7 +36,7 @@ UserController.prototype = (function () {
     register: function register (request, reply) {
       var newuser = {
         email: request.payload.email,
-        password: require('bcrypt').hashSync(request.payload.password, 10),
+        password: require('bcrypt-nodejs').hash(request.payload.password, 10),
         username: request.payload.username
       }
       var db = request.mongo.db

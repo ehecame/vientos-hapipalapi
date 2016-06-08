@@ -16,6 +16,7 @@ module.exports = function () {
           if (data.isAuthenticated) {
             data.credentials = SessionController.getSession(request)
           }
+          // console.log(require('bcrypt-nodejs').hash('tiantian'))
           reply.view('index', data)
         },
         auth: {

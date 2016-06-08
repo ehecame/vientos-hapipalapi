@@ -4,7 +4,7 @@
   "description": "Web plataform aiming to create a collaboration community between social projects, ethical companies, elements of the solidarity econonomy, and conscious citizens.",
   "main": "server.js",
   "dependencies": {
-    "bcrypt": "^0.8.5",
+    "bcrypt-nodejs": "^0.0.3",
     "handlebars": "^3.0.3",
     "hapi": "^12.0.0",
     "hapi-auth-cookie": "^6.1.1",
