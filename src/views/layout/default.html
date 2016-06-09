@@ -93,11 +93,14 @@
     <div class="popup">
         <a class="closePopUp" href="#close">X</a>
         <form id="loginForm">
-            <span>Correo Electrónico</span><input name="email" />
-            <span>Contraseña</span><input name="password">
+            <div><span>Usuario</span><input name="username" /></div>
+            <div><span>Contraseña</span><input name="password" type="password"></div>
+            <button class="btn btn-succes" type="button" onclick="login()">Ingresa</button>
         </form>
-        <div class="popupBtn" onclick="login()">Ingresa</div>
     </div>
+</div>
+<div>
+    <input type="hidden" id="redirect" value="/myprofile"/>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>

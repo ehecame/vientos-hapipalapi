@@ -1,6 +1,4 @@
-function login (e) {
-  e.preventDefault()
-  console.log('try log in')
+function login () {
   $.post(
     '/api/user/login',
     $('#loginForm').serialize(),

@@ -1,6 +1,7 @@
 var CategoryManager = require('./../managers/category')
 var ProjectManager = require('./../managers/project')
 var SessionController = require('./../controllers/session')
+var Bcrypt = require('bcrypt-nodejs')
 
 module.exports = function () {
   return [
@@ -16,7 +17,8 @@ module.exports = function () {
           if (data.isAuthenticated) {
             data.credentials = SessionController.getSession(request)
           }
-          // console.log(require('bcrypt-nodejs').hash('tiantian'))
+          var x = require('bcrypt-nodejs').hashSync('ralexralex')
+          console.log(x)
           reply.view('index', data)
         },
         auth: {

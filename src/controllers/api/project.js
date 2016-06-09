@@ -62,10 +62,10 @@ ProjectController.prototype = (function () {
       }
       console.log(categories_objids)
       console.log(request.payload)
-      console.log(require('bcrypt-nodejs').hash(request.payload.password))
+      // console.log(require('bcrypt-nodejs').hashSync(request.payload.password))
       var newProject = {
         email: request.payload.email,
-        // password: require('bcrypt').hashSync(request.payload.password, 10),
+        // password: require('bcrypt-nodejs').hashSync(request.payload.password, 10),
         password: request.payload.password,
         name: request.payload.name,
         description: request.payload.description,
