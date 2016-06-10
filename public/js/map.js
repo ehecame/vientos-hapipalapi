@@ -20,8 +20,8 @@ function addAllProjects () {
       addMarkers(data)
     // $.each(data, function (i, project) {
     //   console.log(project)
-    //   if (project.latitutde) {
-    //     var marker = L.marker([project.latitutde, project.longitude])
+    //   if (project.latitude) {
+    //     var marker = L.marker([project.latitude, project.longitude])
     //     marker.bindPopup('<a href="/project/profile/' + project._id + '">' + project.name + '</a>', {
     //       showOnMouseOver: true
     //     })
@@ -70,8 +70,8 @@ function filterCategory (e) {
       addMarkers(data)
     // data.forEach(function (project) {
     //   console.log(project)
-    //   if (project.latitutde) {
-    //     var marker = L.marker([project.latitutde, project.longitude])
+    //   if (project.latitude) {
+    //     var marker = L.marker([project.latitude, project.longitude])
     //     marker.bindPopup('<a href="/project/profile/' + project._id + '">' + project.name + '</a>', {
     //       showOnMouseOver: true
     //     })
@@ -101,8 +101,8 @@ function filterByKeyWords () {
       addMarkers(data)
     // console.log(data)
     // data.forEach(function (project) {
-    //   if (project.latitutde) {
-    //     var marker = L.marker([project.latitutde, project.longitude])
+    //   if (project.latitude) {
+    //     var marker = L.marker([project.latitude, project.longitude])
     //     marker.bindPopup('<a href="/project/profile/' + project._id + '">' + project.name + '</a>', {
     //       showOnMouseOver: true
     //     })
@@ -159,7 +159,7 @@ function addMarkers (markerList) {
   $.each(markerList, function (i, m) {
     m.categoryIcon = getCategoryIcon(m.categories_ids[0])
     m.projectType = getRandomProjectType()
-    if (m.latitutde && m.longitude) {
+    if (m.latitude && m.longitude) {
       myIcon = L.divIcon({
         html: '<div class="myIcon fa-stack fa-2x">' +
           '<i class="fa fa-map-marker fa-stack-2x" style="color:' + m.projectType.color + ';"></i>' +
@@ -173,7 +173,7 @@ function addMarkers (markerList) {
           '</div> ',
         popupAnchor: new L.Point(-5, -40)
       })
-      marker = L.marker([m.latitutde, m.longitude], {icon: myIcon})
+      marker = L.marker([m.latitude, m.longitude], {icon: myIcon})
       marker.on('mouseover', function (e) {
         $(this._icon).find('.markerPopUp').show()
         $(this._icon).find('.markerPopUpName').show()

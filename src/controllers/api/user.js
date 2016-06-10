@@ -10,7 +10,7 @@ UserController.prototype = (function () {
         {username: request.payload.username},
         {},
         function (res) {
-          if (res) {
+          if (res.length > 0) {
             var user = res[0]
             var samePass = Bcrypt.compareSync(request.payload.password, user.password)
             if (samePass) {
