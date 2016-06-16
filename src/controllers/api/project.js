@@ -71,7 +71,7 @@ ProjectController.prototype = (function () {
         description: request.payload.description,
         categories_ids: categories_objids,
         address: request.payload.address,
-        latitutde: request.payload.latitutde,
+        latitude: request.payload.latitude,
         longitude: request.payload.longitude,
         webpage: request.payload.webpage,
         facebook: request.payload.facebook

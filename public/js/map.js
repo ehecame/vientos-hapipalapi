@@ -42,12 +42,15 @@ function addAllProjects () {
 }
 
 function initializeMap () {
-  map = L.map('map').setView([19.34, -99.15], 12)
+  map = L.map('map', {zoomControl: false}).setView([19.34, -99.15], 12)
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 18,
     id: 'ralexrdz.nnh64i75',
     accessToken: 'pk.eyJ1IjoicmFsZXhyZHoiLCJhIjoiY2lmdHB2aGo2MTZ4MnQ1bHkzeDJyaDMzNyJ9.UHhEm9gA1_uwAztXjb7iTQ'
+  }).addTo(map)
+  L.control.zoom({
+    position: 'bottomright'
   }).addTo(map)
   L.Icon.Default.imagePath = '/img'
 // L.AwesomeMarkers.Icon.prototype.options.prefix = 'fa'
@@ -238,7 +241,7 @@ function showMapSideBar (m) {
   // $('#mapSideBar').find('#projectNeeds').html(createNeedsMarkup(m.needs))
 
   $('#mapSideBar').show()
-  $('#mapSideBar').animate({width: '35%'})
+  $('#mapSideBar').animate({width: '45%'})
 }
 
 function hideMapSideBar () {

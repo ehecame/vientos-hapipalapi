@@ -9,7 +9,7 @@ module.exports = function () {
       method: 'GET',
       path: '/',
       config: {
-        handler: function (request, reply) {
+        handler: function (request  , reply) {
           var data = {
             isAuthenticated: SessionController.isAuthenticated(request),
             withOutFooter: true
@@ -17,8 +17,6 @@ module.exports = function () {
           if (data.isAuthenticated) {
             data.credentials = SessionController.getSession(request)
           }
-          var x = require('bcrypt-nodejs').hashSync('ericeric')
-          console.log(x)
           reply.view('index', data)
         },
         auth: {

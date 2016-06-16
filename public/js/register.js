@@ -21,8 +21,8 @@ function addAllProjects () {
     function (data) {
       console.log(data)
       data.forEach(function (project) {
-        if (project.latitutde) {
-          var marker = L.marker([project.latitutde, project.longitude])
+        if (project.latitude) {
+          var marker = L.marker([project.latitude, project.longitude])
           marker.bindPopup('<a href="/project/' + project._id + '">' + project.name + '</a>', {
             showOnMouseOver: true
           })

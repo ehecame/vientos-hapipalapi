@@ -530,6 +530,10 @@
 		</div>
 		<div id="secConfiguration" class="row userProfileSec hidden">
 			<div>
+        <input type="file" name="file" id="pictureFileInput">
+        <button class="btn btn-default" onclick="uploadPicture()">Subir imagen</button>
+			</div>
+			<div>
 			<form id="personalDataForm">
 				<div class="form-group row">
 				  <label for="nameInput" class="col-xs-2 hidden-xs">Nombre</label>
@@ -754,4 +758,16 @@
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
+	<script id="myProject-template" type="text/x-handlebars-template">
+		<div class="col-md-3 col-sm-4 col-xs-6 myProject">
+			<div class="thumbnail">
+				<!--img src=""-->
+				<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+				<div class="caption">
+					<h4>{{name}}</h4>
+					<div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">{{notificationNumber}}</span></div>
+				</div>
+			</div>
+		</div>
+	</script>
 </div>

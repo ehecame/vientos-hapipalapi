@@ -40,6 +40,22 @@
   font-family: circular_medium;
   src: url("../fonts/circular_medium.ttf"); }
 
+@font-face {
+  font-family: roboto-black;
+  src: url("../fonts/Roboto-Black.ttf"); }
+
+@font-face {
+  font-family: roboto-bold;
+  src: url("../fonts/Roboto-Bold.ttf"); }
+
+@font-face {
+  font-family: roboto-regular;
+  src: url("../fonts/Roboto-Regular.ttf"); }
+
+@font-face {
+  font-family: roboto-light;
+  src: url("../fonts/Roboto-Light.ttf"); }
+
 /*--------------------------------------------COLORS*/
 /* BASICS */
 /* PRINCIPAL Colors*/
@@ -49,7 +65,7 @@
 /* Secciones */
 /*------------------------------------------Elemental Styles*/
 body {
-  font-family: circular_book;
+  font-family: roboto-regular;
   margin: 0px;
   padding: 0px;
 }
@@ -133,85 +149,33 @@ h1 {
   margin-left: 0px;
   margin-right: 0px;}
 
-/* ------------------  */
 /* --------- HOME CONTAINER */
 #home-row {
-  height: 85vh;
-  background-color: #28282D;
-  background-image: url("../images/map.png");
+  height: 80vh;
+  margin-top: 55px;
+  margin-left: 85px;
+  background-image: url("/img/fondoHome.jpg");
   background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-blend-mode: multiply; }
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain; }
 
-  #home-row .form-control {
-    border: 0px;
-    font-size: 20px; }
-
-  #home-row .call_to_action {|
-    font-family: circular_black;
-    font-size: 60px;
-    color: #F5F6F7;
-    letter-spacing: 1px;
-    text-align: center;
-    padding-top: 10%; }
-
-  #home-row .second_phrase {
-    font-size: 33px; }
-
-  #home-row .btns_home {
-    margin-top: 40px; }
-
-  #home-row .form-home {
-    height: 65px;
-    border-radius: 8px; }
-
-  #home-row .input-group-addon {
-    border: 0px;
-    border-radius: 8px;
-    padding: 6px 20px;
-    font-size: 24px; }
-
-  #home-row .need {
-    background-color: #42F475;
-    color: #2FAF52; }
-
-  #home-row .offer {
-    background-color: #E6EA59;
-    color: #A2A43E; }
-
-  #home-row .btns_home .col-md-6 {
-    margin-top: 30px; 
-    margin-bottom: 30px; }
-
-  #home-row #ofrezco,
-  #home-row #necesito {
-    cursor: pointer; }
-
-/* ------------------  */
 /* ------ BENEFITS CONTAINER */
-/*--------COLORS 4 THIS SECTION*/
-/*-------*/
 #benefits-row {
   background-color: #33AA96; }
   #benefits-row .col-md-4 {
     padding-left: 40px;
     padding-right: 40px; }
-  #benefits-row .title {
-    position: relative;
-    font-size: 40px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    background-color: #33AA96;
-    color: #F5F6F7; }
+
   #benefits-row h1 {
     margin: 0px;
     padding: 0px;
-    font-family: circular_black;
-    padding-bottom: 30px; }
+    font-family: roboto-regular;
+    padding-bottom: 30px; 
+    color: white;
+    text-align: center;
+    font-size: 25px;}
   #benefits-row li {
     font-size: 20px; }
   #benefits-row img {
@@ -221,17 +185,17 @@ h1 {
   #benefits-row .projects, 
   #benefits-row .business, 
   #benefits-row .individual {
-    padding-top: 40px;
+    padding-top: 20px;
     min-height: 560px; }
 
 #benefits-row .projects {
-  background-color: #43C9B5; }
+  background-color: #fba627; }
 
 #benefits-row .business {
-  background-color: #3FBCA7; }
+  background-color: #267ed8; }
 
 #benefits-row .individual {
-  background-color: #39B79F; }
+  background-color: #a55be8; }
 
 #benefits-row .btn_registrate {
   z-index: 100;
@@ -239,66 +203,63 @@ h1 {
   color: #1D1D57;
   border: 0px;
   padding: 15px;
-  border-radius: 6px; }
+  border-radius: 6px; } 
 
-.colaborate {
-  min-height: 100px;
-  background-color: #EDFCF9;
+/* ------ COLABORATION CONTAINER */
+
+#colaborate-row > div {
+  text-align: center; }
+
+#colaborate-row .collaborationWay{
+  display: inline-block;
+  vertical-align: top; 
+  margin-right: 10px; }
+
+#colaborate-row .collaborationWay .circle {
+  background-color: aquamarine;
+  height: 80px;
+  width: 80px;
+  border-radius: 40px; }
+
+#colaborate-row .collaborationWay .icon {
+  height: 80px; }
+
+#categories-row .collaborationWay i {
+  color: darkblue;
+  font-size: 2em; }
+
+#colaborate-row .collaborationWay .colLabel {
+  width: 80px;
+  font-size: .8em; }
+
+/* ------- CATEGORIES CONTAINER */
+
+#categories-row > div {
   text-align: center;
-  z-index: -1;
-  padding-top: 190px;
-  padding-bottom: 40px;
-  color: #0D4239; }
-  .colaborate p {
-    font-size: 19px; }
+}
 
-.icn_colab {
-  position: relative;
-  top: -15px;
-  text-align: center;
-  height: 0px; }
-  .icn_colab img {
-    position: relative;
-    height: 200px; }
+#categories-row .category{
+  display: inline-block;
+  vertical-align: top; 
+  margin-right: 10px;}
 
-/* ------------------  */
-/* --------- BENEFITS CONTAINER */
-/*-----------COLORS 4 THIS SECTION*/
-/*-------*/
-.category-40ways {
-  margin-bottom: 30px;}
+#categories-row .category .circle {
+  background-color: purple;
+  height: 60px;
+  width: 60px;
+  border-radius: 30px; }  
 
-  .category-40ways .left, .category-40ways .right {
-    position: relative;
-    min-height: 500px;
-    padding-top: 30px;
-    padding-bottom: 30px; }
+#categories-row .category i {
+  color: white;
+  font-size: 2em;
+}
 
-  .category-40ways .left {
-    background-color: #F7F7F7; }
+#categories-row .category .catLabel {
+  width: 50px;
+  font-size: .8em;}
 
-  .category-40ways .right {
-    background-color: #E2E2E2;
-    text-align: right; }
 
-.circle {
-  margin-top: 15px;
-  height: 10px;
-  width: 10px;
-  background-color: #ABA7A3;
-  border-radius: 5px; }
-
-.circles_right {
-  float: right; }
-
-.circle_active {
-  background-color: #42F475; }
-
-.counter_benefits {
-  padding-left: 15px; }
-
-/* -----------------  */
-/* ------- Casos CONTAINER */
+/* ------- TOP COLABORATORS CONTAINER */
 #casos-row {
   background-color: #B9F6F9;
   padding-top: 30px;
@@ -707,9 +668,13 @@ h1 {
     height: 100%;
     width: 100%;}
 
-    .leaflet-left .leaflet-control {
-    display: none;
-}
+  #map .leaflet-div-icon {
+     background: none; 
+     border: none; }
+  
+
+   /* .leaflet-left .leaflet-control {
+    display: none;}*/
 
   #mapPage #categoriesContainer{
     position: absolute;
@@ -820,10 +785,11 @@ h1 {
   border-radius: 20px;
     border: solid lightblue 3px;
     padding: 20px;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.95);
   height: 85%;
   display: none;
   overflow: scroll;
+  z-index: 2;
 }
 
 #mapPage #mapSideBar #projectName,
@@ -833,10 +799,10 @@ h1 {
 
 #mapPage #mapSideBar #projectLogo{
   float: left;
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
   border: solid black 3px;
-  border-radius: 25px;
+  border-radius: 50px;
   font-size: small;
   text-align: center;
   margin-right: 15px;
@@ -844,6 +810,10 @@ h1 {
 
 #mapPage #mapSideBar #projectLogo span{
   line-height: 50px;
+}
+
+#mapPage #mapSideBar #projectDescription{
+  font-size: 1.2em;
 }
 
 #mapPage #mapSideBar #projectType {
@@ -857,8 +827,9 @@ h1 {
 }
 
 #mapPage #mapSideBar #projectContactData div{
-  margin: 10px;
+  margin: 3px;
   padding-left: 30px;
+  font-size: 1.2em;
 }
 
 #mapPage #mapSideBar #projectFacebook,

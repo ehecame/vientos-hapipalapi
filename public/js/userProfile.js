@@ -4,6 +4,7 @@ $(document).ready(function () {
   addOffersAndNeedsFunc()
   addProjectFunc()
   addInterestsFunc()
+  loadMyProjects()
 })
 
 function addSectionBtnsFunc () {
@@ -113,4 +114,33 @@ function addInterest () {
 function addSkill () {
   $('#skillList').append('<li class="list-group-item skill"><span class="badge">' + $('#skillLevelSelect').val() + '</span>' + $('#newSkillInput').val() + '</li>')
   $('#newSkillInput').val('')
+}
+
+function uploadPicture () {
+  var formData = new FormData()
+  formData.append('file', $('#pictureFileInput')[0].files[0])
+  console.log(formData)
+  $.ajax({
+    url: '/uploadPicture',
+    data: formData,
+    processData: false,
+    contentType: false,
+    type: 'POST',
+    success: function (data) {
+      console.log(data)
+    }
+  })
+}
+
+function loadMyProjects () {
+  myProjectTemplate = Handlebars.compile($('#projectNoLocation-template').html())
+  $.get(
+    '/api/projects',
+    function (projects) {
+      $.each(projects, function (i, project) {
+        project.notificationNumber = Math.floor((Math.random() * 6)) //notRandomLater
+        $('#myProjectList').append(myProjectTemplate(project))
+      }
+    }
+  )
 }
