@@ -10,6 +10,10 @@ $(document).ready(function () {
   $('#btnCloseToMe').click(centerMapMyLocation)
   initializeMap()
   addAllProjects()
+  $('#btnCloseToMe').tooltip({placement: 'bottom'})
+  $('#btnCloseToMe').tooltip('show')
+  var elements = document.getElementsByTagName('*')
+  for (var id = 0; id < elements.length; ++id) { elements[id].oncontextmenu = null; }
 })
 
 function addAllProjects () {
@@ -171,7 +175,6 @@ function addMarkers (markerList) {
           '<div class="markerPopUp">' +
           '<div class="markerPopUpTriangle" ></div>' +
           '<div class="markerPopUpName" ><strong>' + m.name + '</strong></div>' +
-          '<div class="markerPopUpDescription">' + m.description + '</div>' +
           '</div>' +
           '</div> ',
         popupAnchor: new L.Point(-5, -40)
@@ -180,7 +183,6 @@ function addMarkers (markerList) {
       marker.on('mouseover', function (e) {
         $(this._icon).find('.markerPopUp').show()
         $(this._icon).find('.markerPopUpName').show()
-        $(this._icon).find('.markerPopUpDescription').show()
       })
       marker.on('mouseout', function (e) {
         popUpBehaviorByZoom()
@@ -199,7 +201,7 @@ function getCategoryIcon (id) {
   if (id == '56281497b82163c71dea5f9e') return 'fa-shopping-basket'
   if (id == '5628158bb82163c71dea5fa2') return 'fa-pagelines'
   if (id == '5628145fb82163c71dea5f9d') return 'fa-paint-brush'
-  if (id == '5660de8ca17bb1a413dd1add') return 'fa-transgender'
+  if (id == '5660de8ca17bb1a413dd1add') return 'fa-transgender-alt'
   if (id == '55663309a660da482b648a33') return 'fa-medkit'
   if (id == '556644179cfb86a021e5a150') return 'fa-book'
   if (id == '559e910a46343c3bccee7fbe') return 'fa-users'
@@ -217,11 +219,6 @@ function popUpBehaviorByZoom () {
   } else {
     $('.markerPopUp').show()
     $('.markerPopUpName').show()
-    if (zoom < 16) {
-      $('.markerPopUpDescription').hide()
-    } else {
-      $('.markerPopUpDescription').show()
-    }
   }
 }
 

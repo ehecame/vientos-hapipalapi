@@ -18,12 +18,12 @@ module.exports = function () {
             data.credentials = SessionController.getSession(request)
           }
           reply.view('index', data)
-        },
-        auth: {
-          mode: 'try',
-          strategy: 'standard'
-        },
-        plugins: { 'hapi-auth-cookie': { redirectTo: false } }
+        }
+      // auth: {
+      //   mode: 'try',
+      //   strategy: 'standard'
+      // },
+      // plugins: { 'hapi-auth-cookie': { redirectTo: false } }
       }
     }, {
       method: 'GET',

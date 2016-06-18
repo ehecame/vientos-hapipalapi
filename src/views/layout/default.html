@@ -31,7 +31,7 @@
 
 <!--     MENU       -->
  <div id="top-container ">
-    <nav class="navbar navbar-default navbar-fixed-top">      
+    <nav class="navbar navbar-vientos navbar-fixed-top">      
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -40,21 +40,30 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">
-            <span class="logo"><img src="img/logo.svg" alt=""></span>
+            <span class="logo"><img src="img/logo_transp.png" alt=""></span>
           </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right fix-right">
-            <li id="map_btn"><a href="/map"><img src="img/map.svg" alt=""></a></li>
+            <li id="map_btn"><a href="/map">MAPA <img src="svg/map2" alt=""></a></li>
+            <li class="navBarBtn"><a href="#">/</a></li>
             <li class="navBarBtn"><a href="/#benefits-row">BENEFICIOS</a></li>
+            <li class="navBarBtn"><a href="#">/</a></li>
             <li class="navBarBtn"><a href="/#colaborate-row">COLABORAR</a></li>
+            <li class="navBarBtn"><a href="#">/</a></li>
             <li class="navBarBtn"><a href="/#we-row">NOSOTROS</a></li>
             {{#if isAuthenticated}}
-                <li><a href="/myprofile">{{credentials.name}} {{credentials.lastname}}</a></li>
-                <li><a href="/logout">LOG OUT</a></li>
+                <li class="navBarBtn"><a href="#">/</a></li>
+                <li class="navBarBtn"><a href="/myprofile">{{credentials.name}} {{credentials.lastname}}</a></li>
+                <li class="navBarBtn"><a href="#">/</a></li>
+                <li class="navBarBtn"><a href="/logout">LOG OUT</a></li>
+                <li class="navBarBtn"><a href="#">&nbsp;</a></li>
             {{else}}
-                <li><a href="/shortregister"><strong>REGíSTRATE</strong></a></li>
-                <li><a href="#loginPopUp">LOGIN</a></li>
+                <li class="navBarBtn"><a href="#">/</a></li>
+                <li class="navBarBtn"><a href="/shortregister"><strong>REGíSTRATE</strong></a></li>
+                <li class="navBarBtn"><a href="#">/</a></li>
+                <li class="navBarBtn"><a href="#loginPopUp">LOGIN</a></li>
+                <li class="navBarBtn"><a href="#">&nbsp;</a></li>
             {{/if}}
           </ul>
         </div><!--/.nav-collapse -->    

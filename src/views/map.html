@@ -48,12 +48,12 @@
 			</div>
 		</div>
 	<div id="categoriesContainer">
-		<div class="categoryBtn" onclick="addAllProjects()">TODOS</div>
+		<div class="categoryBtnAll" onclick="addAllProjects()">TODOS</div>
 		<div class="categoryBtn" id="56281547b82163c71dea5fa0" onclick="filterCategory(this)"><i class="fa fa-globe"></i>Derechos Humanos</div>
 		<div class="categoryBtn" id="56281497b82163c71dea5f9e" onclick="filterCategory(this)"><i class="fa fa-shopping-basket"></i>Productos y Servicios</div>
 		<div class="categoryBtn" id="5628158bb82163c71dea5fa2" onclick="filterCategory(this)"><i class="fa fa-pagelines"></i>Medio Ambiente</div>
 		<div class="categoryBtn" id="5628145fb82163c71dea5f9d" onclick="filterCategory(this)"><i class="fa fa-paint-brush"></i>Arte y Cultura</div>
-		<div class="categoryBtn" id="5660de8ca17bb1a413dd1add" onclick="filterCategory(this)"><i class="fa fa-transgender"></i>Género</div>
+		<div class="categoryBtn" id="5660de8ca17bb1a413dd1add" onclick="filterCategory(this)"><i class="fa fa-transgender-alt"></i>Género</div>
 		<div class="categoryBtn" id="55663309a660da482b648a33" onclick="filterCategory(this)"><i class="fa fa-medkit"></i>Salud</div>
 		<div class="categoryBtn" id="556644179cfb86a021e5a150" onclick="filterCategory(this)"><i class="fa fa-book"></i>Educación</div>
 		<div class="categoryBtn" id="" onclick="filterCategory(this)"><i class="fa fa-puzzle-piece"></i>Talleres y Clases</div>
@@ -65,8 +65,8 @@
 		<div class="categoryBtn" id="562815b2b82163c71dea5fa3" onclick="filterCategory(this)"><i class="fa fa-cogs"></i>Tecnología</div>
 		<div class="categoryBtn" id="562815bfb82163c71dea5fa4" onclick="filterCategory(this)"><i class="fa fa-bicycle"></i>Transporte</div>
 	</div>
-	<div id="btnCloseToMe">
-		<i class="fa fa-bullseye fa-2x" title="Cerca de mí"></i>
+	<div id="btnCloseToMe" title="Cerca de mí" data-toggle="tooltip">
+		<i class="fa fa-crosshairs fa-2x" ></i>
 	</div>
 </div></div>
 <div id="map"></div>
@@ -74,7 +74,6 @@
   <div class="projectNoLocation">
     <div class="projectName">\{{name}}</div>
     <div class="projectCategories">\{{{categories}}}</div>
-    <div class="projectDescription">\{{description}}</div>
   </div>
 </script>
 

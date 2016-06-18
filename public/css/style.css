@@ -107,38 +107,56 @@ h1 {
   margin-right: 0px !important;
   height: 55px; }*/
 
+.navbar-vientos{
+  background-color: #8cafaf;
+  color: white;
+}
+
 .navbar-nav > li > div > a {
   padding-top: 16px;
   padding-bottom: 15px;
   min-height: 80px;
   letter-spacing: 1px; }
 
-.navbar-default {
-  color: #F5F6F7; }
-
-.logo img {
+.navbar-brand .logo img {
   height: 59px;
-  margin-top: -17px; }
+  margin-top: -10px; 
+  margin-left: 20px; }
+
+.navbar-brand .logo img:hover{
+  height: 69;
+}
 
 .navbar-toggle {
   border: 0px;
   margin-top: 20px; }
 
+.navBarBtn:hover{
+  color: #333;
+}
+
+.navBarBtn .active{
+  color: #333;
+}
+
 #map_btn :hover {
-  background-color: #2FAF52; }
+  background-color: ; }
 
 #map_btn a {
-  padding: 0px; }
+  padding: 6px 15px;
+  color: white;
+  background: #38c12d;
+  border-radius: 25px;
+  margin-top: 5px;
+  height: 40px;
+  cursor: pointer;
+  font-family: roboto-bold;
+  letter-spacing: 1.5px;
+}
 
 #map_btn img {
-  cursor: pointer;
-  padding-top: 11px;
-  padding-bottom: 9px;
-  background-color: #42F475;
-  padding-left: 10px;
-  padding-right: 10px;
-  height: 52px;
-  border-radius: 29px; }
+  padding-bottom: 5px;
+  height: 30px; }
 
 .container-fluid{
   padding-top: 55px;
@@ -152,8 +170,8 @@ h1 {
 /* --------- HOME CONTAINER */
 #home-row {
   height: 80vh;
-  margin-top: 55px;
-  margin-left: 85px;
+  margin-top: 50px;
+  margin-left: 111px;
   background-image: url("/img/fondoHome.jpg");
   background-repeat: no-repeat;
   -webkit-background-size: contain;
@@ -173,7 +191,6 @@ h1 {
     padding: 0px;
     font-family: roboto-regular;
     padding-bottom: 30px; 
-    color: white;
     text-align: center;
     font-size: 25px;}
   #benefits-row li {
@@ -182,20 +199,25 @@ h1 {
     height: 100px;
     margin-bottom: 30px; }
 
-  #benefits-row .projects, 
-  #benefits-row .business, 
-  #benefits-row .individual {
+  #benefits-row #projects, 
+  #benefits-row #business, 
+  #benefits-row #individual {
     padding-top: 20px;
     min-height: 560px; }
 
-#benefits-row .projects {
-  background-color: #fba627; }
+#benefits-row #projects {
+  background-color: #18a50e; 
+   color: white;
+}
 
-#benefits-row .business {
-  background-color: #267ed8; }
+#benefits-row #business {
+  background-color: #09417c; 
+  color: white;
+}
 
-#benefits-row .individual {
-  background-color: #a55be8; }
+#benefits-row #individual {
+  background-color: #ede9de;
+  color: #333; }
 
 #benefits-row .btn_registrate {
   z-index: 100;
@@ -206,57 +228,71 @@ h1 {
   border-radius: 6px; } 
 
 /* ------ COLABORATION CONTAINER */
+#colaborate-row {
+  margin-top: 30px;
+  margin-bottom: 30px;}
 
-#colaborate-row > div {
-  text-align: center; }
+  #colaborate-row #colaborateTitle{
+    margin-bottom: 50px;
+  }
 
-#colaborate-row .collaborationWay{
-  display: inline-block;
-  vertical-align: top; 
-  margin-right: 10px; }
+  #colaborate-row > div {
+    text-align: center; }
 
-#colaborate-row .collaborationWay .circle {
-  background-color: aquamarine;
-  height: 80px;
-  width: 80px;
-  border-radius: 40px; }
+  #colaborate-row .collaborationWay{
+    display: inline-block;
+    vertical-align: top; 
+    margin-right: 10px; }
 
-#colaborate-row .collaborationWay .icon {
-  height: 80px; }
+    #colaborate-row .collaborationWay .circle {
+      border: solid 2px #dddddd;
+      height: 80px;
+      width: 80px;
+      border-radius: 40px; }
 
-#categories-row .collaborationWay i {
-  color: darkblue;
-  font-size: 2em; }
+    #colaborate-row .collaborationWay .icon {
+      height: 80px; }
 
-#colaborate-row .collaborationWay .colLabel {
-  width: 80px;
-  font-size: .8em; }
+    #colaborate-row .collaborationWay .more {
+      color: darkblue;
+      font-size: 2em; }
+
+    #colaborate-row .collaborationWay .colLabel {
+      width: 80px;
+      font-size: .8em; }
 
 /* ------- CATEGORIES CONTAINER */
 
-#categories-row > div {
-  text-align: center;
-}
+#categories-row{
+  margin: 30px 0px 60px 0px;}
 
-#categories-row .category{
-  display: inline-block;
-  vertical-align: top; 
-  margin-right: 10px;}
+  #categories-row #categoryTitle{
+    margin-bottom: 50px;
+  }
 
-#categories-row .category .circle {
-  background-color: purple;
-  height: 60px;
-  width: 60px;
-  border-radius: 30px; }  
+  #categories-row > div {
+    text-align: center;
+  }
 
-#categories-row .category i {
-  color: white;
-  font-size: 2em;
-}
+  #categories-row .category{
+    display: inline-block;
+    vertical-align: top; 
+    margin-right: 10px;}
 
-#categories-row .category .catLabel {
-  width: 50px;
-  font-size: .8em;}
+    #categories-row .category .circle {
+      background-color: #38c12d;
+      height: 60px;
+      width: 60px;
+      border-radius: 30px; }  
+
+    #categories-row .category i {
+      color: white;
+      font-size: 2em;
+    }
+
+    #categories-row .category .catLabel {
+      width: 50px;
+      font-size: .8em;}
 
 
 /* ------- TOP COLABORATORS CONTAINER */
@@ -377,22 +413,15 @@ h1 {
     padding-top: 30px; } }
 
 @media (max-width: 762px) { 
-  #map_btn img {
-    width: 100vh;
-    height: 80px; } }
+  #map_btn a {
+    padding-left: 20px 
+    max-width: 100px;}
+   }
 
-.top-bar-map {
-  background-color: #F5F6F7; }
-
-.logo_map img {
-  height: 70px; }
 
 .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
   max-height: 500px; }
 
-#map_btn {
-  height: 55px;
-  margin-top: 2px; }
 
 /*----Login PopUp----*/
 
@@ -641,16 +670,18 @@ h1 {
 /* MAPA */
 
 #mapPage{
-  height: 80vh;
-  margin-top: 55px;}
+  height: 83vh;
+  margin-top: 50px;}
 
   #mapPage #mapTopBar{
-    padding: 10px;}
+    padding: 10px;
+    background-color: #8cafaf;}
 
     #mapPage #mapTopBar #searchInputs{
       border: solid 1px #dddddd;
       border-radius: 5%;
       padding-left: 10px;
+      background-color: white;
       float: right;}
 
       #mapPage #mapTopBar #searchInputs input{
@@ -686,9 +717,19 @@ h1 {
     #mapPage #categoriesContainer .categoryBtn{
       height: 5vh;
       padding: 10px;
-      background-color: #379080;
+      background-color: rgba(97, 125, 125, 0.8);;
+      color: #fcf8e3;
+      cursor: pointer;
+      border-radius: 20px;
+    }
+
+    #mapPage #categoriesContainer .categoryBtnAll{
+      height: 5vh;
+      padding: 10px;
+      background-color: #48bb59;
       color: white;
-      cursor: pointer
+      cursor: pointer;
+      border-radius: 20px; 
     }
 
     #mapPage #categoriesContainer .categoryBtn i{
@@ -697,7 +738,7 @@ h1 {
 
 
     #mapPage #categoriesContainer .categoryBtn:hover{
-      background-color: #6642ab;  
+      background-color: #39d24e;  
     }
 
   #mapPage #projectTypesContainer{
@@ -725,13 +766,12 @@ h1 {
     height: 50px;
     width: 50px;
     border-radius: 25px;
-    background-color: green;
+    background-color: #5997e6;
     color: white;
-    padding: 12.5px;
+    border: 2px solid white;
+    padding: 10px 11px;
+    cursor: pointer;
   }
-
-  #mapPage #btnCloseToMe:hover{
-    background-color: #ff6a00}
 
   #mapPage #projectList{
     position: absolute;
@@ -740,17 +780,21 @@ h1 {
     height: 0px;
     width: 80%;}
 
+.myIcon{
+  z-index: 98;
+}
 
 .markerPopUp {
   background-color: rgba(255,255,255, .9);
   max-width: 300px;
-  font-size: .5em;
+  font-size: .7em;
   position: absolute;
   left: 50px;
   border-radius: 5px;
   padding: 5px;
   display: none;
-  z-index: 99;
+  z-index: 999;
+  font-family: roboto-bold;  
 }
 
 .markerPopUp .markerPopUpTriangle{
