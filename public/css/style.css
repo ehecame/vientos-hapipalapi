@@ -1,6 +1,6 @@
 /*---------------------------------------------ESTILOS NO DEFINITIVOS*/
 .foto1 {
-  background-image: url(../images/1.jpg);
+  background-image: url(/img/semillas.jpg);
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -8,7 +8,7 @@
   background-size: cover; }
 
 .foto2 {
-  background-image: url(../images/2.jpg);
+  background-image: url(/img/crater.jpg);
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -16,7 +16,7 @@
   background-size: cover; }
 
 .foto3 {
-  background-image: url(../images/3.jpg);
+  background-image: url(/img/trabajo-equipo-mexico.jpg);
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -227,37 +227,37 @@ h1 {
   padding: 15px;
   border-radius: 6px; } 
 
-/* ------ COLABORATION CONTAINER */
-#colaborate-row {
+/* ------ collaboratION CONTAINER */
+#collaborate-row {
   margin-top: 30px;
   margin-bottom: 30px;}
 
-  #colaborate-row #colaborateTitle{
+  #collaborate-row #collaborateTitle{
     margin-bottom: 50px;
   }
 
-  #colaborate-row > div {
+  #collaborate-row > div {
     text-align: center; }
 
-  #colaborate-row .collaborationWay{
+  .collaborationWay{
     display: inline-block;
     vertical-align: top; 
     margin-right: 10px; }
 
-    #colaborate-row .collaborationWay .circle {
+    .collaborationWay .circle {
       border: solid 2px #dddddd;
       height: 80px;
       width: 80px;
       border-radius: 40px; }
 
-    #colaborate-row .collaborationWay .icon {
+    .collaborationWay .icon {
       height: 80px; }
 
-    #colaborate-row .collaborationWay .more {
+    .collaborationWay .more {
       color: darkblue;
       font-size: 2em; }
 
-    #colaborate-row .collaborationWay .colLabel {
+    .collaborationWay .colLabel {
       width: 80px;
       font-size: .8em; }
 
@@ -295,9 +295,8 @@ h1 {
       font-size: .8em;}
 
 
-/* ------- TOP COLABORATORS CONTAINER */
+/* ------- TOP collaboratORS CONTAINER */
 #casos-row {
-  background-color: #B9F6F9;
   padding-top: 30px;
   padding-bottom: 30px; }
   #casos-row h1 {
@@ -350,6 +349,18 @@ h1 {
     -o-background-size: cover;
     background-size: cover; }
 
+    #we-row p{
+      padding-bottom : 50px;   
+    }
+
+  #we-row .principles div{
+    height: 50px;
+  }
+
+  #we-row .principles i{
+    margin-right: 10px;
+  }
+
 /* ------------------  */
 /* -------- FOOTER */
 .footer-container {
@@ -387,7 +398,7 @@ h1 {
 
 #map-row {
   background-color: #28282D;
-  background-image: url("../images/map.png");
+  background-image: url("/img/map.png");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -395,7 +406,13 @@ h1 {
   background-size: cover;
   background-blend-mode: multiply;
   padding-top: 30px;
-  padding-bottom: 30px; }
+  padding-bottom: 30px; 
+  cursor: pointer;
+}
+
+#map-row img{
+  height: 50px;
+}
 /* ----------------------------------------------  MEDIAS */
 @media (max-width: 992px) {
   .no_mobile {
@@ -885,4 +902,15 @@ h1 {
 #mapPage #mapSideBar #projectEmail,
 #mapPage #mapSideBar #projectAddress{
   margin: 10px;
+}
+
+#collaborationPage{
+  margin-top: 50px;
+}
+#collaborationPage .selected{
+  background-color: #38c12d;
+}
+
+#collaborationPage .subWays{
+  display: none;
 }

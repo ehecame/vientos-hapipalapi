@@ -1,71 +1,539 @@
-<div class="fluid-container">
-	<div class="row ways">
+<script src="js/howToCollaborate"></script>
+<div class="fluid-container" id="collaborationPage">
+	<div class="row" id="collaborationWays">
 		<div>
-			<h3>Maneras de Colaboración</h3>
+			<h1>Maneras de Colaboración</h1>
 		</div>
-		<div class="col-md-1 way">
-			<div class="wayTitle"></div>
-			<div class="wayIcon"><img src="svg/materials"></div>
+		<div class="col-md-3 col-sm-6">
+			<div class="collaborationWay" id="colWay_Material">
+				<div class="colLabel">Materiales</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+			<div class="collaborationWay" id="colWay_KnowledgeAndSkills">
+				<div class="colLabel">Conocimientos y Habilidades</div>
+				<div class="circle"><img src="svg/conocimientos" class="icon"></div>
+			</div>
+			<div class="collaborationWay" id="colWay_EthicalConsumption">
+				<div class="colLabel">Consumo ético</div>
+				<div class="circle"><img src="svg/productos" class="icon"></div>
+			</div>
 		</div>
-		<div class="col-md-1 way">
-			<div class="wayTitle"></div>
-			<div class="wayIcon"><img src="svg/materials"></div>
+		<div class="col-md-3 col-sm-6">
+			<div class="collaborationWay" id="colWay_CollectiveFunding">
+				<div class="colLabel">Fondeo Colectivo</div>
+				<div class="circle"><img src="svg/fondos" class="icon"></div>
+			</div>
+			<div class="collaborationWay" id="colWay_Jobs">
+				<div class="colLabel">Chambas</div>
+				<div class="circle"><img src="svg/chambas" class="icon"></div>
+			</div>
+			<div class="collaborationWay" id="colWay_EventsAndActivities">
+				<div class="colLabel">Eventos y Actividades</div>
+				<div class="circle"><img src="svg/eventos" class="icon"></div>
+			</div>
 		</div>
-		<div class="col-md-1 way">
-			<div class="wayTitle"></div>
-			<div class="wayIcon"><img src="svg/materials"></div>
+		<div class="col-md-3 col-sm-6">
+			<div class="collaborationWay" id="colWay_Volunteering">
+				<div class="colLabel">Voluntariado y Tequio</div>
+				<div class="circle"><img src="svg/voluntariado" class="icon"></div>
+			</div>
+			<div class="collaborationWay" id="colWay_PromoteProject">
+				<div class="colLabel">Difusión de proyectos</div>
+				<div class="circle"><img src="svg/difundir" class="icon"></div>
+			</div>
+			<div class="collaborationWay" id="colWay_Spaces">
+				<div class="colLabel">Espacios</div>
+				<div class="circle"><img src="svg/espacios" class="icon"></div>
+			</div>
 		</div>
-		<div class="col-md-1 way">
-			<div class="wayTitle"></div>
-			<div class="wayIcon"><img src="svg/materials"></div>
-		</div>
-		<div class="col-md-1 way">
-			<div class="wayTitle"></div>
-			<div class="wayIcon"><img src="svg/materials"></div>
-		</div>
-		<div class="col-md-1 way">
-			<div class="wayTitle"></div>
-			<div class="wayIcon"><img src="svg/materials"></div>
-		</div>
-		<div class="col-md-1 way">
-			<div class="wayTitle"></div>
-			<div class="wayIcon"><img src="svg/materials"></div>
-		</div>
-		<div class="col-md-1 way">
-			<div class="wayTitle"></div>
-			<div class="wayIcon"><img src="svg/materials"></div>
-		</div>
-		<div class="col-md-1 way">
-			<div class="wayTitle"></div>
-			<div class="wayIcon"><img src="svg/materials"></div>
-		</div>
-		<div class="col-md-1 way">
-			<div class="wayTitle"></div>
-			<div class="wayIcon"><img src="svg/materials"></div>
-		</div>
-		<div class="col-md-1 way">
-			<div class="wayTitle"></div>
-			<div class="wayIcon"><img src="svg/materials"></div>
-		</div>
-		<div class="col-md-1 way">
-			<div class="wayTitle"></div>
-			<div class="wayIcon"><img src="svg/materials"></div>
+		<div class="col-md-3 col-sm-6">
+			<div class="collaborationWay" id="colWay_LinkAndRecomend">
+				<div class="colLabel">Recomienda y vincula</div>
+				<div class="circle"><img src="svg/recomienda" class="icon"></div>
+			</div>
+			<div class="collaborationWay" id="colWay_ShareYourArt">
+				<div class="colLabel">Comparte tu arte</div>
+				<div class="circle"><img src="svg/compArte" class="icon"></div>
+			</div>
+			<div class="collaborationWay" id="colWay_ProposeAWay">
+				<div class="colLabel">Propón otra</div>
+				<div class="circle"><i class="fa fa-plus vcenter more" title=""></i></div>
+			</div>
 		</div>
 	</div>
-	<div class="row subways">
-		<div class="col-md-1 subway"></div>
-		<div class="col-md-1 subway"></div>
-		<div class="col-md-1 subway"></div>
-		<div class="col-md-1 subway"></div>
-		<div class="col-md-1 subway"></div>
-		<div class="col-md-1 subway"></div>
-		<div class="col-md-1 subway"></div>
-		<div class="col-md-1 subway"></div>
-		<div class="col-md-1 subway"></div>
-		<div class="col-md-1 subway"></div>
-		<div class="col-md-1 subway"></div>
-		<div class="col-md-1 subway"></div>
+	<div class="row subWays" id="subWay_Materials">
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Oficina</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Alimentos</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Construcción</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Medios Impreso</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Ropa Vestimenta</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Cuidado Personal</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Electrónico</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Reciclable</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Limpieza</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Herramienta</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
 	</div>
+	<div class="row subWays" id="subWay_KnowledgeAndSkills">
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Taller</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Plática Conferencia</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Cursos Clases</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Capacitación Entrenamiento</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Arte Diseño</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Asesoría</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Organización de Eventos</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Traducción</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row subWays" id="subWay_EthicalConsumption">
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Alimentos y Bebidas</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Agricultura</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Servicios Técnicos</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Ropa Accesorios</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Cosas del Hogar</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Electrónicos</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Cuidado Personal</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Construcción</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">MArketing Publicidad</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Distribución Transporte</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Administración Consultoría</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row subWays" id="subWay_Volunteering">
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Por un día</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">De vez en cuando</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Constante</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row subWays" id="subWay_Spaces">
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Galería</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Para Eventos</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Bazar Mercado</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Aire Libre</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Clase Taller</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Centro de Acopio</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Punto de Venta</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Bodega</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row subWays" id="subWay_EventsAndActivities">
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Mercado Bazar</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Convivencia</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Plática Conferencia</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row subWays" id="subWay_Funding">
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Monetario</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">En Especie</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Tiempo Habilidades</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row subWays" id="subWay_Jobs">
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Educación</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Administración</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Arte y Diseño</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Comunicación</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Ventas</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Publicidad Marketing</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Agricultura</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Tecnología</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Salud</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Creativo</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Técnicos</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Idiomas</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row subWays" id="subWay_PromoteProjects">
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">En Línea</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Medios Impresos</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Espacios Públicos</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Espacios Privados</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>		
+	</div>
+	<div class="row subWays" id="subWay_ShareYourArt">
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Artes Visuales</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Artes Escénicas</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Artes Plásticas</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Música</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Literatura</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Web</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Moda</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Edición Editorial</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Edición Audiovisual</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Publicidad Cartel</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row subWays" id="subWay_LinkAndRecomend">
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Proponer Alianza</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Conozco Alguien que lo Necesita</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-4">
+			<div class="collaborationSubWay" id="colWay_">
+				<div class="colLabel">Conozco Alguien que lo Ofrece</div>
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+			</div>
+		</div>
+	</div>
+
 	<div class="row description">
 		<div class="col-md-6 col-md-offset-3 subway"></div>
 	</div>
