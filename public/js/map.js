@@ -22,24 +22,6 @@ function addAllProjects () {
     '/api/projects',
     function (data) {
       addMarkers(data)
-    // $.each(data, function (i, project) {
-    //   console.log(project)
-    //   if (project.latitude) {
-    //     var marker = L.marker([project.latitude, project.longitude])
-    //     marker.bindPopup('<a href="/project/profile/' + project._id + '">' + project.name + '</a>', {
-    //       showOnMouseOver: true
-    //     })
-    //     markers.addLayer(marker)
-    //   } else {
-    //     var categories = []
-    //     $.each(project.categories_ids, function (i, val) {
-    //       categories.push($('#' + val).text())
-    //     })
-    //     project.categories = categories.join('<br>')
-    //     $('#projectsNoLocation').html('')
-    //     $('#projectsNoLocation').append(projectNoLocTemplate(project))
-    //   }
-    // })
     }
   )
   map.addLayer(markers)
@@ -56,12 +38,6 @@ function initializeMap () {
   L.control.zoom({
     position: 'bottomright'
   }).addTo(map)
-  L.Icon.Default.imagePath = '/img'
-// L.AwesomeMarkers.Icon.prototype.options.prefix = 'fa'
-// var redMarker = L.AwesomeMarkers.icon({
-//   icon: 'coffee',
-//   markerColor: 'red'
-// })
 }
 
 function removeAllMarkers () {
@@ -75,24 +51,6 @@ function filterCategory (e) {
     '/api/project/category/' + e.id,
     function (data) {
       addMarkers(data)
-    // data.forEach(function (project) {
-    //   console.log(project)
-    //   if (project.latitude) {
-    //     var marker = L.marker([project.latitude, project.longitude])
-    //     marker.bindPopup('<a href="/project/profile/' + project._id + '">' + project.name + '</a>', {
-    //       showOnMouseOver: true
-    //     })
-    //     markers.addLayer(marker)
-    //   } else {
-    //     var categories = []
-    //     $.each(project.categories_ids, function (i, val) {
-    //       categories.push($('#' + val).text())
-    //     })
-    //     project.categories = categories.join('<br>')
-    //     $('#projectsNoLocation').html('')
-    //     $('#projectsNoLocation').append(projectNoLocTemplate(project))
-    //   }
-    // })
     }
   )
   map.addLayer(markers)
@@ -106,16 +64,6 @@ function filterByKeyWords () {
     '/api/project/keywords/' + keywords,
     function (data) {
       addMarkers(data)
-    // console.log(data)
-    // data.forEach(function (project) {
-    //   if (project.latitude) {
-    //     var marker = L.marker([project.latitude, project.longitude])
-    //     marker.bindPopup('<a href="/project/profile/' + project._id + '">' + project.name + '</a>', {
-    //       showOnMouseOver: true
-    //     })
-    //     markers.addLayer(marker)
-    //   }
-    // })
     }
   )
   map.addLayer(markers)
@@ -132,31 +80,35 @@ function setMapView (location) {
 function getRandomProjectType () {
   var projectTypes = [
     {
-      type: 'Cooperative',
+      type: 'Cooperativa',
       color: '#800000'
     },
     {
-      type: 'Collective',
+      type: 'Colectivo',
       color: '#008B8B'
     },
     {
-      type: 'NGO',
+      type: 'ONG',
       color: '#556B2F'
     },
     {
-      type: 'Ethical Business',
+      type: 'Negocio Ético',
       color: '#B8860B'
     },
     {
-      type: 'Citizen Initiative',
+      type: 'Iniciativa Ciudadana',
       color: '#C63D1E'
     },
     {
       type: 'Startup',
       color: '#58376C'
-    }
+    },
+    {
+      type: 'En Transición',
+      color: '#d45bc9'
+    },
   ]
-  return projectTypes[Math.floor((Math.random() * 6))]
+  return projectTypes[Math.floor((Math.random() * 7))]
 }
 
 function addMarkers (markerList) {
@@ -165,7 +117,11 @@ function addMarkers (markerList) {
   console.log(markerList)
   $.each(markerList, function (i, m) {
     m.categoryIcon = getCategoryIcon(m.categories_ids[0])
-    m.projectType = getRandomProjectType()
+    if (!m.projectType) {
+      m.projectType = getRandomProjectType()
+    } else {
+      console.log('ya tiene projectType')
+    }
     if (m.latitude && m.longitude) {
       myIcon = L.divIcon({
         html: '<div class="myIcon fa-stack fa-2x">' +
@@ -173,21 +129,21 @@ function addMarkers (markerList) {
           '<i class="fa fa-circle fa-stack-1x" style="margin-top: -.2em; color:' + m.projectType.color + ';"></i> ' +
           '<i class="fa ' + m.categoryIcon + ' fa-stack-1x" style="margin-top: -.3em; font-size: .7em; color: white; " ></i>' +
           '<div class="markerPopUp">' +
-          '<div class="markerPopUpTriangle" ></div>' +
-          '<div class="markerPopUpName" ><strong>' + m.name + '</strong></div>' +
+          '<div class="markerPopUpName">' + m.name + '</div>' +
           '</div>' +
           '</div> ',
         popupAnchor: new L.Point(-5, -40)
       })
-      marker = L.marker([m.latitude, m.longitude], {icon: myIcon})
+      marker = L.marker([m.latitude, m.longitude], {icon: myIcon, riseOnHover: true})
       marker.on('mouseover', function (e) {
         $(this._icon).find('.markerPopUp').show()
         $(this._icon).find('.markerPopUpName').show()
       })
       marker.on('mouseout', function (e) {
-        popUpBehaviorByZoom()
+        $(this._icon).find('.markerPopUp').hide()
       })
       marker.on('click', function (e) {
+        map.setView([m.latitude, m.longitude + .006], 16, {animate: true})
         showMapSideBar(m)
       })
       markers.addLayer(marker)
@@ -212,31 +168,63 @@ function getCategoryIcon (id) {
   else return 'fa-puzzle-piece'
 }
 
-function popUpBehaviorByZoom () {
-  var zoom = map.getZoom()
-  if (zoom < 14) {
-    $('.markerPopUp').hide()
-  } else {
-    $('.markerPopUp').show()
-    $('.markerPopUpName').show()
-  }
-}
-
 function showMapSideBar (m) {
   console.log(m)
+  if (m.logo) {
+    $('#mapSideBar').find('#projectLogo').css('background-image', 'url("/img/' + m.logo + '")')
+    $('#mapSideBar').find('#projectLogo').show()
+  }
+  else
+    $('#mapSideBar').find('#projectLogo').hide()
   $('#mapSideBar').find('#projectName').html(m.name)
   $('#mapSideBar').find('#projectDescription').html(m.description)
   $('#mapSideBar').find('#projectType').html(m.projectType.type)
   $('#mapSideBar').find('#projectType').css('background-color', m.projectType.color)
-  $('#mapSideBar').find('#projectFacebook').attr('href', m.facebook)
-  $('#mapSideBar').find('#projectTwitter').attr('href', m.twitter)
-  $('#mapSideBar').find('#projectPhone').html(m.phone)
-  $('#mapSideBar').find('#projectMobile').html(m.mobile)
-  $('#mapSideBar').find('#projectEmail').html(m.email)
-  $('#mapSideBar').find('#projectAddress').html(m.address)
+  if (m.facebook) {
+    $('#mapSideBar').find('#projectFacebook').attr('href', m.facebook)
+    $('#mapSideBar').find('#projectFacebook').show()
+  }
+  else
+    $('#mapSideBar').find('#projectFacebook').hide()
+  if (m.twitter) {
+    $('#mapSideBar').find('#projectTwitter').attr('href', m.twitter)
+    $('#mapSideBar').find('#projectTwitter').show()
+  }
+  else
+    $('#mapSideBar').find('#projectTwitter').hide()
+  if (m.website) {
+    $('#mapSideBar').find('#projectWebSite').attr('href', m.webpage)
+    $('#mapSideBar').find('#projectWebSite').show()
+  }
+  else
+    $('#mapSideBar').find('#projectWebSite').hide()
+
+  if (m.phone) {
+    $('#mapSideBar').find('#projectPhone').html(m.phone)
+    $('#mapSideBar').find('#projectPhone').show()
+  }
+  else
+    $('#mapSideBar').find('#projectPhone').hide()
+  if (m.mobile) {
+    $('#mapSideBar').find('#projectMobile').html(m.mobile)
+    $('#mapSideBar').find('#projectMobile').show()
+  }
+  else
+    $('#mapSideBar').find('#projectMobile').hide()
+  if (m.email) {
+    $('#mapSideBar').find('#projectEmail').html(m.email)
+    $('#mapSideBar').find('#projectEmail').show()
+  }
+  if (m.adress) {
+    $('#mapSideBar').find('#projectAddress').html(m.address)
+    $('#mapSideBar').find('#projectAddress').show()
+  }
+  else
+    $('#mapSideBar').find('#projectAddress').hide()
+
   // $('#mapSideBar').find('#projectOffers').html(createOffersMarkup(m.offers))
   // $('#mapSideBar').find('#projectNeeds').html(createNeedsMarkup(m.needs))
-
+  $('#btnCloseToMe').tooltip('hide')
   $('#mapSideBar').show()
   $('#mapSideBar').animate({width: '45%'})
 }
@@ -254,7 +242,9 @@ function setCloseMapSideBarFunc () {
       !container.is(e.target) // if the target of the click isn't the container...
       && container.has(e.target).length === 0) // ... nor a descendant of the container
     {
-      hideMapSideBar()
+      if ($(e.target).parent('.myIcon').length == 0 && !$(e.target).is('.myIcon')) {
+        hideMapSideBar()
+      }
     }
   })
 }

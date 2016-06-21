@@ -802,40 +802,36 @@ h1 {
 }
 
 .markerPopUp {
-  background-color: rgba(255,255,255, .9);
-  max-width: 300px;
+  background-color: rgba(85,85,85,0.9);
   font-size: .7em;
   position: absolute;
   left: 50px;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 10px;
+  padding: 10px 15px;
   display: none;
-  z-index: 999;
-  font-family: roboto-bold;  
+  font-family: roboto-regular;  
+  letter-spacing: 1px;
+  word-spacing: 1px;
+  color: white;
+  white-space: nowrap;
 }
 
-.markerPopUp .markerPopUpTriangle{
-  width: 0;
+.markerPopUp:after{
+  right: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
   height: 0;
-  opacity: .9;
+  width: 0;
   position: absolute;
-  left: -20px;
-  top: 5px;
-  border-top: 10px solid transparent;
-  border-right: 10px solid white;
-  border-bottom: 10px solid transparent;
-  border-left: 10px solid transparent;
+  pointer-events: none;
+  border-right-color: rgba(85,85,85,0.9);
+  border-width: 10px;
+  margin-top: -10px;
 }
 
 .markerPopUp .markerPopUpName{
   line-height: 95%;
-  display: none;
-}
-
-.markerPopUp .markerPopUpDescription{
-  display: none;
-  line-height: 95%;
-  width: 300px;
 }
 
 #mapPage #mapSideBar{
@@ -858,34 +854,50 @@ h1 {
   margin: 0px;
 }
 
-#mapPage #mapSideBar #projectLogo{
+#mapPage #mapSideBar #topLeftCorner{
   float: left;
-  height: 100px;
-  width: 100px;
-  border: solid black 3px;
-  border-radius: 50px;
-  font-size: small;
-  text-align: center;
   margin-right: 15px;
 }
 
-#mapPage #mapSideBar #projectLogo span{
-  line-height: 50px;
+#mapPage #mapSideBar #topLeftCorner #projectLogo{  
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  background-size: contain;
 }
 
-#mapPage #mapSideBar #projectDescription{
-  font-size: 1.2em;
-}
-
-#mapPage #mapSideBar #projectType {
-  height: 20px;
+#mapPage #mapSideBar #topLeftCorner #projectType {
+  height: 25px;
   border-radius: 10px;
   border: none;
   color: white;
   display: inline-block;
   margin-top: 5px;
-    padding: 3px;   
+    padding: 5px;   
 }
+
+#mapPage #mapSideBar #projectDescription{
+  display: -webkit-box;
+  font-size: 1.2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 110px;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  margin-bottom: 10px;
+}
+
+#mapPage #mapSideBar .btn-profile{
+  background-color: #3fa951;
+  border-color: #bbb;
+  color: white;
+  float: right;
+}
+
+#mapPage #mapSideBar .btn-profile:hover{
+  opacity: 0.9;
+}
+
 
 #mapPage #mapSideBar #projectContactData div{
   margin: 3px;
@@ -897,6 +909,17 @@ h1 {
 #mapPage #mapSideBar #projectTwitter{
   margin-right: 10px;
 }
+
+#mapPage #mapSideBar #projectWebSite{
+  color: #000;
+  letter-spacing: 2px;
+  border: 2px solid #bbb;
+  padding: 3px;
+  border-radius: 10px;
+  position: relative;
+  top: -5px;
+}
+
 #mapPage #mapSideBar #projectPhone,
 #mapPage #mapSideBar #projectMobile,
 #mapPage #mapSideBar #projectEmail,
