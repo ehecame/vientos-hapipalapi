@@ -183,40 +183,45 @@ function showMapSideBar (m) {
   if (m.facebook) {
     $('#mapSideBar').find('#projectFacebook').attr('href', m.facebook)
     $('#mapSideBar').find('#projectFacebook').show()
-  }
-  else
+  } else {
     $('#mapSideBar').find('#projectFacebook').hide()
+  }
   if (m.twitter) {
     $('#mapSideBar').find('#projectTwitter').attr('href', m.twitter)
     $('#mapSideBar').find('#projectTwitter').show()
-  }
-  else
+  } else {
     $('#mapSideBar').find('#projectTwitter').hide()
+  }
   if (m.website) {
     $('#mapSideBar').find('#projectWebSite').attr('href', m.webpage)
     $('#mapSideBar').find('#projectWebSite').show()
-  }
-  else
+  } else {
     $('#mapSideBar').find('#projectWebSite').hide()
-
+  }
   if (m.phone) {
-    $('#mapSideBar').find('#projectPhone').html(m.phone)
+    console.log('tiene phone')
+    $('#mapSideBar').find('#projectPhone span').html(m.phone)
     $('#mapSideBar').find('#projectPhone').show()
-  }
-  else
+  } else {
     $('#mapSideBar').find('#projectPhone').hide()
+  }
   if (m.mobile) {
-    $('#mapSideBar').find('#projectMobile').html(m.mobile)
+    console.log('tiene mobile')
+    $('#mapSideBar').find('#projectMobile span').html(m.mobile)
     $('#mapSideBar').find('#projectMobile').show()
-  }
-  else
+  } else {
     $('#mapSideBar').find('#projectMobile').hide()
-  if (m.email) {
-    $('#mapSideBar').find('#projectEmail').html(m.email)
-    $('#mapSideBar').find('#projectEmail').show()
   }
-  if (m.adress) {
-    $('#mapSideBar').find('#projectAddress').html(m.address)
+  if (m.email) {
+    console.log('tiene email')
+    $('#mapSideBar').find('#projectEmail span').html(m.email)
+    $('#mapSideBar').find('#projectEmail').show()
+  } else {
+    $('#mapSideBar').find('#projectEmail').hide()
+  }
+  if (m.address) {
+    console.log('tiene address')
+    $('#mapSideBar').find('#projectAddress span').html(m.address)
     $('#mapSideBar').find('#projectAddress').show()
   }
   else

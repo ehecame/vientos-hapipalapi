@@ -920,10 +920,10 @@ h1 {
   top: -5px;
 }
 
-#mapPage #mapSideBar #projectPhone,
-#mapPage #mapSideBar #projectMobile,
-#mapPage #mapSideBar #projectEmail,
-#mapPage #mapSideBar #projectAddress{
+#mapPage #mapSideBar #projectPhone i,
+#mapPage #mapSideBar #projectMobile i,
+#mapPage #mapSideBar #projectEmail i,
+#mapPage #mapSideBar #projectAddress i{
   margin: 10px;
 }
 
