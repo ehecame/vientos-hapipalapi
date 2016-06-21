@@ -14,6 +14,7 @@ $(document).ready(function () {
   $('#btnCloseToMe').tooltip('show')
   var elements = document.getElementsByTagName('*')
   for (var id = 0; id < elements.length; ++id) { elements[id].oncontextmenu = null; }
+  setTopBarBtnsFunc()
 })
 
 function addAllProjects () {
@@ -192,8 +193,10 @@ function showMapSideBar (m) {
   } else {
     $('#mapSideBar').find('#projectTwitter').hide()
   }
-  if (m.website) {
+  if (m.webpage) {
+    console.log('tiene web')
     $('#mapSideBar').find('#projectWebSite').attr('href', m.webpage)
+    $('#mapSideBar').find('#projectWebSite').attr('tittle', m.webpage)
     $('#mapSideBar').find('#projectWebSite').show()
   } else {
     $('#mapSideBar').find('#projectWebSite').hide()
@@ -226,12 +229,48 @@ function showMapSideBar (m) {
   }
   else
     $('#mapSideBar').find('#projectAddress').hide()
-
-  // $('#mapSideBar').find('#projectOffers').html(createOffersMarkup(m.offers))
-  // $('#mapSideBar').find('#projectNeeds').html(createNeedsMarkup(m.needs))
+  if (m.offers) {
+    $('#mapSideBar').find('#projectOffers').html(createOffersMarkup(m.offers))
+  }
+  if (m.needs) {
+    $('#mapSideBar').find('#projectNeeds').html(createNeedsMarkup(m.needs))
+  }
+  if (m.schedule) {
+    console.log('tiene schedule')
+    $('#mapSideBar').find('#projectSchedule').html(createScheduleMarkup(m.schedule))
+    $('#mapSideBar').find('#scheduleSec').show()
+  } else {
+    $('#mapSideBar').find('#scheduleSec').hide()
+  }
   $('#btnCloseToMe').tooltip('hide')
   $('#mapSideBar').show()
   $('#mapSideBar').animate({width: '45%'})
+}
+
+function createOffersMarkup (offers) {
+  var html = ''
+  $.each(offers, function (i, offer) {
+    html += '<div class="need">' + offer + '</div>'
+  })
+  return html
+}
+
+function createNeedsMarkup (needs) {
+  var html = ''
+  $.each(needs, function (i, need) {
+    html += '<div class="need">' + need + '</div>'
+  })
+  return html
+}
+
+function createScheduleMarkup (schedule) {
+  var html = ''
+  console.log(schedule)
+  $.each(schedule, function (i, day) {
+    console.log(day)
+    html += '<div class="day">' + day.days + ' : ' + day.hours + '</div>'
+  })
+  return html
 }
 
 function hideMapSideBar () {
@@ -252,4 +291,49 @@ function setCloseMapSideBarFunc () {
       }
     }
   })
+}
+
+function setTopBarBtnsFunc () {
+  $('#categoriesBtn').click(categoriesBtnClicked)
+  $('#typesBtn').click(typesBtnClicked)
+  $('#waysOfCollaborationBtn').click(waysOfCollaborationBtnClicked)
+// $('#projectsBtn').click(projectsBtnClicked)
+// $('#businessBtn').click(businessBtnClicked)
+// $('#evetnsBtn').click(evetnsBtnClicked)
+}
+
+function categoriesBtnClicked () {
+  $('#categoriesContainer').show()
+  $('#categoriesBtn').removeClass('btn-default')
+  $('#categoriesBtn').addClass('btn-success')
+  $('#typesContainer').hide()
+  $('#typesBtn').addClass('btn-default')
+  $('#typesBtn').removeClass('btn-success')
+  $('#waysOfCollaborationContainer').hide()
+  $('#waysOfCollaborationBtn').addClass('btn-default')
+  $('#waysOfCollaborationBtn').removeClass('btn-success')
+}
+
+function typesBtnClicked () {
+  $('#typesContainer').show()
+  $('#typesBtn').removeClass('btn-default')
+  $('#typesBtn').addClass('btn-success')
+  $('#categoriesContainer').hide()
+  $('#categoriesBtn').addClass('btn-default')
+  $('#categoriesBtn').removeClass('btn-success')
+  $('#waysOfCollaborationContainer').hide()
+  $('#waysOfCollaborationBtn').addClass('btn-default')
+  $('#waysOfCollaborationBtn').removeClass('btn-success')
+}
+
+function waysOfCollaborationBtnClicked () {
+  $('#waysOfCollaborationContainer').show()
+  $('#waysOfCollaborationBtn').removeClass('btn-default')
+  $('#waysOfCollaborationBtn').addClass('btn-success')
+  $('#categoriesContainer').hide()
+  $('#categoriesBtn').addClass('btn-default')
+  $('#categoriesBtn').removeClass('btn-success')
+  $('#typesContainer').hide()
+  $('#typesBtn').addClass('btn-default')
+  $('#typesBtn').removeClass('btn-success')
 }

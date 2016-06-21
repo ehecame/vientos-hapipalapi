@@ -758,23 +758,65 @@ h1 {
       background-color: #39d24e;  
     }
 
-  #mapPage #projectTypesContainer{
+  #mapPage #typesContainer{
     position: absolute;
-    top: 50px;
+    top: 110px;
     left: 10px;
-    height: 95%;}
+    border-radius: 10px;
+    display: none;}
 
-    #mapPage #projectTypesContainer #projectTypeBtn{
-    }
+    #mapPage #typesContainer .typeBtn{
+      height: 25px;
+      border-radius: 10px;
+      border: none;
+      color: white;
+      margin-top: 5px;
+      padding: 5px; 
+      cursor: pointer;}
 
-  #mapPage #collaborationWaysContainer{
+       #mapPage #typesContainer #cooperative{
+        background-color: #800000;
+       }
+
+       #mapPage #typesContainer #collective{
+        background-color: #008B8B;
+       }
+
+       #mapPage #typesContainer #ngo{
+        background-color: #556B2F;
+       }
+
+       #mapPage #typesContainer #ethicalBusiness{
+        background-color: #B8860B;
+       }
+
+       #mapPage #typesContainer #citizenInitiative{
+        background-color: #C63D1E;
+       }
+
+       #mapPage #typesContainer #startup{
+        background-color: #58376C;
+       }
+
+       #mapPage #typesContainer #onTransition{
+        background-color: #d45bc9;
+       }
+
+  #mapPage #waysOfCollaborationContainer{
     position: absolute;
-    top: 50px;
+    top: 110px;
     left: 10px;
-    height: 95%;}
+    border-radius: 10px;
+    display: none;
+    background-color: #9bca93;
+    padding: 20px;}
 
-    #mapPage #collaborationWaysContainer #collaborationWayBtn{
-    }
+    #mapPage #waysOfCollaborationContainer .collaborationWay .circle{
+      background-color: white;
+      cursor: pointer; }
+
+      #mapPage #waysOfCollaborationContainer .collaborationWay .circle:hover{
+        background-color: #48bb59;}
 
   #mapPage #btnCloseToMe{
     position: absolute;
@@ -846,7 +888,7 @@ h1 {
   height: 85%;
   display: none;
   overflow: scroll;
-  z-index: 2;
+  z-index: 8;
 }
 
 #mapPage #mapSideBar #projectName,
@@ -891,19 +933,22 @@ h1 {
   background-color: #3fa951;
   border-color: #bbb;
   color: white;
-  float: right;
+  float: right; 
 }
 
 #mapPage #mapSideBar .btn-profile:hover{
   opacity: 0.9;
 }
 
+#mapPage #mapSideBar #projectContactData .row{
+  margin-top: 10px;
+}
 
-#mapPage #mapSideBar #projectContactData div{
+/*#mapPage #mapSideBar #projectContactData div{
   margin: 3px;
   padding-left: 30px;
   font-size: 1.2em;
-}
+}*/
 
 #mapPage #mapSideBar #projectFacebook,
 #mapPage #mapSideBar #projectTwitter{
@@ -923,8 +968,18 @@ h1 {
 #mapPage #mapSideBar #projectPhone i,
 #mapPage #mapSideBar #projectMobile i,
 #mapPage #mapSideBar #projectEmail i,
-#mapPage #mapSideBar #projectAddress i{
-  margin: 10px;
+#mapPage #mapSideBar #projectAddress i,
+#mapPage #mapSideBar #scheduleSec i{
+  margin: 0px 10px;
+  float: left;
+}
+
+#mapPage #mapSideBar #projectPhone ,
+#mapPage #mapSideBar #projectMobile ,
+#mapPage #mapSideBar #projectEmail ,
+#mapPage #mapSideBar #projectAddress {
+  text-overflow: ellipsis;
+  overflow: hidden; 
 }
 
 #collaborationPage{
