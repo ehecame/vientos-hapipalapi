@@ -5,7 +5,7 @@ var projectNoLocTemplate
 
 $(document).ready(function () {
   source = $('#projectNoLocation-template').html()
-  projectNoLocTemplate = Handlebars.compile(source)
+  // projectNoLocTemplate = Handlebars.compile(source)
   setCloseMapSideBarFunc()
   $('#btnCloseToMe').click(centerMapMyLocation)
   initializeMap()
@@ -188,6 +188,7 @@ function showMapSideBar (m) {
     $('#mapSideBar').find('#projectFacebook').hide()
   }
   if (m.twitter) {
+    console.log('tiene twitter')
     $('#mapSideBar').find('#projectTwitter').attr('href', m.twitter)
     $('#mapSideBar').find('#projectTwitter').show()
   } else {

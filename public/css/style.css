@@ -233,7 +233,10 @@ h1 {
   margin-bottom: 30px;}
 
   #collaborate-row #collaborateTitle{
-    margin-bottom: 50px;
+    text-align: right;
+    font-size: 1.7em;
+    margin-right: 50px;
+    margin-bottom: 30px;
   }
 
   #collaborate-row > div {
@@ -267,7 +270,15 @@ h1 {
   margin: 30px 0px 60px 0px;}
 
   #categories-row #categoryTitle{
-    margin-bottom: 50px;
+    text-align: left;
+    font-size: 1.7em;
+    margin-left: 50px;
+    margin-bottom: 30px;
+  }
+
+  #categories-row #categoryTitle .showBigger{
+    font-family: roboto-bold;
+    font-size: 1.2em;
   }
 
   #categories-row > div {
@@ -985,10 +996,42 @@ h1 {
 #collaborationPage{
   margin-top: 50px;
 }
-#collaborationPage .selected{
-  background-color: #38c12d;
-}
 
-#collaborationPage .subWays{
-  display: none;
-}
+  #collaborationPage #collaborationWays > div,
+  #collaborationPage .subWays > div{
+    text-align: center;
+  }
+
+    #collaborationPage .subWays{
+      display: none;
+      margin-top: 20px 0px;
+      padding: 20px;
+      background-color: #38c12d;  
+      color: white; }
+
+    #collaborationPage .subWays .collaborationSubWay .circle{
+      border: solid 2px #dddddd;
+      background-color: #dddddd;
+      height: 80px;
+      width: 80px;
+      border-radius: 40px; }
+
+    #collaborationPage .subWays .collaborationSubWay .icon {
+      height: 80px; }
+
+     #collaborationPage .subWays .collaborationSubWay .colLabel {
+      width: 80px;
+      font-size: .8em; }
+
+  #collaborationPage .selected{
+    background-color: #38c12d;
+  }
+
+  #collaborationPage #collaborationWays{
+    margin-bottom: 20px;
+  }
+
+  #collaborationPage #categories i{
+    
+  }
+

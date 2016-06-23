@@ -138,9 +138,9 @@ function loadMyProjects () {
     '/api/projects',
     function (projects) {
       $.each(projects, function (i, project) {
-        project.notificationNumber = Math.floor((Math.random() * 6)) //notRandomLater
+        project.notificationNumber = Math.floor((Math.random() * 6)) // notRandomLater
         $('#myProjectList').append(myProjectTemplate(project))
-      }
+      })
     }
   )
 }
