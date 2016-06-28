@@ -193,8 +193,7 @@ h1 {
     padding-bottom: 30px; 
     text-align: center;
     font-size: 25px;}
-  #benefits-row li {
-    font-size: 20px; }
+
   #benefits-row img {
     height: 100px;
     margin-bottom: 30px; }
@@ -202,8 +201,7 @@ h1 {
   #benefits-row #projects, 
   #benefits-row #business, 
   #benefits-row #individual {
-    padding-top: 20px;
-    min-height: 560px; }
+    padding-top: 20px;}
 
 #benefits-row #projects {
   background-color: #18a50e; 
@@ -218,6 +216,11 @@ h1 {
 #benefits-row #individual {
   background-color: #ede9de;
   color: #333; }
+
+#benefits-row .card{
+  font-size: 1.3em;
+  height: 250px;
+}
 
 #benefits-row .btn_registrate {
   z-index: 100;
