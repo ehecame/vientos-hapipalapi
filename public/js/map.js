@@ -251,7 +251,7 @@ function showMapSideBar (m) {
 function createOffersMarkup (offers) {
   var html = ''
   $.each(offers, function (i, offer) {
-    html += '<div class="need">' + offer + '</div>'
+    html += '<div class="need"><i class="fa fa-circle"></i>' + offer + '</div>'
   })
   return html
 }
@@ -259,7 +259,7 @@ function createOffersMarkup (offers) {
 function createNeedsMarkup (needs) {
   var html = ''
   $.each(needs, function (i, need) {
-    html += '<div class="need">' + need + '</div>'
+    html += '<div class="need"><i class="fa fa-circle"></i>' + need + '</div>'
   })
   return html
 }

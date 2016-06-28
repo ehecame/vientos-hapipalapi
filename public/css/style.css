@@ -346,29 +346,21 @@ h1 {
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: #F5F6F7; }
-  #we-row .frase {
-    padding-top: 70px;
-    padding-bottom: 50px; }
-  #we-row .foto_we {
-    height: 600px;
-    border-radius: 10px;
-    background-color: #28282D;
-    background-image: url(../images/equipo.jpg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover; }
 
-    #we-row p{
-      padding-bottom : 50px;   
+  #we-row .us{
+    font-size: 1.5em;
+    margin-bottom: 50px;
+  }
+
+    #we-row .us p{
+      padding-bottom : 35px;   
     }
 
-  #we-row .principles div{
+  #we-row .us .principles div{
     height: 50px;
   }
 
-  #we-row .principles i{
+  #we-row .us .principles i{
     margin-right: 10px;
   }
 
@@ -408,8 +400,8 @@ h1 {
   margin-left: 31px; }
 
 #map-row {
-  background-color: #28282D;
-  background-image: url("/img/map.png");
+  /*background-color: #28282D;*/
+  background-image: url("/img/fondomapa.png");
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -902,10 +894,15 @@ h1 {
   z-index: 8;
 }
 
-#mapPage #mapSideBar #projectName,
-#mapPage #mapSideBar .offersNeedsTitles  {
-  margin: 0px;
+#mapPage #mapSideBar hr{
+  border-top: 1px solid #ccc;
+  margin-bottom: 0px;
 }
+
+#mapPage #mapSideBar #projectName{
+  margin: 0px; }
+#mapPage #mapSideBar .offersNeedsTitles {
+  margin: 0px 0px 15px 0px; }
 
 #mapPage #mapSideBar #topLeftCorner{
   float: left;
@@ -992,6 +989,12 @@ h1 {
   text-overflow: ellipsis;
   overflow: hidden; 
 }
+
+#mapPage #mapSideBar #offersNeedsRow i {
+  color: #38c12d;
+  font-size: .6em;
+  vertical-align: middle;
+  margin-right: 5px;  }
 
 #collaborationPage{
   margin-top: 50px;
