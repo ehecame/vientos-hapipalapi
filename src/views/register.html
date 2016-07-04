@@ -1,79 +1,102 @@
 <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
 <script src="js/register"></script>
-
-<h1>Registro</h1>
-<div id="registerContainer">
-	<form id="registerForm">
-		<div class="fieldContainer">
-			<div class="tagsContainer">Nombre:</div>
-			<div class="inputsContainer"><input name="name" type="text"/></div>
-		</div>
-		<div class="fieldContainer">
-			<div class="tagsContainer">Descripción:</div>
-			<div class="inputsContainer"><textarea name="description"></textarea></div>
-		</div>
-		<div class="fieldContainer">
-			<div class="tagsContainer">Categoria:</div>
-			<div class="inputsContainer">
-				<div class="categoryInputColumn">
-					<div><input type="checkbox" name="categories_ids" value="55663309a660da482b648a33">Salud</div>
-					<div><input type="checkbox" name="categories_ids" value="556644179cfb86a021e5a150">Educación</div>
-					<div><input type="checkbox" name="categories_ids" value="559e90cd46343c3bccee7fbc">Agua</div>
-					<div><input type="checkbox" name="categories_ids" value="559e90f046343c3bccee7fbd">Alimentación</div>
-					<div><input type="checkbox" name="categories_ids" value="5628145fb82163c71dea5f9d">Arte y Cultura</div>
+<div class="fluid-container" id="registerPage">
+	<div class="row">
+		<div><h1>Registro</h1></div>
+	</div>
+	<div class="row">
+		<div id="registerContainer">
+			<form id="registerForm">
+				<div>
+					<div>Nombre:</div>
+					<div><input name="name" type="text"/></div>
 				</div>
-				<div class="categoryInputColumn">
-					<div><input type="checkbox" name="categories_ids" value="559e910a46343c3bccee7fbe">Comunidad</div>
-					<div><input type="checkbox" name="categories_ids" value="562814bbb82163c71dea5f9f">Comunicación</div>
-					<div><input type="checkbox" name="categories_ids" value="56281547b82163c71dea5fa0">Derechos Humanos</div>
-					<div><input type="checkbox" name="categories_ids" value="5628156cb82163c71dea5fa1">Economía</div>
+				<div>
+					<div>Descripción:</div>
+					<div><textarea name="description"></textarea></div>
 				</div>
-				<div class="categoryInputColumn">
-					<div><input type="checkbox" name="categories_ids" value="559e910a46343c3bccee7fbe">Productos y Servicios</div>
-					<div><input type="checkbox" name="categories_ids" value="5628158bb82163c71dea5fa2">Medio Ambiente</div>
-					<div><input type="checkbox" name="categories_ids" value="562815b2b82163c71dea5fa3">Tecnología</div>
-					<div><input type="checkbox" name="categories_ids" value="562815bfb82163c71dea5fa4">Transporte</div>
-					<div><input type="checkbox" name="categories_ids" value="5660de8ca17bb1a413dd1add">Género</div>
+				<div>
+					<div>Logo:</div>
+	        <input type="file" name="file" id="pictureFileInput">
+	        <button class="btn btn-default" onclick="uploadPicture()">Subir imagen</button>
 				</div>
-			</div>
+				<div>
+					<div>Categoria:</div>
+					<div id="categories">
+						<div class="row" id="categoriesSec">
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter selected" id="56281547b82163c71dea5fa0"><i class="fa fa-globe fa-2x"></i>Derechos Humanos</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="56281497b82163c71dea5f9e"><i class="fa fa-shopping-basket fa-2x"></i>Productos y Servicios</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="5628158bb82163c71dea5fa2"><i class="fa fa-pagelines fa-2x"></i>Medio Ambiente</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="5628145fb82163c71dea5f9d"><i class="fa fa-paint-brush fa-2x"></i>Arte y Cultura</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter selected" id="5660de8ca17bb1a413dd1add"><i class="fa fa-transgender-alt fa-2x"></i>Género</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="55663309a660da482b648a33"><i class="fa fa-medkit fa-2x"></i>Salud</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="556644179cfb86a021e5a150"><i class="fa fa-book fa-2x"></i>Educación</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="5776bfeaa6d9d136619e9b87"><i class="fa fa-puzzle-piece fa-2x"></i>Talleres y Clases</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="559e910a46343c3bccee7fbe"><i class="fa fa-users fa-2x"></i>Comunidad</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter selected" id="559e90f046343c3bccee7fbd"><i class="fa fa-cutlery fa-2x"></i>Comida</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="566327d38bf85d71b6c069c1"><i class="fa fa-home fa-2x"></i>Vivienda</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="566353d1c3671ef030500668"><i class="fa fa-scissors fa-2x"></i>Vestido</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="562814bbb82163c71dea5f9f"><i class="fa fa-bullhorn fa-2x"></i>Comunicación</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="562815b2b82163c71dea5fa3"><i class="fa fa-cogs fa-2x"></i>Tecnología</div>
+							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="562815bfb82163c71dea5fa4"><i class="fa fa-bicycle fa-2x"></i>Transporte</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div>Tipo de Proyecto:</div>
+					<div>
+						<select id="projectType">
+							<option value="collective">Colectivo</option>
+							<option value="cooperative">Cooperativa</option>
+							<option value="ngo">ONG</option>
+							<option value="ethicalbusiness">Negocio Ético</option>
+							<option value="neighborsorg">Organización vecinal</option>
+							<option value="startup">Startup</option>
+							<option value="ontransition">En transición</option>
+						</select>
+					</div>
+				</div>
+				<div>
+					<div>Página web:</div>
+					<div><input name="webpage" type="text"/></div>
+				</div>
+				<div>
+					<div>Twitter:</div>
+					<div><input name="twitter" type="text"/></div>
+				</div>
+				<div>
+					<div>Facebook:</div>
+					<div><input name="facebook" type="text"/></div>
+				</div>
+				<div>
+					<div>Email:</div>
+					<div><input name="email" type="text"/></div>
+				</div>
+				<div>
+					<div>Telefono:</div>
+					<div><input name="phone" type="text"/></div>
+				</div>
+				<div>
+					<div>Dirección:</div>
+					<div><input name="address" type="text"/></div>
+				</div>
+				<div>
+					<div>Ofrece</div>
+					<div id="offers"></div>
+					<div><input type="text" /><button id="addOfferBtn">+</button></div>
+				</div>
+				<div>
+					<div>Necesita</div>
+					<div id="needs"></div>
+					<div><input type="text" /><button id="addNeedBtn">+</button></div>
+				</div>
+				<div id="map"></div>
+				<div>
+					<input type="hidden" id="hdnInputLat" name="latitude"/>
+					<input type="hidden" id="hdnInputLng" name="longitude"/>
+				</div>
+				<button id="registerBtn" onclick="onRegisterBtnClicked()">Registrar</button>
+			</form>
 		</div>
-		<div class="fieldContainer">
-			<div class="tagsContainer">Página web:</div>
-			<div class="inputsContainer"><input name="webpage" type="text"/></div>
-		</div>
-		<div class="fieldContainer">
-			<div class="tagsContainer">Twitter:</div>
-			<div class="inputsContainer"><input name="twitter" type="text"/></div>
-		</div>
-		<div class="fieldContainer">
-			<div class="tagsContainer">Facebook:</div>
-			<div class="inputsContainer"><input name="facebook" type="text"/></div>
-		</div>
-		<div class="fieldContainer">
-			<div class="tagsContainer">Email:</div>
-			<div class="inputsContainer"><input name="email" type="text"/></div>
-		</div>
-		<div class="fieldContainer">
-			<div class="tagsContainer">Telefono:</div>
-			<div class="inputsContainer"><input name="telephone" type="text"/></div>
-		</div>
-		<div class="fieldContainer">
-			<div class="tagsContainer">Dirección:</div>
-			<div class="inputsContainer"><input name="address" type="text"/></div>
-		</div>
-		<div>
-			<input type="hidden" id="hdnInputLat" name="latitude"/>
-			<input type="hidden" id="hdnInputLng" name="longitude"/>
-		</div>
-		<div class="fieldContainer">
-			<div class="tagsContainer">Contraseña:</div>
-			<div class="inputsContainer"><input name="password" type="text"/></div>
-		</div>
-		<div class="fieldContainer">
-			<div class="tagsContainer">Confirma Contraseña:</div>
-			<div class="inputsContainer"><input name="confirmPassword" type="text"/></div>
-		</div>
-		<div id="map"></div>
-	</form>
+	</div>
 </div>
-<button id="registerBtn" onclick="onRegisterBtnClicked()">Registrar</button>

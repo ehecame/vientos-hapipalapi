@@ -917,6 +917,7 @@ h1 {
   width: 100px;
   border-radius: 50px;
   background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #mapPage #mapSideBar #topLeftCorner #projectType {
@@ -1041,3 +1042,24 @@ h1 {
     
   }
 
+#registerPage #map{
+  width: 800px;
+  height: 500px;
+}
+
+  #registerPage #categories .category{
+    width: 80px;
+    height: 80px;
+    background-color: purple;
+    padding: 12px;
+    color: white;
+    border-radius: 20px;
+    margin: 1px;
+    cursor: pointer;
+    font-size: .8em; }
+
+  #registerPage #categories .selected{
+    background-color: #ff6a00;   }
+
+  #registerPage #categories .category i{
+   display: block;    }
