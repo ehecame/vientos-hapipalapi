@@ -8,13 +8,35 @@ $(document).ready(function () {
 })
 
 function onRegisterBtnClicked () {
+  var registerForm = form2js('registerForm', '.')
   $.post(
     '/api/project',
-    $('#registerForm').serialize(),
+    registerForm,
     function (data) {
       console.log(data)
     }
   )
+  var formData = new FormData()
+  formData.append('file', $('#pictureFileInput')[0].files[0])
+  console.log(formData)
+  $.ajax({
+    url: '/uploadPicture',
+    data: formData,
+    processData: false,
+    contentType: false,
+    type: 'POST',
+    success: function (data) {
+      console.log(data)
+    }
+  })
+}
+
+function addOffer () {
+  $('#offers').append('<input class="offerAdded" name="offers.[]" value="' + $('#newOfferInput').val() + '"/>')
+}
+
+function addNeed () {
+  $('#needs').append('<input class="needAdded" name="needs.[]" value="' + $('#newNeedInput').val() + '"/>')
 }
 
 function initializeMap () {

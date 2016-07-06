@@ -1056,7 +1056,32 @@ h1 {
     border-radius: 20px;
     margin: 1px;
     cursor: pointer;
-    font-size: .8em; }
+    font-size: .8em; 
+    margin-top: 50px;}
+
+  #registerPage #newOfferInput,
+  #registerPage #newNeedInput{
+    display: inline-block;
+    width: 90%;
+  }
+
+  #registerPage #addOfferBtn,
+  #registerPage #addNeedBtn{
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  #registerPage #offers .offerAdded,
+  #registerPage #needs .needAdded{
+    display: block;
+    margin: 2px;
+    width: 100%;
+    border: none;
+    background-color: #ddd;
+    border-radius: 5px;
+    padding: 2px 5px;
+  }
+
 
   #registerPage #categories .selected{
     background-color: #ff6a00;   }

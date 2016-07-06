@@ -50,17 +50,17 @@ ProjectController.prototype = (function () {
     register: function register (request, reply) {
       var db = request.mongo.db
       var objID = request.mongo.ObjectID
-      console.log(request.payload.categories_ids.length)
-      console.log(request.payload.categories_ids)
-      var categories_objids = []
-      if (typeof request.payload.categories_ids == 'string') {
-        categories_objids[0] = new objID(request.payload.categories_ids)
-      } else {
-        for (var i = 0; i < request.payload.categories_ids.length; i++) {
-          categories_objids[i] = (new objID(request.payload.categories_ids[i]))
-        }
-      }
-      console.log(categories_objids)
+      // console.log(request.payload.categories_ids.length)
+      // console.log(request.payload.categories_ids)
+      // var categories_objids = []
+      // if (typeof request.payload.categories_ids == 'string') {
+      //   categories_objids[0] = new objID(request.payload.categories_ids)
+      // } else {
+      //   for (var i = 0; i < request.payload.categories_ids.length; i++) {
+      //     categories_objids[i] = (new objID(request.payload.categories_ids[i]))
+      //   }
+      // }
+      // console.log(categories_objids)
       console.log(request.payload)
       // console.log(require('bcrypt-nodejs').hashSync(request.payload.password))
       var newProject = {
@@ -69,16 +69,17 @@ ProjectController.prototype = (function () {
         password: request.payload.password,
         name: request.payload.name,
         description: request.payload.description,
-        categories_ids: categories_objids,
+        // categories_ids: categories_objids,
         address: request.payload.address,
         latitude: request.payload.latitude,
         longitude: request.payload.longitude,
         webpage: request.payload.webpage,
         facebook: request.payload.facebook
       }
-      ProjectManager.insert(db, newProject, function (res) {
-        reply(res)
-      })
+      reply('gooot')
+    // ProjectManager.insert(db, newProject, function (res) {
+    //   reply(res)
+    // })
     },
     update: function update (request, reply) {
       var db = request.mongo.db

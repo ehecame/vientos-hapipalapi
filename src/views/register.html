@@ -6,23 +6,26 @@
 	</div>
 	<div class="row">
 		<div id="registerContainer">
-			<form id="registerForm">
-				<div>
-					<div>Nombre:</div>
-					<div><input name="name" type="text"/></div>
+			<form class="form-horizontal" id="registerForm">
+			  <div class="form-group">
+			    <label for="inputName" class="col-sm-2 control-label">Nombre</label>
+			    <div class="col-sm-9">
+			      <input class="form-control" id="inputName" placeholder="Nombre del proyecto" name="name">
+			    </div>
+			  </div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">Descripción:</label>
+					<div class="col-sm-9">
+						<textarea class="form-control" id="" name="description" placeholder="Descripción" name="description"></textarea>
+					</div>
 				</div>
-				<div>
-					<div>Descripción:</div>
-					<div><textarea name="description"></textarea></div>
-				</div>
-				<div>
-					<div>Logo:</div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">Logo:</label>
 	        <input type="file" name="file" id="pictureFileInput">
-	        <button class="btn btn-default" onclick="uploadPicture()">Subir imagen</button>
 				</div>
-				<div>
-					<div>Categoria:</div>
-					<div id="categories">
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">Categoria:</label>
+					<div class="col-sm-9" id="categories">
 						<div class="row" id="categoriesSec">
 							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter selected" id="56281547b82163c71dea5fa0"><i class="fa fa-globe fa-2x"></i>Derechos Humanos</div>
 							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="56281497b82163c71dea5f9e"><i class="fa fa-shopping-basket fa-2x"></i>Productos y Servicios</div>
@@ -42,10 +45,10 @@
 						</div>
 					</div>
 				</div>
-				<div>
-					<div>Tipo de Proyecto:</div>
-					<div>
-						<select id="projectType">
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">Tipo de Proyecto:</label>
+					<div class="col-sm-9">
+						<select class="form-control" id="projectType">
 							<option value="collective">Colectivo</option>
 							<option value="cooperative">Cooperativa</option>
 							<option value="ngo">ONG</option>
@@ -56,46 +59,71 @@
 						</select>
 					</div>
 				</div>
-				<div>
-					<div>Página web:</div>
-					<div><input name="webpage" type="text"/></div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">Página web:</label>
+					<div class="col-sm-9">
+						<input class="form-control" name="webpage" type="text"/>
+					</div>
 				</div>
-				<div>
-					<div>Twitter:</div>
-					<div><input name="twitter" type="text"/></div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">Twitter:</label>
+					<div class="col-sm-9">
+						<input class="form-control" name="twitter" type="text"/>
+					</div>
 				</div>
-				<div>
-					<div>Facebook:</div>
-					<div><input name="facebook" type="text"/></div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">Facebook:</label>
+					<div class="col-sm-9">
+						<input class="form-control" name="facebook" type="text"/>
+					</div>
 				</div>
-				<div>
-					<div>Email:</div>
-					<div><input name="email" type="text"/></div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">Email:</label>
+					<div class="col-sm-9">
+						<input class="form-control" name="email" type="text"/>
+					</div>
 				</div>
-				<div>
-					<div>Telefono:</div>
-					<div><input name="phone" type="text"/></div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">Telefono:</label>
+					<div class="col-sm-9">
+						<input class="form-control" name="phone" type="text"/>
+					</div>
 				</div>
-				<div>
-					<div>Dirección:</div>
-					<div><input name="address" type="text"/></div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">Dirección:</label>
+					<div class="col-sm-9">
+						<input class="form-control" name="address" type="text"/>
+					</div>
 				</div>
-				<div>
-					<div>Ofrece</div>
-					<div id="offers"></div>
-					<div><input type="text" /><button id="addOfferBtn">+</button></div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">Ofrece</label>
+					<div class="col-sm-9">
+						<div>
+							<input class="form-control" type="text" id="newOfferInput"/>
+							<div class="btn btn-default" id="addOfferBtn" onclick="addOffer()">+</div>
+						</div>
+						<div id="offers"></div>
+					</div>
 				</div>
-				<div>
-					<div>Necesita</div>
-					<div id="needs"></div>
-					<div><input type="text" /><button id="addNeedBtn">+</button></div>
+				<div class="form-group">
+					<label for="" class="col-sm-2 control-label">Necesita</label>
+					<div class="col-sm-9">
+						<div>
+							<input class="form-control" type="text" id="newNeedInput" />
+							<div class="btn btn-default" id="addNeedBtn" onclick="addNeed()">+</div>
+						</div>
+						<div id="needs"></div>
+					</div>					
 				</div>
-				<div id="map"></div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Ubicación</label>
+					<div class="col-sm-9"><div id="map"></div></div>
+				</div>
 				<div>
 					<input type="hidden" id="hdnInputLat" name="latitude"/>
 					<input type="hidden" id="hdnInputLng" name="longitude"/>
 				</div>
-				<button id="registerBtn" onclick="onRegisterBtnClicked()">Registrar</button>
+				<div class="col-sm-4 col-sm-offset-2"><input id="registerBtn" class="btn btn-success" onclick="onRegisterBtnClicked()" value="Registrar" /></div>
 			</form>
 		</div>
 	</div>
