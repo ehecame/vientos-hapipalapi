@@ -166,6 +166,8 @@ function getCategoryIcon (id) {
   if (id == '562814bbb82163c71dea5f9f') return 'fa-bullhorn'
   if (id == '562815b2b82163c71dea5fa3') return 'fa-cogs'
   if (id == '562815bfb82163c71dea5fa4') return 'fa-bicycle'
+  if (id == '566327d38bf85d71b6c069c1') return 'fa-home'
+  if (id == '566353d1c3671ef030500668') return 'fa-scissors'
   else return 'fa-puzzle-piece'
 }
 

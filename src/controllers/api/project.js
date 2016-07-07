@@ -74,7 +74,9 @@ ProjectController.prototype = (function () {
         latitude: request.payload.latitude,
         longitude: request.payload.longitude,
         webpage: request.payload.webpage,
-        facebook: request.payload.facebook
+        facebook: request.payload.facebook,
+        offers: request.payload.offers,
+        needs: request.payload.needs
       }
       reply('gooot')
     // ProjectManager.insert(db, newProject, function (res) {
