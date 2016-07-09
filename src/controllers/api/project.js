@@ -55,6 +55,7 @@ ProjectController.prototype = (function () {
       var offersArray = []
       var needsArray = []
       var projectType = {}
+      var logo
       console.log(request.payload)
       if (request.payload['categories[]']) {
         if (typeof request.payload['categories[]'] == 'string') {
@@ -128,6 +129,15 @@ ProjectController.prototype = (function () {
           color: '#d45bc9'
         }
       }
+      if (request.payload.file) {
+        var fullPath = request.payload.file
+        var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'))
+        logo = fullPath.substring(startIndex)
+        if (logo.indexOf('\\') === 0 || logo.indexOf('/') === 0) {
+          logo = logo.substring(1)
+        }
+        console.log(logo)
+      }
       console.log(projectType)
       var newProject = {
         email: request.payload.email,
@@ -144,6 +154,7 @@ ProjectController.prototype = (function () {
         projectType: projectType,
         webpage: request.payload.webpage,
         facebook: request.payload.facebook,
+        logo: logo,
         schedule: scheduleArray,
         offers: offersArray,
         needs: needsArray
