@@ -1042,9 +1042,17 @@ h1 {
     
   }
 
+#registerPage{
+  margin-top: 55px;
+}
+
 #registerPage #map{
   width: 800px;
   height: 500px;
+}
+
+#registerPage #registerForm > div{
+  margin-right: 0px;
 }
 
   #registerPage #categories .category{
@@ -1064,6 +1072,14 @@ h1 {
     display: inline-block;
     width: 90%;
   }
+
+  #registerPage #newDaysInput,
+  #registerPage #newHoursInput{
+    display: inline-block;
+    width: 30%;
+    margin-right: 2px; 
+  }
+
 
   #registerPage #addOfferBtn,
   #registerPage #addNeedBtn{

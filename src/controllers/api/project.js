@@ -50,38 +50,109 @@ ProjectController.prototype = (function () {
     register: function register (request, reply) {
       var db = request.mongo.db
       var objID = request.mongo.ObjectID
-      // console.log(request.payload.categories_ids.length)
-      // console.log(request.payload.categories_ids)
-      // var categories_objids = []
-      // if (typeof request.payload.categories_ids == 'string') {
-      //   categories_objids[0] = new objID(request.payload.categories_ids)
-      // } else {
-      //   for (var i = 0; i < request.payload.categories_ids.length; i++) {
-      //     categories_objids[i] = (new objID(request.payload.categories_ids[i]))
-      //   }
-      // }
-      // console.log(categories_objids)
+      var categories_objids = []
+      var scheduleArray = []
+      var offersArray = []
+      var needsArray = []
+      var projectType = {}
       console.log(request.payload)
-      // console.log(require('bcrypt-nodejs').hashSync(request.payload.password))
+      if (request.payload['categories[]']) {
+        if (typeof request.payload['categories[]'] == 'string') {
+          categories_objids[0] = new objID(request.payload['categories[]'])
+        } else {
+          for (var i = 0; i < request.payload['categories[]'].length; i++) {
+            categories_objids[i] = (new objID(request.payload['categories[]'][i]))
+          }
+        }
+      }
+      if (request.payload['schedule[]']) {
+        if (typeof request.payload['schedule[]'] == 'string') {
+          scheduleArray[0] = request.payload['schedule[]']
+        } else {
+          scheduleArray = request.payload['schedule[]']
+        }
+      }
+      if (request.payload['offers[]']) {
+        if (typeof request.payload['offers[]'] == 'string') {
+          offersArray[0] = request.payload['offers[]']
+        } else {
+          offersArray = request.payload['offers[]']
+        }
+      }
+      if (request.payload['needs[]']) {
+        if (typeof request.payload['needs[]'] == 'string') {
+          needsArray[0] = request.payload['needs[]']
+        } else {
+          needsArray = request.payload['needs[]']
+        }
+      }
+      if (request.payload.projectType == 'collective') {
+        projectType = {
+          type: 'Cooperativa',
+          color: '#800000'
+        }
+      }
+      if (request.payload.projectType == 'cooperative') {
+        projectType = {
+          type: 'Colectivo',
+          color: '#008B8B'
+        }
+      }
+      if (request.payload.projectType == 'ngo') {
+        projectType = {
+          type: 'ONG',
+          color: '#556B2F'
+        }
+      }
+      if (request.payload.projectType == 'ethicalbusiness') {
+        projectType = {
+          type: 'Negocio Ético',
+          color: '#B8860B'
+        }
+      }
+      if (request.payload.projectType == 'neighborsorg') {
+        projectType = {
+          type: 'Iniciativa Ciudadana',
+          color: '#C63D1E'
+        }
+      }
+      if (request.payload.projectType == 'startup') {
+        projectType = {
+          type: 'Startup',
+          color: '#58376C'
+        }
+      }
+      if (request.payload.projectType == 'ontransition') {
+        projectType = {
+          type: 'En Transición',
+          color: '#d45bc9'
+        }
+      }
+      console.log(projectType)
       var newProject = {
         email: request.payload.email,
-        // password: require('bcrypt-nodejs').hashSync(request.payload.password, 10),
-        password: request.payload.password,
         name: request.payload.name,
         description: request.payload.description,
-        // categories_ids: categories_objids,
+        categories_ids: categories_objids,
         address: request.payload.address,
         latitude: request.payload.latitude,
         longitude: request.payload.longitude,
+        location: {
+          lat: request.payload.latitude,
+          lon: request.payload.longitude
+        },
+        projectType: projectType,
         webpage: request.payload.webpage,
         facebook: request.payload.facebook,
-        offers: request.payload.offers,
-        needs: request.payload.needs
+        schedule: scheduleArray,
+        offers: offersArray,
+        needs: needsArray
       }
-      reply('gooot')
-    // ProjectManager.insert(db, newProject, function (res) {
-    //   reply(res)
-    // })
+      console.log(newProject)
+      // reply('gooot')
+      ProjectManager.insert(db, newProject, function (res) {
+        reply(res)
+      })
     },
     update: function update (request, reply) {
       var db = request.mongo.db

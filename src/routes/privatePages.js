@@ -57,12 +57,12 @@ module.exports = function () {
             if (err) return reply(err)
             else {
               fs.readFile(files.file[0].path, function(err, data) {
-                fs.writeFile('./public/img/userPictures/' + files.file[0].originalFilename, data, function(err) {
+                fs.writeFile('./public/img/' + files.file[0].originalFilename, data, function(err) {
                   if (err) return reply(err);
                    else return reply('File uploaded : ' + files.file[0].originalFilename)
                 })
               })
-            }
+            } 
           })
         },
         auth: {
