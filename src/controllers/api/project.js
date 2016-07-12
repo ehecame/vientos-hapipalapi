@@ -19,14 +19,13 @@ ProjectController.prototype = (function () {
     findById: function findById (request, reply) {
       var db = request.mongo.db
       var objID = request.mongo.ObjectID
-      ProjectManager.findByCategoryId(db, new objID(request.params.project_id), function (res) {
+      ProjectManager.findById(db, new objID(request.params.project_id), function (res) {
         reply(res)
       })
     },
     findByCategoryId: function findByCategoryId (request, reply) {
       var db = request.mongo.db
-      var objID = request.mongo.ObjectID
-      ProjectManager.findByCategoryId(db, new objID(request.params.category_id), function (res) {
+      ProjectManager.findByCategoryId(db, request.params.category_id, function (res) {
         console.log(res)
         reply(res)
       })

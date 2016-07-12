@@ -4,13 +4,14 @@ $(document).ready(function () {
   })
   $('.card').flip({trigger: 'manual', forceHeight: true})
   $('.benefit').on('mouseover', function (event) {
-    console.log('over')
-    console.log($(this))
     $(this).find('.card').flip(true)
   })
   $('.benefit').on('mouseout', function (event) {
-    console.log('LEAVE')
-    console.log($(this))
     $(this).find('.card').flip(false)
   })
+  $('.category').click(categoryIconClicked)
 })
+
+function categoryIconClicked () {
+  window.location.href = '/map?cat=' + this.id
+}

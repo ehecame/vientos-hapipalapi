@@ -9,12 +9,18 @@ $(document).ready(function () {
   setCloseMapSideBarFunc()
   $('#btnCloseToMe').click(centerMapMyLocation)
   initializeMap()
-  addAllProjects()
+  if (getUrlParameter('cat')) {
+    filterCategory(getUrlParameter('cat'))
+    $('#' + getUrlParameter('cat')).addClass('selected')
+  } else {
+    addAllProjects()
+  }
   $('#btnCloseToMe').tooltip({placement: 'bottom'})
   $('#btnCloseToMe').tooltip('show')
   var elements = document.getElementsByTagName('*')
   for (var id = 0; id < elements.length; ++id) { elements[id].oncontextmenu = null; }
   setTopBarBtnsFunc()
+  setCategoryBarFunc()
 })
 
 function addAllProjects () {
@@ -46,10 +52,10 @@ function removeAllMarkers () {
   markers = new L.FeatureGroup()
 }
 
-function filterCategory (e) {
+function filterCategory (id) {
   removeAllMarkers()
   $.get(
-    '/api/project/category/' + e.id,
+    '/api/project/category/' + id,
     function (data) {
       addMarkers(data)
     }
@@ -238,6 +244,11 @@ function showMapSideBar (m) {
   if (m.needs) {
     $('#mapSideBar').find('#projectNeeds').html(createNeedsMarkup(m.needs))
   }
+  if (!m.offers && !m.needs) {
+    $('#offersNeedsRow').hide()
+  } else {
+    $('#offersNeedsRow').show()
+  }
   if (m.schedule) {
     console.log('tiene schedule')
     $('#mapSideBar').find('#projectSchedule').html(createScheduleMarkup(m.schedule))
@@ -305,6 +316,16 @@ function setTopBarBtnsFunc () {
 // $('#evetnsBtn').click(evetnsBtnClicked)
 }
 
+function setCategoryBarFunc () {
+  $('.categoryBtn').click(categoryBtnClicked)
+}
+
+function categoryBtnClicked () {
+  filterCategory(this.id)
+  $('.categoryBtn').removeClass('selected')
+  $(this).addClass('selected')
+}
+
 function categoriesBtnClicked () {
   $('#categoriesContainer').show()
   $('#categoriesBtn').removeClass('btn-default')
@@ -339,4 +360,19 @@ function waysOfCollaborationBtnClicked () {
   $('#typesContainer').hide()
   $('#typesBtn').addClass('btn-default')
   $('#typesBtn').removeClass('btn-success')
+}
+
+function getUrlParameter (sParam) {
+  var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+    sURLVariables = sPageURL.split('&'),
+    sParameterName,
+    i
+
+  for (i = 0; i < sURLVariables.length; i++) {
+    sParameterName = sURLVariables[i].split('=')
+
+    if (sParameterName[0] === sParam) {
+      return sParameterName[1] === undefined ? true : sParameterName[1]
+    }
+  }
 }

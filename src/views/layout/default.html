@@ -7,8 +7,8 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
-    <script src="https://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js" type="text/javascript"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script> 
     <script type="text/javascript" src="https://rawgit.com/maxatwork/form2js/master/src/form2js.js"></script>
     <script type="text/javascript" src="http://rawgit.com/opencagedata/leaflet-opencage-search/master/dist/js/L.Control.OpenCageSearch.dev.js"></script>
@@ -46,24 +46,24 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right fix-right">
             <li id="map_btn"><a href="/map">MAPA <img src="svg/map2" alt=""></a></li>
-            <li class="navBarBtn"><p class="navbar-text">/</p></li>
-            <li class="navBarBtn"><a href="/#collaborate-row">COLABORAR</a></li>
-            <li class="navBarBtn"><p class="navbar-text">/</p></li>
+            <li class="navBarBtn no_mobile" ><p class="navbar-text">/</p></li>
+            <li class="navBarBtn "><a href="/#collaborate-row">COLABORAR</a></li>
+            <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
             <li class="navBarBtn"><a href="/#benefits-row">BENEFICIOS</a></li>
-            <li class="navBarBtn"><p class="navbar-text">/</p></li>
+            <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
             <li class="navBarBtn"><a href="/#we-row">NOSOTROS</a></li>
             {{#if isAuthenticated}}
-                <li class="navBarBtn"><p class="navbar-text">/</p></li>
+                <li class="navBarBtn" no_mobile><p class="navbar-text">/</p></li>
                 <li class="navBarBtn"><a href="/myprofile">{{credentials.name}} {{credentials.lastname}}</a></li>
-                <li class="navBarBtn"><p class="navbar-text">/</p></li>
+                <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
                 <li class="navBarBtn"><a href="/logout">LOG OUT</a></li>
-                <li class="navBarBtn"><a href="#">&nbsp;</a></li>
+                <li class="navBarBtn no_mobile"><a href="#">&nbsp;</a></li>
             {{else}}
-                <li class="navBarBtn"><p class="navbar-text">/</p></li>
+                <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
                 <li class="navBarBtn"><a href="/shortregister"><strong>REGíSTRATE</strong></a></li>
-                <li class="navBarBtn"><p class="navbar-text">/</p></li>
+                <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
                 <li class="navBarBtn"><a href="#loginPopUp">LOGIN</a></li>
-                <li class="navBarBtn"><a href="#">&nbsp;</a></li>
+                <li class="navBarBtn no_mobile"><a href="#">&nbsp;</a></li>
             {{/if}}
           </ul>
         </div><!--/.nav-collapse -->    

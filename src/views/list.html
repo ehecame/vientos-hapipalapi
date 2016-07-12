@@ -1,0 +1,164 @@
+<script src="js/list"></script>
+<div id="searchPage">
+	<div id="mapTopBar">
+		<button class="btn btn-success" id="categoriesBtn">Categorias</button>
+		<button class="btn btn-default" id="typesBtn">Tipos</button>
+		<button class="btn btn-default" id="waysOfCollaborationBtn">¿Cómo Colaborar?</button>
+		<button class="btn btn-default" id="eventsBtn">Actividades y Eventos</button>
+		<span id="searchInputs">
+			<input type="text" id="keyWordsInput" placeholder="palabras clave" />
+			<input type="text" id="whereSearchInput" placeholder="lugar" />
+			<button class="btn btn-primary" onclick="filterByKeyWords()"><i class="fa fa-search"></i></button>
+		</span>
+	</div>
+	<div id="categoriesContainer">
+		<div class="categoryBtnAll" onclick="addAllProjects()">TODOS</div>
+		<div class="categoryBtn" id="56281547b82163c71dea5fa0" onclick="filterCategory(this)"><i class="fa fa-globe"></i>Derechos Humanos</div>
+		<div class="categoryBtn" id="56281497b82163c71dea5f9e" onclick="filterCategory(this)"><i class="fa fa-shopping-basket"></i>Productos y Servicios</div>
+		<div class="categoryBtn" id="5628158bb82163c71dea5fa2" onclick="filterCategory(this)"><i class="fa fa-pagelines"></i>Medio Ambiente</div>
+		<div class="categoryBtn" id="5628145fb82163c71dea5f9d" onclick="filterCategory(this)"><i class="fa fa-paint-brush"></i>Arte y Cultura</div>
+		<div class="categoryBtn" id="5660de8ca17bb1a413dd1add" onclick="filterCategory(this)"><i class="fa fa-transgender-alt"></i>Género</div>
+		<div class="categoryBtn" id="55663309a660da482b648a33" onclick="filterCategory(this)"><i class="fa fa-medkit"></i>Salud</div>
+		<div class="categoryBtn" id="556644179cfb86a021e5a150" onclick="filterCategory(this)"><i class="fa fa-book"></i>Educación</div>
+		<div class="categoryBtn" id="5776bfeaa6d9d136619e9b87" onclick="filterCategory(this)"><i class="fa fa-puzzle-piece"></i>Talleres y Clases</div>
+		<div class="categoryBtn" id="559e910a46343c3bccee7fbe" onclick="filterCategory(this)"><i class="fa fa-users"></i>Comunidad</div>
+		<div class="categoryBtn" id="559e90f046343c3bccee7fbd" onclick="filterCategory(this)"><i class="fa fa-cutlery"></i>Comida</div>
+		<div class="categoryBtn" id="566327d38bf85d71b6c069c1" onclick="filterCategory(this)"><i class="fa fa-home"></i>Vivienda</div>
+		<div class="categoryBtn" id="566353d1c3671ef030500668" onclick="filterCategory(this)"><i class="fa fa-scissors"></i>Vestido</div>
+		<div class="categoryBtn" id="562814bbb82163c71dea5f9f" onclick="filterCategory(this)"><i class="fa fa-bullhorn"></i>Comunicación</div>
+		<div class="categoryBtn" id="562815b2b82163c71dea5fa3" onclick="filterCategory(this)"><i class="fa fa-cogs"></i>Tecnología</div>
+		<div class="categoryBtn" id="562815bfb82163c71dea5fa4" onclick="filterCategory(this)"><i class="fa fa-bicycle"></i>Transporte</div>
+	</div>
+	<div id="waysOfCollaborationContainer">
+		<div>
+			<div class="collaborationWay">
+				<div class="circle"><img src="svg/materials" class="icon"></div>
+				<div class="colLabel">Materiales</div>
+			</div>
+			<div class="collaborationWay">
+				<div class="circle"><img src="svg/conocimientos" class="icon"></div>
+				<div class="colLabel">Conocimientos y Habilidades</div>
+			</div>
+			<div class="collaborationWay">
+				<div class="circle"><img src="svg/productos" class="icon"></div>
+				<div class="colLabel">Consumo ético</div>
+			</div>
+		</div>
+		<div>
+			<div class="collaborationWay">
+				<div class="circle"><img src="svg/fondos" class="icon"></div>
+				<div class="colLabel">Fondeo Colectivo</div>
+			</div>
+			<div class="collaborationWay">
+				<div class="circle"><img src="svg/chambas" class="icon"></div>
+				<div class="colLabel">Chambas</div>
+			</div>
+			<div class="collaborationWay">
+				<div class="circle"><img src="svg/eventos" class="icon"></div>
+				<div class="colLabel">Eventos y Actividades</div>
+			</div>
+		</div>
+		<div>
+			<div class="collaborationWay">
+				<div class="circle"><img src="svg/voluntariado" class="icon"></div>
+				<div class="colLabel">Voluntariado y Tequio</div>
+			</div>
+			<div class="collaborationWay">
+				<div class="circle"><img src="svg/difundir" class="icon"></div>
+				<div class="colLabel">Difusión de proyectos</div>
+			</div>
+			<div class="collaborationWay">
+				<div class="circle"><img src="svg/espacios" class="icon"></div>
+				<div class="colLabel">Espacios</div>
+			</div>
+		</div>
+		<div>
+			<div class="collaborationWay">
+				<div class="circle"><img src="svg/recomienda" class="icon"></div>
+				<div class="colLabel">Recomienda y vincula</div>
+			</div>
+			<div class="collaborationWay">
+				<div class="circle"><img src="svg/compArte" class="icon"></div>
+				<div class="colLabel">Comparte tu arte</div>
+			</div>
+		</div>
+	</div>
+	<div id="typesContainer">
+		<div class="typeBtn" id="cooperative">Cooperativa</div>
+		<div class="typeBtn" id="collective">Colectivo</div>
+		<div class="typeBtn" id="ngo">ONG</div>
+		<div class="typeBtn" id="ethicalBusiness">Negocio Ético</div>
+		<div class="typeBtn" id="citizenInitiative">Iniciativa Ciudadana</div>
+		<div class="typeBtn" id="startup">Startup</div>
+		<div class="typeBtn" id="onTransition">En Transición</div>
+	</div>
+	<div id="list"></div>
+</div>
+<script id="project-template" type="text/x-handlebars-template">
+ 	<div class="project">
+		<div id="topLeftCorner">
+			\{{#if logo}}
+			<div id="projectLogo" style="background-image: url('img/\{{logo}}')"></div>
+			\{{/if}}
+			<div id="projectType" style="background-color: \{{projectType.color}}">\{{projectType.type}}</div>
+		</div>
+		<h2 id="projectName">
+			\{{name}} 
+			<div id="projectCategories">
+			\{{#each categories}}
+				<i class="fa \{{this.icon}}" title="\{{this.name.es}}"></i>
+			\{{/each}}
+			</div>	
+		</h2>
+		<div id="projectDescription">\{{description}}</div>
+		<div id="projectContactData" class="content-fluid">
+			<div class="row">
+				<div>
+					\{{#if facebook}}
+					<a id="projectFacebook" href="\{{facebook}}" title="Visita su Facebook" style="color: #3a5795" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+					\{{/if}}
+					\{{#if twitter}}					
+					<a id="projectTwitter" href="\{{twitter}}" title="Visita su Twitter" style="color: #4099FF" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+					\{{/if}}
+					\{{#if webpage}}
+					<a id="projectWebSite" href="\{{webPage}}" title="Visita su página de internet" target="_blank">WWW</a>
+					\{{/if}}
+					\{{#if phone}}
+					<div id="projectPhone" title="\{{phone}}><i class="fa fa-phone-square fa-2x""></i></div>
+					\{{/if}}
+					\{{#if mobile}}
+					<div id="projectMobile" title="\{{mobile}}"><i class="fa fa-mobile fa-2x" ></i></div>
+					\{{/if}}
+					\{{#if email}}
+					<div id="projectEmail" title="\{{email}}"><i class="fa fa-envelope fa-2x"></i></div>
+					\{{/if}}
+					\{{#if address}}
+					<div id="projectAddress" title="\{{address}}"><i class="fa fa-map-signs fa-2x">	</i></div>
+					\{{/if}}
+				</div>
+			</div>
+			\{{#if offers}}
+				<div class="row" id="offersNeedsRow">					
+					<div class="col-md-6">
+						<div><h4 class="offersNeedsTitles">Ofrece:</h4></div>
+						<div id="projectOffers">
+							\{{#each offers}}
+							<div class="offer">\{{this}}</div>
+							\{{/each}}
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div><h4 class="offersNeedsTitles">Necesita:</h4></div>
+						<div id="projectNeeds">
+							\{{#each needs}}
+							<div class="offer">\{{this}}</div>
+							\{{/each}}
+						</div>	
+					</div>
+				</div>
+			\{{/if}}
+		</div>					 
+	</div>
+</script>
+
+

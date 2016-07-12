@@ -293,6 +293,9 @@ h1 {
     vertical-align: top; 
     margin-right: 10px;}
 
+    #categories-row .category:hover{
+      cursor: pointer; }
+
     #categories-row .category .circle {
       background-color: #38c12d;
       height: 60px;
@@ -422,12 +425,10 @@ h1 {
 /* ----------------------------------------------  MEDIAS */
 @media (max-width: 992px) {
   .no_mobile {
-    display: none; }
+    display: none !important;}
   #home-row {
-    height: auto;
+    height: 50vh;
   }
-  #benefits-row .text-center {
-    text-align: right; }
   .redes, .links, .datos_contacto {
     text-align: center !important;
     border: 0px; }
@@ -692,35 +693,46 @@ h1 {
 
 /* MAPA */
 
-#mapPage{
+#searchPage{
   height: 83vh;
   margin-top: 50px;}
 
-  #mapPage #mapTopBar{
+  #searchPage #mapTopBar{
     padding: 10px;
     background-color: #8cafaf;}
 
-    #mapPage #mapTopBar #searchInputs{
+    #searchPage #mapTopBar #searchInputs{
       border: solid 1px #dddddd;
       border-radius: 5%;
       padding-left: 10px;
       background-color: white;
       float: right;}
 
-      #mapPage #mapTopBar #searchInputs input{
+      #searchPage #mapTopBar #searchInputs input{
         border: none;
         margin-left: 10px;}
 
-      #mapPage #mapTopBar #searchInputs #keyWordsInput{
+      #searchPage #mapTopBar #searchInputs #keyWordsInput{
         border-right: 1px solid #dddddd;}
 
-      #mapPage #mapTopBar #searchInputs button{
+      #searchPage #mapTopBar #searchInputs button{
         border:none;}
 
 
-  #mapPage #map{
+  #searchPage #map{
     height: 100%;
     width: 100%;}
+
+  #searchPage #list{
+    margin-left: 350px;
+  }
+
+  #searchPage #list .project{
+    background-color: #efe;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+  }
 
   #map .leaflet-div-icon {
      background: none; 
@@ -730,14 +742,14 @@ h1 {
    /* .leaflet-left .leaflet-control {
     display: none;}*/
 
-  #mapPage #categoriesContainer{
+  #searchPage #categoriesContainer{
     position: absolute;
     top: 110px;
     left: 10px;
     border-radius: 10px;
   }
 
-    #mapPage #categoriesContainer .categoryBtn{
+    #searchPage #categoriesContainer .categoryBtn{
       height: 5vh;
       padding: 10px;
       background-color: rgba(97, 125, 125, 0.8);;
@@ -746,7 +758,12 @@ h1 {
       border-radius: 20px;
     }
 
-    #mapPage #categoriesContainer .categoryBtnAll{
+    #searchPage #categoriesContainer .selected{
+      background-color: rgba(24, 86, 86, 0.8);
+      text-align: right;
+    }
+
+    #searchPage #categoriesContainer .categoryBtnAll{
       height: 5vh;
       padding: 10px;
       background-color: #48bb59;
@@ -755,23 +772,23 @@ h1 {
       border-radius: 20px; 
     }
 
-    #mapPage #categoriesContainer .categoryBtn i{
+    #searchPage #categoriesContainer .categoryBtn i{
       padding-right: 5px;
     }
 
 
-    #mapPage #categoriesContainer .categoryBtn:hover{
+    #searchPage #categoriesContainer .categoryBtn:hover{
       background-color: #39d24e;  
     }
 
-  #mapPage #typesContainer{
+  #searchPage #typesContainer{
     position: absolute;
     top: 110px;
     left: 10px;
     border-radius: 10px;
     display: none;}
 
-    #mapPage #typesContainer .typeBtn{
+    #searchPage #typesContainer .typeBtn{
       height: 25px;
       border-radius: 10px;
       border: none;
@@ -780,35 +797,35 @@ h1 {
       padding: 5px; 
       cursor: pointer;}
 
-       #mapPage #typesContainer #cooperative{
+       #searchPage #typesContainer #cooperative{
         background-color: #800000;
        }
 
-       #mapPage #typesContainer #collective{
+       #searchPage #typesContainer #collective{
         background-color: #008B8B;
        }
 
-       #mapPage #typesContainer #ngo{
+       #searchPage #typesContainer #ngo{
         background-color: #556B2F;
        }
 
-       #mapPage #typesContainer #ethicalBusiness{
+       #searchPage #typesContainer #ethicalBusiness{
         background-color: #B8860B;
        }
 
-       #mapPage #typesContainer #citizenInitiative{
+       #searchPage #typesContainer #citizenInitiative{
         background-color: #C63D1E;
        }
 
-       #mapPage #typesContainer #startup{
+       #searchPage #typesContainer #startup{
         background-color: #58376C;
        }
 
-       #mapPage #typesContainer #onTransition{
+       #searchPage #typesContainer #onTransition{
         background-color: #d45bc9;
        }
 
-  #mapPage #waysOfCollaborationContainer{
+  #searchPage #waysOfCollaborationContainer{
     position: absolute;
     top: 110px;
     left: 10px;
@@ -817,14 +834,14 @@ h1 {
     background-color: #9bca93;
     padding: 20px;}
 
-    #mapPage #waysOfCollaborationContainer .collaborationWay .circle{
+    #searchPage #waysOfCollaborationContainer .collaborationWay .circle{
       background-color: white;
       cursor: pointer; }
 
-      #mapPage #waysOfCollaborationContainer .collaborationWay .circle:hover{
+      #searchPage #waysOfCollaborationContainer .collaborationWay .circle:hover{
         background-color: #48bb59;}
 
-  #mapPage #btnCloseToMe{
+  #searchPage #btnCloseToMe{
     position: absolute;
     top: 130px;
     right: 50px;
@@ -838,7 +855,7 @@ h1 {
     cursor: pointer;
   }
 
-  #mapPage #projectList{
+  #searchPage #projectList{
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -882,7 +899,7 @@ h1 {
   line-height: 95%;
 }
 
-#mapPage #mapSideBar{
+#searchPage #mapSideBar{
   position: absolute;
   top:60px;
   right: 0px;
@@ -897,22 +914,23 @@ h1 {
   z-index: 8;
 }
 
-#mapPage #mapSideBar hr{
+#searchPage #mapSideBar hr{
   border-top: 1px solid #ccc;
   margin-bottom: 0px;
 }
 
-#mapPage #mapSideBar #projectName{
+#searchPage #mapSideBar #projectName{
   margin: 0px; }
-#mapPage #mapSideBar .offersNeedsTitles {
+#searchPage #mapSideBar .offersNeedsTitles {
   margin: 0px 0px 15px 0px; }
 
-#mapPage #mapSideBar #topLeftCorner{
+#searchPage #topLeftCorner{
   float: left;
   margin-right: 15px;
 }
 
-#mapPage #mapSideBar #topLeftCorner #projectLogo{  
+#searchPage #mapSideBar #topLeftCorner #projectLogo, 
+#searchPage .project #topLeftCorner #projectLogo{  
   height: 100px;
   width: 100px;
   border-radius: 50px;
@@ -920,7 +938,8 @@ h1 {
   background-repeat: no-repeat;
 }
 
-#mapPage #mapSideBar #topLeftCorner #projectType {
+#searchPage #mapSideBar #topLeftCorner #projectType,
+#searchPage .project #topLeftCorner #projectType {
   height: 25px;
   border-radius: 10px;
   border: none;
@@ -930,7 +949,7 @@ h1 {
     padding: 5px;   
 }
 
-#mapPage #mapSideBar #projectDescription{
+#searchPage #mapSideBar #projectDescription{
   display: -webkit-box;
   font-size: 1.2em;
   overflow: hidden;
@@ -941,33 +960,38 @@ h1 {
   margin-bottom: 10px;
 }
 
-#mapPage #mapSideBar .btn-profile{
+#searchPage #mapSideBar .btn-profile{
   background-color: #3fa951;
   border-color: #bbb;
   color: white;
   float: right; 
 }
 
-#mapPage #mapSideBar .btn-profile:hover{
+#searchPage #mapSideBar .btn-profile:hover{
   opacity: 0.9;
 }
 
-#mapPage #mapSideBar #projectContactData .row{
+#searchPage #mapSideBar #projectContactData .row{
   margin-top: 10px;
 }
 
-/*#mapPage #mapSideBar #projectContactData div{
+/*#searchPage #mapSideBar #projectContactData div{
   margin: 3px;
   padding-left: 30px;
   font-size: 1.2em;
 }*/
 
-#mapPage #mapSideBar #projectFacebook,
-#mapPage #mapSideBar #projectTwitter{
+#searchPage #projectCategories{
+  display: inline-block;
+  margin-left: 30px;
+}
+
+#searchPage #projectFacebook,
+#searchPage #projectTwitter{
   margin-right: 10px;
 }
 
-#mapPage #mapSideBar #projectWebSite{
+#searchPage #projectWebSite{
   color: #000;
   letter-spacing: 2px;
   border: 2px solid #bbb;
@@ -977,24 +1001,36 @@ h1 {
   top: -5px;
 }
 
-#mapPage #mapSideBar #projectPhone i,
-#mapPage #mapSideBar #projectMobile i,
-#mapPage #mapSideBar #projectEmail i,
-#mapPage #mapSideBar #projectAddress i,
-#mapPage #mapSideBar #scheduleSec i{
+#searchPage .project #projectContactData{
+  margin-top: 20px;
+}
+
+#searchPage .project #projectPhone,
+#searchPage .project #projectMobile,
+#searchPage .project #projectEmail,
+#searchPage .project #projectAddress{
+  display: inline-block;
+  margin-left: 10px;
+}
+
+#searchPage #mapSideBar #projectPhone i,
+#searchPage #mapSideBar #projectMobile i,
+#searchPage #mapSideBar #projectEmail i,
+#searchPage #mapSideBar #projectAddress i,
+#searchPage #mapSideBar #scheduleSec i{
   margin: 0px 10px;
   float: left;
 }
 
-#mapPage #mapSideBar #projectPhone ,
-#mapPage #mapSideBar #projectMobile ,
-#mapPage #mapSideBar #projectEmail ,
-#mapPage #mapSideBar #projectAddress {
+#searchPage #mapSideBar #projectPhone ,
+#searchPage #mapSideBar #projectMobile ,
+#searchPage #mapSideBar #projectEmail ,
+#searchPage #mapSideBar #projectAddress {
   text-overflow: ellipsis;
   overflow: hidden; 
 }
 
-#mapPage #mapSideBar #offersNeedsRow i {
+#searchPage #mapSideBar #offersNeedsRow i {
   color: #38c12d;
   font-size: .6em;
   vertical-align: middle;

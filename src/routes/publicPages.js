@@ -62,6 +62,21 @@ module.exports = function () {
       }
     }, {
       method: 'GET',
+      path: '/list',
+      config: {
+        handler: function (request, reply) {
+          var data = {
+            isAuthenticated: SessionController.isAuthenticated(request)
+          }
+          if (data.isAuthenticated) {
+            data.credentials = SessionController.getSession(request)
+          }
+          reply.view('list', data)
+        }
+      // auth: false
+      }
+    }, {
+      method: 'GET',
       path: '/register',
       handler: function (request, reply) {
         reply.view('register')

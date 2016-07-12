@@ -8,7 +8,7 @@ ProjectManager.prototype = (function () {
     },
     findAll: function findAll (db, callback) {
       console.log('findAllProjects')
-      db.collection('projects').find().toArray(function (err, docs) {
+      db.collection('projects').find().sort({logo: -1}).toArray(function (err, docs) {
         console.log(docs.length)
         callback(docs)
       })
@@ -18,17 +18,17 @@ ProjectManager.prototype = (function () {
         callback(docs)
       })
     },
-    findById: function findAll (db, project_id, callback) {
+    findById: function findById (db, project_id, callback) {
       db.collection('projects').find({'_id': project_id}).toArray(function (err, docs) {
         callback(docs)
       })
     },
-    findByCategoryId: function findAll (db, category_id, callback) {
-      db.collection('projects').find({'categories_ids': category_id}).toArray(function (err, docs) {
+    findByCategoryId: function findByCategoryId (db, category_id, callback) {
+      db.collection('projects').find({'categories.catId': category_id}).sort({logo: -1}).toArray(function (err, docs) {
         callback(docs)
       })
     },
-    findByKeyWords: function findAll (db, keyWords, callback) {
+    findByKeyWords: function findByKeyWords (db, keyWords, callback) {
       var query = { $text: { $search: keyWords } }
       db.collection('projects').find(query).toArray(function (err, docs) {
         callback(docs)
