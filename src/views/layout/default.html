@@ -12,16 +12,16 @@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script> 
     <script type="text/javascript" src="https://rawgit.com/maxatwork/form2js/master/src/form2js.js"></script>
     <script type="text/javascript" src="http://rawgit.com/opencagedata/leaflet-opencage-search/master/dist/js/L.Control.OpenCageSearch.dev.js"></script>
-    <script src="js/leaflet-src"></script>
-    <script src="js/main"></script>
-    <link rel="stylesheet" type="text/css" href="css/leaflet" />
+    <script src="/js/leaflet-src"></script>
+    <script src="/js/main"></script>
+    <link rel="stylesheet" type="text/css" href="/css/leaflet" />
     <link rel="stylesheet" type="text/css" href="http://rawgit.com/opencagedata/leaflet-opencage-search/master/dist/css/L.Control.OpenCageSearch.dev.css" />
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
     <link rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <link rel='stylesheet' href='css/animate'>
-    <link rel="stylesheet" href="css/style">
+    <link rel='stylesheet' href='/css/animate'>
+    <link rel="stylesheet" href="/css/style">
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet-src.js"></script>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
@@ -34,18 +34,15 @@
     <nav class="navbar navbar-vientos navbar-fixed-top">      
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+          <i class="fa fa-bars fa-lg"></i>
           </button>
           <a class="navbar-brand" href="/">
-            <span class="logo"><img src="img/logo_transp.png" alt=""></span>
+            <span class="logo"><img src="/img/logo_transp.png" alt=""></span>
           </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right fix-right">
-            <li id="map_btn"><a href="/map">MAPA <img src="svg/map2" alt=""></a></li>
+            <li id="map_btn"><a href="/map">MAPA <img src="/svg/map2" alt=""></a></li>
             <li class="navBarBtn no_mobile" ><p class="navbar-text">/</p></li>
             <li class="navBarBtn "><a href="/#collaborate-row">COLABORAR</a></li>
             <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
@@ -53,7 +50,7 @@
             <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
             <li class="navBarBtn"><a href="/#we-row">NOSOTROS</a></li>
             {{#if isAuthenticated}}
-                <li class="navBarBtn" no_mobile><p class="navbar-text">/</p></li>
+                <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
                 <li class="navBarBtn"><a href="/myprofile">{{credentials.name}} {{credentials.lastname}}</a></li>
                 <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
                 <li class="navBarBtn"><a href="/logout">LOG OUT</a></li>
@@ -93,7 +90,7 @@
             <div class="btn_registrate btn btn-default col-md-offset-2">REGíSTRATE</div>
         </div>
         <div class="col-md-6 logo_footer">
-            <img src="img/logo.svg" alt="">
+            <img src="/img/logo_transp.png" alt="">
         </div>
     </div>
 </div>
@@ -114,8 +111,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<script src="js/main"></script>
-<script src="js/login"></script>
-<script src="js/jquery.flip.min"></script>
+<script src="/js/main"></script>
+<script src="/js/login"></script>
+<script src="/js/jquery.flip.min"></script>
 </body>
 </html>

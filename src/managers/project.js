@@ -19,7 +19,10 @@ ProjectManager.prototype = (function () {
       })
     },
     findById: function findById (db, project_id, callback) {
+      console.log(project_id)
       db.collection('projects').find({'_id': project_id}).toArray(function (err, docs) {
+        console.log(docs)
+        console.log(err)
         callback(docs)
       })
     },

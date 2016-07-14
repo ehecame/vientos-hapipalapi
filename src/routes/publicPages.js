@@ -138,6 +138,26 @@ module.exports = function () {
         } /*,
         auth: false*/
       }
+    }, {
+      method: 'GET',
+      path: '/project/{projectId}',
+      config: {
+        handler: function (request, reply) {
+          var db = request.mongo.db
+          var objID = request.mongo.ObjectID
+          ProjectManager.findById(db, new objID(request.params.projectId), function (res) {
+            var data = res[0]
+            data.isAuthenticated = SessionController.isAuthenticated(request)
+            data.withOutFooter = true
+            if (data.isAuthenticated) {
+              data.credentials = SessionController.getSession(request)
+            }
+            reply.view('projectProfile', data)
+          })
+        } /*,
+        auth: false*/
+      }
     }
+
   ]
 }()

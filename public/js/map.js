@@ -28,6 +28,7 @@ function addAllProjects () {
   $.get(
     '/api/projects',
     function (data) {
+      console.log(data.length)
       addMarkers(data)
     }
   )
@@ -129,12 +130,13 @@ function addMarkers (markerList) {
     } else {
       console.log('ya tiene projectType')
     }
+    var icon = m.categories ? m.categories[0].icon : m.categoryIcon
     if (m.latitude && m.longitude) {
       myIcon = L.divIcon({
         html: '<div class="myIcon fa-stack fa-2x">' +
           '<i class="fa fa-map-marker fa-stack-2x" style="color:' + m.projectType.color + ';"></i>' +
           '<i class="fa fa-circle fa-stack-1x" style="margin-top: -.2em; color:' + m.projectType.color + ';"></i> ' +
-          '<i class="fa ' + m.categoryIcon + ' fa-stack-1x" style="margin-top: -.3em; font-size: .7em; color: white; " ></i>' +
+          '<i class="fa ' + icon + ' fa-stack-1x" style="margin-top: -.3em; font-size: .7em; color: white; " ></i>' +
           '<div class="markerPopUp">' +
           '<div class="markerPopUpName">' + m.name + '</div>' +
           '</div>' +
@@ -187,6 +189,7 @@ function showMapSideBar (m) {
     $('#mapSideBar').find('#projectLogo').hide()
   $('#mapSideBar').find('#projectName').html(m.name)
   $('#mapSideBar').find('#projectDescription').html(m.description)
+  $('#mapSideBar').find('#projectProfileLink').attr('href', '/project/' + m._id)
   $('#mapSideBar').find('#projectType').html(m.projectType.type)
   $('#mapSideBar').find('#projectType').css('background-color', m.projectType.color)
   if (m.facebook) {

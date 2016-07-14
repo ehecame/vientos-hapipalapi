@@ -7,6 +7,7 @@ ProjectController.prototype = (function () {
       console.log('FindAllProjects')
       var db = request.mongo.db
       ProjectManager.findAll(db, function (res) {
+        console.log('projects: ' + res.length)
         reply(res)
       })
     },

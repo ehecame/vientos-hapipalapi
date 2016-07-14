@@ -139,6 +139,10 @@ h1 {
   color: #333;
 }
 
+.collapsed{
+  margin-top: 6px;
+}
+
 #map_btn :hover {
   background-color: ; }
 
@@ -170,14 +174,14 @@ h1 {
 /* --------- HOME CONTAINER */
 #home-row {
   height: 80vh;
-  margin-top: 50px;
-  margin-left: 111px;
-  background-image: url("/img/fondoHome.jpg");
-  background-repeat: no-repeat;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain; }
+  margin-top: 50px; 
+  vertical-align:middle; 
+  text-align:center;  }
+
+  #home-row #homeImage{
+    max-height: 100%;
+    max-width: 100%;
+  }
 
 /* ------ BENEFITS CONTAINER */
 #benefits-row {
@@ -300,7 +304,24 @@ h1 {
       background-color: #38c12d;
       height: 60px;
       width: 60px;
-      border-radius: 30px; }  
+      border-radius: 30px; 
+      box-shadow: 5px 5px 5px #ddd; }  
+
+    #categories-row .category .circle:active{
+      box-shadow: none; 
+      position: relative;
+      top: 5px;
+      left: 5px;
+    }
+
+    #categories-row .category .circle:hover{
+      box-shadow: 3px 3px 3px #ddd; 
+      position: relative;
+      top: 2px;
+      left: 2px;
+    }  
+
+
 
     #categories-row .category i {
       color: white;
@@ -427,7 +448,7 @@ h1 {
   .no_mobile {
     display: none !important;}
   #home-row {
-    height: 50vh;
+    height: inherit;
   }
   .redes, .links, .datos_contacto {
     text-align: center !important;
@@ -512,31 +533,36 @@ h1 {
 }
 
 /* User Profile */
-/*#userProfile #topBar{
+/*.profile #topBar{
   height: 200px;
 }*/
 
-#userProfile {
+.profile {
   background-color: #eeeeee;
   padding: 20px;}
 
-#userProfile #topBar {
+.profile #topBar {
   background-color: white;}
 
-#userProfile #topBar .row > div{
+.profile #topBar .row > div{
   height: 200px;
   padding: 10px;}
 
-#userProfile #topBar #picture .fakePicture{
+.profile #topBar #picture .fakePicture{
   background-color: grey;
   height: 180px;
   width: 180px;}
 
+.profile #topBar #picture img{
+  max-width: 100%;
+  max-height: 100%;
+}
 
-#userProfile #sectionButtonsRow{
+
+.profile #sectionButtonsRow{
   text-align: center;}
 
-#userProfile #sectionButtonsRow .sectionBtn{
+.profile #sectionButtonsRow .sectionBtn{
   display: inline-block;
   padding: 5px;
   height: 30px;
@@ -547,52 +573,52 @@ h1 {
   position: relative;
   top: 50%;}
 
-#userProfile #sectionButtonsRow .sectionBtn:hover{
+.profile #sectionButtonsRow .sectionBtn:hover{
   cursor: pointer;
   background-color: red;
   position: relative;
   top: 3px;}
 
-#userProfile #sectionButtonsRow .selected{
+.profile #sectionButtonsRow .selected{
   background-color: blue;
   width: 50px;}
 
-  #userProfile .fakePhoto{
+  .profile .fakePhoto{
     width: 50px;
     height: 50px;
     background-color: lightblue;}
 
-  #userProfile .label {
+  .profile .label {
     margin-left: 5px;
   }
 
-#userProfile #secHome{}
+.profile #secHome{}
 
-#userProfile #secHome .collaboration{
+.profile #secHome .collaboration{
   cursor: pointer;
   padding: 10px; 
 }
 
 
-#userProfile #secProjects{}
+.profile #secProjects{}
   
-  #userProfile #secProjects .myProject,
-  #userProfile #secProjects .suggestedProject,
-  #userProfile #secProjects .likedProject{
+  .profile #secProjects .myProject,
+  .profile #secProjects .suggestedProject,
+  .profile #secProjects .likedProject{
     cursor: pointer;
     padding: 10px;  }
 
 
 
-#userProfile #secOffersAndNeeds{}
+.profile #secOffersAndNeeds{}
 
-#userProfile #secOffersAndNeeds #offers,
-#userProfile #secOffersAndNeeds #needs{
+.profile #secOffersAndNeeds #offers,
+.profile #secOffersAndNeeds #needs{
   padding: 10px;
   background-color: white;
   border-radius: 20px;}
 
-  #userProfile #secOffersAndNeeds .collaborationCategory{
+  .profile #secOffersAndNeeds .collaborationCategory{
     border: 1px solid #ddd;
     padding: 5px;
     margin: 20px 3px;
@@ -600,40 +626,40 @@ h1 {
     cursor: pointer;
   }
 
-  #userProfile #secOffersAndNeeds .offer,
-  #userProfile #secOffersAndNeeds .need {
+  .profile #secOffersAndNeeds .offer,
+  .profile #secOffersAndNeeds .need {
     margin-left: 30px;
     cursor: pointer;
     padding: 5px;}
 
-    #userProfile #secOffersAndNeeds .offer:nth-child(even),
-    #userProfile #secOffersAndNeeds .need:nth-child(even){
+    .profile #secOffersAndNeeds .offer:nth-child(even),
+    .profile #secOffersAndNeeds .need:nth-child(even){
       background-color: #d6f1d6;
       color: #989696;}
 
-    #userProfile #secOffersAndNeeds .offer:nth-child(odd),
-    #userProfile #secOffersAndNeeds .need:nth-child(odd){
+    .profile #secOffersAndNeeds .offer:nth-child(odd),
+    .profile #secOffersAndNeeds .need:nth-child(odd){
       background-color: white;
       color: #aaaaaa;}
 
-    #userProfile #secOffersAndNeeds .offer > div,
-    #userProfile #secOffersAndNeeds .need > div{
+    .profile #secOffersAndNeeds .offer > div,
+    .profile #secOffersAndNeeds .need > div{
       display: inline-block;
       margin-right: 20px;
       vertical-align: middle; }
 
     
 
-#userProfile #secInterests{
+.profile #secInterests{
   background-color: white;
   border-radius: 20px;
   padding: 20px; }
 
-  #userProfile #secInterests #categories #categoriesSec{
+  .profile #secInterests #categories #categoriesSec{
     margin-top: 50px;
   }
 
-  #userProfile #secInterests #categories .category{
+  .profile #secInterests #categories .category{
     width: 100px;
     height: 100px;
     background-color: purple;
@@ -644,21 +670,21 @@ h1 {
     cursor: pointer;  
   }
 
-  #userProfile #secInterests #categories .selected{
+  .profile #secInterests #categories .selected{
     background-color: #ff6a00;
   }
 
-    #userProfile #secInterests #categories .category i{
+    .profile #secInterests #categories .category i{
       display: block;}
 
-  #userProfile #secInterests #interestList{
+  .profile #secInterests #interestList{
     margin: 10px;
     padding: 10px;
     border-radius: 10px;
     background-color: #eeeeee; 
   }
 
-#userProfile #secConfiguration{
+.profile #secConfiguration{
   background-color: white;
   border-radius: 20px;
   padding: 20px; }
@@ -1080,6 +1106,7 @@ h1 {
 
 #registerPage{
   margin-top: 55px;
+  margin-bottom: 100px;
 }
 
 #registerPage #map{
@@ -1140,3 +1167,7 @@ h1 {
 
   #registerPage #categories .category i{
    display: block;    }
+
+#projectProfile{
+  margin-top: 55px;
+}
