@@ -59,7 +59,8 @@ server.register(require('vision'), function (err) {
     },
     path: './src/views',
     layoutPath: './src/views/layout',
-    layout: 'default'
+    layout: 'default',
+    helpersPath: 'src/views/helpers'
   })
 })
 

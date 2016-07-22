@@ -1,13 +1,34 @@
+var map
+
 $(document).ready(function () {
   addSectionBtnsFunc()
   addCollaborationFunc()
   addOffersAndNeedsFunc()
   addInterestsFunc()
-  loadMyProjects()
+  initializeMap()
 })
 
 function addSectionBtnsFunc () {
-  $('.sectionBtn').click(sectionBtnClicked)
+  $('#sectionTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
+}
+
+function initializeMap () {
+  var lat = $('#projectLat0').val()
+  var lon = $('#projectLon0').val()
+  map = L.map('map', {zoomControl: false}).setView([lat, lon], 15)
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'ralexrdz.nnh64i75',
+    accessToken: 'pk.eyJ1IjoicmFsZXhyZHoiLCJhIjoiY2lmdHB2aGo2MTZ4MnQ1bHkzeDJyaDMzNyJ9.UHhEm9gA1_uwAztXjb7iTQ'
+  }).addTo(map)
+  L.control.zoom({
+    position: 'bottomright'
+  }).addTo(map)
+  map.addLayer(L.marker([lat, lon]))
 }
 
 function sectionBtnClicked () {
@@ -129,17 +150,4 @@ function uploadPicture () {
       console.log(data)
     }
   })
-}
-
-function loadMyProjects () {
-  myProjectTemplate = Handlebars.compile($('#projectNoLocation-template').html())
-  $.get(
-    '/api/projects',
-    function (projects) {
-      $.each(projects, function (i, project) {
-        project.notificationNumber = Math.floor((Math.random() * 6)) // notRandomLater
-        $('#myProjectList').append(myProjectTemplate(project))
-      })
-    }
-  )
 }

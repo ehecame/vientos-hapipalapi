@@ -95,12 +95,85 @@ h1 {
   text-align: center;
   position: relative;
   top: 50%;
-  transform: translateY(-50%);}
+  transform: translateY(-50%); }
 
 .right-border {
-  border-right: solid grey 1px; 
+  border-right: solid grey 1px; }
+
+.tx-al-l{
+  text-align: left; }
+
+.tx-al-r{
+  text-align: right; }
+
+.tx-al-c{
+text-align: center; }
+
+.tx-al-j{
+  text-align: justify; }
+
+.fa-select {
+    font-family: sans-serif, 'FontAwesome'; }
+
+.mr-l-5{
+  margin-left: 5px; }
+
+.mr-r-5{
+  margin-right: 5px; }
+
+.mr-t-5{
+  margin-top: 5px; }
+
+.mr-b-5{
+  margin-bottom: 5px; }
+
+.mr-l-10{
+  margin-left: 10px; }
+
+.mr-r-10{
+  margin-right: 10px; }
+
+.mr-t-10{
+  margin-top: 10px; }
+
+.mr-b-10{
+  margin-bottom: 10px; }
+
+.fs-75{
+  font-size: .75em; }
+
+.fs-80{
+  font-size: .8em; }
+
+.fs-90{
+  font-size: .9em; }
+
+.fs-125{
+  font-size: 1.25em; }
+
+.fs-150{
+  font-size: 1.5em; }
+
+.fs-200{
+  font-size: 2em; }
+
+.fs-250{
+  font-size: 2.5em; }
+
+.affix {
+  top: 55px;
+  width: 100%;
+  z-index: 20;   }
+
+.green{
+  color: #38c12d;
 }
 
+.1-line{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 /* GENERAL CONTAINERS INDEX */
 /* ------------ TOP MENU */
 /*.navbar-right {
@@ -541,26 +614,74 @@ h1 {
   background-color: #eeeeee;
   padding: 20px;}
 
+.profile #map{
+  width: 100%;
+  height: 200px;
+}
+
 .profile #topBar {
   background-color: white;}
 
-.profile #topBar .row > div{
+.profile #topBar #picture,
+.profile #topBar #projectData,
+.profile #topBar #personalData,
+.profile #topBar #description,
+.profile #topBar #interests,
+.profile #topBar #collaborations,
+.profile #topBar #contactData{
   height: 200px;
-  padding: 10px;}
+  padding: 10px; }
 
 .profile #topBar #picture .fakePicture{
   background-color: grey;
   height: 180px;
-  width: 180px;}
+  width: 180px; }
 
 .profile #topBar #picture img{
   max-width: 100%;
-  max-height: 100%;
+  max-height: 100%; }
+
+.profile #topBar #projectName{
+  font-size: 2em; 
+  line-height: 85%; }
+
+.profile #topBar #description > div{
+  max-height: 170px;
+  overflow: hidden;
+  padding-right: 5px;
+}
+
+.profile #topBar #description > div:hover{
+  overflow: auto;
 }
 
 
-.profile #sectionButtonsRow{
-  text-align: center;}
+
+.profile #topBar #projectCategories i{
+  background-color: #38c12d;
+  color: white;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  padding-top: 8px; 
+}
+
+.nav-tabs>li.active>a{
+  background: #38c12d !important; 
+  color: white !important;
+  opacity: 1;
+}
+
+.nav-tabs>li>a{
+  border-color: #eee !important; 
+  color: #111 !important;
+  background-color: white !important;
+}
+
+.nav-tabs>li.active>a:hover{
+  background: #38c12d !important; 
+  color: white !important;
+}
 
 .profile #sectionButtonsRow .sectionBtn{
   display: inline-block;
@@ -610,15 +731,15 @@ h1 {
 
 
 
-.profile #secOffersAndNeeds{}
+.profile #secOffersNeeds{}
 
-.profile #secOffersAndNeeds #offers,
-.profile #secOffersAndNeeds #needs{
+.profile #secOffersNeeds #offers,
+.profile #secOffersNeeds #needs{
   padding: 10px;
   background-color: white;
   border-radius: 20px;}
 
-  .profile #secOffersAndNeeds .collaborationCategory{
+  .profile #secOffersNeeds .collaborationCategory{
     border: 1px solid #ddd;
     padding: 5px;
     margin: 20px 3px;
@@ -626,24 +747,24 @@ h1 {
     cursor: pointer;
   }
 
-  .profile #secOffersAndNeeds .offer,
-  .profile #secOffersAndNeeds .need {
+  .profile #secOffersNeeds .offer,
+  .profile #secOffersNeeds .need {
     margin-left: 30px;
     cursor: pointer;
     padding: 5px;}
 
-    .profile #secOffersAndNeeds .offer:nth-child(even),
-    .profile #secOffersAndNeeds .need:nth-child(even){
+    .profile #secOffersNeeds .offer:nth-child(even),
+    .profile #secOffersNeeds .need:nth-child(even){
       background-color: #d6f1d6;
       color: #989696;}
 
-    .profile #secOffersAndNeeds .offer:nth-child(odd),
-    .profile #secOffersAndNeeds .need:nth-child(odd){
+    .profile #secOffersNeeds .offer:nth-child(odd),
+    .profile #secOffersNeeds .need:nth-child(odd){
       background-color: white;
       color: #aaaaaa;}
 
-    .profile #secOffersAndNeeds .offer > div,
-    .profile #secOffersAndNeeds .need > div{
+    .profile #secOffersNeeds .offer > div,
+    .profile #secOffersNeeds .need > div{
       display: inline-block;
       margin-right: 20px;
       vertical-align: middle; }
@@ -662,16 +783,19 @@ h1 {
   .profile #secInterests #categories .category{
     width: 100px;
     height: 100px;
-    background-color: purple;
-    padding: 15px;
-    color: white;
+    border: 2px solid grey;
+    padding: 12px;
+    color: grey;
     border-radius: 20px;
     margin: 10px;
-    cursor: pointer;  
+    cursor: pointer;
+    overflow-wrap: break-word; 
   }
 
   .profile #secInterests #categories .selected{
-    background-color: #ff6a00;
+    background-color: #38c12d;
+    border: none;
+    color: white;
   }
 
     .profile #secInterests #categories .category i{
@@ -839,7 +963,7 @@ h1 {
         background-color: #B8860B;
        }
 
-       #searchPage #typesContainer #citizenInitiative{
+       #searchPage #typesContainer #neighborsorg{
         background-color: #C63D1E;
        }
 
@@ -965,7 +1089,8 @@ h1 {
 }
 
 #searchPage #mapSideBar #topLeftCorner #projectType,
-#searchPage .project #topLeftCorner #projectType {
+#searchPage .project #topLeftCorner #projectType,
+.profile #projectType {
   height: 25px;
   border-radius: 10px;
   border: none;
@@ -1012,12 +1137,12 @@ h1 {
   margin-left: 30px;
 }
 
-#searchPage #projectFacebook,
-#searchPage #projectTwitter{
+#projectFacebook,
+#projectTwitter{
   margin-right: 10px;
 }
 
-#searchPage #projectWebSite{
+#projectWebSite{
   color: #000;
   letter-spacing: 2px;
   border: 2px solid #bbb;

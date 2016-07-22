@@ -11,14 +11,19 @@
 					</div>
 					<div id="personalData" class="col-md-3 col-sm-6 right-border">
 						<div class="vcenter ">
-							<div><strong>Sebastian Romero</strong></div>
-							<div>tian@gmail.com</div>
-							<div>55556373</div>
+							<div><strong>{{name}} {{lastname}}</strong></div>
+							<div>{{email}}</div>
+							{{#if mobile}}
+							<div>{{mobile}}</div>
+							{{/if}}
+							{{#if phone}}
+							<div>{{phone}}</div>
+							{{/if}}
 						</div>
 					</div>
 					<div id="interests" class="col-md-3 col-sm-6 right-border">
 						<div class="vcenter">
-							#Hola #Prueba #Hola #Prueba #Hola #Prueba#Hola #Prueba #Hola #Prueba #Hola #Prueba #Hola #Prueba #Hola #Prueba #Hola #Prueba #Hola #Prueba
+							{{#each interests}} #{{this}} {{/each}}
 						</div>
 					</div>
 					<div id="collaborations" class="col-md-3 col-sm-6">
@@ -27,588 +32,623 @@
 				</div>
 			</div>
 		</div>
-		<div id="sectionButtonsRow" class="row">
-			<div>
-				<div id="homeBtn" class="sectionBtn selected" title="Principal"><i class="fa fa-globe"></i></div>
-				<div id="projectsBtn" class="sectionBtn" title="Proyectos"><i class="fa fa-suitcase"></i></div>
-				<div id="offersAndNeedsBtn" class="sectionBtn" title="Ofrecimientos y Necesidades"><i class="fa fa-refresh"></i></div>
-				<div id="interestsBtn" class="sectionBtn" title="Intereses y Habilidades"><i class="fa fa-heart"></i></div>
-				<div id="configurationBtn" class="sectionBtn" title="Configuración"><i class="fa fa-cogs"></i></div>
-			</div>
+		<div id="sectionTabsRow" class="row" data-spy="affix" data-offset-top="200" role="tabpanel">
+			<ul class="nav nav-tabs" id="sectionTabs">
+			  <li role="presentation" id="homeTab" class="active" role="tab" data-toggle="tab">
+			  	<a href="#secHome"><i class="fa fa-home mr-l-10 mr-r-10"></i></a>
+		  	</li>
+			  <li role="presentation" id="projectsTab" role="tab" data-toggle="tab">
+			  	<a href="#secProjects"><i class="fa fa-suitcase mr-r-5"></i>Proyectos</a>
+		  	</li>
+			  <li role="presentation" id="offersNeedsTab" role="tab" data-toggle="tab">
+			  	<a href="#secOffersNeeds"><i class="fa fa-refresh	 mr-r-5"></i>Ofrezco y Necesito</a>
+		  	</li>
+			  <li role="presentation" id="interestsTab" role="tab" data-toggle="tab">
+			  	<a href="#secInterests"><i class="fa fa-heart mr-r-5"></i>Intereses y Habilidades</a>
+		  	</li>
+			  <li role="presentation" id="configurationTab" role="tab" data-toggle="tab">
+			  	<a href="#secConfiguration"><i class="fa fa-cogs mr-r-5"></i>Configuración</a>
+		  	</li>
+			</ul>
 		</div>
-		<div id="secHome" class="row userProfileSec">
-			<div id="nextCollaborationsSec">
-				<h3>Próximas colaboraciones</h3>
-				<div id="nextCollaborationList" class="row">
-					<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
+		<div class="tab-content">
+			<div id="secHome" class="row profileSec tab-pane active" role="tabpanel">
+				<div id="nextCollaborationsSec">
+					<h3>Próximas colaboraciones</h3>
+					<div id="nextCollaborationList" class="row">
+						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
+				</div>
+				<div id="sugestedCollaborations">
+					<h3>Recomendaciones</h3>
+					<div id="sugestedCollaborationList" class="row">
+						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
+				</div>
+				<div id="pastCollaborations">
+					<h3>Últimas colaboraciones</h3>
+					<div id="nextCollaborations" class="row">
+						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div id="sugestedCollaborations">
-				<h3>Recomendaciones</h3>
-				<div id="sugestedCollaborationList" class="row">
-					<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
+			<div id="secProjects" class="row profileSec tab-pane" role="tabpanel">
+				<div id="myProjects">
+					<h3>Mis proyectos</h3>
+					<div id="myProjectList" class="row">
+						<div class="col-md-3 col-sm-4 col-xs-6 myProject">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">5</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-4 col-xs-6 myProject">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">5</span></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-4 col-xs-6 myProject">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">5</span></div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
+				</div>
+				<div id="suggestedProjects">
+					<h3>Proyectos recomendados</h3>
+					<div id="suggestedProjectsList" class="row">
+						<div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
+				</div>
+				<div id="likedProjects">
+					<h3>Proyectos que me gustan</h3>
+					<div id="likedProjectsList" class="row">
+						<div class="col-md-3 col-sm-4 col-xs-6 likedProject">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-4 col-xs-6 likedProject">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-4 col-xs-6 likedProject">
+							<div class="thumbnail">
+								<!--img src=""-->
+								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+								<div class="caption">
+									<h4>Prueba</h4>
+									<p>Descripción de prueba</p>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div id="pastCollaborations">
-				<h3>Últimas colaboraciones</h3>
-				<div id="nextCollaborations" class="row">
-					<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
+			<div id="secOffersNeeds" class="row profileSec tab-pane" role="tabpanel">
+				<div id="offers" class="col-md-4 col-md-offset-1 col-sm-10 col-sm-offset-1">
+					<h3>Ofrecimientos</h3>
+					<div id="offerList" class="row">
+						<div class="collaborationCategory">
+							<div class="collaborationCategoryTitle">
+								<i class="fa fa-caret-right"></i>
+								<strong>Materiales</strong>
+								<span class="label label-default">4</span>
+							</div>
+							<div class="collaborationCategorySec hidden" id="jobColCatSec">
+								<div class="offer">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="offerTitle"><strong>Prueba</strong></div>
+									<div class="offerDescription">Descripción de prueba</div>
+									<i class="fa fa-pencil-square-o"></i>
+									<i class="fa fa-trash"></i>
+								</div>
+								<div class="offer">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="offerTitle"><strong>Prueba</strong></div>
+									<div class="offerDescription">Descripción de prueba</div>
+									<i class="fa fa-pencil-square-o"></i>
+									<i class="fa fa-trash"></i>
+								</div>
+								<div class="offer">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="offerTitle"><strong>Prueba</strong></div>
+									<div class="offerDescription">Descripción de prueba</div>
+									<i class="fa fa-pencil-square-o"></i>
+									<i class="fa fa-trash"></i>
+								</div>
+								<div class="offer">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="offerTitle"><strong>Prueba</strong></div>
+									<div class="offerDescription">Descripción de prueba</div>
+									<i class="fa fa-pencil-square-o"></i>
+									<i class="fa fa-trash"></i>
+								</div>
+							</div>
+						</div>
+						<div class="collaborationCategory">
+							<div class="collaborationCategoryTitle">
+								<i class="fa fa-caret-right"></i>
+								<strong>Espacios</strong>
+								<span class="label label-default">2</span>
+							</div>
+							<div class="collaborationCategorySec hidden" id="jobColCatSec">
+								<div class="offer">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="offerTitle"><strong>Prueba</strong></div>
+									<div class="offerDescription">Descripción de prueba</div>
+									<i class="fa fa-pencil-square-o"></i>
+									<i class="fa fa-trash"></i>
+								</div>
+								<div class="offer">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="offerTitle"><strong>Prueba</strong></div>
+									<div class="offerDescription">Descripción de prueba</div>
+									<i class="fa fa-pencil-square-o"></i>
+									<i class="fa fa-trash"></i>
+								</div>
+							</div>
+						</div>
+						<div class="collaborationCategory">
+							<div class="collaborationCategoryTitle">
+								<i class="fa fa-caret-right"></i>
+								<strong>Materiales</strong>
+								<span class="label label-default">3</span>
+							</div>
+							<div class="collaborationCategorySec hidden" id="jobColCatSec">
+								<div class="offer">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="offerTitle"><strong>Prueba</strong></div>
+									<div class="offerDescription">Descripción de prueba</div>
+									<i class="fa fa-pencil-square-o"></i>
+									<i class="fa fa-trash"></i>
+								</div>
+								<div class="offer">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="offerTitle"><strong>Prueba</strong></div>
+									<div class="offerDescription">Descripción de prueba</div>
+									<i class="fa fa-pencil-square-o"></i>
+									<i class="fa fa-trash"></i>
+								</div>
+								<div class="offer">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="offerTitle"><strong>Prueba</strong></div>
+									<div class="offerDescription">Descripción de prueba</div>
+									<i class="fa fa-pencil-square-o"></i>
+									<i class="fa fa-trash"></i>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
+					<div>
+						<button class"btn btn-default" id="newOfferBtn"><i class="fa fa-plus"></i></button>
+					</div>
+				</div>
+				<div id="needs" class="col-md-4 col-md-offset-2 col-sm-10 col-sm-offset-1">
+					<h3>Necesidades</h3>
+					<div id="need" class="row">
+						<div class="collaborationCategory">
+							<div class="collaborationCategoryTitle">
+								<i class="fa fa-caret-right"></i>
+								<strong>Materiales</strong>
+								<span class="label label-default">4</span>
+							</div>
+							<div class="collaborationCategorySec hidden" id="jobColCatSec">
+								<div class="need">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="needTitle"><strong>Prueba</strong></div>
+									<div class="needDescription">Descripción de prueba</div>
+								</div>
+								<div class="need">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="needTitle"><strong>Prueba</strong></div>
+									<div class="needDescription">Descripción de prueba</div>
+								</div>
+								<div class="need">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="needTitle"><strong>Prueba</strong></div>
+									<div class="needDescription">Descripción de prueba</div>
+								</div>
+								<div class="need">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="needTitle"><strong>Prueba</strong></div>
+									<div class="needDescription">Descripción de prueba</div>
+								</div>
+							</div>
+						</div>
+						<div class="collaborationCategory">
+							<div class="collaborationCategoryTitle">
+								<i class="fa fa-caret-right"></i>
+								<strong>Espacios</strong>
+								<span class="label label-default">2</span>
+							</div>
+							<div class="collaborationCategorySec hidden" id="jobColCatSec">
+								<div class="need">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="needTitle"><strong>Prueba</strong></div>
+									<div class="needDescription">Descripción de prueba</div>
+								</div>
+								<div class="need">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="needTitle"><strong>Prueba</strong></div>
+									<div class="needDescription">Descripción de prueba</div>
+								</div>
+							</div>
+						</div>
+						<div class="collaborationCategory">
+							<div class="collaborationCategoryTitle">
+								<i class="fa fa-caret-right"></i>
+								<strong>Materiales</strong>
+								<span class="label label-default">3</span>
+							</div>
+							<div class="collaborationCategorySec hidden" id="jobColCatSec">
+								<div class="need">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="needTitle"><strong>Prueba</strong></div>
+									<div class="needDescription">Descripción de prueba</div>
+								</div>
+								<div class="need">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="needTitle"><strong>Prueba</strong></div>
+									<div class="needDescription">Descripción de prueba</div>
+								</div>
+								<div class="need">
+									<!--img src=""-->
+									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
+									<div class="needTitle"><strong>Prueba</strong></div>
+									<div class="needDescription">Descripción de prueba</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
-							</div>
-						</div>
+					<div>
+						<button class"btn btn-default" id="newNeedBtn"><i class="fa fa-plus"></i></button>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div id="secProjects" class="row userProfileSec hidden">
-			<div id="myProjects">
-				<h3>Mis proyectos</h3>
-				<div id="myProjectList" class="row">
-					<div class="col-md-3 col-sm-4 col-xs-6 myProject">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">5</span></div>
-							</div>
+			<div id="secInterests" class="row profileSec tab-pane" role="tabpanel">
+				<div id="categories">
+					<h3>Categorías</h3>
+					<div class="row" id="categoriesSec">
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'humanrights'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-globe fa-3x"></i>Derechos Humanos
 						</div>
-					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 myProject">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">5</span></div>
-							</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'productsservices'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-shopping-basket fa-3x"></i>Productos y Servicios
 						</div>
-					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 myProject">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">5</span></div>
-							</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'environment'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-pagelines fa-3x"></i>Medio Ambiente
 						</div>
-					</div>
-				</div>
-			</div>
-			<div id="suggestedProjects">
-				<h3>Proyectos recomendados</h3>
-				<div id="suggestedProjectsList" class="row">
-					<div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
-							</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'artculture'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-paint-brush fa-3x"></i>Arte y Cultura
 						</div>
-					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
-							</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'gender'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-transgender fa-3x"></i>Género
 						</div>
-					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
-							</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'health'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-medkit fa-3x"></i>Salud
 						</div>
-					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
-							</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'education'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-book fa-3x"></i>Educación
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'workshops'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-puzzle-piece fa-3x"></i>Talleres y Clases
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'community'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-users fa-3x"></i>Comunidad
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'food'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-cutlery fa-3x"></i>Comida
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'housing'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-home fa-3x"></i>Vivienda
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'clothing'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-scissors fa-3x"></i>Vestido
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'communication'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-bullhorn fa-3x"></i>Comunicación
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'technology'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-cogs fa-3x"></i>Tecnología
+						</div>
+						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'transport'}}selected"{{else}}"{{/ifcond}}">
+							<i class="fa fa-bicycle fa-3x"></i>Transporte
 						</div>
 					</div>
 				</div>
-			</div>
-			<div id="likedProjects">
-				<h3>Proyectos que me gustan</h3>
-				<div id="likedProjectsList" class="row">
-					<div class="col-md-3 col-sm-4 col-xs-6 likedProject">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 likedProject">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-4 col-xs-6 likedProject">
-						<div class="thumbnail">
-							<!--img src=""-->
-							<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-							<div class="caption">
-								<h4>Prueba</h4>
-								<p>Descripción de prueba</p>
-							</div>
+				<div class="col-md-5 form-inline" id="interests">
+					<h3>Intereses</h3>
+					<div id="hashTags">
+						<input placeholder="ingresa un interés" id="newInterestInput" class="form-control"/>
+						<button id="addInterestBtn" class="btn btn-default">Agrega <i class="fa fa-plus-circle mr-l-5 green"></i></button>
+						<div class="well mr-t-10 fs-125">
+							{{#each interests}}
+							<span class="label label-default">{{this}}<i class="fa fa-times mr-l-10"></i></span>
+							{{/each}}
 						</div>
 					</div>
 				</div>
+				<div class="col-md-7 form-inline" id="skills">
+					<h3>Habilidades</h3>
+					<input placeholder="ingresa una habilidad" type="text" id="newSkillInput" class="form-control" />
+					<span>Nivel:</span>
+					<select id="skillLevelSelect" class="form-control">
+						<option value="B">Básico</option>
+						<option value="I">Intermedio</option>
+						<option value="A">Avanzado</option>
+					</select>
+					<span>Quiero:</span>
+					<select id="skillWantToSelect" class="fa-select form-control">
+						<option value="book">&#xf02d;&nbsp;Aprender</option>
+						<option value="rocket">&#xf135;&nbsp;Practicar</option>
+						<option value="users">&#xf0c0;&nbsp;Voluntariar</option>
+						<option value="bullhorn">&#xf0a1;&nbsp;Enseñar</option>
+						<option value="wrench">&#xf0ad;&nbsp;Trabajar</option>
+					</select>
+					<button id="addSkillBtn" class="btn btn-default">Agrega<i class="fa fa-plus-circle green mr-l-5"></i></button>
+					<div class="well mr-t-10">
+						<ul class="list-group" id="skillList">
+							{{#each skills}}
+						  <li class="list-group-item skill">
+						    <span class="badge">{{this.level}}</span>
+						    {{this.skill}} {{#each this.wantTo}} <i class="fa fa-{{this}} mr-l-5"></i>{{/each}}
+						  </li>
+						  {{/each}}
+						</ul>
+					</div>
+				</div>	
 			</div>
-		</div>
-		<div id="secOffersAndNeeds" class="row userProfileSec hidden">
-			<div id="offers" class="col-md-4 col-md-offset-1 col-sm-10 col-sm-offset-1">
-				<h3>Ofrecimientos</h3>
-				<div id="offerList" class="row">
-					<div class="collaborationCategory">
-						<div class="collaborationCategoryTitle">
-							<i class="fa fa-caret-right"></i>
-							<strong>Materiales</strong>
-							<span class="label label-default">4</span>
-						</div>
-						<div class="collaborationCategorySec hidden" id="jobColCatSec">
-							<div class="offer">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="offerTitle"><strong>Prueba</strong></div>
-								<div class="offerDescription">Descripción de prueba</div>
-								<i class="fa fa-pencil-square-o"></i>
-								<i class="fa fa-trash"></i>
-							</div>
-							<div class="offer">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="offerTitle"><strong>Prueba</strong></div>
-								<div class="offerDescription">Descripción de prueba</div>
-								<i class="fa fa-pencil-square-o"></i>
-								<i class="fa fa-trash"></i>
-							</div>
-							<div class="offer">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="offerTitle"><strong>Prueba</strong></div>
-								<div class="offerDescription">Descripción de prueba</div>
-								<i class="fa fa-pencil-square-o"></i>
-								<i class="fa fa-trash"></i>
-							</div>
-							<div class="offer">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="offerTitle"><strong>Prueba</strong></div>
-								<div class="offerDescription">Descripción de prueba</div>
-								<i class="fa fa-pencil-square-o"></i>
-								<i class="fa fa-trash"></i>
-							</div>
-						</div>
-					</div>
-					<div class="collaborationCategory">
-						<div class="collaborationCategoryTitle">
-							<i class="fa fa-caret-right"></i>
-							<strong>Espacios</strong>
-							<span class="label label-default">2</span>
-						</div>
-						<div class="collaborationCategorySec hidden" id="jobColCatSec">
-							<div class="offer">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="offerTitle"><strong>Prueba</strong></div>
-								<div class="offerDescription">Descripción de prueba</div>
-								<i class="fa fa-pencil-square-o"></i>
-								<i class="fa fa-trash"></i>
-							</div>
-							<div class="offer">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="offerTitle"><strong>Prueba</strong></div>
-								<div class="offerDescription">Descripción de prueba</div>
-								<i class="fa fa-pencil-square-o"></i>
-								<i class="fa fa-trash"></i>
-							</div>
-						</div>
-					</div>
-					<div class="collaborationCategory">
-						<div class="collaborationCategoryTitle">
-							<i class="fa fa-caret-right"></i>
-							<strong>Materiales</strong>
-							<span class="label label-default">3</span>
-						</div>
-						<div class="collaborationCategorySec hidden" id="jobColCatSec">
-							<div class="offer">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="offerTitle"><strong>Prueba</strong></div>
-								<div class="offerDescription">Descripción de prueba</div>
-								<i class="fa fa-pencil-square-o"></i>
-								<i class="fa fa-trash"></i>
-							</div>
-							<div class="offer">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="offerTitle"><strong>Prueba</strong></div>
-								<div class="offerDescription">Descripción de prueba</div>
-								<i class="fa fa-pencil-square-o"></i>
-								<i class="fa fa-trash"></i>
-							</div>
-							<div class="offer">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="offerTitle"><strong>Prueba</strong></div>
-								<div class="offerDescription">Descripción de prueba</div>
-								<i class="fa fa-pencil-square-o"></i>
-								<i class="fa fa-trash"></i>
-							</div>
-						</div>
-					</div>
+			<div id="secConfiguration" class="row profileSec tab-pane" role="tabpanel">
+				<div>
+	        <input type="file" name="file" id="pictureFileInput">
+	        <button class="btn btn-default" onclick="uploadPicture()">Subir imagen</button>
 				</div>
 				<div>
-					<button class"btn btn-default" id="newOfferBtn"><i class="fa fa-plus"></i></button>
-				</div>
-			</div>
-			<div id="needs" class="col-md-4 col-md-offset-2 col-sm-10 col-sm-offset-1">
-				<h3>Necesidades</h3>
-				<div id="need" class="row">
-					<div class="collaborationCategory">
-						<div class="collaborationCategoryTitle">
-							<i class="fa fa-caret-right"></i>
-							<strong>Materiales</strong>
-							<span class="label label-default">4</span>
-						</div>
-						<div class="collaborationCategorySec hidden" id="jobColCatSec">
-							<div class="need">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="needTitle"><strong>Prueba</strong></div>
-								<div class="needDescription">Descripción de prueba</div>
-							</div>
-							<div class="need">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="needTitle"><strong>Prueba</strong></div>
-								<div class="needDescription">Descripción de prueba</div>
-							</div>
-							<div class="need">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="needTitle"><strong>Prueba</strong></div>
-								<div class="needDescription">Descripción de prueba</div>
-							</div>
-							<div class="need">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="needTitle"><strong>Prueba</strong></div>
-								<div class="needDescription">Descripción de prueba</div>
-							</div>
-						</div>
+				<form id="personalDataForm">
+					<div class="form-group row">
+					  <label for="nameInput" class="col-xs-2 hidden-xs">Nombre</label>
+					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+					  	<input type="text" class="form-control" id="nameInput" name="name" placeholder="Nombre">
+					  	<span class="input-group-addon" style="padding: 0px 10px">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      </span>
+					  </div>			  
 					</div>
-					<div class="collaborationCategory">
-						<div class="collaborationCategoryTitle">
-							<i class="fa fa-caret-right"></i>
-							<strong>Espacios</strong>
-							<span class="label label-default">2</span>
-						</div>
-						<div class="collaborationCategorySec hidden" id="jobColCatSec">
-							<div class="need">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="needTitle"><strong>Prueba</strong></div>
-								<div class="needDescription">Descripción de prueba</div>
-							</div>
-							<div class="need">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="needTitle"><strong>Prueba</strong></div>
-								<div class="needDescription">Descripción de prueba</div>
-							</div>
-						</div>
+					<div class="form-group row">
+					  <label for="usernameInput" class="col-xs-2 hidden-xs">Username:</label>
+					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+					  	<input type="text" class="form-control" id="usernameInput" name="username" placeholder="Username">
+					  	<span class="input-group-addon" style="padding: 0px 10px">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      </span>
+					  </div>			  
 					</div>
-					<div class="collaborationCategory">
-						<div class="collaborationCategoryTitle">
-							<i class="fa fa-caret-right"></i>
-							<strong>Materiales</strong>
-							<span class="label label-default">3</span>
-						</div>
-						<div class="collaborationCategorySec hidden" id="jobColCatSec">
-							<div class="need">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="needTitle"><strong>Prueba</strong></div>
-								<div class="needDescription">Descripción de prueba</div>
-							</div>
-							<div class="need">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="needTitle"><strong>Prueba</strong></div>
-								<div class="needDescription">Descripción de prueba</div>
-							</div>
-							<div class="need">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="needTitle"><strong>Prueba</strong></div>
-								<div class="needDescription">Descripción de prueba</div>
-							</div>
-						</div>
+					<div class="form-group row">
+					  <label for="emailInput" class="col-xs-2 hidden-xs">Correo Electrónico:</label>
+					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+					  	<input type="text" class="form-control" id="emailInput" name="email" placeholder="Correo Electrónico">
+					  	<span class="input-group-addon" style="padding: 0px 10px">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      </span>
+					  </div>			  
 					</div>
-				</div>
-				<div>
-					<button class"btn btn-default" id="newNeedBtn"><i class="fa fa-plus"></i></button>
-				</div>
-			</div>
-		</div>
-		<div id="secInterests" class="row userProfileSec hidden">
-			<div id="categories">
-				<h3>Categorías</h3>
-				<div class="row" id="categoriesSec">
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter selected"><i class="fa fa-globe fa-3x"></i>Derechos Humanos</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter"><i class="fa fa-shopping-basket fa-3x"></i>Productos y Servicios</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter"><i class="fa fa-pagelines fa-3x"></i>Medio Ambiente</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter"><i class="fa fa-paint-brush fa-3x"></i>Arte y Cultura</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter selected"><i class="fa fa-transgender fa-3x"></i>Género</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter"><i class="fa fa-medkit fa-3x"></i>Salud</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter"><i class="fa fa-book fa-3x"></i>Educación</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter"><i class="fa fa-puzzle-piece fa-3x"></i>Talleres y Clases</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter"><i class="fa fa-users fa-3x"></i>Comunidad</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter selected"><i class="fa fa-cutlery fa-3x"></i>Comida</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter"><i class="fa fa-home fa-3x"></i>Vivienda</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter"><i class="fa fa-scissors fa-3x"></i>Vestido</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter"><i class="fa fa-bullhorn fa-3x"></i>Comunicación</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter"><i class="fa fa-cogs fa-3x"></i>Tecnología</div>
-					<div class="col-md-2 col-sm-4 col-xs-6 category vcenter"><i class="fa fa-bicycle fa-3x"></i>Transporte</div>
-				</div>
-			</div>
-			<div class="col-md-6" id="interests">
-				<h3>Intereses</h3>
-				<div id="hashTags">
-					<input placeholder="ingresa un interés" id="newInterestInput" />
-					<button id="addInterestBtn">Agrega</button>
-					<div id="interestList">
-						<span class="label label-default">Ejemplo</span>
-						<span class="label label-default">Ejemplo</span>
-						<span class="label label-default">Ejemplo</span>
-						<span class="label label-default">Ejemplo</span>
-						<span class="label label-default">Ejemplo</span>
-						<span class="label label-default">Ejemplo</span>
-						<span class="label label-default">Ejemplo</span>
-						<span class="label label-default">Ejemplo</span>
+					<div class="form-group row">
+					  <label for="twitterInput" class="col-xs-2 hidden-xs">Twitter:</label>
+					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+					  	<input type="text" class="form-control" id="twitterInput" name="twitter" placeholder="Twitter">
+					  	<span class="input-group-addon" style="padding: 0px 10px">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      </span>
+					  </div>			  
 					</div>
+					<div class="form-group row">
+					  <label for="facebookInput" class="col-xs-2 hidden-xs">Facebook:</label>
+					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+					  	<input type="text" class="form-control" id="facebookInput" name="facebook" placeholder="Facebook">
+					  	<span class="input-group-addon" style="padding: 0px 10px">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      </span>
+					  </div>			  
+					</div>
+					<div class="form-group row">
+					  <label for="phoneInput" class="col-xs-2 hidden-xs">Telefono:</label>
+					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+					  	<input type="text" class="form-control" id="phoneInput" name="name" placeholder="Teléfono">
+					  	<span class="input-group-addon" style="padding: 0px 10px">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      </span>
+					  </div>			  
+					</div>
+					<div class="form-group row">
+					  <label for="cellphoneInput" class="col-xs-2 hidden-xs">Celular:</label>
+					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+					  	<input type="text" class="form-control" id="cellphoneInput" name="cellphone" placeholder="Celular">
+					  	<span class="input-group-addon" style="padding: 0px 10px">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      </span>
+					  </div>			  
+					</div>
+					<div class="form-group row">
+					  <label for="addressInput" class="col-xs-2 hidden-xs">Dirección:</label>
+					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+					  	<input type="text" class="form-control" id="addressInput" name="address" placeholder="Dirección">
+					  	<span class="input-group-addon" style="padding: 0px 10px">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      </span>
+					  </div>			  
+					</div>
+					<div id="map"></div> 
+				</form>
 				</div>
-			</div>
-			<div class="col-md-6" id="skills">
-				<h3>Habilidades</h3>
-				<input placeholder="ingresa una habilidad" type="text" id="newSkillInput" />
-				<span>Nivel:</span>
-				<select id="skillLevelSelect">
-					<option value="1">Básico</option>
-					<option value="2">Intermedio</option>
-					<option value="3">Avanzado</option>
-				</select>
-				<button id="addSkillBtn">Agrega</button>
-				<div>
-					<ul class="list-group" id="skillList">
-					  <li class="list-group-item skill">
-					    <span class="badge">A</span>
-					    Ejemplo
-					  </li>
-					  <li class="list-group-item skill">
-					    <span class="badge">A</span>
-					    Ejemplo
-					  </li>
-					  <li class="list-group-item skill">
-					    <span class="badge">I</span>
-					    Ejemplo
-					  </li>
-					  <li class="list-group-item skill">
-					    <span class="badge">B</span>
-					    Ejemplo
-					  </li>
-					</ul>
-				</div>
-			</div>	
-		</div>
-		<div id="secConfiguration" class="row userProfileSec hidden">
-			<div>
-        <input type="file" name="file" id="pictureFileInput">
-        <button class="btn btn-default" onclick="uploadPicture()">Subir imagen</button>
-			</div>
-			<div>
-			<form id="personalDataForm">
-				<div class="form-group row">
-				  <label for="nameInput" class="col-xs-2 hidden-xs">Nombre</label>
-				  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-				  	<input type="text" class="form-control" id="nameInput" name="name" placeholder="Nombre">
-				  	<span class="input-group-addon" style="padding: 0px 10px">
-			      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
-			      </span>
-				  </div>			  
-				</div>
-				<div class="form-group row">
-				  <label for="usernameInput" class="col-xs-2 hidden-xs">Username:</label>
-				  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-				  	<input type="text" class="form-control" id="usernameInput" name="username" placeholder="Username">
-				  	<span class="input-group-addon" style="padding: 0px 10px">
-			      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
-			      </span>
-				  </div>			  
-				</div>
-				<div class="form-group row">
-				  <label for="emailInput" class="col-xs-2 hidden-xs">Correo Electrónico:</label>
-				  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-				  	<input type="text" class="form-control" id="emailInput" name="email" placeholder="Correo Electrónico">
-				  	<span class="input-group-addon" style="padding: 0px 10px">
-			      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
-			      </span>
-				  </div>			  
-				</div>
-				<div class="form-group row">
-				  <label for="twitterInput" class="col-xs-2 hidden-xs">Twitter:</label>
-				  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-				  	<input type="text" class="form-control" id="twitterInput" name="twitter" placeholder="Twitter">
-				  	<span class="input-group-addon" style="padding: 0px 10px">
-			      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
-			      </span>
-				  </div>			  
-				</div>
-				<div class="form-group row">
-				  <label for="facebookInput" class="col-xs-2 hidden-xs">Facebook:</label>
-				  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-				  	<input type="text" class="form-control" id="facebookInput" name="facebook" placeholder="Facebook">
-				  	<span class="input-group-addon" style="padding: 0px 10px">
-			      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
-			      </span>
-				  </div>			  
-				</div>
-				<div class="form-group row">
-				  <label for="phoneInput" class="col-xs-2 hidden-xs">Telefono:</label>
-				  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-				  	<input type="text" class="form-control" id="phoneInput" name="name" placeholder="Teléfono">
-				  	<span class="input-group-addon" style="padding: 0px 10px">
-			      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
-			      </span>
-				  </div>			  
-				</div>
-				<div class="form-group row">
-				  <label for="cellphoneInput" class="col-xs-2 hidden-xs">Celular:</label>
-				  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-				  	<input type="text" class="form-control" id="cellphoneInput" name="cellphone" placeholder="Celular">
-				  	<span class="input-group-addon" style="padding: 0px 10px">
-			      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
-			      </span>
-				  </div>			  
-				</div>
-				<div class="form-group row">
-				  <label for="addressInput" class="col-xs-2 hidden-xs">Dirección:</label>
-				  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-				  	<input type="text" class="form-control" id="addressInput" name="address" placeholder="Dirección">
-				  	<span class="input-group-addon" style="padding: 0px 10px">
-			      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
-			      </span>
-				  </div>			  
-				</div>
-				<div id="map"></div> 
-			</form>
 			</div>
 		</div>
 	</div><!-- /fluid container-->	

@@ -4,11 +4,13 @@ $(document).ready(function () {
   addOffersAndNeedsFunc()
   addProjectFunc()
   addInterestsFunc()
-  loadMyProjects()
 })
 
 function addSectionBtnsFunc () {
-  $('.sectionBtn').click(sectionBtnClicked)
+  $('#sectionTabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
 }
 
 function sectionBtnClicked () {
@@ -130,17 +132,4 @@ function uploadPicture () {
       console.log(data)
     }
   })
-}
-
-function loadMyProjects () {
-  myProjectTemplate = Handlebars.compile($('#projectNoLocation-template').html())
-  $.get(
-    '/api/projects',
-    function (projects) {
-      $.each(projects, function (i, project) {
-        project.notificationNumber = Math.floor((Math.random() * 6)) // notRandomLater
-        $('#myProjectList').append(myProjectTemplate(project))
-      })
-    }
-  )
 }

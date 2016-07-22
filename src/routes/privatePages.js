@@ -10,13 +10,24 @@ module.exports = function () {
       path: '/myprofile',
       config: {
         handler: function (request, reply) {
-          var data = {
-            isAuthenticated: SessionController.isAuthenticated(request)
+          var isAuthenticated = SessionController.isAuthenticated(request)
+          if (isAuthenticated) {
+            var credentials = SessionController.getSession(request)
+            console.log(credentials)
+            var db = request.mongo.db
+            var query = {username: credentials.username}
+            var fields = {}
+            UserManager.find(db, query, fields, function (res) {
+              var data = res[0]
+              console.log(data)
+              data.isAuthenticated = isAuthenticated
+              data.withOutFooter = true
+              data.credentials = credentials              
+              reply.view('userProfile', data)
+            })
+          }else{
+            reply.redirect('/login?next=%2Fmyprofile')
           }
-          if (data.isAuthenticated) {
-            data.credentials = SessionController.getSession(request)
-          }
-          reply.view('userProfile', data)
         },
         auth: {
           strategy: 'standard'

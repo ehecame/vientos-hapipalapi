@@ -88,31 +88,38 @@ function setMapView (location) {
 function getRandomProjectType () {
   var projectTypes = [
     {
-      type: 'Cooperativa',
+      type: 'cooperative',
+      label: 'Cooperativa',
       color: '#800000'
     },
     {
-      type: 'Colectivo',
+      type: 'collective',
+      label: 'Colectivo',
       color: '#008B8B'
     },
     {
-      type: 'ONG',
+      type: 'ngo',
+      label: 'ONG',
       color: '#556B2F'
     },
     {
-      type: 'Negocio Ético',
+      type: 'ethicalbusiness',
+      label: 'Negocio Ético',
       color: '#B8860B'
     },
     {
-      type: 'Iniciativa Ciudadana',
+      type: 'neighborsorg',
+      label: 'Organización vecinal',
       color: '#C63D1E'
     },
     {
-      type: 'Startup',
+      type: 'startup',
+      label: 'Startup',
       color: '#58376C'
     },
     {
-      type: 'En Transición',
+      type: 'ontransition',
+      label: 'En Transición',
       color: '#d45bc9'
     },
   ]
@@ -129,6 +136,9 @@ function addMarkers (markerList) {
       m.projectType = getRandomProjectType()
     } else {
       console.log('ya tiene projectType')
+    }
+    if (!m.categories) {
+      console.log('No tengo categorías =S : ' + m.name)
     }
     var icon = m.categories ? m.categories[0].icon : m.categoryIcon
     if (m.latitude && m.longitude) {
@@ -190,7 +200,7 @@ function showMapSideBar (m) {
   $('#mapSideBar').find('#projectName').html(m.name)
   $('#mapSideBar').find('#projectDescription').html(m.description)
   $('#mapSideBar').find('#projectProfileLink').attr('href', '/project/' + m._id)
-  $('#mapSideBar').find('#projectType').html(m.projectType.type)
+  $('#mapSideBar').find('#projectType').html(m.projectType.label)
   $('#mapSideBar').find('#projectType').css('background-color', m.projectType.color)
   if (m.facebook) {
     $('#mapSideBar').find('#projectFacebook').attr('href', m.facebook)

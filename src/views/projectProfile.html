@@ -1,5 +1,4 @@
-<!-- TODO: NECESITA TERMINARSE LA PARTE DE LAS ROWS -->
-
+<script type="text/javascript" src="/js/projectProfile"></script>
 <div id="projectProfile" class="profile">
 	<div class="fluid-container">
 	<div class="row" id="mapRow">
@@ -7,324 +6,368 @@
 		<div>
 			{{#each locations}}
 			<div id="locations{{@index}}">
-				<input type="hidden" value="{{this.lat}}" name="projectLat" />
-				<input type="hidden" value="{{this.lon}}"  name="projectLon"/>
+				<input type="hidden" value="{{this.lat}}" id="projectLat{{@index}}" />
+				<input type="hidden" value="{{this.lon}}"  id="projectLon{{@index}}"/>
 			</div>
 			{{/each}}
 		</div>
 	</div>
 	<div class="row" id="resumeRow">
-		<div id="topBar" class="col-sm-12">
+		<div id="topBar">
 			<div class="row">
-				<div id="picture" class="col-md-3 col-sm-6"><img src="/img/{{logo}}"></div>
+				<div id="picture" class="col-md-2 col-sm-6">{{#if logo}}<img src="/img/{{logo}}">{{/if}}</div>
 				<div id="projectData" class="col-md-3 col-sm-6">
 					<div class="vcenter">
-						<div>{{name}}</div>
-						{{#if email}}
-						<div>{{email}}</div>
-						{{/if}}
-						{{#if phone}}
-						<div></div>
-						{{/if}}
-						{{#if email}}
-						<div>www.proyecto.com</div>
-						{{/if}}
-						<div>
-							{{#if facebook}}
-							<span class="facebook"><a href="{{facebook}}"><i class="fa fa-facebook"></i></a> </span> 
-							{{/if}}
-							{{#if twitter}}
-	            <span class="twitter"><a href="{{twitter}}"><i class="fa fa-twitter"></i></a> </span>
-							{{/if}}
-	          </div>
+						<div id="projectName">{{name}}</div>
+						<div id="projectCategories">
+							{{#each categories}}
+								<i class="fa {{this.icon}} fa-lg" title="{{this.name.es}}"></i>
+							{{/each}}
+						</div>
+						<div id="projectType" style="background-color:{{projectType.color}};">{{projectType.label}}</div>
 					</div>
 				</div>
 				<div id="description" class="col-md-3 col-sm-6">
 					<div class="vcenter">
-						{{descripcion}}
+						{{description}}
 					</div>
 				</div>
-				<div id="collaborations" class="col-md-3 col-sm-6">
-					<div class="vcenter">
-						<div>20 collaborations</div>
-						<div id="projectCategories">
-							{{#each categories}}
-								<i class="fa \{{this.icon}}" title="\{{this.name.es}}"></i>
+				<div id="contactData" class="col-md-4 col-sm-6">
+					<div class="vcenter row">
+						{{#if email}}
+						<div class="col-md-1"><i class="fa fa-envelope fa-lg"></i></div><div class="col-md-11 tx-al-l">{{email}}</div>
+						{{/if}}
+						{{#if phone}}
+						<div class="col-md-1"><i class="fa fa-phone fa-lg"></i></div><div class="col-md-11 tx-al-l">{{email}}</div>
+						{{/if}}
+						{{#if mobile}}
+						<div class="col-md-1"><i class="fa fa-mobile fa-lg"></i></div><div class="col-md-11 tx-al-l">{{mobile}}</div>
+						{{/if}}
+						{{#if address}}
+						<div class="col-md-1"><i class="fa fa-map-signs fa-lg"></i></div><div class="col-md-11 tx-al-l 1-line" title="{{address}}">{{address}}</div>
+						{{/if}}
+						{{#if schedule}}
+	          <div class="col-md-1"><i class="fa fa-clock-o fa-lg"></i></div>
+						<div class="col-md-11 tx-al-l" id="projectSchedule">
+							{{#each schedule}}
+								<div>{{this.days}}: {{this.hours}}</div>
 							{{/each}}
 						</div>
+						{{/if}}
+						<div class="socialMedia">
+							{{#if facebook}}
+							<span class="facebook"><a href="{{facebook}}" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a> </span> 
+							{{/if}}
+							{{#if twitter}}
+	            <span class="twitter"><a href="{{twitter}}" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a> </span>
+							{{/if}}
+							{{#if webpage}}
+							<a id="projectWebSite" href="{{webpage}}" title="Visita su página de internet" target="_blank">
+								WWW
+							</a>
+							{{/if}}
+	          </div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 {{#if isAuthenticated}}
-	<div id="sectionButtonsRow" class="row">
-		<div>
-			<div id="homeBtn" class="sectionBtn"><i class="fa fa-globe"></i></div>
-			<div id="offersAndNeedsBtn" class="sectionBtn"><i class="fa fa-refresh"></i></div>
-			<div id="interestsBtn" class="sectionBtn"><i class="fa fa-heart"></i></div>
-			<div id="configurationBtn" class="sectionBtn"><i class="fa fa-cogs"></i></div>
-		</div>
+	<div id="sectionTabsRow" class="row" data-spy="affix" data-offset-top="400" role="tabpanel">
+		<ul class="nav nav-tabs" id="sectionTabs">
+		  <li role="presentation" id="homeTab" class="active" role="tab" data-toggle="tab">
+		  	<a href="#secHome"><i class="fa fa-home mr-l-10 mr-r-10"></i></a>
+	  	</li>
+		  <li role="presentation" id="offersNeedsTab" role="tab" data-toggle="tab">
+		  	<a href="#secOffersNeeds"><i class="fa fa-refresh mr-r-5"></i>Ofrezco y Necesito</a>
+	  	</li>
+		  <li role="presentation" id="eventsTab" role="tab" data-toggle="tab">
+		  	<a href="#secEvents"><i class="fa fa-calendar mr-r-5"></i>Eventos y Actividades</a>
+	  	</li>
+		  <li role="presentation" id="configurationTab" role="tab" data-toggle="tab">
+		  	<a href="#secConfiguration"><i class="fa fa-cogs mr-r-5"></i>Configuración</a>
+	  	</li>
+		</ul>
 	</div>
 {{/if}}
 
-	<div id="secHome" class="row">
-		<div id="nextCollaborationsSec">
-			<h3>Próximas colaboraciones</h3>
-			<div id="nextCollaborationList" class="row">
-				<div class="col-md-3">
-					
-				</div>
-				<div class="col-md-3">
-					
-				</div>
-				<div class="col-md-3">
-					
-				</div>
-				<div class="col-md-3">
-					
+	<div class="tab-content">
+		<div id="secHome" class="row profileSec tab-pane active" role="tabpanel">
+			<div id="nextCollaborationsSec">
+				<h3>Próximas colaboraciones</h3>
+				<div id="nextCollaborationList" class="row">
+					<div class="col-md-3">
+						
+					</div>
+					<div class="col-md-3">
+						
+					</div>
+					<div class="col-md-3">
+						
+					</div>
+					<div class="col-md-3">
+						
+					</div>
 				</div>
 			</div>
-		</div>
-{{#if isAuthenticated}}
-		<div id="sugestedCollaborations">
-			<h3>Recomendaciones</h3>
-			<div id="">
-				
-			</div>
-		</div>
-{{/if}}
-		<div id="pastCollaborations">
-			<h3>Próximas colaboraciones</h3>
-			<div id="">
-				
-			</div>
-		</div>
-	</div>
 	{{#if isAuthenticated}}
-	<div id="secEvents" class="row">
+			<div id="sugestedCollaborations">
+				<h3>Recomendaciones</h3>
+				<div id="">
+					
+				</div>
+			</div>
 	{{/if}}
-		<div id="myProjects">
-			<h3>Mis eventos</h3>
-			<div></div>
+			<div id="pastCollaborations">
+				<h3>Próximas colaboraciones</h3>
+				<div id="">
+					
+				</div>
+			</div>
+		</div>
+		{{#if isAuthenticated}}
+		<div id="secEvents" class="row profileSec tab-pane active" role="tabpanel">
+		{{/if}}
+			<div id="myProjects">
+				<h3>Mis eventos</h3>
+				<div></div>
+			</div>
+		{{#if isAuthenticated}}
+		</div>
+		<div id="secOffersNeeds" class="row profileSec tab-pane active" role="tabpanel">
+		{{/if}}
+			<div id="offers" class="col-md-6 col-sm-12">
+				<h3>Ofrecimientos</h3>
+				<div id="offerList" class="row">
+					<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
+					<div class="collaborationCategorySec" id="jobColCatSec">
+						<div class="row">
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+						</div>
+					</div>
+					<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
+					<div class="collaborationCategorySec" id="jobColCatSec">
+						<div class="row">
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+						</div>
+					</div>
+					<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
+					<div class="collaborationCategorySec" id="jobColCatSec">
+						<div class="row">
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+						</div>
+					</div>
+				</div>
+	{{#if isAuthenticated}}
+				<div id="newOffer">
+					<div>
+					</div>
+				</div>
+			</div>
+	{{/if}}		
+			<div id="needs" class="col-md-6 col-sm-12">
+				<h3>Necesidades</h3>
+				<div id="needList" class="row">
+					<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
+					<div class="collaborationCategorySec" id="jobColCatSec">
+						<div class="row">
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+						</div>
+					</div>
+					<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
+					<div class="collaborationCategorySec" id="jobColCatSec">
+						<div class="row">
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+						</div>
+					</div>
+					<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
+					<div class="collaborationCategorySec" id="jobColCatSec">
+						<div class="row">
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	{{#if isAuthenticated}}
-	</div>
-	<div id="secOffersAndNeeds" class="row">
-	{{/if}}
-		<div id="offers" class="col-md-6 col-sm-12">
-			<h3>Ofrecimientos</h3>
-			<div id="offerList" class="row">
-				<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
-				<div class="collaborationCategorySec" id="jobColCatSec">
-					<div class="row">
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+		<div id="secConfiguration" class="row profileSec tab-pane active" role="tabpanel">
+			<form class="form-horizontal" id="registerForm">
+				  <div class="form-group">
+				    <label for="inputName" class="col-sm-2 control-label">Nombre</label>
+				    <div class="col-sm-9">
+				      <input class="form-control" id="inputName" placeholder="Nombre del proyecto" name="name" value="{{name}}">
+				    </div>
+				  </div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Descripción:</label>
+						<div class="col-sm-9">
+							<textarea class="form-control" id="" name="description" placeholder="Descripción" name="description" value="{{description}}"></textarea>
+						</div>
 					</div>
-				</div>
-				<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
-				<div class="collaborationCategorySec" id="jobColCatSec">
-					<div class="row">
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Logo:</label>
+		        <input type="file" name="file" id="pictureFileInput">
 					</div>
-				</div>
-				<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
-				<div class="collaborationCategorySec" id="jobColCatSec">
-					<div class="row">
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Categoria:</label>
+						<div class="col-sm-9" id="categories">
+							<div class="row" id="categoriesSec">
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="humanrights"><i class="fa fa-globe fa-2x"></i>Derechos Humanos</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="productsservices"><i class="fa fa-shopping-basket fa-2x"></i>Productos y Servicios</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="environment"><i class="fa fa-pagelines fa-2x"></i>Medio Ambiente</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="artculture"><i class="fa fa-paint-brush fa-2x"></i>Arte y Cultura</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="gender"><i class="fa fa-transgender-alt fa-2x"></i>Género</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="health"><i class="fa fa-medkit fa-2x"></i>Salud</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="education"><i class="fa fa-book fa-2x"></i>Educación</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="workshops"><i class="fa fa-puzzle-piece fa-2x"></i>Talleres y Clases</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="community"><i class="fa fa-users fa-2x"></i>Comunidad</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="food"><i class="fa fa-cutlery fa-2x"></i>Comida</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="housing"><i class="fa fa-home fa-2x"></i>Vivienda</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="clothing"><i class="fa fa-scissors fa-2x"></i>Vestido</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="communication"><i class="fa fa-bullhorn fa-2x"></i>Comunicación</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="technology"><i class="fa fa-cogs fa-2x"></i>Tecnología</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="transport"><i class="fa fa-bicycle fa-2x"></i>Transporte</div>
+							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-{{#if isAuthenticated}}
-			<div id="newOffer">
-				<div>
-				</div>
-			</div>
+					<div id="selectedCategories">
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Tipo de Proyecto:</label>
+						<div class="col-sm-9">
+							<select class="form-control" name="projectType">
+								<option value="collective" {{#ifcond projectType.type '==' 'collective'}} 'select' {{else}}  {{/ifcond}}>Colectivo</option>
+								<option value="cooperative" {{#ifcond projectType.type '==' 'cooperative'}} 'select' {{else}} {{/ifcond}}>Cooperativa</option>
+								<option value="ngo" {{#ifcond projectType.type '==' 'ngo'}} 'select' {{else}} {{/ifcond}}>ONG</option>
+								<option value="ethicalbusiness" {{#ifcond projectType.type '==' 'ethicalbusiness'}} 'select' {{else}} {{/ifcond}}>Negocio Ético</option>
+								<option value="neighborsorg" {{#ifcond projectType.type '==' 'neighborsorg'}} 'select' {{else}} {{/ifcond}}>Organización vecinal</option>
+								<option value="startup" {{#ifcond projectType.type '==' 'startup'}} 'select' {{else}} {{/ifcond}}>Startup</option>
+								<option value="ontransition" {{#ifcond projectType.type '==' 'ontransition'}} 'select' {{else}} {{/ifcond}}>En transición</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Página web:</label>
+						<div class="col-sm-9">
+							<input class="form-control" name="webpage" type="text" value="{{webpage}}"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Twitter:</label>
+						<div class="col-sm-9">
+							<input class="form-control" name="twitter" type="text" value="{{twitter}}"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Facebook:</label>
+						<div class="col-sm-9">
+							<input class="form-control" name="facebook" type="text" value="{{facebook}}"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Email:</label>
+						<div class="col-sm-9">
+							<input class="form-control" name="email" type="text" value="{{email}}"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Telefono:</label>
+						<div class="col-sm-9">
+							<input class="form-control" name="phone" type="text" value="{{phone}}"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Celular:</label>
+						<div class="col-sm-9">
+							<input class="form-control" name="mobile" type="text" value="{{mobile}}"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Dirección:</label>
+						<div class="col-sm-9">
+							<input class="form-control" name="address" type="text" value="{{address}}"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Horarios:</label>
+						<div class="col-sm-9">
+							<div id="schedule">
+								{{#each schedule}}
+								<div>{{this.days}}: {{this.hours}} <a href="#" id="removeSchedule{{@index}}"><i class="fa fa-times"></i></a></div>
+								{{/each}}
+							</div>
+							<div>
+								<label>Días:</label>
+								<input class="form-control" type="text" id="newDaysInput"/>
+								<label>Horas:</label>
+								<input class="form-control" type="text" id="newHoursInput"/>
+								<div class="btn btn-default" id="addScheduleBtn" onclick="addSchedule()">+</div>
+							</div>					
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Ofrece:</label>
+						<div class="col-sm-9">
+							<div id="offers">
+								{{#each offers}}
+								<div>{{this}} <a href="#" id="removeOffer{{@index}}"><i class="fa fa-times"></i></a></div>
+								{{/each}}
+							</div>
+							<div>
+								<input class="form-control" type="text" id="newOfferInput"/>
+								<div class="btn btn-default" id="addOfferBtn" onclick="addOffer()">+</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-2 control-label">Necesita:</label>
+						<div class="col-sm-9">
+							<div id="needs">
+								{{#each needs}}
+								<div>{{this}} <a href="#" id="removeNeed{{@index}}"><i class="fa fa-times"></i></a></div>
+								{{/each}}
+							</div>
+							<div>
+								<input class="form-control" type="text" id="newNeedInput" />
+								<div class="btn btn-default" id="addNeedBtn" onclick="addNeed()">+</div>
+							</div>	
+						</div>					
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Ubicación</label>
+						<div class="col-sm-9"><div id="map"></div></div>
+					</div>
+					<div>
+						<input type="hidden" id="hdnInputLat" name="latitude"/>
+						<input type="hidden" id="hdnInputLng" name="longitude"/>
+					</div>
+				</form>
 		</div>
-{{/if}}		
-		<div id="needs" class="col-md-6 col-sm-12">
-			<h3>Necesidades</h3>
-			<div id="needList" class="row">
-				<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
-				<div class="collaborationCategorySec" id="jobColCatSec">
-					<div class="row">
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-					</div>
-				</div>
-				<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
-				<div class="collaborationCategorySec" id="jobColCatSec">
-					<div class="row">
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-					</div>
-				</div>
-				<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
-				<div class="collaborationCategorySec" id="jobColCatSec">
-					<div class="row">
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	{{/if}}	
 	</div>
-{{#if isAuthenticated}}
-	<div id="secConfiguration" class="row">
-		<form class="form-horizontal" id="registerForm">
-			  <div class="form-group">
-			    <label for="inputName" class="col-sm-2 control-label">Nombre</label>
-			    <div class="col-sm-9">
-			      <input class="form-control" id="inputName" placeholder="Nombre del proyecto" name="name">
-			    </div>
-			  </div>
-				<div class="form-group">
-					<label for="" class="col-sm-2 control-label">Descripción:</label>
-					<div class="col-sm-9">
-						<textarea class="form-control" id="" name="description" placeholder="Descripción" name="description"></textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="" class="col-sm-2 control-label">Logo:</label>
-	        <input type="file" name="file" id="pictureFileInput">
-				</div>
-				<div class="form-group">
-					<label for="" class="col-sm-2 control-label">Categoria:</label>
-					<div class="col-sm-9" id="categories">
-						<div class="row" id="categoriesSec">
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="56281547b82163c71dea5fa0"><i class="fa fa-globe fa-2x"></i>Derechos Humanos</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="56281497b82163c71dea5f9e"><i class="fa fa-shopping-basket fa-2x"></i>Productos y Servicios</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="5628158bb82163c71dea5fa2"><i class="fa fa-pagelines fa-2x"></i>Medio Ambiente</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="5628145fb82163c71dea5f9d"><i class="fa fa-paint-brush fa-2x"></i>Arte y Cultura</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="5660de8ca17bb1a413dd1add"><i class="fa fa-transgender-alt fa-2x"></i>Género</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="55663309a660da482b648a33"><i class="fa fa-medkit fa-2x"></i>Salud</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="556644179cfb86a021e5a150"><i class="fa fa-book fa-2x"></i>Educación</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="5776bfeaa6d9d136619e9b87"><i class="fa fa-puzzle-piece fa-2x"></i>Talleres y Clases</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="559e910a46343c3bccee7fbe"><i class="fa fa-users fa-2x"></i>Comunidad</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="559e90f046343c3bccee7fbd"><i class="fa fa-cutlery fa-2x"></i>Comida</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="566327d38bf85d71b6c069c1"><i class="fa fa-home fa-2x"></i>Vivienda</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="566353d1c3671ef030500668"><i class="fa fa-scissors fa-2x"></i>Vestido</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="562814bbb82163c71dea5f9f"><i class="fa fa-bullhorn fa-2x"></i>Comunicación</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="562815b2b82163c71dea5fa3"><i class="fa fa-cogs fa-2x"></i>Tecnología</div>
-							<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="562815bfb82163c71dea5fa4"><i class="fa fa-bicycle fa-2x"></i>Transporte</div>
-						</div>
-					</div>
-				</div>
-				<div id="selectedCategories">
-				</div>
-				<div class="form-group">
-					<label for="" class="col-sm-2 control-label">Tipo de Proyecto:</label>
-					<div class="col-sm-9">
-						<select class="form-control" name="projectType">
-							<option value="collective">Colectivo</option>
-							<option value="cooperative">Cooperativa</option>
-							<option value="ngo">ONG</option>
-							<option value="ethicalbusiness">Negocio Ético</option>
-							<option value="neighborsorg">Organización vecinal</option>
-							<option value="startup">Startup</option>
-							<option value="ontransition">En transición</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="" class="col-sm-2 control-label">Página web:</label>
-					<div class="col-sm-9">
-						<input class="form-control" name="webpage" type="text"/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="" class="col-sm-2 control-label">Twitter:</label>
-					<div class="col-sm-9">
-						<input class="form-control" name="twitter" type="text"/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="" class="col-sm-2 control-label">Facebook:</label>
-					<div class="col-sm-9">
-						<input class="form-control" name="facebook" type="text"/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="" class="col-sm-2 control-label">Email:</label>
-					<div class="col-sm-9">
-						<input class="form-control" name="email" type="text"/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="" class="col-sm-2 control-label">Telefono:</label>
-					<div class="col-sm-9">
-						<input class="form-control" name="phone" type="text"/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="" class="col-sm-2 control-label">Dirección:</label>
-					<div class="col-sm-9">
-						<input class="form-control" name="address" type="text"/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="" class="col-sm-2 control-label">Horarios:</label>
-					<div class="col-sm-9">
-						<div>
-							<label>Días:</label>
-							<input class="form-control" type="text" id="newDaysInput"/>
-							<label>Horas:</label>
-							<input class="form-control" type="text" id="newHoursInput"/>
-							<div class="btn btn-default" id="addScheduleBtn" onclick="addSchedule()">+</div>
-						</div>
-						<div id="schedules"></div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="" class="col-sm-2 control-label">Ofrece:</label>
-					<div class="col-sm-9">
-						<div>
-							<input class="form-control" type="text" id="newOfferInput"/>
-							<div class="btn btn-default" id="addOfferBtn" onclick="addOffer()">+</div>
-						</div>
-						<div id="offers"></div>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="" class="col-sm-2 control-label">Necesita:</label>
-					<div class="col-sm-9">
-						<div>
-							<input class="form-control" type="text" id="newNeedInput" />
-							<div class="btn btn-default" id="addNeedBtn" onclick="addNeed()">+</div>
-						</div>
-						<div id="needs"></div>
-					</div>					
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Ubicación</label>
-					<div class="col-sm-9"><div id="map"></div></div>
-				</div>
-				<div>
-					<input type="hidden" id="hdnInputLat" name="latitude"/>
-					<input type="hidden" id="hdnInputLng" name="longitude"/>
-				</div>
-			</form>
-	</div>
-{{/if}}	
 </div>
 </div>
