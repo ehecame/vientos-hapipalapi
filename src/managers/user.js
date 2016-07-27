@@ -12,8 +12,9 @@ UserManager.prototype = (function () {
         callback(doc)
       })
     },
-    update: function update (db, updatedUser, id, callback) {
-      db.collection('users').update({ _id: id }, updatedUser, function (err, doc) {
+    update: function update (db, username, updateObject, callback) {
+      console.log(updateObject)
+      db.collection('users').update({ username: username }, updateObject, function (err, doc) {
         callback(doc)
       })
     },

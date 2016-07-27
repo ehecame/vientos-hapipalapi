@@ -1,4 +1,5 @@
 var UserManager = require('./../../managers/user')
+var SessionController = require('./../session')
 var Bcrypt = require('bcrypt-nodejs')
 
 function UserController () { }
@@ -52,6 +53,105 @@ UserController.prototype = (function () {
       request.cookieAuth.clear()
       request.auth.clear()
       return reply.redirect('/')
+    },
+    // INTERESTS
+    addInterest: function addInterest (request, reply) {
+      console.log('PRUEBA UPDATE')
+      console.log(request.payload)
+      var isAuthenticated = SessionController.isAuthenticated(request)
+      if (isAuthenticated) {
+        var credentials = SessionController.getSession(request)
+        console.log(credentials)
+        UserManager.update(request.mongo.db, credentials.username, {$push: request.payload}, function (res) {
+          reply(res)
+        })
+      } else {
+        reply('not Authenticated')
+      }
+    },
+    removeInterest: function removeInterest (request, reply) {
+      console.log('PRUEBA DELETE')
+      console.log(request.payload)
+      var isAuthenticated = SessionController.isAuthenticated(request)
+      if (isAuthenticated) {
+        var credentials = SessionController.getSession(request)
+        console.log(credentials)
+        UserManager.update(request.mongo.db, credentials.username, {$pull: request.payload}, function (res) {
+          reply(res)
+        })
+      } else {
+        reply('not Authenticated')
+      }
+    },
+    // CATEGORIES
+    addCategory: function addCategory (request, reply) {
+      console.log('PRUEBA UPDATE')
+      console.log(request.payload)
+      var isAuthenticated = SessionController.isAuthenticated(request)
+      if (isAuthenticated) {
+        var credentials = SessionController.getSession(request)
+        console.log(credentials)
+        UserManager.update(request.mongo.db, credentials.username, {$push: request.payload}, function (res) {
+          reply(res)
+        })
+      } else {
+        reply('not Authenticated')
+      }
+    },
+    removeCategory: function removeCategory (request, reply) {
+      console.log('PRUEBA DELETE')
+      console.log(request.payload)
+      var isAuthenticated = SessionController.isAuthenticated(request)
+      if (isAuthenticated) {
+        var credentials = SessionController.getSession(request)
+        console.log(credentials)
+        UserManager.update(request.mongo.db, credentials.username, {$pull: request.payload}, function (res) {
+          reply(res)
+        })
+      } else {
+        reply('not Authenticated')
+      }
+    },
+    // SKILLS
+    addSkill: function addSkill (request, reply) {
+      console.log('PRUEBA UPDATE')
+      console.log(request.payload)
+      var wantToArray = []
+      if (request.payload['wantTo[]']) {
+        if (typeof request.payload['wantTo[]'] == 'string') {
+          wantToArray[0] = request.payload['wantTo[]']
+        } else {
+          wantToArray = request.payload['wantTo[]']
+        }
+      }
+      var newSkill = {
+        skill: request.payload.skill,
+        wantTo: wantToArray
+      }
+      var isAuthenticated = SessionController.isAuthenticated(request)
+      if (isAuthenticated) {
+        var credentials = SessionController.getSession(request)
+        console.log(credentials)
+        UserManager.update(request.mongo.db, credentials.username, {$push: {skills: newSkill}}, function (res) {
+          reply(res)
+        })
+      } else {
+        reply('not Authenticated')
+      }
+    },
+    removeSkill: function removeSkill (request, reply) {
+      console.log('PRUEBA DELETE SKILL')
+      console.log(request.payload)
+      var isAuthenticated = SessionController.isAuthenticated(request)
+      if (isAuthenticated) {
+        var credentials = SessionController.getSession(request)
+        console.log(credentials)
+        UserManager.update(request.mongo.db, credentials.username, {$pull: {'skills': request.payload}}, function (res) {
+          reply(res)
+        })
+      } else {
+        reply('not Authenticated')
+      }
     }
   }
 })()

@@ -17,7 +17,7 @@ module.exports = function () {
           if (data.isAuthenticated) {
             data.credentials = SessionController.getSession(request)
           }
-          console.log(require('bcrypt-nodejs').hashSync('3str3ll4'))
+          console.log(require('bcrypt-nodejs').hashSync('juanelas'))
           reply.view('index', data)
         }
       // auth: {

@@ -112,8 +112,10 @@ text-align: center; }
 .tx-al-j{
   text-align: justify; }
 
-.fa-select {
-    font-family: sans-serif, 'FontAwesome'; }
+.fa-select, 
+.multiselect-container,
+.multiselect{
+  font-family: sans-serif, 'FontAwesome'; }
 
 .mr-l-5{
   margin-left: 5px; }
@@ -802,7 +804,6 @@ text-align: center; }
       display: block;}
 
   .profile #secInterests #interestList{
-    margin: 10px;
     padding: 10px;
     border-radius: 10px;
     background-color: #eeeeee; 

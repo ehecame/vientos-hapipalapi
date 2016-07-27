@@ -41,7 +41,8 @@ server.register(require('hapi-auth-cookie'), function (err) {
     redirectTo: '/login',
     isSecure: false,
     appendNext: true,
-    clearInvalid: true
+    clearInvalid: true,
+    ttl: 1800000
   })
 })
 
