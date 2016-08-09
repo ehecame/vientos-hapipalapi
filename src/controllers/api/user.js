@@ -40,7 +40,7 @@ UserController.prototype = (function () {
     register: function register (request, reply) {
       var newuser = {
         email: request.payload.email,
-        password: require('bcrypt-nodejs').hashSync(request.payload.password, 10),
+        password: require('bcrypt-nodejs').hashSync(request.payload.password),
         username: request.payload.username
       }
       var db = request.mongo.db
@@ -54,15 +54,75 @@ UserController.prototype = (function () {
       request.auth.clear()
       return reply.redirect('/')
     },
-    // INTERESTS
-    addInterest: function addInterest (request, reply) {
-      console.log('PRUEBA UPDATE')
+    // COLLABORATION
+    addCollaboration: function addCollaboration (request, reply) {
       console.log(request.payload)
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
         console.log(credentials)
-        UserManager.update(request.mongo.db, credentials.username, {$push: request.payload}, function (res) {
+        var newCollaboration = {}
+        newCollaboration[request.payload.offerOrNeed] = {
+          title: request.payload.title,
+          type: request.payload.type
+        }
+        console.log(newCollaboration)
+        UserManager.update(request.mongo.db, {'username': credentials.username}, {$push: newCollaboration}, function (res) {
+          reply(res)
+        })
+      } else {
+        reply('not Authenticated')
+      }
+    },
+    updateCollaboration: function updateCollaboration (request, reply) {
+      console.log(request.payload)
+      var isAuthenticated = SessionController.isAuthenticated(request)
+      if (isAuthenticated) {
+        var credentials = SessionController.getSession(request)
+        console.log(credentials)
+        var query = {
+          'username': credentials.username
+        }
+        query[request.payload.offerOrNeed + 's.title'] = request.payload.oldTitle
+        var updatedCollaboration = {}
+        updatedCollaboration[request.payload.offerOrNeed + 's.$.type'] = request.payload.newType
+        updatedCollaboration[request.payload.offerOrNeed + 's.$.title'] = request.payload.newTitle
+        console.log(query)
+        console.log(updatedCollaboration)
+        UserManager.update(
+          request.mongo.db,
+          query,
+          {$set: updatedCollaboration},
+          function (res) {
+            reply(res)
+          })
+      } else {
+        reply('not Authenticated')
+      }
+    },
+    removeCollaboration: function removeCollaboration (request, reply) {
+      console.log(request.payload)
+      var isAuthenticated = SessionController.isAuthenticated(request)
+      if (isAuthenticated) {
+        var credentials = SessionController.getSession(request)
+        console.log(credentials)
+        var collaborationToRemove = {}
+        collaborationToRemove[request.payload.offerOrNeed + 's'] = {'title': request.payload.title}
+        UserManager.update(request.mongo.db, {'username': credentials.username}, {$pull: collaborationToRemove}, function (res) {
+          reply(res)
+        })
+      } else {
+        reply('not Authenticated')
+      }
+    },
+    // INTERESTS
+    addInterest: function addInterest (request, reply) {
+      console.log(request.payload)
+      var isAuthenticated = SessionController.isAuthenticated(request)
+      if (isAuthenticated) {
+        var credentials = SessionController.getSession(request)
+        console.log(credentials)
+        UserManager.update(request.mongo.db, {'username': credentials.username}, {$push: request.payload}, function (res) {
           reply(res)
         })
       } else {
@@ -70,13 +130,12 @@ UserController.prototype = (function () {
       }
     },
     removeInterest: function removeInterest (request, reply) {
-      console.log('PRUEBA DELETE')
       console.log(request.payload)
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
         console.log(credentials)
-        UserManager.update(request.mongo.db, credentials.username, {$pull: request.payload}, function (res) {
+        UserManager.update(request.mongo.db, {'username': credentials.username}, {$pull: request.payload}, function (res) {
           reply(res)
         })
       } else {
@@ -85,13 +144,12 @@ UserController.prototype = (function () {
     },
     // CATEGORIES
     addCategory: function addCategory (request, reply) {
-      console.log('PRUEBA UPDATE')
       console.log(request.payload)
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
         console.log(credentials)
-        UserManager.update(request.mongo.db, credentials.username, {$push: request.payload}, function (res) {
+        UserManager.update(request.mongo.db, {'username': credentials.username}, {$push: request.payload}, function (res) {
           reply(res)
         })
       } else {
@@ -99,13 +157,12 @@ UserController.prototype = (function () {
       }
     },
     removeCategory: function removeCategory (request, reply) {
-      console.log('PRUEBA DELETE')
       console.log(request.payload)
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
         console.log(credentials)
-        UserManager.update(request.mongo.db, credentials.username, {$pull: request.payload}, function (res) {
+        UserManager.update(request.mongo.db, {'username': credentials.username}, {$pull: request.payload}, function (res) {
           reply(res)
         })
       } else {
@@ -114,7 +171,6 @@ UserController.prototype = (function () {
     },
     // SKILLS
     addSkill: function addSkill (request, reply) {
-      console.log('PRUEBA UPDATE')
       console.log(request.payload)
       var wantToArray = []
       if (request.payload['wantTo[]']) {
@@ -132,7 +188,7 @@ UserController.prototype = (function () {
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
         console.log(credentials)
-        UserManager.update(request.mongo.db, credentials.username, {$push: {skills: newSkill}}, function (res) {
+        UserManager.update(request.mongo.db, {'username': credentials.username}, {$push: {skills: newSkill}}, function (res) {
           reply(res)
         })
       } else {
@@ -140,13 +196,12 @@ UserController.prototype = (function () {
       }
     },
     removeSkill: function removeSkill (request, reply) {
-      console.log('PRUEBA DELETE SKILL')
       console.log(request.payload)
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
         console.log(credentials)
-        UserManager.update(request.mongo.db, credentials.username, {$pull: {'skills': request.payload}}, function (res) {
+        UserManager.update(request.mongo.db, {'username': credentials.username}, {$pull: {'skills': request.payload}}, function (res) {
           reply(res)
         })
       } else {

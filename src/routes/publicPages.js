@@ -12,7 +12,7 @@ module.exports = function () {
         handler: function (request  , reply) {
           var data = {
             isAuthenticated: SessionController.isAuthenticated(request),
-            withOutFooter: true
+            withFooter: true
           }
           if (data.isAuthenticated) {
             data.credentials = SessionController.getSession(request)
@@ -77,12 +77,6 @@ module.exports = function () {
       }
     }, {
       method: 'GET',
-      path: '/register',
-      handler: function (request, reply) {
-        reply.view('register')
-      }
-    }, {
-      method: 'GET',
 
       path: '/howtocollaborate',
       handler: function (request, reply) {
@@ -122,15 +116,6 @@ module.exports = function () {
       }
     }, {
       method: 'GET',
-      path: '/shortregister',
-      config: {
-        handler: function (request, reply) {
-          reply.view('shortRegister')
-        } /*,
-        auth: false*/
-      }
-    }, {
-      method: 'GET',
       path: '/project/pilot',
       config: {
         handler: function (request, reply) {
@@ -148,16 +133,44 @@ module.exports = function () {
           ProjectManager.findById(db, new objID(request.params.projectId), function (res) {
             var data = res[0]
             data.isAuthenticated = SessionController.isAuthenticated(request)
-            data.withOutFooter = true
+            data.withFooter = true
             if (data.isAuthenticated) {
               data.credentials = SessionController.getSession(request)
+              data.isOwner = data.credentials.scope && (data.credentials.scope == 'admin' || data.credentials.scope.indexOf('admin')>0)
             }
             reply.view('projectProfile', data)
           })
         } /*,
         auth: false*/
       }
+    },{
+      method: 'POST',
+      path: '/uploadPicture',
+      config: {
+        payload: {
+          maxBytes: 209715200,
+          output: 'stream',
+          parse: false
+        },
+        handler: function (requset, reply) {
+          console.log('subiendo Foto')
+          var form = new multiparty.Form()
+          form.parse(requset.payload, function (err, fields, files) {
+            if (err) return reply(err)
+            else {
+              fs.readFile(files.file[0].path, function(err, data) {
+                fs.writeFile('./public/img/' + files.file[0].originalFilename, data, function(err) {
+                  if (err) return reply(err);
+                   else return reply('File uploaded : ' + files.file[0].originalFilename)
+                })
+              })
+            } 
+          })
+        },
+        auth: {
+          strategy: 'standard'
+        }
+      }
     }
-
   ]
 }()

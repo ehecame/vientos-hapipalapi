@@ -1,32 +1,52 @@
 var UserController = require('./../../controllers/api/user.js')
 
 module.exports = function () {
-  return [
+  return [{
+    method: 'POST',
+    path: '/api/user/login',
+    config: {
+      handler: UserController.login,
+      auth: {
+        strategy: 'standard',
+        mode: 'try'
+      },
+      plugins: { 'hapi-auth-cookie': { redirectTo: false } }
+    }
+  }, {
+    method: 'POST',
+    path: '/api/user/register',
+    config: {
+      handler: UserController.register,
+      auth: {
+        scope: 'admin'
+      }
+    }
+  }, {
+    method: 'DELETE',
+    path: '/api/user/logout',
+    config: {
+      handler: UserController.logout
+    }
+  },
+    // COLLABORATIONS
     {
       method: 'POST',
-      path: '/api/user/login',
+      path: '/api/user/collaboration',
       config: {
-        handler: UserController.login,
-        auth: {
-          strategy: 'standard',
-          mode: 'try'
-        },
-        plugins: { 'hapi-auth-cookie': {redirectTo: false}}
+        handler: UserController.addCollaboration
       }
     },
     {
-      method: 'POST',
-      path: '/api/user/register',
+      method: 'PUT',
+      path: '/api/user/collaboration',
       config: {
-        handler: UserController.register,
-        auth: false
+        handler: UserController.updateCollaboration
       }
-    },
-    {
+    }, {
       method: 'DELETE',
-      path: '/api/user/logout',
+      path: '/api/user/',
       config: {
-        handler: UserController.logout
+        handler: UserController.removeCollaboration
       }
     },
     // INTERESTS

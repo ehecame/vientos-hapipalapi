@@ -10,6 +10,7 @@
     "hapi-auth-cookie": "^6.1.1",
     "hapi-mongodb": "^4.1.0",
     "inert": "^3.2.0",
+    "underscore": "^1.8.3",
     "vision": "^4.0.1"
   },
   "devDependencies": {

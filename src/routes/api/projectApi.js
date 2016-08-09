@@ -57,6 +57,13 @@ module.exports = function () {
       config: {
         handler: ProjectController.delete
       }
+    },
+    {
+      method: 'GET',
+      path: '/api/project/modifyOfferAndNeeds',
+      config: {
+        handler: ProjectController.modifyOfferAndNeeds
+      }
     }
   ]
 }()

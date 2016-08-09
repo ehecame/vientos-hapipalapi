@@ -1,3 +1,4 @@
+var _ = require('underscore')
 var ProjectManager = require('./../../managers/project')
 
 function ProjectController () { }
@@ -181,7 +182,14 @@ ProjectController.prototype = (function () {
       ProjectManager.delete(db, request.params.id, function (res) {
         reply(res)
       })
+    },
+    modifyOfferAndNeeds: function modifyOfferAndNeeds (request, reply) {
+      var db = request.mongo.db
+      ProjectManager.modifyOfferAndNeeds(db, function (res) {
+        reply('res')
+      })
     }
+
   }
 })()
 var ProjectController = new ProjectController()

@@ -1,3 +1,5 @@
+var _ = require('underscore')
+
 function ProjectManager () { }
 ProjectManager.prototype = (function () {
   return {
@@ -32,9 +34,12 @@ ProjectManager.prototype = (function () {
       })
     },
     findByKeyWords: function findByKeyWords (db, keyWords, callback) {
-      var query = { $text: { $search: keyWords } }
-      db.collection('projects').find(query).toArray(function (err, docs) {
-        callback(docs)
+      // var query = { $text: { $search: keyWords } } //3.2      
+      // db.collection('projects').find(query).toArray(function (err, docs) {
+      //  callback(docs)
+      // })
+      var results = db.command({ text: 'projects', search: keyWords }, function (err, cb) {
+        callback(_.map(cb.results, function (res) {return res.obj}))
       })
     },
     insert: function insert (db, project, callback) {
@@ -52,6 +57,20 @@ ProjectManager.prototype = (function () {
     delete: function (db, id, callback) {
       db.collection('projects').remove({ _id: id }, function (err, doc) {
         callback(doc)
+      })
+    },
+    modifyOfferAndNeeds: function modifyOfferAndNeeds (db, callback) {
+      var updatedNeeds, updatedOffers
+      db.collection('projects').find({'needsa': {$exists: true}}).toArray(function (err, docs) {
+        _.each(docs, function (project, index) {
+          updatedNeeds = _.map(project.needsa, function (need) {return {'title': need, 'type': 'product'}})
+          updatedOffers = _.map(project.offersa, function (offer) {return {'title': offer, 'type': 'product'}})
+          db.collection('projects').updateMany({name: project.name}, {$set: {'needs': updatedNeeds}}, function (err, results) {
+            console.log(results)})
+          db.collection('projects').updateMany({name: project.name}, {$set: {'offers': updatedOffers}}, function (err, results) {
+            console.log(results)})
+        })
+        callback()
       })
     }
   }

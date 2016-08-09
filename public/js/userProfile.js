@@ -13,31 +13,31 @@ function initiateSectionBtnsFunc () {
   })
 }
 
-function sectionBtnClicked () {
-  var id = $(this).attr('id')
-  $('.userProfileSec').addClass('hidden')
-  $('.sectionBtn').removeClass('selected')
-  if (id == 'homeBtn') {
-    $('#homeBtn').addClass('selected')
-    $('#secHome').removeClass('hidden')
-  }
-  if (id == 'projectsBtn') {
-    $('#projectsBtn').addClass('selected')
-    $('#secProjects').removeClass('hidden')
-  }
-  if (id == 'offersAndNeedsBtn') {
-    $('#offersAndNeedsBtn').addClass('selected')
-    $('#secOffersAndNeeds').removeClass('hidden')
-  }
-  if (id == 'interestsBtn') {
-    $('#interestsBtn').addClass('selected')
-    $('#secInterests').removeClass('hidden')
-  }
-  if (id == 'configurationBtn') {
-    $('#configurationBtn').addClass('selected')
-    $('#secConfiguration').removeClass('hidden')
-  }
-}
+// function sectionBtnClicked () {
+//   var id = $(this).attr('id')
+//   $('.userProfileSec').addClass('hidden')
+//   $('.sectionBtn').removeClass('selected')
+//   if (id == 'homeBtn') {
+//     $('#homeBtn').addClass('selected')
+//     $('#secHome').removeClass('hidden')
+//   }
+//   if (id == 'projectsBtn') {
+//     $('#projectsBtn').addClass('selected')
+//     $('#secProjects').removeClass('hidden')
+//   }
+//   if (id == 'offersAndNeedsBtn') {
+//     $('#offersAndNeedsBtn').addClass('selected')
+//     $('#secOffersAndNeeds').removeClass('hidden')
+//   }
+//   if (id == 'interestsBtn') {
+//     $('#interestsBtn').addClass('selected')
+//     $('#secInterests').removeClass('hidden')
+//   }
+//   if (id == 'configurationBtn') {
+//     $('#configurationBtn').addClass('selected')
+//     $('#secConfiguration').removeClass('hidden')
+//   }
+// }
 
 function initiateCollaborationFunc () {
   $('.myProject').click(myProjectClicked)
@@ -45,9 +45,14 @@ function initiateCollaborationFunc () {
 
 function initiateOffersAndNeedsFunc () {
   $('.collaborationCategoryTitle').click(collaborationCategoryTitleClicked)
-  $('#newOfferBtn').click(newOfferOrNeedBtnClicked)
-  $('#newNeedBtn').click(newOfferOrNeedBtnClicked)
+  $('#newOfferBtn').click(openAddCollaboration)
+  $('#newNeedBtn').click(openAddCollaboration)
+  $('.addCollaborationBtn').click(addCollaboration)
   $('#newOfferNeedModal').on('show.bs.modal', onOpenNewOfferNeedModal)
+  $('.editIcon').click(openEditCollaboration)
+  $('.deleteIcon').click(deleteCollaboration)
+  $('.editCollaborationBtn').click(editCollaboration)
+  $('.cancelEditCollaborationBtn').click(closeEditCollaboration)
 }
 
 function collaborationCategoryTitleClicked () {
@@ -155,12 +160,12 @@ function addInterest () {
     $('#interestList').append('<span class="label label-default">' + $('#newInterestInput').val() + '<i class="fa fa-times mr-l-10"></i></span>')
     var data = {interests: $('#newInterestInput').val()}
     $('#newInterestInput').val('')
-    $.ajax({
-      url: '/api/user/interests',
-      type: 'POST',
-      success: function (res) {console.log(res)},
-      data: data
-    })
+        $.ajax({
+          url: '/api/user/interests',
+          type: 'POST',
+          success: function (res) {console.log(res)},
+          data: data
+        })
   }
 }
 
@@ -242,4 +247,95 @@ function uploadPicture () {
       console.log(data)
     }
   })
+}
+
+function openAddCollaboration(){
+  $(this).addClass('hidden')
+  $(this).siblings('.addCollaborationSec').removeClass('hidden')
+}
+
+function addCollaboration(){
+  var collaboration = $(this).parents('.addCollaborationSec')
+  console.log(collaboration)
+  var data = {
+    offerOrNeed: collaboration.parent().attr('id'),
+    title: collaboration.find('.newCollaborationTitle').val(),
+    type:  collaboration.find('.newCollaborationType').val(),
+  }
+  $.ajax({
+    url: '/api/user/collaboration',
+    type: 'POST',
+    success: function (res) {
+      collaboration.find('.newCollaborationTitle').val('')
+    },
+    data: data
+  })
+  return false
+}
+
+function closeAddCollaboration(){
+  $(this).parents('.addCollaborationSec').addClass('hidden')
+  return false
+}
+
+function openEditCollaboration(){
+  console.log($(this))
+  $(this).siblings('.editCollaboration').removeClass('hidden')
+  return false
+}
+
+function deleteCollaboration(){
+  var data = {
+    offerOrNeed: $(this).parents('.editCollaboration').parent().attr('class'),
+    title: $(this).parents('.editCollaboration').first().siblings('.collaborationTitle').text(),
+  }
+  var collaboration = $(this).parents('.editCollaboration').parent()
+  $.ajax({
+    url: '/api/user/collaboration',
+    type: 'DELETE',
+    success: function (res) {
+      console.log(res)
+    },
+    data: data
+  })
+  return false
+}
+
+function closeEditCollaboration(){
+  $(this).parents('.editCollaboration').addClass('hidden')
+  return false
+}
+
+function editCollaboration(){
+  var collaboration = $(this).parents('.editCollaboration').parent()
+  var data = {
+    offerOrNeed: collaboration.attr('class'),
+    oldTitle: collaboration.find('.collaborationTitle').text(),
+    newTitle: collaboration.find('.newCollaborationTitle').val(),
+    newType:  collaboration.find('.newCollaborationType').val(),
+  }
+  $.ajax({
+    url: '/api/user/collaboration',
+    type: 'PUT',
+    success: function (res) {
+      console.log(res)
+      collaboration.find('.collaborationTitle').text(data.newTitle)
+      collaboration.find('.editCollaboration').addClass('hidden')
+      console.log(collaboration.parent().attr('id').indexOf(data.newType))
+      if(collaboration.parent().attr('id').indexOf(data.newType) == -1){
+        var oldCat = collaboration.parent().parent()
+        var newColCatSec = $('#'+data.newType+'ColCatSec')
+        newColCatSec.append(collaboration.detach())
+        var oldCatNum = +(oldCat.find('.label').text())
+        oldCat.find('.label').text(oldCatNum-1)
+        if(oldCatNum==1) oldCat.addClass('hidden')
+        var newCat = $('#'+data.newType+'ColCat')
+        var newCatNum = +(newCat.find('.label').text())
+        newCat.find('.label').text(newCatNum+1)
+        newCat.removeClass('hidden')
+      }
+    },
+    data: data
+  })
+  return false
 }

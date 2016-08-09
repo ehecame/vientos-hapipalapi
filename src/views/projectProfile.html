@@ -72,7 +72,6 @@
 			</div>
 		</div>
 	</div>
-{{#if isAuthenticated}}
 	<div id="sectionTabsRow" class="row" data-spy="affix" data-offset-top="400" role="tabpanel">
 		<ul class="nav nav-tabs" id="sectionTabs">
 		  <li role="presentation" id="homeTab" class="active" role="tab" data-toggle="tab">
@@ -84,12 +83,13 @@
 		  <li role="presentation" id="eventsTab" role="tab" data-toggle="tab">
 		  	<a href="#secEvents"><i class="fa fa-calendar mr-r-5"></i>Eventos y Actividades</a>
 	  	</li>
+	  	{{#if isOwner}}
 		  <li role="presentation" id="configurationTab" role="tab" data-toggle="tab">
 		  	<a href="#secConfiguration"><i class="fa fa-cogs mr-r-5"></i>Configuración</a>
 	  	</li>
+	  	{{/if}}
 		</ul>
 	</div>
-{{/if}}
 
 	<div class="tab-content">
 		<div id="secHome" class="row profileSec tab-pane active" role="tabpanel">
@@ -110,14 +110,14 @@
 					</div>
 				</div>
 			</div>
-	{{#if isAuthenticated}}
+			{{#if isOwner}}
 			<div id="sugestedCollaborations">
 				<h3>Recomendaciones</h3>
 				<div id="">
 					
 				</div>
 			</div>
-	{{/if}}
+			{{/if}}
 			<div id="pastCollaborations">
 				<h3>Próximas colaboraciones</h3>
 				<div id="">
@@ -125,96 +125,464 @@
 				</div>
 			</div>
 		</div>
-		{{#if isAuthenticated}}
-		<div id="secEvents" class="row profileSec tab-pane active" role="tabpanel">
-		{{/if}}
+		<div id="secEvents" class="row profileSec tab-pane" role="tabpanel">
 			<div id="myProjects">
 				<h3>Mis eventos</h3>
 				<div></div>
 			</div>
-		{{#if isAuthenticated}}
 		</div>
-		<div id="secOffersNeeds" class="row profileSec tab-pane active" role="tabpanel">
-		{{/if}}
-			<div id="offers" class="col-md-6 col-sm-12">
-				<h3>Ofrecimientos</h3>
-				<div id="offerList" class="row">
-					<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
-					<div class="collaborationCategorySec" id="jobColCatSec">
-						<div class="row">
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						</div>
-					</div>
-					<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
-					<div class="collaborationCategorySec" id="jobColCatSec">
-						<div class="row">
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						</div>
-					</div>
-					<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
-					<div class="collaborationCategorySec" id="jobColCatSec">
-						<div class="row">
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						</div>
-					</div>
-				</div>
-	{{#if isAuthenticated}}
-				<div id="newOffer">
-					<div>
-					</div>
-				</div>
-			</div>
-	{{/if}}		
-			<div id="needs" class="col-md-6 col-sm-12">
-				<h3>Necesidades</h3>
-				<div id="needList" class="row">
-					<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
-					<div class="collaborationCategorySec" id="jobColCatSec">
-						<div class="row">
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						</div>
-					</div>
-					<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
-					<div class="collaborationCategorySec" id="jobColCatSec">
-						<div class="row">
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						</div>
-					</div>
-					<div class="collaborationCategoryTitle"><i class="fa fa-minus-sign"></i>Chambas</div>
-					<div class="collaborationCategorySec" id="jobColCatSec">
-						<div class="row">
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-							<div class="col-md-3 col-sm-4 col-xs-6 offer">Prueba</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	{{#if isAuthenticated}}
-		<div id="secConfiguration" class="row profileSec tab-pane active" role="tabpanel">
+		<div id="secOffersNeeds" class="row profileSec tab-pane" role="tabpanel">
+      <div id="offers" class="col-md-5">
+        <h2 class="profileTitle">Ofrecimientos</h2>
+        <div id="offerList" class="row">
+          <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'material'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/material" class="icon">
+              <strong>Materiales</strong>
+              <span class="label label-default" id="materialOfferNum">{{#count (filterByType offers 'material')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="materialColCatSec">
+        			{{#each (filterByType offers 'material')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'knowledge'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/knowledge" class="icon">
+              <strong>Conocimientos y Habilidades</strong>
+              <span class="label label-default" id="knowledgeOfferNum">{{#count (filterByType offers 'knowledge')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="knowledgeColCatSec">
+        			{{#each (filterByType offers 'knowledge')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'product'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/product" class="icon">
+              <strong>Productos</strong>
+              <span class="label label-default" id="productOfferNum">{{#count (filterByType offers 'product')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="productColCatSec">
+        			{{#each (filterByType offers 'product')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'service'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/service" class="icon">
+              <strong>Servicios</strong>
+              <span class="label label-default" id="serviceOfferNum">{{#count (filterByType offers 'service')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="serviceColCatSec">
+        			{{#each (filterByType offers 'service')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'event'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/event" class="icon">
+              <strong>Eventos y Actividades</strong>
+              <span class="label label-default" id="eventOfferNum">{{#count (filterByType offers 'event')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="eventColCatSec">
+        			{{#each (filterByType offers 'event')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'job'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/job" class="icon">
+              <strong>Chambas</strong>
+              <span class="label label-default" id="jobOfferNum">{{#count (filterByType offers 'job')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="jobColCatSec">
+        			{{#each (filterByType offers 'job')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'volunteer'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/volunteer" class="icon">
+              <strong>Tequio y Voluntariado</strong>
+              <span class="label label-default" id="volunteerOfferNum">{{#count (filterByType offers 'volunteer')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="volunteerColCatSec">
+        			{{#each (filterByType offers 'volunteer')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'spread'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/spread" class="icon">
+              <strong>Difusión de Proyectos</strong>
+              <span class="label label-default" id="spreadOfferNum">{{#count (filterByType offers 'spread')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="spreadColCatSec">
+        			{{#each (filterByType offers 'spread')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'space'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/space" class="icon">
+              <strong>Espacios</strong>
+              <span class="label label-default" id="spaceOfferNum">{{#count (filterByType offers 'space')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="spaceColCatSec">
+        			{{#each (filterByType offers 'space')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'link'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/link" class="icon">
+              <strong>Recomienda y Vincula</strong>
+              <span class="label label-default" id="linkOfferNum">{{#count (filterByType offers 'link')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="linkColCatSec">
+        			{{#each (filterByType offers 'link')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'art'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/art" class="icon">
+              <strong>Comparte tu arte</strong>
+              <span class="label label-default" id="artOfferNum">{{#count (filterByType offers 'art')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="artColCatSec">
+        			{{#each (filterByType offers 'art')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'funding'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/funding" class="icon">
+              <strong>Fondeo colectivo</strong>
+              <span class="label label-default" id="fundingOfferNum">{{#count (filterByType offers 'funding')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="fundingColCatSec">
+        			{{#each (filterByType offers 'funding')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class "btn btn-default" id="newOfferBtn"><i class="fa fa-plus"></i></button>
+        </div>
+      </div>
+      <div id="needs" class="col-md-5 col-md-offset-1">
+        <h2 class="profileTitle">Necesidades</h2>
+        <div id="needList" class="row">
+          <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'material'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/material" class="icon">
+              <strong>Materiales</strong>
+              <span class="label label-default" id="materialNeedNum">{{#count (filterByType needs 'material')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="materialColCatSec">
+        			{{#each (filterByType needs 'material')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'knowledge'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/knowledge" class="icon">
+              <strong>Conocimientos y Habilidades</strong>
+              <span class="label label-default" id="knowledgeNeedNum">{{#count (filterByType needs 'knowledge')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="knowledgeColCatSec">
+        			{{#each (filterByType needs 'knowledge')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'product'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/product" class="icon">
+              <strong>Productis</strong>
+              <span class="label label-default" id="productNeedNum">{{#count (filterByType needs 'product')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="productColCatSec">
+        			{{#each (filterByType needs 'product')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'service'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/service" class="icon">
+              <strong>Servicios</strong>
+              <span class="label label-default" id="serviceNeedNum">{{#count (filterByType needs 'service')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="serviceColCatSec">
+        			{{#each (filterByType needs 'service')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'event'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/event" class="icon">
+              <strong>Eventos y Actividades</strong>
+              <span class="label label-default" id="eventNeedNum">{{#count (filterByType needs 'event')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="eventColCatSec">
+        			{{#each (filterByType needs 'event')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'job'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/job" class="icon">
+              <strong>Chambas</strong>
+              <span class="label label-default" id="jobNeedNum">{{#count (filterByType needs 'job')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="jobColCatSec">
+        			{{#each (filterByType needs 'job')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'volunteer'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/volunteer" class="icon">
+              <strong>Tequio y Voluntariado</strong>
+              <span class="label label-default" id="volunteerNeedNum">{{#count (filterByType needs 'volunteer')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="volunteerColCatSec">
+        			{{#each (filterByType needs 'volunteer')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'spread'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/spread" class="icon">
+              <strong>Difusión de Proyectos</strong>
+              <span class="label label-default" id="spreadNeedNum">{{#count (filterByType needs 'spread')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="spreadColCatSec">
+        			{{#each (filterByType needs 'spread')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'space'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/space" class="icon">
+              <strong>Espacios</strong>
+              <span class="label label-default" id="spaceNeedNum">{{#count (filterByType needs 'space')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="spaceColCatSec">
+        			{{#each (filterByType needs 'space')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'link'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/link" class="icon">
+              <strong>Recomienda y Vincula</strong>
+              <span class="label label-default" id="linkNeedNum">{{#count (filterByType needs 'link')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="linkColCatSec">
+        			{{#each (filterByType needs 'link')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'art'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/art" class="icon">
+              <strong>Comparte tu arte</strong>
+              <span class="label label-default" id="artNeedNum">{{#count (filterByType needs 'art')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="artColCatSec">
+        			{{#each (filterByType needs 'art')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+          <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'funding'))}}hidden{{/if}}">
+            <div class="collaborationCategoryTitle ">
+              <i class="fa fa-caret-right"></i>
+              <img src="/svg/funding" class="icon">
+              <strong>Fondeo colectivo</strong>
+              <span class="label label-default" id="fundingNeedNum">{{#count (filterByType needs 'funding')}}{{/count}}</span>
+            </div>
+            <div class="collaborationCategorySec hidden" id="fundingColCatSec">
+        			{{#each (filterByType needs 'funding')}}
+              <div class="offer">
+                <div class="offerTitle"><strong>{{title}}</strong></div>
+                <i class="fa fa-pencil-square-o"></i>
+                <i class="fa fa-trash"></i>
+                <div class="offerDescription">{{description}}</div>
+              </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        <div>
+          <button class "btn btn-default" id="newNeedBtn"><i class="fa fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+    {{#if isOwner}}
+		<div id="secConfiguration" class="row profileSec tab-pane" role="tabpanel">
 			<form class="form-horizontal" id="registerForm">
 				  <div class="form-group">
 				    <label for="inputName" class="col-sm-2 control-label">Nombre</label>
@@ -367,7 +735,7 @@
 					</div>
 				</form>
 		</div>
-	{{/if}}	
+		{{/if}}
 	</div>
 </div>
 </div>

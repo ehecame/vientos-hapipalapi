@@ -22,10 +22,10 @@ module.exports = function () {
               console.log(data)
               data.isAuthenticated = isAuthenticated
               data.withOutFooter = true
-              data.credentials = credentials              
+              data.credentials = credentials
               reply.view('userProfile', data)
             })
-          }else{
+          } else {
             reply.redirect('/login?next=%2Fmyprofile')
           }
         },
@@ -51,33 +51,38 @@ module.exports = function () {
           strategy: 'standard'
         }
       }
-    },
-    {
-      method: 'POST',
-      path: '/uploadPicture',
+    }, {
+      method: 'GET',
+      path: '/register',
       config: {
-        payload: {
-          maxBytes: 209715200,
-          output: 'stream',
-          parse: false
-        },
-        handler: function (requset, reply) {
-          console.log('subiendo Foto')
-          var form = new multiparty.Form()
-          form.parse(requset.payload, function (err, fields, files) {
-            if (err) return reply(err)
-            else {
-              fs.readFile(files.file[0].path, function(err, data) {
-                fs.writeFile('./public/img/' + files.file[0].originalFilename, data, function(err) {
-                  if (err) return reply(err);
-                   else return reply('File uploaded : ' + files.file[0].originalFilename)
-                })
-              })
-            } 
-          })
+        handler: function (request, reply) {
+          var data = {
+            isAuthenticated: SessionController.isAuthenticated(request)
+          }
+          if (data.isAuthenticated) {
+            data.credentials = SessionController.getSession(request)
+          }
+          reply.view('register', data)
         },
         auth: {
-          strategy: 'standard'
+          scope: 'admin'
+        }
+      }
+    }, {
+      method: 'GET',
+      path: '/userregister',
+      config: {
+        handler: function (request, reply) {
+          var data = {
+            isAuthenticated: SessionController.isAuthenticated(request)
+          }
+          if (data.isAuthenticated) {
+            data.credentials = SessionController.getSession(request)
+          }
+          reply.view('userRegister', data)
+        },
+        auth: {
+          scope: 'admin'
         }
       }
     }

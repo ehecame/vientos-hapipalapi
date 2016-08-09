@@ -1,807 +1,1918 @@
 <script type="text/javascript" src="js/userProfile"></script>
 <div id="userProfile" class="profile">
-	<div class="fluid-container">
-		<div class="row" id="resumeRow">
-			<div id="topBar">
-				<div class="row">
-					<div id="picture" class="col-md-3 col-sm-6">
-						<div class="vcenter">
-							<div class="fakePicture">FOTO</div>
-						</div>
-					</div>
-					<div id="personalData" class="col-md-3 col-sm-6 right-border">
-						<div class="vcenter ">
-							<div><strong>{{name}} {{lastname}}</strong></div>
-							<div>{{email}}</div>
-							{{#if mobile}}
-							<div>{{mobile}}</div>
-							{{/if}}
-							{{#if phone}}
-							<div>{{phone}}</div>
-							{{/if}}
-						</div>
-					</div>
-					<div id="interests" class="col-md-3 col-sm-6 right-border">
-						<div class="vcenter">
-							{{#each interests}} #{{this}} {{/each}}
-						</div>
-					</div>
-					<div id="collaborations" class="col-md-3 col-sm-6">
-						<div class="vcenter">20 collaborations</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="sectionTabsRow" class="row" data-spy="affix" data-offset-top="200" role="tabpanel">
-			<ul class="nav nav-tabs" id="sectionTabs">
-			  <li role="presentation" id="homeTab" class="active" role="tab" data-toggle="tab">
-			  	<a href="#secHome"><i class="fa fa-home mr-l-10 mr-r-10"></i></a>
-		  	</li>
-			  <li role="presentation" id="projectsTab" role="tab" data-toggle="tab">
-			  	<a href="#secProjects"><i class="fa fa-suitcase mr-r-5"></i>Proyectos</a>
-		  	</li>
-			  <li role="presentation" id="offersNeedsTab" role="tab" data-toggle="tab">
-			  	<a href="#secOffersNeeds"><i class="fa fa-refresh	 mr-r-5"></i>Ofrezco y Necesito</a>
-		  	</li>
-			  <li role="presentation" id="interestsTab" role="tab" data-toggle="tab">
-			  	<a href="#secInterests"><i class="fa fa-heart mr-r-5"></i>Intereses y Habilidades</a>
-		  	</li>
-			  <li role="presentation" id="configurationTab" role="tab" data-toggle="tab">
-			  	<a href="#secConfiguration"><i class="fa fa-cogs mr-r-5"></i>Configuración</a>
-		  	</li>
-			</ul>
-		</div>
-		<div class="tab-content">
-			<div id="secHome" class="row profileSec tab-pane active" role="tabpanel">
-				<div id="nextCollaborationsSec">
-					<h3>Próximas colaboraciones</h3>
-					<div id="nextCollaborationList" class="row">
-						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="sugestedCollaborations">
-					<h3>Recomendaciones</h3>
-					<div id="sugestedCollaborationList" class="row">
-						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="pastCollaborations">
-					<h3>Últimas colaboraciones</h3>
-					<div id="nextCollaborations" class="row">
-						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 collaboration">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="secProjects" class="row profileSec tab-pane" role="tabpanel">
-				<div id="myProjects">
-					<h3>Mis proyectos</h3>
-					<div id="myProjectList" class="row">
-						<div class="col-md-3 col-sm-4 col-xs-6 myProject">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">5</span></div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 myProject">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">5</span></div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 myProject">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">5</span></div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="suggestedProjects">
-					<h3>Proyectos recomendados</h3>
-					<div id="suggestedProjectsList" class="row">
-						<div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div id="likedProjects">
-					<h3>Proyectos que me gustan</h3>
-					<div id="likedProjectsList" class="row">
-						<div class="col-md-3 col-sm-4 col-xs-6 likedProject">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 likedProject">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-4 col-xs-6 likedProject">
-							<div class="thumbnail">
-								<!--img src=""-->
-								<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-								<div class="caption">
-									<h4>Prueba</h4>
-									<p>Descripción de prueba</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="secOffersNeeds" class="row profileSec tab-pane" role="tabpanel">
-				<div id="offers" class="col-md-4 col-md-offset-1 col-sm-10 col-sm-offset-1">
-					<h3>Ofrecimientos</h3>
-					<div id="offerList" class="row">
-						<div class="collaborationCategory">
-							<div class="collaborationCategoryTitle">
-								<i class="fa fa-caret-right"></i>
-								<strong>Materiales</strong>
-								<span class="label label-default">4</span>
-							</div>
-							<div class="collaborationCategorySec hidden" id="jobColCatSec">
-								<div class="offer">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="offerTitle"><strong>Prueba</strong></div>
-									<div class="offerDescription">Descripción de prueba</div>
-									<i class="fa fa-pencil-square-o"></i>
-									<i class="fa fa-trash"></i>
-								</div>
-								<div class="offer">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="offerTitle"><strong>Prueba</strong></div>
-									<div class="offerDescription">Descripción de prueba</div>
-									<i class="fa fa-pencil-square-o"></i>
-									<i class="fa fa-trash"></i>
-								</div>
-								<div class="offer">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="offerTitle"><strong>Prueba</strong></div>
-									<div class="offerDescription">Descripción de prueba</div>
-									<i class="fa fa-pencil-square-o"></i>
-									<i class="fa fa-trash"></i>
-								</div>
-								<div class="offer">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="offerTitle"><strong>Prueba</strong></div>
-									<div class="offerDescription">Descripción de prueba</div>
-									<i class="fa fa-pencil-square-o"></i>
-									<i class="fa fa-trash"></i>
-								</div>
-							</div>
-						</div>
-						<div class="collaborationCategory">
-							<div class="collaborationCategoryTitle">
-								<i class="fa fa-caret-right"></i>
-								<strong>Espacios</strong>
-								<span class="label label-default">2</span>
-							</div>
-							<div class="collaborationCategorySec hidden" id="jobColCatSec">
-								<div class="offer">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="offerTitle"><strong>Prueba</strong></div>
-									<div class="offerDescription">Descripción de prueba</div>
-									<i class="fa fa-pencil-square-o"></i>
-									<i class="fa fa-trash"></i>
-								</div>
-								<div class="offer">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="offerTitle"><strong>Prueba</strong></div>
-									<div class="offerDescription">Descripción de prueba</div>
-									<i class="fa fa-pencil-square-o"></i>
-									<i class="fa fa-trash"></i>
-								</div>
-							</div>
-						</div>
-						<div class="collaborationCategory">
-							<div class="collaborationCategoryTitle">
-								<i class="fa fa-caret-right"></i>
-								<strong>Materiales</strong>
-								<span class="label label-default">3</span>
-							</div>
-							<div class="collaborationCategorySec hidden" id="jobColCatSec">
-								<div class="offer">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="offerTitle"><strong>Prueba</strong></div>
-									<div class="offerDescription">Descripción de prueba</div>
-									<i class="fa fa-pencil-square-o"></i>
-									<i class="fa fa-trash"></i>
-								</div>
-								<div class="offer">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="offerTitle"><strong>Prueba</strong></div>
-									<div class="offerDescription">Descripción de prueba</div>
-									<i class="fa fa-pencil-square-o"></i>
-									<i class="fa fa-trash"></i>
-								</div>
-								<div class="offer">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="offerTitle"><strong>Prueba</strong></div>
-									<div class="offerDescription">Descripción de prueba</div>
-									<i class="fa fa-pencil-square-o"></i>
-									<i class="fa fa-trash"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div>
-						<button class"btn btn-default" id="newOfferBtn"><i class="fa fa-plus"></i></button>
-					</div>
-				</div>
-				<div id="needs" class="col-md-4 col-md-offset-2 col-sm-10 col-sm-offset-1">
-					<h3>Necesidades</h3>
-					<div id="need" class="row">
-						<div class="collaborationCategory">
-							<div class="collaborationCategoryTitle">
-								<i class="fa fa-caret-right"></i>
-								<strong>Materiales</strong>
-								<span class="label label-default">4</span>
-							</div>
-							<div class="collaborationCategorySec hidden" id="jobColCatSec">
-								<div class="need">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="needTitle"><strong>Prueba</strong></div>
-									<div class="needDescription">Descripción de prueba</div>
-								</div>
-								<div class="need">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="needTitle"><strong>Prueba</strong></div>
-									<div class="needDescription">Descripción de prueba</div>
-								</div>
-								<div class="need">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="needTitle"><strong>Prueba</strong></div>
-									<div class="needDescription">Descripción de prueba</div>
-								</div>
-								<div class="need">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="needTitle"><strong>Prueba</strong></div>
-									<div class="needDescription">Descripción de prueba</div>
-								</div>
-							</div>
-						</div>
-						<div class="collaborationCategory">
-							<div class="collaborationCategoryTitle">
-								<i class="fa fa-caret-right"></i>
-								<strong>Espacios</strong>
-								<span class="label label-default">2</span>
-							</div>
-							<div class="collaborationCategorySec hidden" id="jobColCatSec">
-								<div class="need">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="needTitle"><strong>Prueba</strong></div>
-									<div class="needDescription">Descripción de prueba</div>
-								</div>
-								<div class="need">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="needTitle"><strong>Prueba</strong></div>
-									<div class="needDescription">Descripción de prueba</div>
-								</div>
-							</div>
-						</div>
-						<div class="collaborationCategory">
-							<div class="collaborationCategoryTitle">
-								<i class="fa fa-caret-right"></i>
-								<strong>Materiales</strong>
-								<span class="label label-default">3</span>
-							</div>
-							<div class="collaborationCategorySec hidden" id="jobColCatSec">
-								<div class="need">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="needTitle"><strong>Prueba</strong></div>
-									<div class="needDescription">Descripción de prueba</div>
-								</div>
-								<div class="need">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="needTitle"><strong>Prueba</strong></div>
-									<div class="needDescription">Descripción de prueba</div>
-								</div>
-								<div class="need">
-									<!--img src=""-->
-									<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-									<div class="needTitle"><strong>Prueba</strong></div>
-									<div class="needDescription">Descripción de prueba</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div>
-						<button class"btn btn-default" id="newNeedBtn"><i class="fa fa-plus"></i></button>
-					</div>
-				</div>
-			</div>
-			<div id="secInterests" class="row profileSec tab-pane" role="tabpanel">
-				<div id="categories">
-					<h3>Categorías</h3>
-					<div class="row" id="categoriesSec">
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'humanrights'}}selected"{{else}}"{{/ifcond}}" id="humanrights">
-							<i class="fa fa-globe fa-3x"></i>Derechos Humanos
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'productsservices'}}selected"{{else}}"{{/ifcond}}" id="productsservices">
-							<i class="fa fa-shopping-basket fa-3x"></i>Productos y Servicios
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'environment'}}selected"{{else}}"{{/ifcond}}" id="environment">
-							<i class="fa fa-pagelines fa-3x"></i>Medio Ambiente
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'artculture'}}selected"{{else}}"{{/ifcond}}" id="artculture">
-							<i class="fa fa-paint-brush fa-3x"></i>Arte y Cultura
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'gender'}}selected"{{else}}"{{/ifcond}}" id="gender">
-							<i class="fa fa-transgender fa-3x"></i>Género
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'health'}}selected"{{else}}"{{/ifcond}}" id="health">
-							<i class="fa fa-medkit fa-3x"></i>Salud
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'education'}}selected"{{else}}"{{/ifcond}}" id="education">
-							<i class="fa fa-book fa-3x"></i>Educación
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'workshops'}}selected"{{else}}"{{/ifcond}}" id="workshops">
-							<i class="fa fa-puzzle-piece fa-3x"></i>Talleres y Clases
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'community'}}selected"{{else}}"{{/ifcond}}" id="community">
-							<i class="fa fa-users fa-3x"></i>Comunidad
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'food'}}selected"{{else}}"{{/ifcond}}" id="food">
-							<i class="fa fa-cutlery fa-3x"></i>Comida
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'housing'}}selected"{{else}}"{{/ifcond}}" id="housing">
-							<i class="fa fa-home fa-3x"></i>Vivienda
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'clothing'}}selected"{{else}}"{{/ifcond}}" id="clothing">
-							<i class="fa fa-scissors fa-3x"></i>Vestido
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'communication'}}selected"{{else}}"{{/ifcond}}" id="communication">
-							<i class="fa fa-bullhorn fa-3x"></i>Comunicación
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'technology'}}selected"{{else}}"{{/ifcond}}" id="technology">
-							<i class="fa fa-cogs fa-3x"></i>Tecnología
-						</div>
-						<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'transport'}}selected"{{else}}"{{/ifcond}}" id="transport">
-							<i class="fa fa-bicycle fa-3x"></i>Transporte
-						</div>
-					</div>
-				</div>
-				<div class="col-md-5 form-inline" id="interests">
-					<h3>Intereses</h3>
-					<div id="hashTags">
-						<input placeholder="ingresa un interés" id="newInterestInput" class="form-control"/>
-						<button id="addInterestBtn" class="btn btn-default">Agrega <i class="fa fa-plus-circle mr-l-5 green"></i></button>
-						<div class="well mr-t-10 fs-125" id="interestList">
-							{{#each interests}}
-							<span class="label label-default">{{this}}<a href="#"><i class="fa fa-times mr-l-10"></i></a></span>
-							{{/each}}
-						</div>
-					</div>
-				</div>
-				<div class="col-md-7 form-inline" id="skills">
-					<h3>Habilidades</h3>
-					<input placeholder="ingresa una habilidad" type="text" id="newSkillInput" class="form-control" />
-					<span>Quiero:</span>
-					<select id="skillWantToSelect" class="fa-select form-control" multiple="multiple">
-						<option value="book">&#xf02d;&nbsp;Aprender</option>
-						<option value="rocket">&#xf135;&nbsp;Practicar</option>
-						<option value="users">&#xf0c0;&nbsp;Voluntariar</option>
-						<option value="bullhorn">&#xf0a1;&nbsp;Enseñar</option>
-						<option value="wrench">&#xf0ad;&nbsp;Trabajar</option>
-					</select>
-					<button id="addSkillBtn" class="btn btn-default">Agrega<i class="fa fa-plus-circle green mr-l-5"></i></button>
-					<div class="well mr-t-10">
-						<ul class="list-group" id="skillList">
-							{{#each skills}}
-						  <li class="list-group-item skill">
-						  	<span class="badge"><a href="#"><i class="fa fa-times"></i></a></span>
-						    {{this.skill}} {{#each this.wantTo}} <i class="fa fa-{{this}} mr-l-5"></i>{{/each}}
-						  </li>
-						  {{/each}}
-						</ul>
-					</div>
-				</div>	
-			</div>
-			<div id="secConfiguration" class="row profileSec tab-pane" role="tabpanel">
-				<div>
-	        <input type="file" name="file" id="pictureFileInput">
-	        <button class="btn btn-default" onclick="uploadPicture()">Subir imagen</button>
-				</div>
-				<div>
-				<form id="personalDataForm">
-					<div class="form-group row">
-					  <label for="nameInput" class="col-xs-2 hidden-xs">Nombre</label>
-					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-					  	<input type="text" class="form-control" id="nameInput" name="name" placeholder="Nombre">
-					  	<span class="input-group-addon" style="padding: 0px 10px">
+  <div class="fluid-container">
+    <div class="row" id="resumeRow">
+      <div id="topBar">
+        <div class="row">
+          <div id="picture" class="col-md-3 col-sm-6">
+            <div class="vcenter">
+              <div class="fakePicture">FOTO</div>
+            </div>
+          </div>
+          <div id="personalData" class="col-md-3 col-sm-6">
+            <div class="vcenter ">
+              <div><strong>{{name}} {{lastname}}</strong></div>
+              <div>{{email}}</div>
+              {{#if mobile}}
+              <div>{{mobile}}</div>
+              {{/if}} {{#if phone}}
+              <div>{{phone}}</div>
+              {{/if}}
+            </div>
+            <div class="right-border"></div>
+          </div>
+          <div id="interests" class="col-md-3 col-sm-6">
+            <div class="vcenter">
+              {{#each interests}} #{{this}} {{/each}}
+            </div>
+            <div class="right-border"></div>
+          </div>
+          <div id="collaborations" class="col-md-3 col-sm-6">
+            <div class="vcenter">20 collaborations</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="sectionTabsRow" class="row" data-spy="affix" data-offset-top="200" role="tabpanel">
+      <ul class="nav nav-tabs" id="sectionTabs">
+        <li role="presentation" id="homeTab" class="active" role="tab" data-toggle="tab">
+          <a href="#secHome"><i class="fa fa-home mr-r-5"></i>Home</a>
+        </li>
+        <li role="presentation" id="projectsTab" role="tab" data-toggle="tab">
+          <a href="#secProjects"><i class="fa fa-suitcase mr-r-5"></i>Proyectos</a>
+        </li>
+        <li role="presentation" id="offersNeedsTab" role="tab" data-toggle="tab">
+          <a href="#secOffersNeeds"><i class="fa fa-refresh	 mr-r-5"></i>Ofrezco y Necesito</a>
+        </li>
+        <li role="presentation" id="interestsTab" role="tab" data-toggle="tab">
+          <a href="#secInterests"><i class="fa fa-heart mr-r-5"></i>Intereses y Habilidades</a>
+        </li>
+        <li role="presentation" id="configurationTab" role="tab" data-toggle="tab">
+          <a href="#secConfiguration"><i class="fa fa-cogs mr-r-5"></i>Configuración</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content">
+      <div id="secHome" class="row profileSec tab-pane active" role="tabpanel">
+        <div id="nextCollaborationsSec">
+          <h2 class="profileTitle">Próximas colaboraciones</h2>
+          <div id="nextCollaborationList" class="row">
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>	dd
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration hidden">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration hidden">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration hidden">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration hidden">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration hidden">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="sugestedCollaborations">
+          <h2 class="profileTitle">Recomendaciones</h2>
+          <div id="sugestedCollaborationList" class="row">
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="pastCollaborations">
+          <h2 class="profileTitle">Últimas colaboraciones</h2>
+          <div id="nextCollaborations" class="row">
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 collaboration">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="secProjects" class="row profileSec tab-pane" role="tabpanel">
+        <div id="myProjects">
+          <h2 class="profileTitle">Mis proyectos</h2>
+          <div id="myProjectList" class="row">
+            <div class="col-md-3 col-sm-4 col-xs-6 myProject">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">5</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 myProject">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">5</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 myProject">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">5</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="suggestedProjects">
+          <h2 class="profileTitle">Proyectos recomendados</h2>
+          <div id="suggestedProjectsList" class="row">
+            <div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 suggestedProject">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="likedProjects">
+          <h2 class="profileTitle">Proyectos que me gustan</h2>
+          <div id="likedProjectsList" class="row">
+            <div class="col-md-3 col-sm-4 col-xs-6 likedProject">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 likedProject">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-6 likedProject">
+              <div class="thumbnail">
+                <!--img src=""-->
+                <div class="fakePhoto">
+                  <div class="vcenter">FOTO</div>
+                </div>
+                <div class="caption">
+                  <h4>Prueba</h4>
+                  <p>Descripción de prueba</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="secOffersNeeds" class="row profileSec tab-pane" role="tabpanel">
+        <div id="offers" class="col-md-5">
+          <h2 class="profileTitle">Ofrecimientos</h2>
+	        <button class "btn btn-default" id="newOfferBtn"><i class="fa fa-plus"></i></button>
+	        <div class="addCollaborationSec {{#if (notEmpty needs)}}hidden{{/if}}">
+          	<div class="form-group row">
+          		<label class="col-md-3">Titulo:</label>
+          		<div class="col-md-9">
+          			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+          		</div>
+          		<label class="col-md-3">Tipo:</label>
+          		<div class="col-md-9">
+          			<select class="newCollaborationType">
+          				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+          				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+          				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+          				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+          				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+          				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+          				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+          				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+          				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+          				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+          				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+          				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+          			</select>
+          		</div>
+          		<div>
+          			<a href="#" class="btn btn-primary addCollaborationBtn">Agregar</a>
+          			<a href="#" class="btn btn-danger cancelAddCollaborationBtn">Cancelar</a></div>
+          	</div>
+          </div>
+          <div id="offerList" class="row">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'material'))}}hidden{{/if}}" id="materialColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/material" class="icon">
+                <strong>Materiales</strong>
+                <span class="label label-default" id="materialOfferNum">{{#count (filterByType offers 'material')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="materialColCatSec">
+          			{{#each (filterByType offers 'material')}}
+                <div class="offer">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'knowledge'))}}hidden{{/if}}" id="knowledgeColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/knowledge" class="icon">
+                <strong>Conocimientos y Habilidades</strong>
+                <span class="label label-default" id="knowledgeOfferNum">{{#count (filterByType offers 'knowledge')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="knowledgeColCatSec">
+          			{{#each (filterByType offers 'knowledge')}}
+                <div class="offer">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'product'))}}hidden{{/if}}" id="productColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/product" class="icon">
+                <strong>Productos</strong>
+                <span class="label label-default" id="productOfferNum">{{#count (filterByType offers 'product')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="productColCatSec">
+          			{{#each (filterByType offers 'product')}}
+                <div class="offer">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'service'))}}hidden{{/if}}" id="serviceColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/service" class="icon">
+                <strong>Servicios</strong>
+                <span class="label label-default" id="serviceOfferNum">{{#count (filterByType offers 'service')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="serviceColCatSec">
+          			{{#each (filterByType offers 'service')}}
+                <div class="offer">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'event'))}}hidden{{/if}}" id="eventColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/event" class="icon">
+                <strong>Eventos y Actividades</strong>
+                <span class="label label-default" id="eventOfferNum">{{#count (filterByType offers 'event')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="eventColCatSec">
+          			{{#each (filterByType offers 'event')}}
+                <div class="offer">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'job'))}}hidden{{/if}}" id="jobColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/job" class="icon">
+                <strong>Chambas</strong>
+                <span class="label label-default" id="jobOfferNum">{{#count (filterByType offers 'job')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="jobColCatSec">
+          			{{#each (filterByType offers 'job')}}
+                <div class="offer">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+	            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'volunteer'))}}hidden{{/if}}" id="volunteerColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/volunteer" class="icon">
+                <strong>Tequio y Voluntariado</strong>
+                <span class="label label-default" id="volunteerOfferNum">{{#count (filterByType offers 'volunteer')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="volunteerColCatSec">
+          			{{#each (filterByType offers 'volunteer')}}
+                <div class="offer">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'spread'))}}hidden{{/if}}" id="spreadColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/spread" class="icon">
+                <strong>Difusión de Proyectos</strong>
+                <span class="label label-default" id="spreadOfferNum">{{#count (filterByType offers 'spread')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="spreadColCatSec">
+          			{{#each (filterByType offers 'spread')}}
+                <div class="offer">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'space'))}}hidden{{/if}}" id="spaceColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/space" class="icon">
+                <strong>Espacios</strong>
+                <span class="label label-default" id="spaceOfferNum">{{#count (filterByType offers 'space')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="spaceColCatSec">
+          			{{#each (filterByType offers 'space')}}
+                <div class="offer">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'link'))}}hidden{{/if}}" id="linkColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/link" class="icon">
+                <strong>Recomienda y Vincula</strong>
+                <span class="label label-default" id="linkOfferNum">{{#count (filterByType offers 'link')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="linkColCatSec">
+          			{{#each (filterByType offers 'link')}}
+                <div class="offer">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'art'))}}hidden{{/if}}" id="artColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/art" class="icon">
+                <strong>Comparte tu arte</strong>
+                <span class="label label-default" id="artOfferNum">{{#count (filterByType offers 'art')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="artColCatSec">
+          			{{#each (filterByType offers 'art')}}
+                <div class="offer">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'funding'))}}hidden{{/if}}" id="fundingColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/funding" class="icon">
+                <strong>Fondeo colectivo</strong>
+                <span class="label label-default" id="fundingOfferNum">{{#count (filterByType offers 'funding')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="fundingColCatSec">
+          			{{#each (filterByType offers 'funding')}}
+                <div class="offer">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+          </div>          
+        </div>
+        <div id="needs" class="col-md-5 col-md-offset-1">
+          <h2 class="profileTitle">Necesidades</h2>
+          <button class "btn btn-default" id="newNeedBtn"><i class="fa fa-plus"></i></button>
+          <div class="addCollaborationSec {{#if (notEmpty needs)}}hidden{{/if}}">
+          	<div class="form-group row">
+          		<label class="col-md-3">Titulo:</label>
+          		<div class="col-md-9">
+          			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+          		</div>
+          		<label class="col-md-3">Tipo:</label>
+          		<div class="col-md-9">
+          			<select class="newCollaborationType">
+          				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+          				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+          				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+          				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+          				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+          				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+          				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+          				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+          				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+          				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+          				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+          				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+          			</select>
+          		</div>
+          		<div>
+          			<a href="#" class="btn btn-primary addCollaborationBtn">Agregar</a>
+          			<a href="#" class="btn btn-danger cancelAddCollaborationBtn">Cancelar</a></div>
+          	</div>
+          </div>
+          <div id="needList" class="row">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'material'))}}hidden{{/if}}" id="materialColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/material" class="icon">
+                <strong>Materiales</strong>
+                <span class="label label-default" id="materialNeedNum">{{#count (filterByType needs 'material')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="materialColCatSec">
+          			{{#each (filterByType needs 'material')}}
+                <div class="need">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'knowledge'))}}hidden{{/if}}" id="knowledgeColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/knowledge" class="icon">
+                <strong>Conocimientos y Habilidades</strong>
+                <span class="label label-default" id="knowledgeNeedNum">{{#count (filterByType needs 'knowledge')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="knowledgeColCatSec">
+          			{{#each (filterByType needs 'knowledge')}}
+                <div class="need">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'product'))}}hidden{{/if}}" id="productColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/product" class="icon">
+                <strong>Productis</strong>
+                <span class="label label-default" id="productNeedNum">{{#count (filterByType needs 'product')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="productColCatSec">
+          			{{#each (filterByType needs 'product')}}
+                <div class="need">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'service'))}}hidden{{/if}}" id="serviceColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/service" class="icon">
+                <strong>Servicios</strong>
+                <span class="label label-default" id="serviceNeedNum">{{#count (filterByType needs 'service')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="serviceColCatSec">
+          			{{#each (filterByType needs 'service')}}
+                <div class="need">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'event'))}}hidden{{/if}}" id="eventColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/event" class="icon">
+                <strong>Eventos y Actividades</strong>
+                <span class="label label-default" id="eventNeedNum">{{#count (filterByType needs 'event')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="eventColCatSec">
+          			{{#each (filterByType needs 'event')}}
+                <div class="need">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'job'))}}hidden{{/if}}" id="jobColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/job" class="icon">
+                <strong>Chambas</strong>
+                <span class="label label-default" id="jobNeedNum">{{#count (filterByType needs 'job')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="jobColCatSec">
+          			{{#each (filterByType needs 'job')}}
+                <div class="need">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+	            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'volunteer'))}}hidden{{/if}}" id="volunteerColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/volunteer" class="icon">
+                <strong>Tequio y Voluntariado</strong>
+                <span class="label label-default" id="volunteerNeedNum">{{#count (filterByType needs 'volunteer')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="volunteerColCatSec">
+          			{{#each (filterByType needs 'volunteer')}}
+                <div class="need">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'spread'))}}hidden{{/if}}" id="spreadColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/spread" class="icon">
+                <strong>Difusión de Proyectos</strong>
+                <span class="label label-default" id="spreadNeedNum">{{#count (filterByType needs 'spread')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="spreadColCatSec">
+          			{{#each (filterByType needs 'spread')}}
+                <div class="need">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'space'))}}hidden{{/if}}" id="spaceColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/space" class="icon">
+                <strong>Espacios</strong>
+                <span class="label label-default" id="spaceNeedNum">{{#count (filterByType needs 'space')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="spaceColCatSec">
+          			{{#each (filterByType needs 'space')}}
+                <div class="need">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'link'))}}hidden{{/if}}" id="linkColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/link" class="icon">
+                <strong>Recomienda y Vincula</strong>
+                <span class="label label-default" id="linkNeedNum">{{#count (filterByType needs 'link')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="linkColCatSec">
+          			{{#each (filterByType needs 'link')}}
+                <div class="need">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'art'))}}hidden{{/if}}" id="artColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/art" class="icon">
+                <strong>Comparte tu arte</strong>
+                <span class="label label-default" id="artNeedNum">{{#count (filterByType needs 'art')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="artColCatSec">
+          			{{#each (filterByType needs 'art')}}
+                <div class="need">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'funding'))}}hidden{{/if}}" id="fundingColCat">
+              <div class="collaborationCategoryTitle ">
+                <i class="fa fa-caret-right"></i>
+                <img src="svg/funding" class="icon">
+                <strong>Fondeo colectivo</strong>
+                <span class="label label-default" id="fundingNeedNum">{{#count (filterByType needs 'funding')}}{{/count}}</span>
+              </div>
+              <div class="collaborationCategorySec hidden" id="fundingColCatSec">
+          			{{#each (filterByType needs 'funding')}}
+                <div class="need">
+                	<input type="hidden" name="" value="{{@index}}">
+                  <div class="collaborationTitle"><strong>{{title}}</strong></div>
+                  <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+                  <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+                  <div class="collaborationDescription">{{description}}</div>
+                  <div class="editCollaboration hidden">
+                  	<div class="form-group row">
+                  		<label class="col-md-3">Titulo:</label>
+                  		<div class="col-md-9">
+                  			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+                  		</div>
+                  		<label class="col-md-3">Tipo:</label>
+                  		<div class="col-md-9">
+                  			<select class="newCollaborationType">
+                  				<option value="material" {{#ifcond type '==' 'material'}}selected{{/ifcond}}>Material o Herramienta</option>
+                  				<option value="knowledge" {{#ifcond type '==' 'knowledge'}}selected{{/ifcond}}>Conocimiento o Habilidad</option>
+                  				<option value="product" {{#ifcond type '==' 'product'}}selected{{/ifcond}}>Producto</option>
+                  				<option value="service" {{#ifcond type '==' 'service'}}selected{{/ifcond}}>Servicio</option>
+                  				<option value="event" {{#ifcond type '==' 'event'}}selected{{/ifcond}}>Evento o Actividad</option>
+                  				<option value="job" {{#ifcond type '==' 'job'}}selected{{/ifcond}}>Chamba</option>
+                  				<option value="volunteer" {{#ifcond type '==' 'volunteer'}}selected{{/ifcond}}>Voluntariado</option>
+                  				<option value="spread" {{#ifcond type '==' 'spread'}}selected{{/ifcond}}>Difusión de Proyecto</option>
+                  				<option value="space" {{#ifcond type '==' 'space'}}selected{{/ifcond}}>Espacio</option>
+                  				<option value="link" {{#ifcond type '==' 'link'}}selected{{/ifcond}}>Recomendación o Vínculo</option>
+                  				<option value="art" {{#ifcond type '==' 'art'}}selected{{/ifcond}}>Arte</option>
+                  				<option value="funding" {{#ifcond type '==' 'funding'}}selected{{/ifcond}}>Fondeo Colectivo</option>
+                  			</select>
+                  		</div>
+                  		<div>
+                  			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+                  			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+                  	</div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="secInterests" class="row profileSec tab-pane" role="tabpanel">
+        <div id="categories">
+          <h2 class="profileTitle">Categorías</h2>
+          <div class="row" id="categoriesSec">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'humanrights'}}selected" {{else}} "{{/ifcond}}" id="humanrights">
+              <i class="fa fa-globe fa-3x"></i>Derechos Humanos
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'productsservices'}}selected" {{else}} "{{/ifcond}}" id="productsservices">
+              <i class="fa fa-shopping-basket fa-3x"></i>Productos y Servicios
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'environment'}}selected" {{else}} "{{/ifcond}}" id="environment">
+              <i class="fa fa-pagelines fa-3x"></i>Medio Ambiente
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'artculture'}}selected" {{else}} "{{/ifcond}}" id="artculture">
+              <i class="fa fa-paint-brush fa-3x"></i>Arte y Cultura
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'gender'}}selected" {{else}} "{{/ifcond}}" id="gender">
+              <i class="fa fa-transgender fa-3x"></i>Género
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'health'}}selected" {{else}} "{{/ifcond}}" id="health">
+              <i class="fa fa-medkit fa-3x"></i>Salud
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'education'}}selected" {{else}} "{{/ifcond}}" id="education">
+              <i class="fa fa-book fa-3x"></i>Educación
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'workshops'}}selected" {{else}} "{{/ifcond}}" id="workshops">
+              <i class="fa fa-puzzle-piece fa-3x"></i>Talleres y Clases
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'community'}}selected" {{else}} "{{/ifcond}}" id="community">
+              <i class="fa fa-users fa-3x"></i>Comunidad
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'food'}}selected" {{else}} "{{/ifcond}}" id="food">
+              <i class="fa fa-cutlery fa-3x"></i>Comida
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'housing'}}selected" {{else}} "{{/ifcond}}" id="housing">
+              <i class="fa fa-home fa-3x"></i>Vivienda
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'clothing'}}selected" {{else}} "{{/ifcond}}" id="clothing">
+              <i class="fa fa-scissors fa-3x"></i>Vestido
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'communication'}}selected" {{else}} "{{/ifcond}}" id="communication">
+              <i class="fa fa-bullhorn fa-3x"></i>Comunicación
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'technology'}}selected" {{else}} "{{/ifcond}}" id="technology">
+              <i class="fa fa-cogs fa-3x"></i>Tecnología
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'transport'}}selected" {{else}} "{{/ifcond}}" id="transport">
+              <i class="fa fa-bicycle fa-3x"></i>Transporte
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 form-inline" id="interests">
+          <h2 class="profileTitle">Intereses</h2>
+          <div id="hashTags">
+            <input placeholder="ingresa un interés" id="newInterestInput" class="form-control" />
+            <button id="addInterestBtn" class="btn btn-default">Agrega <i class="fa fa-plus-circle mr-l-5 green"></i></button>
+            <div class="well mr-t-10 fs-125" id="interestList">
+              {{#each interests}}
+              <span class="label label-default">{{this}}<a href="#"><i class="fa fa-times mr-l-10"></i></a></span> {{/each}}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7 form-inline" id="skills">
+          <h2 class="profileTitle">Habilidades</h2>
+          <input placeholder="ingresa una habilidad" type="text" id="newSkillInput" class="form-control" />
+          <span>Quiero:</span>
+          <select id="skillWantToSelect" class="fa-select form-control" multiple="multiple">
+            <option value="book">&#xf02d;&nbsp;Aprender</option>
+            <option value="rocket">&#xf135;&nbsp;Practicar</option>
+            <option value="users">&#xf0c0;&nbsp;Voluntariar</option>
+            <option value="bullhorn">&#xf0a1;&nbsp;Enseñar</option>
+            <option value="wrench">&#xf0ad;&nbsp;Trabajar</option>
+          </select>
+          <button id="addSkillBtn" class="btn btn-default">Agrega<i class="fa fa-plus-circle green mr-l-5"></i></button>
+          <div class="mr-t-10">
+            <ul class="list-group" id="skillList">
+              {{#each skills}}
+              <li class="list-group-item skill">
+                <span class="badge"><a href="#"><i class="fa fa-times"></i></a></span> {{this.skill}} {{#each this.wantTo}} <i class="fa fa-{{this}} mr-l-5"></i>{{/each}}
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="secConfiguration" class="row profileSec tab-pane" role="tabpanel">
+        <div>
+          <input type="file" name="file" id="pictureFileInput">
+          <button class="btn btn-default" onclick="uploadPicture()">Subir imagen</button>
+        </div>
+        <div>
+          <form id="personalDataForm">
+            <div class="form-group row">
+              <label for="nameInput" class="col-xs-2 hidden-xs">Nombre</label>
+              <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+                <input type="text" class="form-control" id="nameInput" name="name" placeholder="Nombre" value="{{name}}"/>
+                <span class="input-group-addon" style="padding: 0px 10px">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini"/>
+				      </span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="usernameInput" class="col-xs-2 hidden-xs">Username:</label>
+              <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+                <input type="text" class="form-control" id="usernameInput" name="username" placeholder="Username" value="{{username}}"/>
+                <span class="input-group-addon" style="padding: 0px 10px">
 				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
 				      </span>
-					  </div>			  
-					</div>
-					<div class="form-group row">
-					  <label for="usernameInput" class="col-xs-2 hidden-xs">Username:</label>
-					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-					  	<input type="text" class="form-control" id="usernameInput" name="username" placeholder="Username">
-					  	<span class="input-group-addon" style="padding: 0px 10px">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="emailInput" class="col-xs-2 hidden-xs">Correo Electrónico:</label>
+              <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+                <input type="text" class="form-control" id="emailInput" name="email" placeholder="Correo Electrónico" value="{{email}}"/>
+                <span class="input-group-addon" style="padding: 0px 10px">
 				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
 				      </span>
-					  </div>			  
-					</div>
-					<div class="form-group row">
-					  <label for="emailInput" class="col-xs-2 hidden-xs">Correo Electrónico:</label>
-					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-					  	<input type="text" class="form-control" id="emailInput" name="email" placeholder="Correo Electrónico">
-					  	<span class="input-group-addon" style="padding: 0px 10px">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="twitterInput" class="col-xs-2 hidden-xs">Twitter:</label>
+              <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+                <input type="text" class="form-control" id="twitterInput" name="twitter" placeholder="Twitter" value="{{twitter}}"/>
+                <span class="input-group-addon" style="padding: 0px 10px">
 				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
 				      </span>
-					  </div>			  
-					</div>
-					<div class="form-group row">
-					  <label for="twitterInput" class="col-xs-2 hidden-xs">Twitter:</label>
-					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-					  	<input type="text" class="form-control" id="twitterInput" name="twitter" placeholder="Twitter">
-					  	<span class="input-group-addon" style="padding: 0px 10px">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="facebookInput" class="col-xs-2 hidden-xs">Facebook:</label>
+              <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+                <input type="text" class="form-control" id="facebookInput" name="facebook" placeholder="Facebook">
+                <span class="input-group-addon" style="padding: 0px 10px">
 				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
 				      </span>
-					  </div>			  
-					</div>
-					<div class="form-group row">
-					  <label for="facebookInput" class="col-xs-2 hidden-xs">Facebook:</label>
-					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-					  	<input type="text" class="form-control" id="facebookInput" name="facebook" placeholder="Facebook">
-					  	<span class="input-group-addon" style="padding: 0px 10px">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="phoneInput" class="col-xs-2 hidden-xs">Telefono:</label>
+              <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+                <input type="text" class="form-control" id="phoneInput" name="name" placeholder="Teléfono" value="{{phone}}"/>
+                <span class="input-group-addon" style="padding: 0px 10px">
 				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
 				      </span>
-					  </div>			  
-					</div>
-					<div class="form-group row">
-					  <label for="phoneInput" class="col-xs-2 hidden-xs">Telefono:</label>
-					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-					  	<input type="text" class="form-control" id="phoneInput" name="name" placeholder="Teléfono">
-					  	<span class="input-group-addon" style="padding: 0px 10px">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="cellphoneInput" class="col-xs-2 hidden-xs">Celular:</label>
+              <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+                <input type="text" class="form-control" id="cellphoneInput" name="cellphone" placeholder="Celular" value="{{mobile}}"/>
+                <span class="input-group-addon" style="padding: 0px 10px">
 				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
 				      </span>
-					  </div>			  
-					</div>
-					<div class="form-group row">
-					  <label for="cellphoneInput" class="col-xs-2 hidden-xs">Celular:</label>
-					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-					  	<input type="text" class="form-control" id="cellphoneInput" name="cellphone" placeholder="Celular">
-					  	<span class="input-group-addon" style="padding: 0px 10px">
-				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
-				      </span>
-					  </div>			  
-					</div>
-					<div class="form-group row">
-					  <label for="addressInput" class="col-xs-2 hidden-xs">Dirección:</label>
-					  <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-					  	<input type="text" class="form-control" id="addressInput" name="address" placeholder="Dirección">
-					  	<span class="input-group-addon" style="padding: 0px 10px">
-				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
-				      </span>
-					  </div>			  
-					</div>
-					<div id="map"></div> 
-				</form>
-				</div>
-			</div>
-		</div>
-	</div><!-- /fluid container-->	
-	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="projectModal" id="projectModal">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <div class="fakePhoto" id="projectModalPhoto"><div class="vcenter">FOTO</div></div><h4 class="modal-title" id="projectModalLabel">Prueba</h4>
-	      </div>
-	      <div class="modal-body">
-	        <div class="row">
-	        	<div id="projectDescription">
-	        		tiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue.
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis lacus vel augue laoreet
-							rutrum faucibus dolor auctor. 
-						</div>
-	        </div>
-	        <div class="row" id="projectModelData">
-	          <div class="col-md-6">
-	          	<div>
-			        	<strong>Categorías:</strong>
-			        	<i class="fa fa-book"></i>
-			        	<i class="fa fa-users"></i>
-			        	<i class="fa fa-cogs"></i>
-			        </div>
-			        <div>
-		           	<strong>Tipo:</strong>
-		          	<span>Colectivo</span>
-		          </div>
-	          </div>
-		       	<div class="col-md-6">
-			        	<div><i class="fa fa-phone"></i> 5234423243</div>
-			        	<div><i class="fa fa-envelope"></i>ejemplo@email.com</div>
-		        </div>
-		      </div>
-		      <div class="row">
-		      <div class="col-md-4 col-md-offset-4"><a href="/map" class="btn btn-primary"> Muestra en el mapa <i class="fa fa-map-marker"></i></a></div>	
-		      </div>
-	        <div class="row">
-	          <div class="col-md-4 col-md-offset-1">
-	          	<div><strong>Ofrecimientos</strong></div>
-	          	<div>Materiales<span class="label label-default">2</span></div>
-	          	<div>Chambitas<span class="label label-default">1</span></div>
-	          	<div>Productos<span class="label label-default">10</span></div>
-	          </div>
-	          <div class="col-md-4 col-md-offset-2">
-	          	<div><strong>Necesidades</strong></div>
-	          	<div>Materiales<span class="label label-default">2</span></div>
-	          	<div>Chambitas<span class="label label-default">1</span></div>
-	          	<div>Productos<span class="label label-default">10</span></div>
-	          </div>
-	        </div>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	        <button type="button" class="btn btn-primary" id="goToProjectProfile">Ver perfil</button>
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="collaborationModal" id="collaborationModal">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="projectModalLabel">Prueba</h4>
-	      </div>
-	      <div class="modal-body">
-	        <div class="row">
-	        	<div id="collaborationDescription">
-	        		tiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue.
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis lacus vel augue laoreet
-							rutrum faucibus dolor auctor. 
-						</div>
-	        </div>
-	        <div class="row">
-	        	<div id="colProject">
-	        		<h3>Proyecto Ejemplo</h3>
-						</div>
-	        </div>
-	        <div class="row" id="projectModelData">
-	          <div class="col-md-6">
-	          	<div>
-			        	<strong>Categorías:</strong>
-			        	<i class="fa fa-book"></i>
-			        	<i class="fa fa-users"></i>
-			        	<i class="fa fa-cogs"></i>
-			        </div>
-			        <div>
-		           	<strong>Tipo:</strong>
-		          	<span>Colectivo</span>
-		          </div>
-	          </div>
-		       	<div class="col-md-6">
-			        	<div><i class="fa fa-phone"></i> 5234423243</div>
-			        	<div><i class="fa fa-envelope"></i>ejemplo@email.com</div>
-		        </div>
-		      </div>
-		      <div class="row">
-		      <div class="col-md-4 col-md-offset-4"><a href="/project/pilot" class="btn btn-primary"> Ver Proyecto <i class="fa fa-map-marker"></i></a></div>	
-		      </div>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	        <button type="button" class="btn btn-primary" id="goToProjectProfile">Ver perfil</button>
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addOfferNeed" id="addOfferNeed">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title">Agrega una nueva</h4>
-	      </div>
-	      <div class="modal-body">
-	        <div class="row">
-	        	<div id="collaborationDescription">
-	        		<label for="offerNeedTypeSelect">Tipo:</label>
-	        		<select id="offerNeedTypeSelect">
-	        			<option value="1">Material</option>
-	        			<option value="1">Espacio</option>
-	        			<option value="1">Producto o Servicio</option>
-	        			<option value="1">Chambita</option>
-	        			<option value="1">Fondeo</option>
-	        			<option value="1">Comparte tu arte</option>
-	        			<option value="1">Volutnariado</option>
-	        			<option value="1">Conocimientos y Habilidades</option>
-	        			<option value="1">Eventos</option>
-	        			<option value="1">Difusión</option>
-	        			<option value="1">Recomienda y Vincula</option>
-	        		</select>
-						</div>
-	        </div>
-	        <div class="row">
-	        	<div>
-	        		<textarea id="offerNeedDescriptionTextArea"></textarea>
-	        	</div>
-	        </div>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-	        <button type="button" class="btn btn-primary" id="goToProjectProfile">Ver perfil</button>
-	      </div>
-	    </div><!-- /.modal-content -->
-	  </div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
-	<script id="myProject-template" type="text/x-handlebars-template">
-		<div class="col-md-3 col-sm-4 col-xs-6 myProject">
-			<div class="thumbnail">
-				<!--img src=""-->
-				<div class="fakePhoto"><div class="vcenter">FOTO</div></div>
-				<div class="caption">
-					<h4>{{name}}</h4>
-					<div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">{{notificationNumber}}</span></div>
-				</div>
-			</div>
-		</div>
-	</script>
+              </div>
+            </div>
+            <div id="map"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /fluid container-->
+  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="projectModal" id="projectModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <div class="fakePhoto" id="projectModalPhoto">
+            <div class="vcenter">FOTO</div>
+          </div>
+          <h4 class="modal-title" id="projectModalLabel">Prueba</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div id="projectDescription">
+              tiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+            </div>
+          </div>
+          <div class="row" id="projectModelData">
+            <div class="col-md-6">
+              <div>
+                <strong>Categorías:</strong>
+                <i class="fa fa-book"></i>
+                <i class="fa fa-users"></i>
+                <i class="fa fa-cogs"></i>
+              </div>
+              <div>
+                <strong>Tipo:</strong>
+                <span>Colectivo</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div><i class="fa fa-phone"></i> 5234423243</div>
+              <div><i class="fa fa-envelope"></i>ejemplo@email.com</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4"><a href="/map" class="btn btn-primary"> Muestra en el mapa <i class="fa fa-map-marker"></i></a></div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-md-offset-1">
+              <div><strong>Ofrecimientos</strong></div>
+              <div>Materiales<span class="label label-default">2</span></div>
+              <div>Chambitas<span class="label label-default">1</span></div>
+              <div>Productos<span class="label label-default">10</span></div>
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+              <div><strong>Necesidades</strong></div>
+              <div>Materiales<span class="label label-default">2</span></div>
+              <div>Chambitas<span class="label label-default">1</span></div>
+              <div>Productos<span class="label label-default">10</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="goToProjectProfile">Ver perfil</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="collaborationModal" id="collaborationModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="projectModalLabel">Prueba</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div id="collaborationDescription">
+              tiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+            </div>
+          </div>
+          <div class="row">
+            <div id="colProject">
+              <h2 class="profileTitle">Proyecto Ejemplo</h2>
+            </div>
+          </div>
+          <div class="row" id="projectModelData">
+            <div class="col-md-6">
+              <div>
+                <strong>Categorías:</strong>
+                <i class="fa fa-book"></i>
+                <i class="fa fa-users"></i>
+                <i class="fa fa-cogs"></i>
+              </div>
+              <div>
+                <strong>Tipo:</strong>
+                <span>Colectivo</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div><i class="fa fa-phone"></i> 5234423243</div>
+              <div><i class="fa fa-envelope"></i>ejemplo@email.com</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4"><a href="/project/pilot" class="btn btn-primary"> Ver Proyecto <i class="fa fa-map-marker"></i></a></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="goToProjectProfile">Ver perfil</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addOfferNeed" id="addOfferNeed">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Agrega una nueva</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div id="collaborationDescription">
+              <label for="offerNeedTypeSelect">Tipo:</label>
+              <select id="offerNeedTypeSelect">
+                <option value="1">Material</option>
+                <option value="1">Espacio</option>
+                <option value="1">Producto o Servicio</option>
+                <option value="1">Chambita</option>
+                <option value="1">Fondeo</option>
+                <option value="1">Comparte tu arte</option>
+                <option value="1">Volutnariado</option>
+                <option value="1">Conocimientos y Habilidades</option>
+                <option value="1">Eventos</option>
+                <option value="1">Difusión</option>
+                <option value="1">Recomienda y Vincula</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <textarea id="offerNeedDescriptionTextArea"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="goToProjectProfile">Ver perfil</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+  <script id="myProject-template" type="text/x-handlebars-template">
+    <div class="col-md-3 col-sm-4 col-xs-6 myProject">
+      <div class="thumbnail">
+        <!--img src=""-->
+        <div class="fakePhoto">
+          <div class="vcenter">FOTO</div>
+        </div>
+        <div class="caption">
+          <h4>{{name}}</h4>
+          <div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">{{notificationNumber}}</span></div>
+        </div>
+      </div>
+    </div>
+  </script>
 </div>

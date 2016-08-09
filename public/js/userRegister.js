@@ -5,7 +5,7 @@ function onRegisterBtnClicked () {
     '/api/user/register',
     form,
     function (data) {
-      alert(data)
+      alert('Usuario registrado exitosamente')
     }
   )
 }
