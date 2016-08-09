@@ -56,7 +56,7 @@ function initiateOffersAndNeedsFunc () {
 }
 
 function collaborationCategoryTitleClicked () {
-  var sec = $(this).siblings('.collaborationCategorySec').first()
+  var sec = $(this).siblings('.collaborationCategoryList').first()
   if (sec.hasClass('hidden')) {
     $(this).find('.fa-caret-right').addClass('fa-caret-down').removeClass('fa-caret-right')
     sec.removeClass('hidden')
@@ -255,6 +255,7 @@ function openAddCollaboration(){
 }
 
 function addCollaboration(){
+  console.log('addCollaboration')
   var collaboration = $(this).parents('.addCollaborationSec')
   console.log(collaboration)
   var data = {
@@ -262,11 +263,23 @@ function addCollaboration(){
     title: collaboration.find('.newCollaborationTitle').val(),
     type:  collaboration.find('.newCollaborationType').val(),
   }
+  console.log(data)
   $.ajax({
     url: '/api/user/collaboration',
     type: 'POST',
     success: function (res) {
       collaboration.find('.newCollaborationTitle').val('')
+      collaboration.addClass('hidden')
+      data.offerOrNeed = data.offerOrNeed.slice(0,-1)
+      var newCollaborationHtml = $('#collaboration-template').html()
+      var collaborationTemplate = Handlebars.compile(newCollaborationHtml)
+      var colCatId = data.type+data.offerOrNeed.capitalize()
+      var newColCatList = $('#'+colCatId+'ColCatList')
+      newColCatList.append(collaborationTemplate(data))
+      newColCatList.removeClass('hidden')
+      $('#'+colCatId+'ColCat').removeClass('hidden')
+      var colCatNum = +($('#'+colCatId+'ColCat').find('.label').text())
+      $('#'+colCatId+'ColCat').find('.label').text(colCatNum+1)
     },
     data: data
   })
@@ -285,16 +298,20 @@ function openEditCollaboration(){
 }
 
 function deleteCollaboration(){
+  var collaboration = $(this).parent()
   var data = {
-    offerOrNeed: $(this).parents('.editCollaboration').parent().attr('class'),
-    title: $(this).parents('.editCollaboration').first().siblings('.collaborationTitle').text(),
+    offerOrNeed: collaboration.attr('class'),
+    title: collaboration.find('.collaborationTitle').text(),
   }
-  var collaboration = $(this).parents('.editCollaboration').parent()
   $.ajax({
     url: '/api/user/collaboration',
     type: 'DELETE',
     success: function (res) {
-      console.log(res)
+      var oldCatNum = +(collaboration.parent().parent().find('.label').text())
+      console.log(oldCatNum)
+      collaboration.parent().parent().find('.label').text(oldCatNum-1)
+      if(oldCatNum==1) collaboration.parent().parent().addClass('hidden')
+      collaboration.remove()
     },
     data: data
   })
@@ -324,12 +341,12 @@ function editCollaboration(){
       console.log(collaboration.parent().attr('id').indexOf(data.newType))
       if(collaboration.parent().attr('id').indexOf(data.newType) == -1){
         var oldCat = collaboration.parent().parent()
-        var newColCatSec = $('#'+data.newType+'ColCatSec')
-        newColCatSec.append(collaboration.detach())
+        var newColCatList = $('#'+data.newType+data.offerOrNeed.capitalize()+'ColCatList')
+        newColCatList.append(collaboration.detach())
         var oldCatNum = +(oldCat.find('.label').text())
         oldCat.find('.label').text(oldCatNum-1)
         if(oldCatNum==1) oldCat.addClass('hidden')
-        var newCat = $('#'+data.newType+'ColCat')
+        var newCat = $('#'+data.newType+data.offerOrNeed.capitalize+'ColCat')
         var newCatNum = +(newCat.find('.label').text())
         newCat.find('.label').text(newCatNum+1)
         newCat.removeClass('hidden')

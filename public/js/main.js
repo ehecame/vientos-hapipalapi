@@ -1,5 +1,12 @@
 $(document).ready(function () {
   setTopBarNavigationFunc()
+  console.log('')
+  Handlebars.registerHelper('isSelected', function (variable, choiceToSelect) {
+    return variable == choiceToSelect ? 'select' : ''
+  })
+  String.prototype.capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1)
+  }
 })
 
 function setTopBarNavigationFunc () {

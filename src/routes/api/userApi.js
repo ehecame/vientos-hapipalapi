@@ -44,7 +44,7 @@ module.exports = function () {
       }
     }, {
       method: 'DELETE',
-      path: '/api/user/',
+      path: '/api/user/collaboration',
       config: {
         handler: UserController.removeCollaboration
       }
