@@ -131,8 +131,9 @@ module.exports = function () {
             if (data.isAuthenticated) {
               data.credentials = SessionController.getSession(request)
               var isAdmin = data.credentials.scope && (data.credentials.scope == 'admin' || data.credentials.scope.indexOf('admin')>0)
-              data.isOwner = isAdmin || (data.owners.indexOf(credentials.id) > -1 &&
-              credentials.projects.indexOf(request.params.projectId) > -1)
+              data.isOwner = isAdmin || 
+                            ( data.ownsers && data.owners.indexOf(credentials.id) > -1 
+                              && credentials.projects && credentials.projects.indexOf(request.params.projectId) > -1)
             }
             reply.view('projectProfile', data)
           })

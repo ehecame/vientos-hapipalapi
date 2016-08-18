@@ -394,9 +394,12 @@ function initializeConfigurationFunc(){
 }
 
 function initializeMap () {
-  var hasLocation = $('#lat').val() != undefined
-  var lat = hasLocation ? $('#lat').val() : 19.34
-  var lon = hasLocation ? $('#lon').val() : -99.15
+  var hasLocation = ($('#lat').val() != '')
+  console.log(hasLocation)
+  var lat = hasLocation ? $('#lat').val() : '19.34'
+  var lon = hasLocation ? $('#lon').val() : '-99.15'
+  console.log(lat)
+  console.log(lon)
   map = L.map('mapConf', {zoomControl: false, center: [lat, lon], zoom: 12})
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
@@ -419,11 +422,11 @@ function initializeMap () {
 
 function setChangeLocation(){
   console.log('changing location')
-  map.removeLayer(circle)
-  map.removeLayer(marker)
+  if(circle) map.removeLayer(circle)
+  if(marker) map.removeLayer(marker)
   map.on('click', function (e) {
-    map.removeLayer(circle)
-    map.removeLayer(marker)
+    if(circle) map.removeLayer(circle)
+    if(marker) map.removeLayer(marker)
     marker = L.marker([e.latlng.lat, e.latlng.lng])
     $('#lat').val(e.latlng.lat)
     $('#lon').val(e.latlng.lng)

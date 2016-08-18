@@ -5,9 +5,13 @@
       <div id="topBar">
         <div class="row">
           <div id="picture" class="col-md-3 col-sm-6">
+            {{#if profilePicture}}
+            	<img src="/img/{{profilePicture}}">
+            {{else}}
             <div class="vcenter">
               <div class="fakePicture">FOTO</div>
             </div>
+            {{/if}}
           </div>
           <div id="personalData" class="col-md-3 col-sm-6">
             <div class="vcenter ">
@@ -1664,8 +1668,17 @@
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
                 <input type="text" class="form-control" id="nameInput" name="name" placeholder="Nombre" value="{{name}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
-				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini"/>
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini"/>
 				      </span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="nameInput" class="col-xs-2 hidden-xs">Apellido</label>
+              <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+                <input type="text" class="form-control" id="lastnameInput" name="name" placeholder="Apellido" value="{{lastname}}"/>
+                <span class="input-group-addon" style="padding: 0px 10px">
+					      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini"/>
+					      </span>
               </div>
             </div>
             <div class="form-group row">
@@ -1673,7 +1686,7 @@
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
                 <input type="text" class="form-control" id="usernameInput" name="username" placeholder="Username" value="{{username}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
-				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini">
 				      </span>
               </div>
             </div>
@@ -1682,7 +1695,7 @@
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
                 <input type="text" class="form-control" id="emailInput" name="email" placeholder="Correo Electrónico" value="{{email}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
-				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini">
 				      </span>
               </div>
             </div>
@@ -1691,7 +1704,7 @@
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
                 <input type="text" class="form-control" id="twitterInput" name="twitter" placeholder="Twitter" value="{{twitter}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
-				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini">
 				      </span>
               </div>
             </div>
@@ -1700,7 +1713,7 @@
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
                 <input type="text" class="form-control" id="facebookInput" name="facebook" placeholder="Facebook">
                 <span class="input-group-addon" style="padding: 0px 10px">
-				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini">
 				      </span>
               </div>
             </div>
@@ -1709,7 +1722,7 @@
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
                 <input type="text" class="form-control" id="phoneInput" name="name" placeholder="Teléfono" value="{{phone}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
-				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini">
 				      </span>
               </div>
             </div>
@@ -1718,7 +1731,7 @@
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
                 <input type="text" class="form-control" id="cellphoneInput" name="cellphone" placeholder="Celular" value="{{mobile}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
-				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Public" data-off="Private" data-width="80" data-size="mini">
+				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini">
 				      </span>
               </div>
             </div>

@@ -38,8 +38,11 @@ ProjectManager.prototype = (function () {
       // db.collection('projects').find(query).toArray(function (err, docs) {
       //  callback(docs)
       // })
-      var results = db.command({ text: 'projects', search: keyWords }, function (err, cb) {
-        callback(_.map(cb.results, function (res) {return res.obj}))
+      console.log(keyWords)
+      var results = db.command({ text: 'projects', search: keyWords }, function (err, res) {
+        console.log(err)
+        console.log(res)
+        callback(_.map(res.results, function (s) {return s.obj}))
       })
     },
     insert: function insert (db, project, callback) {
