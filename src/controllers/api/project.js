@@ -1,5 +1,6 @@
 var _ = require('underscore')
 var ProjectManager = require('./../../managers/project')
+var SessionController = require('./../session')
 
 function ProjectController () { }
 ProjectController.prototype = (function () {
@@ -90,43 +91,50 @@ ProjectController.prototype = (function () {
       }
       if (request.payload.projectType == 'collective') {
         projectType = {
-          type: 'Cooperativa',
+          type: request.payload.projectType,
+          label: 'Cooperativa',
           color: '#800000'
         }
       }
       if (request.payload.projectType == 'cooperative') {
         projectType = {
-          type: 'Colectivo',
+          type: request.payload.projectType,
+          label: 'Colectivo',
           color: '#008B8B'
         }
       }
       if (request.payload.projectType == 'ngo') {
         projectType = {
-          type: 'ONG',
+          type: request.payload.projectType,
+          label: 'ONG',
           color: '#556B2F'
         }
       }
       if (request.payload.projectType == 'ethicalbusiness') {
         projectType = {
-          type: 'Negocio Ético',
+          type: request.payload.projectType,
+          label: 'Negocio Ético',
           color: '#B8860B'
         }
       }
       if (request.payload.projectType == 'neighborsorg') {
         projectType = {
-          type: 'Iniciativa Ciudadana',
+          type: request.payload.projectType,
+          label: 'Iniciativa Ciudadana',
           color: '#C63D1E'
         }
       }
       if (request.payload.projectType == 'startup') {
         projectType = {
-          type: 'Startup',
+          type: request.payload.projectType,
+          label: 'Startup',
           color: '#58376C'
         }
       }
       if (request.payload.projectType == 'ontransition') {
         projectType = {
-          type: 'En Transición',
+          type: request.payload.projectType,
+          label: 'En Transición',
           color: '#d45bc9'
         }
       }
@@ -183,13 +191,80 @@ ProjectController.prototype = (function () {
         reply(res)
       })
     },
-    modifyOfferAndNeeds: function modifyOfferAndNeeds (request, reply) {
+    // COLLABORATION
+    addCollaboration: function addCollaboration (request, reply) {
+      var objID = request.mongo.ObjectID
       var db = request.mongo.db
-      ProjectManager.modifyOfferAndNeeds(db, function (res) {
-        reply('res')
-      })
+      var isAuthenticated = SessionController.isAuthenticated(request)
+      if (isAuthenticated) {
+        var credentials = SessionController.getSession(request)
+        ProjectManager.findById(db, new objID(request.payload.projectId), function (res) {
+          if (credentials.scope == 'admin' || (res[0].owners.indexOf(credentials.id) > -1 &&
+            credentials.projects.indexOf(request.payload.projectId) > -1)) {
+            var newCollaboration = {}
+            newCollaboration[request.payload.offerOrNeed] = {
+              title: request.payload.title,
+              type: request.payload.type
+            }
+            ProjectManager.update(request.mongo.db, {'_id': new objID(request.payload.projectId) }, {$push: newCollaboration}, function (res2) {
+              console.log(res2)
+              reply(res2)
+            })
+          } else {
+            reply('notAuthorized')
+          }
+        })
+      } else {
+        reply('not Authenticated')
+      }
+    },
+    updateCollaboration: function updateCollaboration (request, reply) {
+      var db = request.mongo.db
+      var objID = request.mongo.ObjectID
+      var isAuthenticated = SessionController.isAuthenticated(request)
+      if (isAuthenticated) {
+        var credentials = SessionController.getSession(request)
+        ProjectManager.findById(db, new objID(request.payload.projectId), function (res) {
+          if (credentials.scope == 'admin' || (res[0].owners.indexOf(credentials.id) > -1 &&
+            credentials.projects.indexOf(request.payload.projectId) > -1)) {
+            var query = {
+              '_id': new objID(request.payload.projectId)
+            }
+            query[request.payload.offerOrNeed + 's.title'] = request.payload.oldTitle
+            var updatedCollaboration = {}
+            updatedCollaboration[request.payload.offerOrNeed + 's.$.type'] = request.payload.newType
+            updatedCollaboration[request.payload.offerOrNeed + 's.$.title'] = request.payload.newTitle
+            ProjectManager.update(
+              request.mongo.db,
+              query,
+              {$set: updatedCollaboration},
+              function (res) {
+                reply(res)
+              })
+          } else {
+            reply('notAuthorized')
+          }
+        })
+      } else {
+        reply('not Authenticated')
+      }
+    },
+    removeCollaboration: function removeCollaboration (request, reply) {
+      console.log(request.payload)
+      var isAuthenticated = SessionController.isAuthenticated(request)
+      if (isAuthenticated) {
+        var credentials = SessionController.getSession(request)
+        console.log(credentials)
+        var collaborationToRemove = {}
+        collaborationToRemove[request.payload.offerOrNeed + 's'] = {'title': request.payload.title}
+        // ProjectManager.update(request.mongo.db, {'username': credentials.username}, {$pull: collaborationToRemove}, function (res) {
+        //   reply(res)
+        // })
+        reply('gooot')
+      } else {
+        reply('not Authenticated')
+      }
     }
-
   }
 })()
 var ProjectController = new ProjectController()

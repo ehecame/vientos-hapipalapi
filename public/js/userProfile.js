@@ -1,15 +1,21 @@
+var map;
+var marker;
+var circle; 
+
 $(document).ready(function () {
   initiateSectionBtnsFunc()
   initiateCollaborationFunc()
   initiateOffersAndNeedsFunc()
   initiateProjectFunc()
   initiateInterestsSkillsFunc()
+  initializeConfigurationFunc()
 })
 
 function initiateSectionBtnsFunc () {
   $('#sectionTabs a').click(function (e) {
     e.preventDefault()
     $(this).tab('show')
+    if(typeof map !== 'undefined') map.invalidateSize()
   })
 }
 
@@ -48,7 +54,6 @@ function initiateOffersAndNeedsFunc () {
   $('#newOfferBtn').click(openAddCollaboration)
   $('#newNeedBtn').click(openAddCollaboration)
   $('.addCollaborationBtn').click(addCollaboration)
-  $('#newOfferNeedModal').on('show.bs.modal', onOpenNewOfferNeedModal)
   $('.editIcon').click(openEditCollaboration)
   $('.deleteIcon').click(deleteCollaboration)
   $('.editCollaborationBtn').click(editCollaboration)
@@ -74,6 +79,8 @@ function onOpenNewOfferNeedModal (event) {
   console.log($(event.relatedTarget))
 }
 
+
+
 function initiateProjectFunc () {
   $('.myProject').click(myProjectClicked)
   $('.suggestedProject').click(projectClicked)
@@ -98,32 +105,7 @@ function onOpenProjectModal (event) {
 // modal.find('.modal-body input').val(recipient)
 }
 
-function initiateInterestsSkillsFunc () {
-  $('.category').click(categoryClicked)
-  $('#addInterestBtn').click(addInterest)
-  $('#addSkillBtn').click(addSkill)
-  $('#newInterestInput').keyup(function (event) {
-    if (event.keyCode == 13) {
-      $('#addInterestBtn').click()
-    }
-  })
-  $('#interestList a').click(removeInterest)
-  $('#newSkillInput').keyup(function (event) {
-    if (event.keyCode == 13) {
-      if($('#skillWantToSelect').val())
-        $('#addSkillBtn').click()
-      else {
-        $('#skillWantToSelect').next().find('.multiselect').click()
-      }
-    }
-  })
-  $('#skillList a').click(removeSkill)
-  $('#skillWantToSelect').multiselect({
-    allSelectedText: 'No existen opciones ',
-    nonSelectedText: 'Selecciona algunas opciones',
-    nSelectedText: 'Seleccionadas'
-  })
-}
+//Category
 
 function categoryClicked () {
   var cat = $(this)
@@ -153,6 +135,35 @@ function categoryClicked () {
       data: data
     })
   }
+}
+
+//Interests
+
+function initiateInterestsSkillsFunc () {
+  $('.category').click(categoryClicked)
+  $('#addInterestBtn').click(addInterest)
+  $('#addSkillBtn').click(addSkill)
+  $('#newInterestInput').keyup(function (event) {
+    if (event.keyCode == 13) {
+      $('#addInterestBtn').click()
+    }
+  })
+  $('#interestList a').click(removeInterest)
+  $('#newSkillInput').keyup(function (event) {
+    if (event.keyCode == 13) {
+      if($('#skillWantToSelect').val())
+        $('#addSkillBtn').click()
+      else {
+        $('#skillWantToSelect').next().find('.multiselect').click()
+      }
+    }
+  })
+  $('#skillList a').click(removeSkill)
+  $('#skillWantToSelect').multiselect({
+    allSelectedText: 'No existen opciones ',
+    nonSelectedText: 'Selecciona algunas opciones',
+    nSelectedText: 'Seleccionadas'
+  })
 }
 
 function addInterest () {
@@ -185,6 +196,8 @@ function removeInterest (e) {
   })
 }
 
+//Skills
+
 function addSkill () {
   var wantTos = $('#skillWantToSelect').val()
   var skill = $('#newSkillInput').val()
@@ -213,8 +226,7 @@ function addSkill () {
         },
         data: data
     })
-}
-  
+  }  
 }
 
 function removeSkill (e) {
@@ -233,6 +245,8 @@ function removeSkill (e) {
   })
 }
 
+//Picture
+
 function uploadPicture () {
   var formData = new FormData()
   formData.append('file', $('#pictureFileInput')[0].files[0])
@@ -248,6 +262,8 @@ function uploadPicture () {
     }
   })
 }
+
+//Collaboration 
 
 function openAddCollaboration(){
   $(this).addClass('hidden')
@@ -274,12 +290,15 @@ function addCollaboration(){
       var newCollaborationHtml = $('#collaboration-template').html()
       var collaborationTemplate = Handlebars.compile(newCollaborationHtml)
       var colCatId = data.type+data.offerOrNeed.capitalize()
+      console.log(colCatId)
       var newColCatList = $('#'+colCatId+'ColCatList')
+      console.log(newColCatList)
       newColCatList.append(collaborationTemplate(data))
       newColCatList.removeClass('hidden')
       $('#'+colCatId+'ColCat').removeClass('hidden')
       var colCatNum = +($('#'+colCatId+'ColCat').find('.label').text())
       $('#'+colCatId+'ColCat').find('.label').text(colCatNum+1)
+      $('#new'+data.offerOrNeed.capitalize()+'Btn').removeClass('hidden')
     },
     data: data
   })
@@ -333,26 +352,104 @@ function editCollaboration(){
   }
   $.ajax({
     url: '/api/user/collaboration',
+    contentType: 'application/json; charset=UTF-8',
     type: 'PUT',
     success: function (res) {
       console.log(res)
       collaboration.find('.collaborationTitle').text(data.newTitle)
       collaboration.find('.editCollaboration').addClass('hidden')
+      console.log(collaboration.parent().attr('id'))
       console.log(collaboration.parent().attr('id').indexOf(data.newType))
       if(collaboration.parent().attr('id').indexOf(data.newType) == -1){
+        console.log('diferenteTipo')
         var oldCat = collaboration.parent().parent()
+        console.log(oldCat)
         var newColCatList = $('#'+data.newType+data.offerOrNeed.capitalize()+'ColCatList')
+        console.log(newColCatList)
         newColCatList.append(collaboration.detach())
         var oldCatNum = +(oldCat.find('.label').text())
         oldCat.find('.label').text(oldCatNum-1)
         if(oldCatNum==1) oldCat.addClass('hidden')
-        var newCat = $('#'+data.newType+data.offerOrNeed.capitalize+'ColCat')
+        var newCat = $('#'+data.newType+data.offerOrNeed.capitalize()+'ColCat')
         var newCatNum = +(newCat.find('.label').text())
         newCat.find('.label').text(newCatNum+1)
         newCat.removeClass('hidden')
       }
     },
     data: data
+  })
+  return false
+}
+
+// Configuration
+
+function initializeConfigurationFunc(){
+  $('#changeLocationBtn').click(setChangeLocation)
+  //$('changeLocationBtn').tooltip({placement: 'right'})
+  $('#editProfileBtn').click(editProfile)
+  $('#personalDataForm :input').on('input', function(){
+    $('#editProfileBtn').removeClass('disabled')
+  })
+  initializeMap()
+}
+
+function initializeMap () {
+  var hasLocation = $('#lat').val() != undefined
+  var lat = hasLocation ? $('#lat').val() : 19.34
+  var lon = hasLocation ? $('#lon').val() : -99.15
+  map = L.map('mapConf', {zoomControl: false, center: [lat, lon], zoom: 12})
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'ralexrdz.nnh64i75',
+    accessToken: 'pk.eyJ1IjoicmFsZXhyZHoiLCJhIjoiY2lmdHB2aGo2MTZ4MnQ1bHkzeDJyaDMzNyJ9.UHhEm9gA1_uwAztXjb7iTQ'
+  }).addTo(map)
+  L.control.zoom({
+    position: 'bottomright'
+  }).addTo(map)
+  if(hasLocation){
+    circle = L.circle([lat, lon], 2000, {
+      color: '#38c12d',
+      fillColor: '#38c12d',
+      fillOpacity: 0.5
+    }).addTo(map).bindPopup('Recomendaremos más proyectos y colaboraciones dentro de esta zona')
+    marker = L.marker([lat, lon]).addTo(map)
+  }  
+}
+
+function setChangeLocation(){
+  console.log('changing location')
+  map.removeLayer(circle)
+  map.removeLayer(marker)
+  map.on('click', function (e) {
+    map.removeLayer(circle)
+    map.removeLayer(marker)
+    marker = L.marker([e.latlng.lat, e.latlng.lng])
+    $('#lat').val(e.latlng.lat)
+    $('#lon').val(e.latlng.lng)
+    circle = L.circle([e.latlng.lat, e.latlng.lng], 2000, {
+      color: '#38c12d',
+      fillColor: '#38c12d',
+      fillOpacity: 0.5
+    }).addTo(map).bindPopup('Recomendaremos más proyectos y colaboraciones dentro de esta zona')
+    map.addLayer(marker)
+    map.addLayer(circle)
+    $('#editProfileBtn').removeClass('disabled')
+  })
+  return false
+}
+
+function editProfile(){
+  console.log('editando perfil')
+  var editProfileForm = form2js('personalDataForm', '.')
+  console.log(editProfileForm)
+  $.ajax({
+    url: '/api/user',
+    type: 'PUT',
+    data: editProfileForm,
+    success: function (data) {
+      console.log(data)
+    }
   })
   return false
 }

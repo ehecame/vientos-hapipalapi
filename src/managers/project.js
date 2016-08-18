@@ -49,8 +49,9 @@ ProjectManager.prototype = (function () {
         callback(doc)
       })
     },
-    update: function update (db, updatedProject, id, callback) {
-      db.collection('projects').update({ _id: id }, updatedProject, function (err, doc) {
+    update: function update (db, query, updateObject, callback) {
+      console.log(updateObject)
+      db.collection('projects').update(query, updateObject, function (err, doc) {
         callback(doc)
       })
     },

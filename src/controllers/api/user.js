@@ -1,5 +1,6 @@
 var UserManager = require('./../../managers/user')
 var SessionController = require('./../session')
+var qs = require('qs')
 var Bcrypt = require('bcrypt-nodejs')
 
 function UserController () { }
@@ -21,10 +22,13 @@ UserController.prototype = (function () {
                   email: user.email,
                   name: user.name,
                   lastname: user.lastname,
-                  scope: user.scope
+                  scope: user.scope,
+                  projects: user.projects,
+                  id: user._id.valueOf() + '',
                 }
                 console.log('buen log in')
                 console.log(account)
+                console.log(typeof account.id)
                 request.cookieAuth.set(account)
                 return reply('success')
               } else {
@@ -53,6 +57,25 @@ UserController.prototype = (function () {
       request.cookieAuth.clear()
       request.auth.clear()
       return reply.redirect('/')
+    },
+    update: function update (request, reply) {
+      var db = request.mongo.db
+      var isAuthenticated = SessionController.isAuthenticated(request)
+      if (isAuthenticated) {
+        var credentials = SessionController.getSession(request)
+        console.log(credentials)
+        console.log(typeof request.payload)
+        var updatedUser = qs.parse(request.payload)
+        console.log(updatedUser)
+        console.log(updatedUser.location)
+        console.log(updatedUser.location.lat)
+        // reply('gooot')
+        UserManager.update(request.mongo.db, {'username': credentials.username}, {$set: updatedUser}, function (res) {
+          reply(res)
+        })
+      } else {
+        reply('not Authenticated')
+      }
     },
     // COLLABORATION
     addCollaboration: function addCollaboration (request, reply) {

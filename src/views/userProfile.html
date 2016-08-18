@@ -466,7 +466,7 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'knowledge'))}}hidden{{/if}}" id="knowledgeNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'knowledge'))}}hidden{{/if}}" id="knowledgeOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/knowledge" class="icon">
@@ -512,7 +512,7 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'product'))}}hidden{{/if}}" id="productNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'product'))}}hidden{{/if}}" id="productOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/product" class="icon">
@@ -558,7 +558,7 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'service'))}}hidden{{/if}}" id="serviceNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'service'))}}hidden{{/if}}" id="serviceOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/service" class="icon">
@@ -604,7 +604,7 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'event'))}}hidden{{/if}}" id="eventNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'event'))}}hidden{{/if}}" id="eventOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/event" class="icon">
@@ -650,7 +650,7 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'job'))}}hidden{{/if}}" id="jobNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'job'))}}hidden{{/if}}" id="jobOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/job" class="icon">
@@ -696,7 +696,7 @@
                 {{/each}}
               </div>
             </div>
-	            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'volunteer'))}}hidden{{/if}}" id="volunteerNeedColCat">
+	            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'volunteer'))}}hidden{{/if}}" id="volunteerOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/volunteer" class="icon">
@@ -742,7 +742,7 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'spread'))}}hidden{{/if}}" id="spreadNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'spread'))}}hidden{{/if}}" id="spreadOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/spread" class="icon">
@@ -788,7 +788,7 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'space'))}}hidden{{/if}}" id="spaceNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'space'))}}hidden{{/if}}" id="spaceOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/space" class="icon">
@@ -834,7 +834,7 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'link'))}}hidden{{/if}}" id="linkNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'link'))}}hidden{{/if}}" id="linkOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/link" class="icon">
@@ -880,7 +880,7 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'art'))}}hidden{{/if}}" id="artNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'art'))}}hidden{{/if}}" id="artOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/art" class="icon">
@@ -926,7 +926,7 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'funding'))}}hidden{{/if}}" id="fundingNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'funding'))}}hidden{{/if}}" id="fundingOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/funding" class="icon">
@@ -1099,10 +1099,10 @@
               </div>
             </div>
             <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'product'))}}hidden{{/if}}" id="productNeedColCat">
-              <div class="collaborationCategoryTitle ">
+              <div class="collaborationCategoryTitle">
                 <i class="fa fa-caret-right"></i>
-                <img src="svg/product" class="icon">
-                <strong>Productis</strong>
+                <img src="svg/product" class="icon"/>
+                <strong>Productos</strong>
                 <span class="label label-default" id="productNeedNum">{{#count (filterByType needs 'product')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="productNeedColCatList">
@@ -1651,8 +1651,14 @@
           <input type="file" name="file" id="pictureFileInput">
           <button class="btn btn-default" onclick="uploadPicture()">Subir imagen</button>
         </div>
+        <div id="mapConf"></div>
+        <div>
+        	<a href="#" class="btn btn-default" id="changeLocationBtn" title="Da Click en el mapa para cambiar ubicación" data-toggle="tooltip">Cambia ubicación</a>
+        </div>
         <div>
           <form id="personalDataForm">
+          	<input type="hidden" name="location.lat" id="lat" value="{{location.lat}}">
+          	<input type="hidden" name="location.lon" id="lon" value="{{location.lon}}">
             <div class="form-group row">
               <label for="nameInput" class="col-xs-2 hidden-xs">Nombre</label>
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
@@ -1716,217 +1722,13 @@
 				      </span>
               </div>
             </div>
-            <div id="map"></div>
           </form>
+          <div>
+          	<a href="#" id="editProfileBtn" class="btn btn-lg btn-primary disabled">Editar</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- /fluid container-->
-  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="projectModal" id="projectModal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <div class="fakePhoto" id="projectModalPhoto">
-            <div class="vcenter">FOTO</div>
-          </div>
-          <h4 class="modal-title" id="projectModalLabel">Prueba</h4>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div id="projectDescription">
-              tiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-            </div>
-          </div>
-          <div class="row" id="projectModelData">
-            <div class="col-md-6">
-              <div>
-                <strong>Categorías:</strong>
-                <i class="fa fa-book"></i>
-                <i class="fa fa-users"></i>
-                <i class="fa fa-cogs"></i>
-              </div>
-              <div>
-                <strong>Tipo:</strong>
-                <span>Colectivo</span>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div><i class="fa fa-phone"></i> 5234423243</div>
-              <div><i class="fa fa-envelope"></i>ejemplo@email.com</div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4 col-md-offset-4"><a href="/map" class="btn btn-primary"> Muestra en el mapa <i class="fa fa-map-marker"></i></a></div>
-          </div>
-          <div class="row">
-            <div class="col-md-4 col-md-offset-1">
-              <div><strong>Ofrecimientos</strong></div>
-              <div>Materiales<span class="label label-default">2</span></div>
-              <div>Chambitas<span class="label label-default">1</span></div>
-              <div>Productos<span class="label label-default">10</span></div>
-            </div>
-            <div class="col-md-4 col-md-offset-2">
-              <div><strong>Necesidades</strong></div>
-              <div>Materiales<span class="label label-default">2</span></div>
-              <div>Chambitas<span class="label label-default">1</span></div>
-              <div>Productos<span class="label label-default">10</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" id="goToProjectProfile">Ver perfil</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="collaborationModal" id="collaborationModal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="projectModalLabel">Prueba</h4>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div id="collaborationDescription">
-              tiam porta sem malesuada magna mollis euismod. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-            </div>
-          </div>
-          <div class="row">
-            <div id="colProject">
-              <h2 class="profileTitle">Proyecto Ejemplo</h2>
-            </div>
-          </div>
-          <div class="row" id="projectModelData">
-            <div class="col-md-6">
-              <div>
-                <strong>Categorías:</strong>
-                <i class="fa fa-book"></i>
-                <i class="fa fa-users"></i>
-                <i class="fa fa-cogs"></i>
-              </div>
-              <div>
-                <strong>Tipo:</strong>
-                <span>Colectivo</span>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div><i class="fa fa-phone"></i> 5234423243</div>
-              <div><i class="fa fa-envelope"></i>ejemplo@email.com</div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4 col-md-offset-4"><a href="/project/pilot" class="btn btn-primary"> Ver Proyecto <i class="fa fa-map-marker"></i></a></div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" id="goToProjectProfile">Ver perfil</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addOfferNeed" id="addOfferNeed">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Agrega una nueva</h4>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div id="collaborationDescription">
-              <label for="offerNeedTypeSelect">Tipo:</label>
-              <select id="offerNeedTypeSelect">
-                <option value="1">Material</option>
-                <option value="1">Espacio</option>
-                <option value="1">Producto o Servicio</option>
-                <option value="1">Chambita</option>
-                <option value="1">Fondeo</option>
-                <option value="1">Comparte tu arte</option>
-                <option value="1">Volutnariado</option>
-                <option value="1">Conocimientos y Habilidades</option>
-                <option value="1">Eventos</option>
-                <option value="1">Difusión</option>
-                <option value="1">Recomienda y Vincula</option>
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <div>
-              <textarea id="offerNeedDescriptionTextArea"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary" id="goToProjectProfile">Ver perfil</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-  <script id="myProject-template" type="text/x-handlebars-template">
-    <div class="col-md-3 col-sm-4 col-xs-6 myProject">
-      <div class="thumbnail">
-        <!--img src=""-->
-        <div class="fakePhoto">
-          <div class="vcenter">FOTO</div>
-        </div>
-        <div class="caption">
-          <h4>{{name}}</h4>
-          <div class="myProjectNotifications"><span>Notificaciones</span><span class="label label-primary">{{notificationNumber}}</span></div>
-        </div>
-      </div>
-    </div>
-  </script>
-
-  <script id="collaboration-template" type="text/x-handlebars-template">
-  	<div class="\{{offerOrNeed}}">
-      <div class="collaborationTitle"><strong>\{{title}}</strong></div>
-      <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
-      <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
-      <div class="collaborationDescription"></div>
-      <div class="editCollaboration hidden">
-      	<div class="form-group row">
-      		<label class="col-md-3">Titulo:</label>
-      		<div class="col-md-9">
-      			<input value="{{title}}" class="form-control newCollaborationTitle"/>
-      		</div>
-      		<label class="col-md-3">Tipo:</label>
-      		<div class="col-md-9">
-      			<select class="newCollaborationType">
-      				<option value="material" \{{isSelected type 'material'}}>Material o Herramienta</option>
-      				<option value="knowledge" \{{isSelected type 'knowledge'}}>Conocimiento o Habilidad</option>
-      				<option value="product" \{{isSelected type 'product'}}>Producto</option>
-      				<option value="service" \{{isSelected type 'service'}}>Servicio</option>
-      				<option value="event" \{{isSelected type 'event'}}>Evento o Actividad</option>
-      				<option value="job" \{{isSelected type 'job'}}>Chamba</option>
-      				<option value="volunteer" \{{isSelected type 'volunteer'}}>Voluntariado</option>
-      				<option value="spread" \{{isSelected type 'spread'}}>Difusión de Proyecto</option>
-      				<option value="space" \{{isSelected type 'space'}}>Espacio</option>
-      				<option value="link" \{{isSelected type 'link'}}>Recomendación o Vínculo</option>
-      				<option value="art" \{{isSelected type 'art'}}>Arte</option>
-      				<option value="funding" \{{isSelected type 'funding'}}>Fondeo Colectivo</option>
-      			</select>
-      		</div>
-      		<div>
-      			<a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
-      			<a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
-      	</div>
-      </div>
-    </div>
-  </script>
+  </div><!-- /fluid container-->
 </div>
 

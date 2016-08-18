@@ -1,4 +1,3 @@
-var fs = require('fs')
 var multiparty = require('multiparty')
 var SessionController = require('./../controllers/session')
 var UserManager = require('./../managers/user')

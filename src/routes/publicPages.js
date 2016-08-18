@@ -2,6 +2,8 @@ var CategoryManager = require('./../managers/category')
 var ProjectManager = require('./../managers/project')
 var SessionController = require('./../controllers/session')
 var Bcrypt = require('bcrypt-nodejs')
+var multiparty = require('multiparty')
+var fs = require('fs')
 
 module.exports = function () {
   return [
@@ -116,15 +118,6 @@ module.exports = function () {
       }
     }, {
       method: 'GET',
-      path: '/project/pilot',
-      config: {
-        handler: function (request, reply) {
-          reply.view('projectProfile')
-        } /*,
-        auth: false*/
-      }
-    }, {
-      method: 'GET',
       path: '/project/{projectId}',
       config: {
         handler: function (request, reply) {
@@ -132,11 +125,14 @@ module.exports = function () {
           var objID = request.mongo.ObjectID
           ProjectManager.findById(db, new objID(request.params.projectId), function (res) {
             var data = res[0]
+            var credentials = SessionController.getSession(request)
             data.isAuthenticated = SessionController.isAuthenticated(request)
             data.withFooter = true
             if (data.isAuthenticated) {
               data.credentials = SessionController.getSession(request)
-              data.isOwner = data.credentials.scope && (data.credentials.scope == 'admin' || data.credentials.scope.indexOf('admin')>0)
+              var isAdmin = data.credentials.scope && (data.credentials.scope == 'admin' || data.credentials.scope.indexOf('admin')>0)
+              data.isOwner = isAdmin || (data.owners.indexOf(credentials.id) > -1 &&
+              credentials.projects.indexOf(request.params.projectId) > -1)
             }
             reply.view('projectProfile', data)
           })

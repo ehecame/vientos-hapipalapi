@@ -58,11 +58,25 @@ module.exports = function () {
         handler: ProjectController.delete
       }
     },
+    // COLLABORATIONS
     {
-      method: 'GET',
-      path: '/api/project/modifyOfferAndNeeds',
+      method: 'POST',
+      path: '/api/project/collaboration',
       config: {
-        handler: ProjectController.modifyOfferAndNeeds
+        handler: ProjectController.addCollaboration
+      }
+    },
+    {
+      method: 'PUT',
+      path: '/api/project/collaboration',
+      config: {
+        handler: ProjectController.updateCollaboration
+      }
+    }, {
+      method: 'DELETE',
+      path: '/api/project/collaboration',
+      config: {
+        handler: ProjectController.removeCollaboration
       }
     }
   ]
