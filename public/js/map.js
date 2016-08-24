@@ -1,11 +1,11 @@
 var map
 var markers = new L.FeatureGroup()
 var source
-var projectNoLocTemplate
+var projectCellTemplate
 
 $(document).ready(function () {
-  source = $('#projectNoLocation-template').html()
-  // projectNoLocTemplate = Handlebars.compile(source)
+  source = $('#project-cell-template').html()
+  projectCellTemplate = Handlebars.compile(source)
   setCloseMapSideBarFunc()
   $('#btnCloseToMe').click(centerMapMyLocation)
   initializeMap()
@@ -17,6 +17,7 @@ $(document).ready(function () {
   }
   $('#btnCloseToMe').tooltip({placement: 'bottom'})
   $('#btnCloseToMe').tooltip('show')
+  $('.nano').nanoScroller()
   var elements = document.getElementsByTagName('*')
   for (var id = 0; id < elements.length; ++id) { elements[id].oncontextmenu = null; }
   setTopBarBtnsFunc()
@@ -30,9 +31,20 @@ function addAllProjects () {
     function (data) {
       console.log(data.length)
       addMarkers(data)
+      addProjectCells(data)
     }
   )
   map.addLayer(markers)
+  $('')
+}
+
+function addProjectCells(projectList){
+  $('#projectsGrid').html('')
+  $.each(projectList, function (i, p) {
+    $('#projectsGrid').append(projectCellTemplate(p))
+  })
+  $('.card').flip({trigger: 'hover'})
+  $('.projectCell').removeClass('hidden')
 }
 
 function initializeMap () {
@@ -59,6 +71,7 @@ function filterCategory (id) {
     '/api/project/category/' + id,
     function (data) {
       addMarkers(data)
+      addProjectCells(data)
     }
   )
   map.addLayer(markers)
@@ -72,6 +85,7 @@ function filterByKeyWords () {
     '/api/project/keywords/' + keywords,
     function (data) {
       addMarkers(data)
+      addProjectCells(data)
     }
   )
   map.addLayer(markers)
@@ -126,11 +140,11 @@ function getRandomProjectType () {
   return projectTypes[Math.floor((Math.random() * 7))]
 }
 
-function addMarkers (markerList) {
+function addMarkers (projectList) {
   var marker
   var myIcon
-  console.log(markerList)
-  $.each(markerList, function (i, m) {
+  console.log(projectList)
+  $.each(projectList, function (i, m) {
     m.categoryIcon = getCategoryIcon(m.categories_ids[0])
     if (!m.projectType) {
       m.projectType = getRandomProjectType()
@@ -340,37 +354,37 @@ function categoryBtnClicked () {
 }
 
 function categoriesBtnClicked () {
-  $('#categoriesContainer').show()
+  $('#categoriesContainer').removeClass('hidden')
   $('#categoriesBtn').removeClass('btn-default')
   $('#categoriesBtn').addClass('btn-success')
-  $('#typesContainer').hide()
+  $('#typesContainer').addClass('hidden')
   $('#typesBtn').addClass('btn-default')
   $('#typesBtn').removeClass('btn-success')
-  $('#waysOfCollaborationContainer').hide()
+  $('#waysOfCollaborationContainer').addClass('hidden')
   $('#waysOfCollaborationBtn').addClass('btn-default')
   $('#waysOfCollaborationBtn').removeClass('btn-success')
 }
 
 function typesBtnClicked () {
-  $('#typesContainer').show()
+  $('#typesContainer').removeClass('hidden')
   $('#typesBtn').removeClass('btn-default')
   $('#typesBtn').addClass('btn-success')
-  $('#categoriesContainer').hide()
+  $('#categoriesContainer').addClass('hidden')
   $('#categoriesBtn').addClass('btn-default')
   $('#categoriesBtn').removeClass('btn-success')
-  $('#waysOfCollaborationContainer').hide()
+  $('#waysOfCollaborationContainer').addClass('hidden')
   $('#waysOfCollaborationBtn').addClass('btn-default')
   $('#waysOfCollaborationBtn').removeClass('btn-success')
 }
 
 function waysOfCollaborationBtnClicked () {
-  $('#waysOfCollaborationContainer').show()
+  $('#waysOfCollaborationContainer').removeClass('hidden')
   $('#waysOfCollaborationBtn').removeClass('btn-default')
   $('#waysOfCollaborationBtn').addClass('btn-success')
-  $('#categoriesContainer').hide()
+  $('#categoriesContainer').addClass('hidden')
   $('#categoriesBtn').addClass('btn-default')
   $('#categoriesBtn').removeClass('btn-success')
-  $('#typesContainer').hide()
+  $('#typesContainer').addClass('hidden')
   $('#typesBtn').addClass('btn-default')
   $('#typesBtn').removeClass('btn-success')
 }

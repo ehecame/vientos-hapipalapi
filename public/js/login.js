@@ -1,3 +1,11 @@
+$(document).ready(function () {
+  $('#newInterestInput').keyup(function (event) {
+    if (event.keyCode == 13) {
+      $('#addInterestBtn').click()
+    }
+  })
+})
+
 function login () {
   $.post(
     '/api/user/login',

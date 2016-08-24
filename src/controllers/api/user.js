@@ -66,9 +66,8 @@ UserController.prototype = (function () {
         console.log(credentials)
         console.log(typeof request.payload)
         var updatedUser = qs.parse(request.payload)
-        console.log(updatedUser)
-        console.log(updatedUser.location)
-        console.log(updatedUser.location.lat)
+        if (request.payload.password)
+          request.payload.password = require('bcrypt-nodejs').hashSync(request.payload.password)
         // reply('gooot')
         UserManager.update(request.mongo.db, {'username': credentials.username}, {$set: updatedUser}, function (res) {
           reply(res)

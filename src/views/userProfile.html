@@ -1656,8 +1656,12 @@
           <button class="btn btn-default" onclick="uploadPicture()">Subir imagen</button>
         </div>
         <div id="mapConf"></div>
-        <div>
+        <div id="mapElements">
         	<a href="#" class="btn btn-default" id="changeLocationBtn" title="Da Click en el mapa para cambiar ubicación" data-toggle="tooltip">Cambia ubicación</a>
+        	<a href="#" id="expandMapBtn"><i class="fa fa-sort-desc fa-3x"></i></a>
+        	<div id="btnCloseToMe" class="hidden" title="Cerca de mí" data-toggle="tooltip">
+						<i class="fa fa-crosshairs fa-2x" ></i>
+					</div>
         </div>
         <div>
           <form id="personalDataForm">
@@ -1700,6 +1704,18 @@
               </div>
             </div>
             <div class="form-group row">
+              <label for="passwordInput" class="col-xs-2 hidden-xs">Nueva Contraseña:</label>
+              <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+                <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Nueva Contraseña" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="confirmPasswordInput" class="col-xs-2 hidden-xs">Confirma Contraseña:</label>
+              <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
+                <input type="password" class="form-control" id="confirmPasswordInput" name="" placeholder="Confirma Constraseña"/>
+              </div>
+            </div>
+            <div class="form-group row">
               <label for="twitterInput" class="col-xs-2 hidden-xs">Twitter:</label>
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
                 <input type="text" class="form-control" id="twitterInput" name="twitter" placeholder="Twitter" value="{{twitter}}"/>
@@ -1736,8 +1752,10 @@
               </div>
             </div>
           </form>
-          <div>
-          	<a href="#" id="editProfileBtn" class="btn btn-lg btn-primary disabled">Editar</a>
+          <div class="row">
+	          	<div class="col-md-10 col-md-offset-2">
+	          		<a href="#" id="editProfileBtn" class="btn btn-lg btn-primary disabled">Editar</a>
+	          	</div>
           </div>
         </div>
       </div>

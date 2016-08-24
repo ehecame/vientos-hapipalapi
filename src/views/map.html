@@ -1,73 +1,85 @@
 <script src="js/map"></script>
-<div id="searchPage">
-	<div id="mapTopBar">
-		<button class="btn btn-success" id="categoriesBtn">Categorias</button>
-		<button class="btn btn-default" id="typesBtn">Tipos</button>
-		<button class="btn btn-default" id="waysOfCollaborationBtn">¿Cómo Colaborar?</button>
-		<button class="btn btn-default" id="eventsBtn">Actividades y Eventos</button>
-		<span id="searchInputs">
-			<input type="text" id="keyWordsInput" placeholder="palabras clave" />
-			<input type="text" id="whereSearchInput" placeholder="lugar" />
-			<button class="btn btn-primary" onclick="filterByKeyWords()"><i class="fa fa-search"></i></button>
-		</span>
-	</div>
-	<div id="map"></div>
-	<div id="mapSideBar">
-			<div id="projectDetails">
-				<div id="topLeftCorner">
-					<div id="projectLogo"></div>
-					<div id="projectType"></div>
-				</div>
-				<h2 id="projectName"></h2>
-				<div id="projectDescription"></div>
-				<a class="btn btn-profile" id="projectProfileLink" href="#">Ver Perfil</a>
-				<div id="projectContactData" class="content-fluid">
-					<div class="row">
-						<hr>
-					</div>
-					<div class="row">
-						<div>
-							<a id="projectFacebook" href="#" title="Visita su Facebook" style="color: #3a5795" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
-							<a id="projectTwitter" href="#" title="Visita su Twitter" style="color: #4099FF" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
-							<a id="projectWebSite" href="#" title="Visita su página de internet" target="_blank">
-								WWW
-							</a>
-						</div>
-					</div>
-					<div class="row">					
-						<div class="col-md-7">
-							<div id="projectPhone"><i class="fa fa-phone-square fa-lg"></i><span></span></div>
-							<div id="projectMobile"><i class="fa fa-mobile fa-lg"></i><span ></span></div>
-							<div id="projectEmail"><i class="fa fa-envelope fa-lg"></i><span ></span></div>
-							<div id="projectAddress"><i class="fa fa-map-signs fa-lg"></i><span ></span></div>
-						</div>
-						<div class="col-md-5" id="scheduleSec">
-							<div><i class="fa fa-clock-o fa-lg"></i>Horarios</div>
-							<div id="projectSchedule"></div>
-						</div>
-					</div>
-					<div class="row">
-						<hr>
-					</div>
-					<div class="row" id="offersNeedsRow">					
-						<div class="col-md-6">
-							<div><h3 class="offersNeedsTitles">Ofrece:</h3></div>
-							<div id="projectOffers">
-								<div class="need"><i class="fa fa-home"></i>Hola</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div><h3 class="offersNeedsTitles">Necesita:</h3></div>
-							<div id="projectNeeds">
-								<div class="need"><i class="fa fa-home"></i>Hola</div>
-							</div>	
-						</div>
-					</div>
-				</div>					 
-			</div>
+<div id="searchPage" >
+	<div class="fluid-container">
+		<div id="searchTopBar" class="row">
+			<button class="btn btn-success" id="categoriesBtn">Categorias</button>
+			<button class="btn btn-default" id="typesBtn">Tipos</button>
+			<button class="btn btn-default" id="waysOfCollaborationBtn">¿Cómo Colaborar?</button>
+			<button class="btn btn-default" id="eventsBtn">Actividades y Eventos</button>
+			<span id="searchInputs">
+				<input type="text" id="keyWordsInput" placeholder="palabras clave" />
+				<input type="text" id="whereSearchInput" placeholder="lugar" />
+				<button class="btn btn-primary" onclick="filterByKeyWords()"><i class="fa fa-search"></i></button>
+			</span>
 		</div>
+		<div id="searchResults" class="row">
+			<div id="projects" class="col-md-7">
+				<div class="nano">
+					<div class="nano-content">
+						<div id="projectsGrid" class="row">
+						</div>
+					</div>
+				</div>
+				<div id="projectDescription" class="hidden">
+					<div id="projectDetails">
+						<div id="topLeftCorner">
+							<div id="projectLogo"></div>
+							<div id="projectType"></div>
+						</div>
+						<h2 id="projectName"></h2>
+						<div id="projectDescription"></div>
+						<a class="btn btn-profile" id="projectProfileLink" href="#">Ver Perfil</a>
+						<div id="projectContactData" class="content-fluid">
+							<div class="row">
+								<hr>
+							</div>
+							<div class="row">
+								<div>
+									<a id="projectFacebook" href="#" title="Visita su Facebook" style="color: #3a5795" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+									<a id="projectTwitter" href="#" title="Visita su Twitter" style="color: #4099FF" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+									<a id="projectWebSite" href="#" title="Visita su página de internet" target="_blank">
+										WWW
+									</a>
+								</div>
+							</div>
+							<div class="row">					
+								<div class="col-md-7">
+									<div id="projectPhone"><i class="fa fa-phone-square fa-lg"></i><span></span></div>
+									<div id="projectMobile"><i class="fa fa-mobile fa-lg"></i><span ></span></div>
+									<div id="projectEmail"><i class="fa fa-envelope fa-lg"></i><span ></span></div>
+									<div id="projectAddress"><i class="fa fa-map-signs fa-lg"></i><span ></span></div>
+								</div>
+								<div class="col-md-5" id="scheduleSec">
+									<div><i class="fa fa-clock-o fa-lg"></i>Horarios</div>
+									<div id="projectSchedule"></div>
+								</div>
+							</div>
+							<div class="row">
+								<hr>
+							</div>
+							<div class="row" id="offersNeedsRow">					
+								<div class="col-md-6">
+									<div><h3 class="offersNeedsTitles">Ofrece:</h3></div>
+									<div id="projectOffers">
+										<div class="need"><i class="fa fa-home"></i>Hola</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div><h3 class="offersNeedsTitles">Necesita:</h3></div>
+									<div id="projectNeeds">
+										<div class="need"><i class="fa fa-home"></i>Hola</div>
+									</div>	
+								</div>
+							</div>
+						</div>					 
+					</div>
+				</div>
+			</div>
+			<div id="map" class="col-md-5"></div>		
+		</div>
+	</div>
 	<div id="categoriesContainer">
-		<div class="categoryBtnAll" onclick="addAllProjects()">TODOS</div>
+		<div class="categoryBtnAll categoryBtn" onclick="addAllProjects()">TODAS</div>
 		<div class="categoryBtn" id="humanrights"><i class="fa fa-globe"></i>Derechos Humanos</div>
 		<div class="categoryBtn" id="productsservices"><i class="fa fa-shopping-basket"></i>Productos y Servicios</div>
 		<div class="categoryBtn" id="environment"><i class="fa fa-pagelines"></i>Medio Ambiente</div>
@@ -75,8 +87,6 @@
 		<div class="categoryBtn" id="gender"><i class="fa fa-transgender-alt"></i>Género</div>
 		<div class="categoryBtn" id="health"><i class="fa fa-medkit"></i>Salud</div>
 		<div class="categoryBtn" id="education"><i class="fa fa-book"></i>Educación</div>
-		<div class="categoryBtn" id="workshops"><i class="fa fa-puzzle-piece"></i>Talleres y Clases</div>
-		<div class="categoryBtn" id="community"><i class="fa fa-users"></i>Comunidad</div>
 		<div class="categoryBtn" id="food"><i class="fa fa-cutlery"></i>Comida</div>
 		<div class="categoryBtn" id="housing"><i class="fa fa-home"></i>Vivienda</div>
 		<div class="categoryBtn" id="clothing"><i class="fa fa-scissors"></i>Vestido</div>
@@ -84,77 +94,116 @@
 		<div class="categoryBtn" id="technology"><i class="fa fa-cogs"></i>Tecnología</div>
 		<div class="categoryBtn" id="transport"><i class="fa fa-bicycle"></i>Transporte</div>
 	</div>
-	<div id="waysOfCollaborationContainer">
-		<div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/material" class="icon"></div>
-				<div class="colLabel">Materiales y Herramientas</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/knowledge" class="icon"></div>
-				<div class="colLabel">Conocimientos y Habilidades</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/product" class="icon"></div>
-				<div class="colLabel">Productos</div>
-			</div>
+	<div id="waysOfCollaborationContainer" class="hidden">
+		<div class="collaborationWay">
+			<div class="circle"><img src="svg/material" class="icon"></div>
+			<span class="colLabel" style="display: block">Materiales y Herramientas</span>
 		</div>
-		<div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/service" class="icon"></div>
-				<div class="colLabel">Servicios</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/event" class="icon"></div>
-				<div class="colLabel">Eventos y Actividades</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/job" class="icon"></div>
-				<div class="colLabel">Chambas</div>
-			</div>
+		<div class="collaborationWay">
+			<div class="circle"><img src="svg/knowledge" class="icon"></div>
+			<span class="colLabel" style="display: block">Conocimientos y Habilidades</span>
+		</div>		
+		<div class="collaborationWay">
+			<div class="circle"><img src="svg/product" class="icon"></div>
+			<span class="colLabel">Productos</span>
 		</div>
-		<div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/volunteer" class="icon"></div>
-				<div class="colLabel">Voluntariado y Tequio</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/spread" class="icon"></div>
-				<div class="colLabel">Difusión de proyectos</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/space" class="icon"></div>
-				<div class="colLabel">Espacios</div>
-			</div>
+		<div class="collaborationWay">
+			<div class="circle"><img src="svg/service" class="icon"></div>
+			<span class="colLabel">Servicios</span>
 		</div>
-		<div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/link" class="icon"></div>
-				<div class="colLabel">Recomienda y vincula</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/art" class="icon"></div>
-				<div class="colLabel">Comparte tu arte</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/funding	" class="icon"></div>
-				<div class="colLabel">Fondeo Colectivo</div>
-			</div>
+		<div class="collaborationWay">
+			<div class="circle"><img src="svg/event" class="icon"></div>
+			<span class="colLabel">Eventos y Actividades</span>
+		</div>
+		<div class="collaborationWay">
+			<div class="circle"><img src="svg/job" class="icon"></div>
+			<span class="colLabel">Chambas</span>
+		</div>
+		<div class="collaborationWay">
+			<div class="circle"><img src="svg/volunteer" class="icon"></div>
+			<span class="colLabel">Voluntariado y Tequio</span>
+		</div>
+		<div class="collaborationWay">
+			<div class="circle"><img src="svg/spread" class="icon"></div>
+			<span class="colLabel">Difusión de proyectos</span>
+		</div>
+		<div class="collaborationWay">
+			<div class="circle"><img src="svg/space" class="icon"></div>
+			<span class="colLabel">Espacios</span>
+		</div>
+		<div class="collaborationWay">
+			<div class="circle"><img src="svg/link" class="icon"></div>
+			<span class="colLabel">Recomienda y vincula</span>
+		</div>
+		<div class="collaborationWay">
+			<div class="circle"><img src="svg/art" class="icon"></div>
+			<span class="colLabel">Comparte tu arte</span>
+		</div>
+		<div class="collaborationWay">
+			<div class="circle"><img src="svg/funding	" class="icon"></div>
+			<span class="colLabel">Fondeo Colectivo</span>
 		</div>
 	</div>
-	<div id="typesContainer">
+	<div id="typesContainer" class="hidden">
+		<div class="typeBtn" id="all">TODOS</div>
 		<div class="typeBtn" id="cooperative">Cooperativa</div>
 		<div class="typeBtn" id="collective">Colectivo</div>
 		<div class="typeBtn" id="ngo">ONG</div>
 		<div class="typeBtn" id="ethicalBusiness">Negocio Ético</div>
 		<div class="typeBtn" id="neighborsorg">Organización Vecinal</div>
 		<div class="typeBtn" id="startup">Startup</div>
-		<div class="typeBtn" id="onTransition">En Transición</div>
 	</div>
 	<div id="btnCloseToMe" title="Cerca de mí" data-toggle="tooltip">
 		<i class="fa fa-crosshairs fa-2x" ></i>
 	</div>
 </div>
-<div id="map"></div>
 
-
+<script id="project-cell-template" type="text/x-handlebars-template">
+	<div class="col-md-6 projectCell hidden">
+		<div class="card projectCard">
+			<div class="front">
+				\{{#if logo}}
+				<div class="circle logoCircle" style="background-image: url('/img/\{{logo}}');"></div>
+				\{{else}}
+				<div class="circle categoryCircle" style="background-color: \{{projectType.color}}"><i class="fa fa-\{{categories.0.icon}}"></i></div>
+				\{{/if}}
+				<div class="projectName">\{{name}}</div>
+				<div class="categories">
+					\{{#if logo}}
+					<i class="fa fa-\{{categories.0.icon}}"></i>
+					\{{/if}}
+					\{{#if categories.[1]}}
+					<i class="fa fa-\{{categories.1.icon}}"></i>
+					\{{/if}}
+					\{{#if categories.[2]}}
+					<i class="fa fa-\{{categories.2.icon}}"></i>
+					\{{/if}}
+				</div>
+			</div>
+			<div class="back">
+				<div class="offersContainer">
+					<div class="title">Ofrece</div>
+					<div class="offersList">
+						\{{#each offers}}
+						<div class="offer">
+							<img src="svg/\{{type}}" class="icon">
+							<span class="colLabel">\{{title}}</span>
+						</div>
+						\{{/each}}
+					</div>
+				</div>
+				<div class="needsContainer">
+					<div class="title">Necesita</div>
+					<div class="needsList">
+						\{{#each needs}}
+						<div class="need">
+							<img src="svg/\{{type}}" class="icon">
+							<span class="colLabel">\{{title}}</span>
+						</div>
+						\{{/each}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</script>

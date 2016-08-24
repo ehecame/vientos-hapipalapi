@@ -9,6 +9,7 @@ $(document).ready(function () {
   initiateProjectFunc()
   initiateInterestsSkillsFunc()
   initializeConfigurationFunc()
+  autosize($('textarea'))
 })
 
 function initiateSectionBtnsFunc () {
@@ -385,6 +386,9 @@ function editCollaboration(){
 
 function initializeConfigurationFunc(){
   $('#changeLocationBtn').click(setChangeLocation)
+  $('#expandMapBtn').click(expandMap)  
+  $('#btnCloseToMe').click(centerMapMyLocation)
+  $('#btnCloseToMe').tooltip({placement: 'top'})
   //$('changeLocationBtn').tooltip({placement: 'right'})
   $('#editProfileBtn').click(editProfile)
   $('#personalDataForm :input').on('input', function(){
@@ -396,11 +400,11 @@ function initializeConfigurationFunc(){
 function initializeMap () {
   var hasLocation = ($('#lat').val() != '')
   console.log(hasLocation)
-  var lat = hasLocation ? $('#lat').val() : '19.34'
-  var lon = hasLocation ? $('#lon').val() : '-99.15'
+  var lat = hasLocation ? $('#lat').val() : '19.43211483346452'
+  var lon = hasLocation ? $('#lon').val() : '-99.12551879882812'
   console.log(lat)
   console.log(lon)
-  map = L.map('mapConf', {zoomControl: false, center: [lat, lon], zoom: 12})
+  map = L.map('mapConf', {zoomControl: false, center: [lat, lon], zoom: 13})
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 18,
@@ -418,6 +422,13 @@ function initializeMap () {
     }).addTo(map).bindPopup('Recomendaremos más proyectos y colaboraciones dentro de esta zona')
     marker = L.marker([lat, lon]).addTo(map)
   }  
+}
+
+function expandMap(){
+  $('#mapConf').css('height',400)
+  map.invalidateSize()
+  $('#expandMapBtn').addClass('hidden')
+  return false
 }
 
 function setChangeLocation(){
@@ -439,20 +450,66 @@ function setChangeLocation(){
     map.addLayer(circle)
     $('#editProfileBtn').removeClass('disabled')
   })
+  expandMap()
+  $('#btnCloseToMe').removeClass('hidden')  
+  $('#btnCloseToMe').tooltip('show')
+  return false
+}
+
+function centerMapMyLocation (e) {
+  navigator.geolocation.getCurrentPosition(setMapView)
+}
+
+function setMapView (location) {
+  map.setView([location.coords.latitude, location.coords.longitude], 15)
+}
+
+function updateProfilePicture(){
+  var pictureName = $('#pictureFileInput').val()
+  console.log(pictureName)
+  $.ajax({
+    url: '/api/user',
+    type: 'PUT',
+    data: {profilePicture: pictureName},
+    success: function (data) {
+      console.log(data)
+    }
+  })
+  if ($('#pictureFileInput')[0].files.length > 0) {
+    var formData = new FormData()
+    formData.append('file', $('#pictureFileInput')[0].files[0])
+    console.log(formData)
+    $.ajax({
+      url: '/uploadPicture',
+      data: formData,
+      processData: false,
+      contentType: false,
+      type: 'POST',
+      success: function (data) {
+        console.log(data)
+      }
+    })
+  }
   return false
 }
 
 function editProfile(){
   console.log('editando perfil')
   var editProfileForm = form2js('personalDataForm', '.')
+  var doUpdate = true
+  if(editProfileForm.password)
+    doUpdate = ($('#passwordInput').val() == $('#confirmPasswordInput').val())
   console.log(editProfileForm)
-  $.ajax({
-    url: '/api/user',
-    type: 'PUT',
-    data: editProfileForm,
-    success: function (data) {
-      console.log(data)
-    }
-  })
+  if(doUpdate)
+    $.ajax({
+      url: '/api/user',
+      type: 'PUT',
+      data: editProfileForm,
+      success: function (data) {
+        console.log(data)
+      }
+    })
+  else
+    alert('por favor confirma la contraseña')
   return false
 }

@@ -199,8 +199,8 @@ ProjectController.prototype = (function () {
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
         ProjectManager.findById(db, new objID(request.payload.projectId), function (res) {
-          if (credentials.scope == 'admin' || (res[0].owners.indexOf(credentials.id) > -1 &&
-            credentials.projects.indexOf(request.payload.projectId) > -1)) {
+          if (credentials.scope == 'admin' || (res[0].owners && res[0].owners.indexOf(credentials.id) > -1 &&
+            credentials.projects && credentials.projects.indexOf(request.payload.projectId) > -1)) {
             var newCollaboration = {}
             newCollaboration[request.payload.offerOrNeed] = {
               title: request.payload.title,
@@ -225,8 +225,8 @@ ProjectController.prototype = (function () {
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
         ProjectManager.findById(db, new objID(request.payload.projectId), function (res) {
-          if (credentials.scope == 'admin' || (res[0].owners.indexOf(credentials.id) > -1 &&
-            credentials.projects.indexOf(request.payload.projectId) > -1)) {
+          if (credentials.scope == 'admin' || (res[0].owners && res[0].owners.indexOf(credentials.id) > -1 &&
+            credentials.projects && credentials.projects.indexOf(request.payload.projectId) > -1)) {
             var query = {
               '_id': new objID(request.payload.projectId)
             }
@@ -250,17 +250,23 @@ ProjectController.prototype = (function () {
       }
     },
     removeCollaboration: function removeCollaboration (request, reply) {
-      console.log(request.payload)
+      var objID = request.mongo.ObjectID
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
-        console.log(credentials)
-        var collaborationToRemove = {}
-        collaborationToRemove[request.payload.offerOrNeed + 's'] = {'title': request.payload.title}
-        // ProjectManager.update(request.mongo.db, {'username': credentials.username}, {$pull: collaborationToRemove}, function (res) {
-        //   reply(res)
-        // })
-        reply('gooot')
+        if (credentials.scope == 'admin' || (res[0].owners && res[0].owners.indexOf(credentials.id) > -1 &&
+          credentials.projects && credentials.projects.indexOf(request.payload.projectId) > -1)) {
+          var query = {
+            '_id': new objID(request.payload.projectId)
+          }
+          var collaborationToRemove = {}
+          collaborationToRemove[request.payload.offerOrNeed + 's'] = {'title': request.payload.title}
+          ProjectManager.update(request.mongo.db, query, {$pull: collaborationToRemove}, function (res) {
+            reply(res)
+          })
+        } else {
+          reply('notAuthorized')
+        }
       } else {
         reply('not Authenticated')
       }

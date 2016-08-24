@@ -206,11 +206,13 @@ function deleteCollaboration () {
   var data = {
     offerOrNeed: collaboration.attr('class'),
     title: collaboration.find('.collaborationTitle').text(),
+    projectId: $(window.location.href.split('/')).last()[0]
   }
   $.ajax({
     url: '/api/project/collaboration',
     type: 'DELETE',
     success: function (res) {
+      console.log(res)
       var oldCatNum = +(collaboration.parent().parent().find('.label').text())
       console.log(oldCatNum)
       collaboration.parent().parent().find('.label').text(oldCatNum - 1)
