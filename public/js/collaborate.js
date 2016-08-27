@@ -301,7 +301,7 @@ function showSideBar (m) {
 function createOffersMarkup (offers) {
   var html = ''
   $.each(offers, function (i, offer) {
-    html += '<div class="offer"><img src="svg/'+offer.type+'" class="icon">' + offer.title + '</div>'
+    html += '<div class="offer"><img src="svg/'+offer.type+'" class="icon"><span class="colLabel">' + offer.title + '</span></div>'
   })
   return html
 }
@@ -309,7 +309,7 @@ function createOffersMarkup (offers) {
 function createNeedsMarkup (needs) {
   var html = ''
   $.each(needs, function (i, need) {
-    html += '<div class="need"><img src="svg/'+need.type+'" class="icon">' + need.title + '</div>'
+    html += '<div class="need"><img src="svg/'+need.type+'" class="icon"><span class="colLabel">' + need.title + '</span></div>'
   })
   return html
 }

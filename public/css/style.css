@@ -1020,11 +1020,16 @@ h1 {
     overflow: hidden; 
     white-space: nowrap;
     margin-bottom: 5px;}
-#searchPage #projectDetails #offersNeedsRow i {
-    color: #38c12d;
-    font-size: .6em;
-    vertical-align: middle;
-    margin-right: 5px; }
+#projectDetails #offersNeedsRow .icon {
+    height: 20px; 
+    margin-right: 5px;}
+#projectDetails #offersNeedsRow .offer,
+#projectDetails #offersNeedsRow .need{
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    white-space: nowrap;
+    margin-bottom: 3px;
+}
 #collaborationPage {
     margin-top: 50px; }
 #collaborationPage #collaborationWays > div,
