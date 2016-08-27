@@ -6,7 +6,6 @@ var projectCellTemplate
 $(document).ready(function () {
   source = $('#project-cell-template').html()
   projectCellTemplate = Handlebars.compile(source)
-  setCloseMapSideBarFunc()
   $('#btnCloseToMe').click(centerMapMyLocation)
   initializeMap()
   if (getUrlParameter('cat')) {
@@ -20,6 +19,7 @@ $(document).ready(function () {
   $('.nano').nanoScroller()
   var elements = document.getElementsByTagName('*')
   for (var id = 0; id < elements.length; ++id) { elements[id].oncontextmenu = null; }
+  $('#backToProjectsGrid').click(hideSideBar)
   setTopBarBtnsFunc()
   setCategoryBarFunc()
 })
@@ -29,22 +29,30 @@ function addAllProjects () {
   $.get(
     '/api/projects',
     function (data) {
-      console.log(data.length)
       addMarkers(data)
       addProjectCells(data)
+      $('.projectCard').click(showSideBar)
+      $('.nano').nanoScroller()
     }
   )
   map.addLayer(markers)
-  $('')
 }
 
 function addProjectCells(projectList){
+  var project;
   $('#projectsGrid').html('')
   $.each(projectList, function (i, p) {
-    $('#projectsGrid').append(projectCellTemplate(p))
+    project = projectCellTemplate(p)
+    $('#projectsGrid').append(project)
+    $('#projectsGrid #projectCell_'+p._id).on('click', function (e) {
+      e.preventDefault()
+      map.setView([p.latitude, p.longitude], 16, {animate: true})
+      showSideBar(p)
+    })
   })
   $('.card').flip({trigger: 'hover'})
   $('.projectCell').removeClass('hidden')
+
 }
 
 function initializeMap () {
@@ -72,6 +80,8 @@ function filterCategory (id) {
     function (data) {
       addMarkers(data)
       addProjectCells(data)
+      $('.projectCard').click(showSideBar)
+      $('.nano').nanoScroller()
     }
   )
   map.addLayer(markers)
@@ -86,6 +96,8 @@ function filterByKeyWords () {
     function (data) {
       addMarkers(data)
       addProjectCells(data)
+      $('.projectCard').click(showSideBar)
+      $('.nano').nanoScroller()
     }
   )
   map.addLayer(markers)
@@ -130,14 +142,9 @@ function getRandomProjectType () {
       type: 'startup',
       label: 'Startup',
       color: '#58376C'
-    },
-    {
-      type: 'ontransition',
-      label: 'En Transición',
-      color: '#d45bc9'
-    },
+    }
   ]
-  return projectTypes[Math.floor((Math.random() * 7))]
+  return projectTypes[Math.floor((Math.random() * 6))]
 }
 
 function addMarkers (projectList) {
@@ -155,6 +162,7 @@ function addMarkers (projectList) {
       console.log('No tengo categorías =S : ' + m.name)
     }
     var icon = m.categories ? m.categories[0].icon : m.categoryIcon
+    console.log()
     if (m.latitude && m.longitude) {
       myIcon = L.divIcon({
         html: '<div class="myIcon fa-stack fa-2x">' +
@@ -176,8 +184,8 @@ function addMarkers (projectList) {
         $(this._icon).find('.markerPopUp').hide()
       })
       marker.on('click', function (e) {
-        map.setView([m.latitude, m.longitude + .006], 16, {animate: true})
-        showMapSideBar(m)
+        map.setView([m.latitude, m.longitude], 16, {animate: true})
+        showSideBar(m)
       })
       markers.addLayer(marker)
     }
@@ -203,73 +211,74 @@ function getCategoryIcon (id) {
   else return 'fa-puzzle-piece'
 }
 
-function showMapSideBar (m) {
+function showSideBar (m) {
   console.log(m)
   if (m.logo) {
-    $('#mapSideBar').find('#projectLogo').css('background-image', 'url("/img/' + m.logo + '")')
-    $('#mapSideBar').find('#projectLogo').show()
+    $('#projectDetails').find('#projectLogo').css('background-image', 'url("/img/' + m.logo + '")')
+    $('#projectDetails').find('#projectLogo').show()
   }
   else
-    $('#mapSideBar').find('#projectLogo').hide()
-  $('#mapSideBar').find('#projectName').html(m.name)
-  $('#mapSideBar').find('#projectDescription').html(m.description)
-  $('#mapSideBar').find('#projectProfileLink').attr('href', '/project/' + m._id)
-  $('#mapSideBar').find('#projectType').html(m.projectType.label)
-  $('#mapSideBar').find('#projectType').css('background-color', m.projectType.color)
+    $('#projectDetails').find('#projectLogo').hide()
+  $('#projectDetails').find('#projectName').html(m.name)
+  $('#projectDetails').find('#projectDescription').html(m.description)
+  $('#projectDetails').find('#projectProfileLink').attr('href', '/project/' + m._id)
+  console.log(m.projectType)
+  $('#projectDetails').find('#projectType').html(m.projectType.label)
+  $('#projectDetails').find('#projectType').css('background-color', m.projectType.color)
   if (m.facebook) {
-    $('#mapSideBar').find('#projectFacebook').attr('href', m.facebook)
-    $('#mapSideBar').find('#projectFacebook').show()
+    $('#projectDetails').find('#projectFacebook').attr('href', m.facebook)
+    $('#projectDetails').find('#projectFacebook').show()
   } else {
-    $('#mapSideBar').find('#projectFacebook').hide()
+    $('#projectDetails').find('#projectFacebook').hide()
   }
   if (m.twitter) {
     console.log('tiene twitter')
-    $('#mapSideBar').find('#projectTwitter').attr('href', m.twitter)
-    $('#mapSideBar').find('#projectTwitter').show()
+    $('#projectDetails').find('#projectTwitter').attr('href', m.twitter)
+    $('#projectDetails').find('#projectTwitter').show()
   } else {
-    $('#mapSideBar').find('#projectTwitter').hide()
+    $('#projectDetails').find('#projectTwitter').hide()
   }
   if (m.webpage) {
     console.log('tiene web')
-    $('#mapSideBar').find('#projectWebSite').attr('href', m.webpage)
-    $('#mapSideBar').find('#projectWebSite').attr('tittle', m.webpage)
-    $('#mapSideBar').find('#projectWebSite').show()
+    $('#projectDetails').find('#projectWebSite').attr('href', m.webpage)
+    $('#projectDetails').find('#projectWebSite').attr('tittle', m.webpage)
+    $('#projectDetails').find('#projectWebSite').show()
   } else {
-    $('#mapSideBar').find('#projectWebSite').hide()
+    $('#projectDetails').find('#projectWebSite').hide()
   }
   if (m.phone) {
     console.log('tiene phone')
-    $('#mapSideBar').find('#projectPhone span').html(m.phone)
-    $('#mapSideBar').find('#projectPhone').show()
+    $('#projectDetails').find('#projectPhone span').html(m.phone)
+    $('#projectDetails').find('#projectPhone').show()
   } else {
-    $('#mapSideBar').find('#projectPhone').hide()
+    $('#projectDetails').find('#projectPhone').hide()
   }
   if (m.mobile) {
     console.log('tiene mobile')
-    $('#mapSideBar').find('#projectMobile span').html(m.mobile)
-    $('#mapSideBar').find('#projectMobile').show()
+    $('#projectDetails').find('#projectMobile span').html(m.mobile)
+    $('#projectDetails').find('#projectMobile').show()
   } else {
-    $('#mapSideBar').find('#projectMobile').hide()
+    $('#projectDetails').find('#projectMobile').hide()
   }
   if (m.email) {
     console.log('tiene email')
-    $('#mapSideBar').find('#projectEmail span').html(m.email)
-    $('#mapSideBar').find('#projectEmail').show()
+    $('#projectDetails').find('#projectEmail span').html(m.email)
+    $('#projectDetails').find('#projectEmail').show()
   } else {
-    $('#mapSideBar').find('#projectEmail').hide()
+    $('#projectDetails').find('#projectEmail').hide()
   }
   if (m.address) {
     console.log('tiene address')
-    $('#mapSideBar').find('#projectAddress span').html(m.address)
-    $('#mapSideBar').find('#projectAddress').show()
+    $('#projectDetails').find('#projectAddress span').html(m.address)
+    $('#projectDetails').find('#projectAddress').show()
   }
   else
-    $('#mapSideBar').find('#projectAddress').hide()
+    $('#projectDetails').find('#projectAddress').hide()
   if (m.offers) {
-    $('#mapSideBar').find('#projectOffers').html(createOffersMarkup(m.offers))
+    $('#projectDetails').find('#projectOffers').html(createOffersMarkup(m.offers))
   }
   if (m.needs) {
-    $('#mapSideBar').find('#projectNeeds').html(createNeedsMarkup(m.needs))
+    $('#projectDetails').find('#projectNeeds').html(createNeedsMarkup(m.needs))
   }
   if (!m.offers && !m.needs) {
     $('#offersNeedsRow').hide()
@@ -278,20 +287,21 @@ function showMapSideBar (m) {
   }
   if (m.schedule) {
     console.log('tiene schedule')
-    $('#mapSideBar').find('#projectSchedule').html(createScheduleMarkup(m.schedule))
-    $('#mapSideBar').find('#scheduleSec').show()
+    $('#projectDetails').find('#projectSchedule').html(createScheduleMarkup(m.schedule))
+    $('#projectDetails').find('#scheduleSec').show()
   } else {
-    $('#mapSideBar').find('#scheduleSec').hide()
+    $('#projectDetails').find('#scheduleSec').hide()
   }
-  $('#btnCloseToMe').tooltip('hide')
-  $('#mapSideBar').show()
-  $('#mapSideBar').animate({width: '45%'})
+  $('#projectsGrid').addClass('hidden')
+  $('#projectDetails').removeClass('hidden')
+  $('#backToProjectsGrid').removeClass("hidden")
+  setTimeout(function(){$('.nano').nanoScroller()},500)
 }
 
 function createOffersMarkup (offers) {
   var html = ''
   $.each(offers, function (i, offer) {
-    html += '<div class="need"><i class="fa fa-circle"></i>' + offer.title + '</div>'
+    html += '<div class="offer"><img src="svg/'+offer.type+'" class="icon">' + offer.title + '</div>'
   })
   return html
 }
@@ -299,7 +309,7 @@ function createOffersMarkup (offers) {
 function createNeedsMarkup (needs) {
   var html = ''
   $.each(needs, function (i, need) {
-    html += '<div class="need"><i class="fa fa-circle"></i>' + need.title + '</div>'
+    html += '<div class="need"><img src="svg/'+need.type+'" class="icon">' + need.title + '</div>'
   })
   return html
 }
@@ -314,24 +324,11 @@ function createScheduleMarkup (schedule) {
   return html
 }
 
-function hideMapSideBar () {
-  $('#mapSideBar').animate({width: '0px'}, function () {
-    $('#mapSideBar').hide()
-  })
-}
-
-function setCloseMapSideBarFunc () {
-  $(document).mouseup(function (e) {
-    var container = $('#mapSideBar:visible')
-    if (container.is(':visible') && // has to be visible
-      !container.is(e.target) // if the target of the click isn't the container...
-      && container.has(e.target).length === 0) // ... nor a descendant of the container
-    {
-      if ($(e.target).parent('.myIcon').length == 0 && !$(e.target).is('.myIcon')) {
-        hideMapSideBar()
-      }
-    }
-  })
+function hideSideBar () {
+  $('#projectDetails').addClass("hidden")
+  $('#backToProjectsGrid').addClass("hidden")
+  $('#projectsGrid').removeClass('hidden')
+  $('.nano').nanoScroller()
 }
 
 function setTopBarBtnsFunc () {

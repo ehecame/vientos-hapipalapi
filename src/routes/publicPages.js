@@ -49,7 +49,7 @@ module.exports = function () {
       }
     }, {
       method: 'GET',
-      path: '/map',
+      path: '/collaborate',
       config: {
         handler: function (request, reply) {
           var data = {
@@ -58,7 +58,7 @@ module.exports = function () {
           if (data.isAuthenticated) {
             data.credentials = SessionController.getSession(request)
           }
-          reply.view('map', data)
+          reply.view('collaborate', data)
         }
       // auth: false
       }

@@ -1653,7 +1653,7 @@
       <div id="secConfiguration" class="row profileSec tab-pane" role="tabpanel">
         <div>
           <input type="file" name="file" id="pictureFileInput">
-          <button class="btn btn-default" onclick="uploadPicture()">Subir imagen</button>
+          <button class="btn btn-default" onclick="updateProfilePicture()">Subir imagen</button>
         </div>
         <div id="mapConf"></div>
         <div id="mapElements">
@@ -1679,7 +1679,7 @@
             <div class="form-group row">
               <label for="nameInput" class="col-xs-2 hidden-xs">Apellido</label>
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-                <input type="text" class="form-control" id="lastnameInput" name="name" placeholder="Apellido" value="{{lastname}}"/>
+                <input type="text" class="form-control" id="lastnameInput" name="lastname" placeholder="Apellido" value="{{lastname}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
 					      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini"/>
 					      </span>

@@ -1,11 +1,11 @@
-<script src="js/map"></script>
+<script src="js/collaborate"></script>
 <div id="searchPage" >
 	<div class="fluid-container">
 		<div id="searchTopBar" class="row">
-			<button class="btn btn-success" id="categoriesBtn">Categorias</button>
-			<button class="btn btn-default" id="typesBtn">Tipos</button>
-			<button class="btn btn-default" id="waysOfCollaborationBtn">¿Cómo Colaborar?</button>
-			<button class="btn btn-default" id="eventsBtn">Actividades y Eventos</button>
+			<button class="btn btn-success btnFilter" id="categoriesBtn">Categorias</button>
+			<button class="btn btn-default btnFilter" id="waysOfCollaborationBtn">¿Cómo Colaborar?</button>
+			<button class="btn btn-default btnFilter" id="typesBtn">Tipos</button>
+			<button class="btn btn-default btnFilter" id="eventsBtn">Actividades y Eventos</button>
 			<span id="searchInputs">
 				<input type="text" id="keyWordsInput" placeholder="palabras clave" />
 				<input type="text" id="whereSearchInput" placeholder="lugar" />
@@ -18,62 +18,65 @@
 					<div class="nano-content">
 						<div id="projectsGrid" class="row">
 						</div>
-					</div>
-				</div>
-				<div id="projectDescription" class="hidden">
-					<div id="projectDetails">
-						<div id="topLeftCorner">
-							<div id="projectLogo"></div>
-							<div id="projectType"></div>
+						<div id="backToProjectsGrid" class="hidden">
+							<i class="fa fa-arrow-left fa-2x vcenter"></i>
 						</div>
-						<h2 id="projectName"></h2>
-						<div id="projectDescription"></div>
-						<a class="btn btn-profile" id="projectProfileLink" href="#">Ver Perfil</a>
-						<div id="projectContactData" class="content-fluid">
-							<div class="row">
-								<hr>
-							</div>
-							<div class="row">
-								<div>
-									<a id="projectFacebook" href="#" title="Visita su Facebook" style="color: #3a5795" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
-									<a id="projectTwitter" href="#" title="Visita su Twitter" style="color: #4099FF" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
-									<a id="projectWebSite" href="#" title="Visita su página de internet" target="_blank">
-										WWW
-									</a>
+						<div id="projectDetails" class="hidden">
+							<div>
+								<div id="topLeftCorner">
+									<div id="projectLogo"></div>
+									<div id="projectType"></div>
 								</div>
-							</div>
-							<div class="row">					
-								<div class="col-md-7">
-									<div id="projectPhone"><i class="fa fa-phone-square fa-lg"></i><span></span></div>
-									<div id="projectMobile"><i class="fa fa-mobile fa-lg"></i><span ></span></div>
-									<div id="projectEmail"><i class="fa fa-envelope fa-lg"></i><span ></span></div>
-									<div id="projectAddress"><i class="fa fa-map-signs fa-lg"></i><span ></span></div>
-								</div>
-								<div class="col-md-5" id="scheduleSec">
-									<div><i class="fa fa-clock-o fa-lg"></i>Horarios</div>
-									<div id="projectSchedule"></div>
-								</div>
-							</div>
-							<div class="row">
-								<hr>
-							</div>
-							<div class="row" id="offersNeedsRow">					
-								<div class="col-md-6">
-									<div><h3 class="offersNeedsTitles">Ofrece:</h3></div>
-									<div id="projectOffers">
-										<div class="need"><i class="fa fa-home"></i>Hola</div>
+								<h2 id="projectName"></h2>
+								<div id="projectDescription"></div>
+								<a class="btn btn-profile" id="projectProfileLink" href="#">Ver Perfil</a>
+								<div id="projectContactData" class="content-fluid">
+									<div class="row">
+										<hr>
 									</div>
-								</div>
-								<div class="col-md-6">
-									<div><h3 class="offersNeedsTitles">Necesita:</h3></div>
-									<div id="projectNeeds">
-										<div class="need"><i class="fa fa-home"></i>Hola</div>
-									</div>	
-								</div>
+									<div class="row">
+										<div>
+											<a id="projectFacebook" href="#" title="Visita su Facebook" style="color: #3a5795" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
+											<a id="projectTwitter" href="#" title="Visita su Twitter" style="color: #4099FF" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+											<a id="projectWebSite" href="#" title="Visita su página de internet" target="_blank">
+												WWW
+											</a>
+										</div>
+									</div>
+									<div class="row" id="dataSec">					
+										<div class="col-md-7">
+											<div id="projectPhone"><i class="fa fa-phone-square fa-lg"></i><span></span></div>
+											<div id="projectMobile"><i class="fa fa-mobile fa-lg"></i><span ></span></div>
+											<div id="projectEmail"><i class="fa fa-envelope fa-lg"></i><span ></span></div>
+											<div id="projectAddress"><i class="fa fa-map-signs fa-lg"></i><span ></span></div>
+										</div>
+										<div class="col-md-5" id="scheduleSec">
+											<div><i class="fa fa-clock-o fa-lg"></i><strong>Horarios</strong></div>
+											<div id="projectSchedule"></div>
+										</div>
+									</div>
+									<div class="row">
+										<hr>
+									</div>
+									<div class="row" id="offersNeedsRow">					
+										<div class="col-md-6">
+											<div><h3 class="offersNeedsTitles">Ofrece:</h3></div>
+											<div id="projectOffers">
+												<div class="need"><i class="fa fa-home"></i>Hola</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div><h3 class="offersNeedsTitles">Necesita:</h3></div>
+											<div id="projectNeeds">
+												<div class="need"><i class="fa fa-home"></i>Hola</div>
+											</div>	
+										</div>
+									</div>
+								</div>					 
 							</div>
-						</div>					 
+						</div>
 					</div>
-				</div>
+				</div>				
 			</div>
 			<div id="map" class="col-md-5"></div>		
 		</div>
@@ -159,24 +162,24 @@
 </div>
 
 <script id="project-cell-template" type="text/x-handlebars-template">
-	<div class="col-md-6 projectCell hidden">
+	<div class="col-md-6 projectCell hidden" id="projectCell_\{{_id}}">
 		<div class="card projectCard">
 			<div class="front">
 				\{{#if logo}}
-				<div class="circle logoCircle" style="background-image: url('/img/\{{logo}}');"></div>
+				<div class="circle logoCircle" style="background-image: url('/img/\{{logo}}'); border-color: \{{projectType.color}}"></div>
 				\{{else}}
-				<div class="circle categoryCircle" style="background-color: \{{projectType.color}}"><i class="fa fa-\{{categories.0.icon}}"></i></div>
+				<div class="circle categoryCircle" style="background-color: \{{projectType.color}}"><i class="fa \{{categories.0.icon}} vcenter"></i></div>
 				\{{/if}}
 				<div class="projectName">\{{name}}</div>
 				<div class="categories">
 					\{{#if logo}}
-					<i class="fa fa-\{{categories.0.icon}}"></i>
+					<i class="fa \{{categories.0.icon}}"></i>
 					\{{/if}}
 					\{{#if categories.[1]}}
-					<i class="fa fa-\{{categories.1.icon}}"></i>
+					<i class="fa \{{categories.1.icon}}"></i>
 					\{{/if}}
 					\{{#if categories.[2]}}
-					<i class="fa fa-\{{categories.2.icon}}"></i>
+					<i class="fa \{{categories.2.icon}}"></i>
 					\{{/if}}
 				</div>
 			</div>

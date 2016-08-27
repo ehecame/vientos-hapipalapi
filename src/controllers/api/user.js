@@ -64,7 +64,7 @@ UserController.prototype = (function () {
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
         console.log(credentials)
-        console.log(typeof request.payload)
+        console.log(request.payload)
         var updatedUser = qs.parse(request.payload)
         if (request.payload.password)
           request.payload.password = require('bcrypt-nodejs').hashSync(request.payload.password)

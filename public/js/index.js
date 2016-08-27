@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $('#map-row').click(function (event) {
-    window.location.href = '/map'
+    window.location.href = '/collaborate'
   })
   $('.card').flip({trigger: 'manual', forceHeight: true})
   $('.benefit').on('mouseover', function (event) {
@@ -10,8 +10,11 @@ $(document).ready(function () {
     $(this).find('.card').flip(false)
   })
   $('.category').click(categoryIconClicked)
+  $('#imageAction').click(function(){
+    window.location.href = '/collaborate'
+  })
 })
 
 function categoryIconClicked () {
-  window.location.href = '/map?cat=' + this.id
+  window.location.href = '/collaborate?cat=' + this.id
 }

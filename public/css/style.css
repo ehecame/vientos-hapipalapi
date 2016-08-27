@@ -178,10 +178,18 @@ h1 {
     height: 80vh;
     margin-top: 50px;
     vertical-align: middle;
-    text-align: center; }
+    text-align: center; 
+    position: relative;}
 #home-row #homeImage {
     max-height: 100%;
     max-width: 100%; }
+#home-row #imageAction {
+    position: absolute;
+    height: 60%;
+    width: 30%;;
+    top: 20%;
+    left: 35%;
+    cursor: pointer;}
 #benefits-row {
     background-color: #33AA96; }
 #benefits-row .col-md-4 {
@@ -597,7 +605,13 @@ h1 {
 #searchPage #searchTopBar {
     padding: 10px;
     background-color: #8cafaf;
-    margin-top: 50px; }
+    margin-top: 50px; 
+    padding-left: 225px;}
+#searchPage #searchTopBar .btnFilter {
+    position: relative; 
+    margin-right: 5px;
+    border-radius: 10px;
+}
 #searchPage #searchTopBar #searchInputs {
     border: solid 1px #dddddd;
     border-radius: 5%;
@@ -617,19 +631,10 @@ h1 {
     border: none; }
 
 #searchPage #searchResults{
-  padding-left: 225px;
-  padding-top: 10px; }
+    padding-left: 225px;
+    padding-top: 10px; 
+    background-color: #eee}
 
-#searchPage #projects{
-  height: 80vh; } 
-
-#searchPage #projectsGrid {
-  max-height: 100%;
-}
-
-#searchPage #projectsGrid .projectCell .projectCard{
-  margin: 10px;
-  height: 30vh;   }
 #searchPage #map{
   height: 80vh; }
 
@@ -801,19 +806,64 @@ h1 {
     overflow: hidden;
     word-wrap: break-word; }
 
+#searchPage #projects{
+  height: 80vh; } 
+#searchPage #projects #backToProjectsGrid{
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #fffefe;
+    text-align: center;
+    position: fixed;
+    background-color: #555;
+    opacity: 0.5;
+}
+#searchPage #projects #backToProjectsGrid:hover{
+    opacity: 1;
+}
+
+
+#searchPage #projectsGrid {
+  max-height: 100%;
+}
+
+#searchPage #projectsGrid .projectCell .projectCard{
+  margin: 10px 0px;
+  height: 33vh;   
+  cursor: pointer;
+}
+
 #searchPage #projectsGrid .front .circle {
-    height: 130px;
-    width: 130px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    border-radius: 65px;
-    border: 2px solid rgba(0,128,0,.3);
+    height: 150px;
+    width: 150px;
+    border-radius: 75px;
     position: relative;
     margin: auto; }
+
+#searchPage #projectsGrid .front .logoCircle {
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 2px solid;
+}
+
+#searchPage #projectsGrid .front .categoryCircle {
+    text-align: center
+}
+
+#searchPage #projectsGrid .front .categoryCircle i{
+    color: white;
+    font-size: 3em;
+}
+
+
 #searchPage #projectsGrid .front .projectName {
     font-size: 1.5em;   
     margin-top: 3px;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 #searchPage #projectsGrid .front .categories {
     text-align: center;
@@ -839,7 +889,7 @@ h1 {
     margin-bottom: 3px;
 }
 #searchPage #projectsGrid .back .offersContainer .offer,
-#searchPage #projectsGrid .back .offersContainer .need{
+#searchPage #projectsGrid .back .needsContainer .need{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;  }
@@ -877,37 +927,28 @@ h1 {
     margin-top: -10px; }
 .markerPopUp .markerPopUpName {
     line-height: 95%; }
-#searchPage #projectDescription {
-    position: absolute;
-    top: 60px;
-    right: 0px;
-    width: 0px;
-    border-radius: 20px;
-    border: solid lightblue 3px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.95);
-    height: 85%;
-    display: none;
-    overflow: scroll;
-    z-index: 8; }
-#searchPage #projectDescription hr {
+#searchPage #projectDetails {
+    padding: 20px;}
+#searchPage #projectDetails hr {
     border-top: 1px solid #ccc;
     margin-bottom: 0px; }
-#searchPage #projectDescription #projectName {
-    margin: 0px; }
-#searchPage #projectDescription .offersNeedsTitles {
+#searchPage #projectDetails #projectName {
+    margin-top: 0px; }
+#searchPage #projectDetails .offersNeedsTitles {
     margin: 0px 0px 15px 0px; }
 #searchPage #topLeftCorner {
     float: left;
-    margin-right: 15px; }
-#searchPage #projectDescription #topLeftCorner #projectLogo,
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-top: 10px; }
+#searchPage #projectDetails #topLeftCorner #projectLogo,
 #searchPage .project #topLeftCorner #projectLogo {
     height: 100px;
     width: 100px;
     border-radius: 50px;
     background-size: contain;
     background-repeat: no-repeat; }
-#searchPage #projectDescription #topLeftCorner #projectType,
+#searchPage #projectDetails #topLeftCorner #projectType,
 #searchPage .project #topLeftCorner #projectType,
 .profile #projectType {
     height: 25px;
@@ -917,7 +958,7 @@ h1 {
     display: inline-block;
     margin-top: 5px;
     padding: 5px; }
-#searchPage #projectDescription #projectDescription {
+#searchPage #projectDetails #projectDescription {
     display: -webkit-box;
     font-size: 1.2em;
     overflow: hidden;
@@ -926,15 +967,19 @@ h1 {
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     margin-bottom: 10px; }
-#searchPage #projectDescription .btn-profile {
+#searchPage #projectDetails .btn-profile {
     background-color: #3fa951;
     border-color: #bbb;
     color: white;
     float: right; }
-#searchPage #projectDescription .btn-profile:hover {
+#searchPage #projectDetails .btn-profile:hover {
     opacity: 0.9; }
-#searchPage #projectDescription #projectContactData .row {
+#searchPage #projectDetails #projectContactData .row {
     margin-top: 10px; }
+#searchPage #projectDetails #projectContactData #dataSec,
+#searchPage #projectDetails #projectContactData #offersNeedsRow{
+    margin-left: -15px;
+}
 #searchPage #projectCategories {
     display: inline-block;
     margin-left: 30px; }
@@ -957,20 +1002,25 @@ h1 {
 #searchPage .project #projectAddress {
     display: inline-block;
     margin-left: 10px; }
-#searchPage #projectDescription #projectPhone i,
-#searchPage #projectDescription #projectMobile i,
-#searchPage #projectDescription #projectEmail i,
-#searchPage #projectDescription #projectAddress i,
-#searchPage #projectDescription #scheduleSec i {
-    margin: 0px 10px;
+#searchPage #projectDetails #projectPhone i,
+#searchPage #projectDetails #projectMobile i,
+#searchPage #projectDetails #projectEmail i,
+#searchPage #projectDetails #projectAddress i,
+#searchPage #projectDetails #scheduleSec i {
+    margin-right: 10px;
     float: left; }
-#searchPage #projectDescription #projectPhone,
-#searchPage #projectDescription #projectMobile,
-#searchPage #projectDescription #projectEmail,
-#searchPage #projectDescription #projectAddress {
+#searchPage #projectDetails #scheduleSec .strong{
+    position: relative;
+    top: -4px;  }
+#searchPage #projectDetails #projectPhone,
+#searchPage #projectDetails #projectMobile,
+#searchPage #projectDetails #projectEmail,
+#searchPage #projectDetails #projectAddress {
     text-overflow: ellipsis;
-    overflow: hidden; }
-#searchPage #projectDescription #offersNeedsRow i {
+    overflow: hidden; 
+    white-space: nowrap;
+    margin-bottom: 5px;}
+#searchPage #projectDetails #offersNeedsRow i {
     color: #38c12d;
     font-size: .6em;
     vertical-align: middle;

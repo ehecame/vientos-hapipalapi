@@ -20,32 +20,6 @@ function initiateSectionBtnsFunc () {
   })
 }
 
-// function sectionBtnClicked () {
-//   var id = $(this).attr('id')
-//   $('.userProfileSec').addClass('hidden')
-//   $('.sectionBtn').removeClass('selected')
-//   if (id == 'homeBtn') {
-//     $('#homeBtn').addClass('selected')
-//     $('#secHome').removeClass('hidden')
-//   }
-//   if (id == 'projectsBtn') {
-//     $('#projectsBtn').addClass('selected')
-//     $('#secProjects').removeClass('hidden')
-//   }
-//   if (id == 'offersAndNeedsBtn') {
-//     $('#offersAndNeedsBtn').addClass('selected')
-//     $('#secOffersAndNeeds').removeClass('hidden')
-//   }
-//   if (id == 'interestsBtn') {
-//     $('#interestsBtn').addClass('selected')
-//     $('#secInterests').removeClass('hidden')
-//   }
-//   if (id == 'configurationBtn') {
-//     $('#configurationBtn').addClass('selected')
-//     $('#secConfiguration').removeClass('hidden')
-//   }
-// }
-
 function initiateCollaborationFunc () {
   $('.myProject').click(myProjectClicked)
 }
@@ -243,24 +217,6 @@ function removeSkill (e) {
       skill.remove()
     },
     data: data
-  })
-}
-
-//Picture
-
-function uploadPicture () {
-  var formData = new FormData()
-  formData.append('file', $('#pictureFileInput')[0].files[0])
-  console.log(formData)
-  $.ajax({
-    url: '/uploadPicture',
-    data: formData,
-    processData: false,
-    contentType: false,
-    type: 'POST',
-    success: function (data) {
-      console.log(data)
-    }
   })
 }
 
@@ -465,8 +421,7 @@ function setMapView (location) {
 }
 
 function updateProfilePicture(){
-  var pictureName = $('#pictureFileInput').val()
-  console.log(pictureName)
+  var pictureName = $('#pictureFileInput').val().split(/(\\|\/)/g).pop()
   $.ajax({
     url: '/api/user',
     type: 'PUT',
@@ -476,6 +431,7 @@ function updateProfilePicture(){
     }
   })
   if ($('#pictureFileInput')[0].files.length > 0) {
+    console.log('sí tiene archivos')
     var formData = new FormData()
     formData.append('file', $('#pictureFileInput')[0].files[0])
     console.log(formData)

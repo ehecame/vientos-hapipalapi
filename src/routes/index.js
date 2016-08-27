@@ -1,7 +1,7 @@
 exports.categoryApi = require('./api/categoryApi.js')
 exports.projectApi = require('./api/projectApi.js')
 exports.userApi = require('./api/userApi.js')
-exports.needApi = require('./api/needApi.js')
+// exports.needApi = require('./api/needApi.js')
 exports.publicPages = require('./publicPages.js')
 exports.privatePages = require('./privatePages.js')
 exports.otherpages = require('./otherpages.js')
