@@ -33,6 +33,16 @@ ProjectManager.prototype = (function () {
         callback(docs)
       })
     },
+    findByTypeId: function findByTypeId (db, type_id, callback) {
+      db.collection('projects').find({'projectType.type': type_id}).sort({logo: -1}).toArray(function (err, docs) {
+        callback(docs)
+      })
+    },
+    findByCollaborationWay: function findByCollaborationWay (db, collaboration_type_id, callback) {
+      db.collection('projects').find({$or: [{'needs.type': collaboration_type_id},{'offers.type': collaboration_type_id}]}).sort({logo: -1}).toArray(function (err, docs) {
+        callback(docs)
+      })
+    },
     findByKeyWords: function findByKeyWords (db, keyWords, callback) {
       // var query = { $text: { $search: keyWords } } //3.2      
       // db.collection('projects').find(query).toArray(function (err, docs) {

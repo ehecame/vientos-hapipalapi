@@ -44,7 +44,18 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right fix-right">
-            <li id="map_btn"><a href="/collaborate">COLABORAR <img src="/svg/map2" alt=""></a></li>
+            <li id="map_btn">
+                <a href="/collaborate">
+                    <span class="slidingVertical">
+                        <span>Colabora</span>
+                        <span>Encuentra</span>
+                        <span>Mapa</span>
+                        <span>Proyectos</span>
+                        <span>Filtra</span>
+                    </span>
+                    <img src="/svg/map2" alt="">
+                </a>
+             </li>
             {{#if isAuthenticated}}
                 <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
                 <li class="navBarBtn"><a href="/myprofile">{{credentials.name}} {{credentials.lastname}}</a></li>

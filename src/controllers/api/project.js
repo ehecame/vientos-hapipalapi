@@ -33,6 +33,20 @@ ProjectController.prototype = (function () {
         reply(res)
       })
     },
+    findByTypeId: function findByTypeId (request, reply) {
+      var db = request.mongo.db
+      ProjectManager.findByTypeId(db, request.params.type_id, function (res) {
+        console.log(res)
+        reply(res)
+      })
+    },
+    findByCollaborationWay: function findByCollaborationWay (request, reply) {
+      var db = request.mongo.db
+      ProjectManager.findByCollaborationWay(db, request.params.collaboration_type_id, function (res) {
+        console.log(res)
+        reply(res)
+      })
+    },
     findByKeyWords: function findByKeyWords (request, reply) {
       var db = request.mongo.db
       ProjectManager.findByKeyWords(db, request.params.keywords, function (res) {

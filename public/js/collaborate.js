@@ -22,6 +22,8 @@ $(document).ready(function () {
   $('#backToProjectsGrid').click(hideSideBar)
   setTopBarBtnsFunc()
   setCategoryBarFunc()
+  setTypeBarFunc()
+  setCollaborationWayBarFunc()
 })
 
 function addAllProjects () {
@@ -77,6 +79,34 @@ function filterCategory (id) {
   removeAllMarkers()
   $.get(
     '/api/project/category/' + id,
+    function (data) {
+      addMarkers(data)
+      addProjectCells(data)
+      $('.projectCard').click(showSideBar)
+      $('.nano').nanoScroller()
+    }
+  )
+  map.addLayer(markers)
+}
+
+function filterType (id) {
+  removeAllMarkers()
+  $.get(
+    '/api/project/type/' + id,
+    function (data) {
+      addMarkers(data)
+      addProjectCells(data)
+      $('.projectCard').click(showSideBar)
+      $('.nano').nanoScroller()
+    }
+  )
+  map.addLayer(markers)
+}
+
+function filterCollaborationWay(id){
+  removeAllMarkers()
+  $.get(
+    '/api/project/collaborationway/' + id,
     function (data) {
       addMarkers(data)
       addProjectCells(data)
@@ -350,8 +380,29 @@ function categoryBtnClicked () {
   $(this).addClass('selected')
 }
 
+function setCollaborationWayBarFunc(){
+  $('.collaborationWay').click(collaborationBtnClicked)
+}
+
+function collaborationBtnClicked(){
+  console.log('filtrandoCollaborationWay')
+  filterCollaborationWay(this.id)
+  $('.collaborationWay').removeClass('selected')
+  $(this).addClass('selected')
+}
+
+function setTypeBarFunc (){
+  $('.typeBtn').click(typeBtnClicked)
+}
+
+function typeBtnClicked (){
+  filterType(this.id)
+  $('.typeBtn').removeClass('selected')
+  $(this).addClass('selected')
+}
+
 function categoriesBtnClicked () {
-  $('#categoriesContainer').removeClass('hidden')
+  $('#categoriesContainer').toggleClass('hidden')
   $('#categoriesBtn').removeClass('btn-default')
   $('#categoriesBtn').addClass('btn-success')
   $('#typesContainer').addClass('hidden')
@@ -363,7 +414,7 @@ function categoriesBtnClicked () {
 }
 
 function typesBtnClicked () {
-  $('#typesContainer').removeClass('hidden')
+  $('#typesContainer').toggleClass('hidden')
   $('#typesBtn').removeClass('btn-default')
   $('#typesBtn').addClass('btn-success')
   $('#categoriesContainer').addClass('hidden')
@@ -375,7 +426,7 @@ function typesBtnClicked () {
 }
 
 function waysOfCollaborationBtnClicked () {
-  $('#waysOfCollaborationContainer').removeClass('hidden')
+  $('#waysOfCollaborationContainer').toggleClass('hidden')
   $('#waysOfCollaborationBtn').removeClass('btn-default')
   $('#waysOfCollaborationBtn').addClass('btn-success')
   $('#categoriesContainer').addClass('hidden')

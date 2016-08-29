@@ -125,6 +125,66 @@ h1 {
     z-index: 20; }
 .green {
     color: #38c12d; }
+.slidingVertical{
+    display: inline;
+    text-indent: 8px;
+}
+.slidingVertical span{
+    animation: topToBottom 12.5s linear infinite 0s;
+    -ms-animation: topToBottom 12.5s linear infinite 0s;
+    -webkit-animation: topToBottom 12.5s linear infinite 0s;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+}
+.slidingVertical span:nth-child(2){
+    animation-delay: 2.5s;
+    -ms-animation-delay: 2.5s;
+    -webkit-animation-delay: 2.5s;
+}
+.slidingVertical span:nth-child(3){
+    animation-delay: 5s;
+    -ms-animation-delay: 5s;
+    -webkit-animation-delay: 5s;
+}
+.slidingVertical span:nth-child(4){
+    animation-delay: 7.5s;
+    -ms-animation-delay: 7.5s;
+    -webkit-animation-delay: 7.5s;
+}
+.slidingVertical span:nth-child(5){
+    animation-delay: 10s;
+    -ms-animation-delay: 10s;
+    -webkit-animation-delay: 10s;
+}
+@-moz-keyframes topToBottom{
+    0% { opacity: 0; }
+    5% { opacity: 0; -moz-transform: translateY(-50px); }
+    10% { opacity: 1; -moz-transform: translateY(0px); }
+    25% { opacity: 1; -moz-transform: translateY(0px); }
+    30% { opacity: 0; -moz-transform: translateY(50px); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-webkit-keyframes topToBottom{
+    0% { opacity: 0; }
+    5% { opacity: 0; -webkit-transform: translateY(-50px); }
+    10% { opacity: 1; -webkit-transform: translateY(0px); }
+    25% { opacity: 1; -webkit-transform: translateY(0px); }
+    30% { opacity: 0; -webkit-transform: translateY(50px); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-ms-keyframes topToBottom{
+    0% { opacity: 0; }
+    5% { opacity: 0; -ms-transform: translateY(-50px); }
+    10% { opacity: 1; -ms-transform: translateY(0px); }
+    25% { opacity: 1; -ms-transform: translateY(0px); }
+    30% { opacity: 0; -ms-transform: translateY(50px); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
 .1-line {
     overflow: hidden;
     white-space: nowrap;
@@ -152,8 +212,6 @@ h1 {
     color: #333; }
 .collapsed {
     margin-top: 6px; }
-#map_btn:hover {
-    background-color: ; }
 #map_btn a {
     padding: 6px 15px;
     color: white;
@@ -163,10 +221,12 @@ h1 {
     height: 40px;
     cursor: pointer;
     font-family: roboto-bold;
-    letter-spacing: 1.5px; }
+    letter-spacing: 1.5px; 
+    width: 150px}
 #map_btn img {
     padding-bottom: 5px;
-    height: 30px; }
+    height: 30px; 
+    float: right;}
 .container-fluid {
     padding-top: 55px;
     padding-left: 0px;
@@ -726,7 +786,9 @@ h1 {
     font-size: 1.2em;
     padding-left: 10px;}
 #searchPage #categoriesContainer .selected {
-    background-color: rgba(24, 86, 86, 0.8);
+    position: relative;
+    left: 15px;
+    background-color: rgba(24, 86, 86, 1);
     text-align: right; }
 #searchPage #categoriesContainer .categoryBtnAll {
     background-color: #48bb59;
@@ -741,6 +803,11 @@ h1 {
     top: 110px;
     left: 10px;
     border-radius: 10px;
+}
+#searchPage #typesContainer .selected{
+    position: relative;
+    left: 15px;
+    text-align: right;
 }
 #searchPage #typesContainer .typeBtn {
     height: 30px;
@@ -760,7 +827,7 @@ h1 {
     background-color: #008B8B; }
 #searchPage #typesContainer #ngo {
     background-color: #556B2F; }
-#searchPage #typesContainer #ethicalBusiness {
+#searchPage #typesContainer #ethicalbusiness {
     background-color: #B8860B; }
 #searchPage #typesContainer #neighborsorg {
     background-color: #C63D1E; }

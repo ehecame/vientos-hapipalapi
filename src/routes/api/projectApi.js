@@ -22,6 +22,19 @@ module.exports = function () {
       config: {
         handler: ProjectController.findByCategoryId
       }
+    },{
+      method: 'GET',
+      path: '/api/project/type/{type_id}',
+      config: {
+        handler: ProjectController.findByTypeId
+      }
+    },
+    {
+      method: 'GET',
+      path: '/api/project/collaborationway/{collaboration_type_id}',
+      config: {
+        handler: ProjectController.findByCollaborationWay
+      }
     },
     {
       method: 'GET',
