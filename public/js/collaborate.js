@@ -182,7 +182,8 @@ function addMarkers (projectList) {
   var myIcon
   console.log(projectList)
   $.each(projectList, function (i, m) {
-    m.categoryIcon = getCategoryIcon(m.categories_ids[0])
+    console.log(m)
+    m.categoryIcon = getCategoryIcon(m.categories[0].catId)
     if (!m.projectType) {
       m.projectType = getRandomProjectType()
     } else {
