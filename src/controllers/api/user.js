@@ -1,4 +1,6 @@
 var UserManager = require('./../../managers/user')
+var CodeManager = require('./../../managers/code')
+var ProjectManager = require('./../../managers/project')
 var SessionController = require('./../session')
 var qs = require('qs')
 var Bcrypt = require('bcrypt-nodejs')
@@ -42,6 +44,8 @@ UserController.prototype = (function () {
       )
     },
     register: function register (request, reply) {
+      var db = request.mongo.db
+      var objId = request.mongo.ObjectID
       var newuser = {
         email: request.payload.email,
         password: require('bcrypt-nodejs').hashSync(request.payload.password),
@@ -50,8 +54,34 @@ UserController.prototype = (function () {
         lastname: request.payload.lastname
       }
       console.log(request.payload.code)
-      console.log(newuser)
-      reply('gooot')
+      CodeManager.findOne(request.mongo.db, request.payload.code, function(code){
+        console.log(typeof code._id)
+        if(code){
+          if(code.projectLinked){
+            newuser.projects = [code.projectLinked]
+            UserManager.insert(db, newuser, function(user){
+              CodeManager.delete(db, code._id, function(res){
+                ProjectManager.update(db, 
+                                      {_id: new objId(code.projectLinked)}, 
+                                      {$pull: {projectCodes: code.code}, $push:{owners:user.insertedIds[0]+''}}, 
+                                      function(pro){
+                  reply('registered')  
+                })
+              })              
+            })
+          }
+          else{
+            UserManager.insert(db, newuser, function(user){
+              CodeManager.delete(db, code._id, function(res){
+                reply('registered')
+              })              
+            })
+          }
+        }
+        else{
+          reply('wrongCode')
+        }
+      })
       // var db = request.mongo.db
       // UserManager.insert(db, newuser, function (res) {
       //   console.log(res)

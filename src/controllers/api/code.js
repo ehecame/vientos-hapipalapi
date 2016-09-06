@@ -22,11 +22,13 @@ CodeController.prototype = (function () {
         insert: function insert(request, reply) {
             var db = request.mongo.db
             var newCode = {
-                code: request.payload.name,
-                projectId: request.payload.description,
+                code: Math.random().toString(36).slice(2),
+            }
+            if(request.payload && request.payload.projectId){
+                newCode.projectLinked = request.payload.projectId
             }
             CodeManager.insert(db, newCode, function (res) {
-                reply(res);
+                reply(newCode);
             })
         },
         delete: function (request, reply) {

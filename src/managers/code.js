@@ -17,7 +17,7 @@ CodeManager.prototype = (function () {
                 callback(doc);
             });  
         },
-        delete: function (db, id, category, callback) {
+        delete: function (db, id, callback) {
             db.collection('codes').remove({ _id: id }, function (err, doc) {
                 callback(doc);
             });  
