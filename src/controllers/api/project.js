@@ -68,44 +68,10 @@ ProjectController.prototype = (function () {
     register: function register (request, reply) {
       var db = request.mongo.db
       var objID = request.mongo.ObjectID
-      var categories_objids = []
-      var scheduleArray = []
-      var offersArray = []
-      var needsArray = []
-      var projectType = {}
       var logo
       console.log(request.payload)
-      if (request.payload['categories[]']) {
-        if (typeof request.payload['categories[]'] == 'string') {
-          categories_objids[0] = new objID(request.payload['categories[]'])
-        } else {
-          for (var i = 0; i < request.payload['categories[]'].length; i++) {
-            categories_objids[i] = (new objID(request.payload['categories[]'][i]))
-          }
-        }
-      }
-      if (request.payload['schedule[]']) {
-        if (typeof request.payload['schedule[]'] == 'string') {
-          scheduleArray[0] = request.payload['schedule[]']
-        } else {
-          scheduleArray = request.payload['schedule[]']
-        }
-      }
-      if (request.payload['offers[]']) {
-        if (typeof request.payload['offers[]'] == 'string') {
-          offersArray[0] = request.payload['offers[]']
-        } else {
-          offersArray = request.payload['offers[]']
-        }
-      }
-      if (request.payload['needs[]']) {
-        if (typeof request.payload['needs[]'] == 'string') {
-          needsArray[0] = request.payload['needs[]']
-        } else {
-          needsArray = request.payload['needs[]']
-        }
-      }
-      projectType = getProjectTypeObj(request.payload.projectType)
+      var parsedProject = qs.parse(request.payload)
+      console.log(parsedProject)
       if (request.payload.file) {
         var fullPath = request.payload.file
         var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'))
@@ -115,26 +81,23 @@ ProjectController.prototype = (function () {
         }
         console.log(logo)
       }
-      console.log(projectType)
       var newProject = {
-        email: request.payload.email,
-        name: request.payload.name,
-        description: request.payload.description,
-        categories_ids: categories_objids,
-        address: request.payload.address,
-        latitude: request.payload.latitude,
-        longitude: request.payload.longitude,
+        email: parsedProject.email,
+        name: parsedProject.name,
+        description: parsedProject.description,
+        categories: _.map(parsedProject.categories, function(cat){return getCategoryObj(cat)}),
+        address: parsedProject.address,
+        latitude: parsedProject.latitude,
+        longitude: parsedProject.longitude,
         location: {
-          lat: request.payload.latitude,
-          lon: request.payload.longitude
+          lat: parsedProject.latitude,
+          lon: parsedProject.longitude
         },
-        projectType: projectType,
-        webpage: request.payload.webpage,
-        facebook: request.payload.facebook,
+        projectType: getProjectTypeObj(parsedProject.projectType),
+        webpage: parsedProject.webpage,
+        facebook: parsedProject.facebook,
         logo: logo,
-        schedule: scheduleArray,
-        offers: offersArray,
-        needs: needsArray
+        schedule: parsedProject.schedule,
       }
       console.log(newProject)
       // reply('gooot')
@@ -383,7 +346,7 @@ function getCategoryObj(category){
       "name" : {
           "es" : "Arte y Cultura"
       },
-      "icon" : "fa-paint"
+      "icon" : "fa-paint-brush"
     }
   }
   if(category == 'gender'){
@@ -392,7 +355,7 @@ function getCategoryObj(category){
       "name" : {
           "es" : "Género"
       },
-      "icon" : "fa-transgender"
+      "icon" : "fa-transgender-alt"
     }
   }
   if(category == 'health'){

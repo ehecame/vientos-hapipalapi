@@ -25,7 +25,7 @@ function onRegisterBtnClicked () {
     '/api/project',
     registerForm,
     function (data) {
-      console.log(data)
+      window.location.href = '/project/' + data.insertedIds[0]
     }
   )
   if ($('#pictureFileInput')[0].files.length > 0) {

@@ -1,5 +1,5 @@
 var map
-var markers = new L.FeatureGroup()
+var markers 
 var source
 var projectCellTemplate
 
@@ -7,6 +7,7 @@ $(document).ready(function () {
   source = $('#project-cell-template').html()
   projectCellTemplate = Handlebars.compile(source)
   $('#btnCloseToMe').click(centerMapMyLocation)
+  markers = new L.FeatureGroup()
   initializeMap()
   if (getUrlParameter('cat')) {
     filterCategory(getUrlParameter('cat'))
