@@ -89,10 +89,10 @@ ProjectController.prototype = (function () {
         address: parsedProject.address,
         latitude: parsedProject.latitude,
         longitude: parsedProject.longitude,
-        location: {
+        location: [{
           lat: parsedProject.latitude,
           lon: parsedProject.longitude
-        },
+        }],
         projectType: getProjectTypeObj(parsedProject.projectType),
         webpage: parsedProject.webpage,
         facebook: parsedProject.facebook,
@@ -382,7 +382,7 @@ function getCategoryObj(category){
       "name" : {
           "es" : "Talleres"
       },
-      "icon" : "fa-puzzle"
+      "icon" : "fa-puzzle-piece"
     }
   }
   if(category == 'community'){

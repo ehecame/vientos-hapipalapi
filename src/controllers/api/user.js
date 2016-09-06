@@ -49,6 +49,7 @@ UserController.prototype = (function () {
         name: request.payload.name,
         lastname: request.payload.lastname
       }
+      console.log(request.payload.code)
       console.log(newuser)
       reply('gooot')
       // var db = request.mongo.db
