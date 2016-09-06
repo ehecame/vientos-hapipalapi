@@ -1,6 +1,8 @@
 var _ = require('underscore')
 var ProjectManager = require('./../../managers/project')
 var SessionController = require('./../session')
+var CodeManager = require('./../../managers/code')
+var qs = require('qs')
 
 function ProjectController () { }
 ProjectController.prototype = (function () {
@@ -22,7 +24,7 @@ ProjectController.prototype = (function () {
     findById: function findById (request, reply) {
       var db = request.mongo.db
       var objID = request.mongo.ObjectID
-      ProjectManager.findById(db, new objID(request.params.project_id), function (res) {
+      ProjectManager.findById(db, new objID(request.params.project_id), {}, function (res) {
         reply(res)
       })
     },
@@ -103,55 +105,7 @@ ProjectController.prototype = (function () {
           needsArray = request.payload['needs[]']
         }
       }
-      if (request.payload.projectType == 'collective') {
-        projectType = {
-          type: request.payload.projectType,
-          label: 'Cooperativa',
-          color: '#800000'
-        }
-      }
-      if (request.payload.projectType == 'cooperative') {
-        projectType = {
-          type: request.payload.projectType,
-          label: 'Colectivo',
-          color: '#008B8B'
-        }
-      }
-      if (request.payload.projectType == 'ngo') {
-        projectType = {
-          type: request.payload.projectType,
-          label: 'ONG',
-          color: '#556B2F'
-        }
-      }
-      if (request.payload.projectType == 'ethicalbusiness') {
-        projectType = {
-          type: request.payload.projectType,
-          label: 'Negocio Ético',
-          color: '#B8860B'
-        }
-      }
-      if (request.payload.projectType == 'neighborsorg') {
-        projectType = {
-          type: request.payload.projectType,
-          label: 'Iniciativa Ciudadana',
-          color: '#C63D1E'
-        }
-      }
-      if (request.payload.projectType == 'startup') {
-        projectType = {
-          type: request.payload.projectType,
-          label: 'Startup',
-          color: '#58376C'
-        }
-      }
-      if (request.payload.projectType == 'ontransition') {
-        projectType = {
-          type: request.payload.projectType,
-          label: 'En Transición',
-          color: '#d45bc9'
-        }
-      }
+      projectType = getProjectTypeObj(request.payload.projectType)
       if (request.payload.file) {
         var fullPath = request.payload.file
         var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'))
@@ -190,20 +144,73 @@ ProjectController.prototype = (function () {
     },
     update: function update (request, reply) {
       var db = request.mongo.db
-      if (request.payload.parent) {
-        console.log(request.payload.parent)
-      } else {
-        console.log('no parent')
-      }
-      ProjectManager.update(db, updatedProject, function (res) {
-        reply(res)
+      var objID = request.mongo.ObjectID
+      console.log(request.payload)
+      var query = {'_id': new objID(request.params.id)}
+      var parsedProject = qs.parse(request.payload)
+      var updatedProject = {$set: {
+        email: parsedProject.email,
+        name: parsedProject.name,
+        description: parsedProject.description,
+        categories: _.map(parsedProject.categories, function(cat){return getCategoryObj(cat)}),
+        address: parsedProject.address,
+        latitude: parsedProject.latitude,
+        longitude: parsedProject.longitude,
+        location: [{
+          lat: parsedProject.latitude,
+          lon: parsedProject.longitude
+        }],
+        projectType: getProjectTypeObj(parsedProject.projectType),
+        webpage: parsedProject.webpage,
+        facebook: parsedProject.facebook,
+        schedule: parsedProject.schedule,
+      }}
+      setDataAuth(request, function(data){
+        console.log(data)
+        ProjectManager.findById(db, query,{}, function (res) {
+          data.p = res
+          console.log(res)
+          data.isOwner = data.isAdmin || 
+                        ( 
+                          data.owners && 
+                          data.owners.indexOf(credentials.id) > -1 && 
+                          credentials.projects && 
+                          credentials.projects.indexOf(request.params.projectId) > -1
+                        )    
+          if(data.isOwner){
+            ProjectManager.update(db, query, updatedProject, function (res2) {
+               console.log(res2)
+               reply('uṕdated')
+            })
+          }
+          else reply('notAuthorized')
+        })        
       })
+      
     },
     delete: function (request, reply) {
       var db = request.mongo.db
-      ProjectManager.delete(db, request.params.id, function (res) {
+      var objID = request.mongo.ObjectID
+      ProjectManager.delete(db, {'_id': request.params.id}, function (res) {
         reply(res)
       })
+    },
+    // PROJECT CODE
+    addCode: function addCode(request, reply) {
+      var db = request.mongo.db
+      var objID = request.mongo.ObjectID
+      var credentials = request.auth.credentials
+      if( credentials.scope && ( credentials.scope == 'admin' || credentials.scope.indexOf('admin')>0)){
+        var code = Math.random().toString(36).slice(2)
+        var updatedProject = {$push: {projectCodes: code}}
+        var query = {'_id': new objID(request.payload.id)}
+        ProjectManager.update(db, query, updatedProject, function (res) {
+          CodeManager.insert(db, {code: code, projectLinked: request.payload.id}, function(res){
+            reply(code)
+          })
+        })        
+      } else 
+        reply('notAuthorized')                 
     },
     // COLLABORATION
     addCollaboration: function addCollaboration (request, reply) {
@@ -212,8 +219,8 @@ ProjectController.prototype = (function () {
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
-        ProjectManager.findById(db, new objID(request.payload.projectId), function (res) {
-          if (credentials.scope == 'admin' || (res[0].owners && res[0].owners.indexOf(credentials.id) > -1 &&
+        ProjectManager.findById(db, new objID(request.payload.projectId), {owners: 1}, function (res) {
+          if (credentials.scope == 'admin' || (res.owners && res.owners.indexOf(credentials.id) > -1 &&
             credentials.projects && credentials.projects.indexOf(request.payload.projectId) > -1)) {
             var newCollaboration = {}
             newCollaboration[request.payload.offerOrNeed] = {
@@ -238,8 +245,8 @@ ProjectController.prototype = (function () {
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
-        ProjectManager.findById(db, new objID(request.payload.projectId), function (res) {
-          if (credentials.scope == 'admin' || (res[0].owners && res[0].owners.indexOf(credentials.id) > -1 &&
+        ProjectManager.findById(db, new objID(request.payload.projectId), {owners:1}, function (res) {
+          if (credentials.scope == 'admin' || (res.owners && res.owners.indexOf(credentials.id) > -1 &&
             credentials.projects && credentials.projects.indexOf(request.payload.projectId) > -1)) {
             var query = {
               '_id': new objID(request.payload.projectId)
@@ -289,3 +296,211 @@ ProjectController.prototype = (function () {
 })()
 var ProjectController = new ProjectController()
 module.exports = ProjectController
+
+function getProjectTypeObj(projectType){
+  if (projectType == 'collective') {
+    return {
+      type: projectType,
+      label: 'Cooperativa',
+      color: '#800000'
+    }
+  }
+  if (projectType == 'cooperative') {
+    return {
+      type: projectType,
+      label: 'Colectivo',
+      color: '#008B8B'
+    }
+  }
+  if (projectType == 'ngo') {
+    return {
+      type: projectType,
+      label: 'ONG',
+      color: '#556B2F'
+    }
+  }
+  if (projectType == 'ethicalbusiness') {
+    return {
+      type: projectType,
+      label: 'Negocio Ético',
+      color: '#B8860B'
+    }
+  }
+  if (projectType == 'neighborsorg') {
+    return {
+      type: projectType,
+      label: 'Iniciativa Ciudadana',
+      color: '#C63D1E'
+    }
+  }
+  if (projectType == 'startup') {
+    return {
+      type: projectType,
+      label: 'Startup',
+      color: '#58376C'
+    }
+  }
+  if (projectType == 'ontransition') {
+    return {
+      type: projectType,
+      label: 'En Transición',
+      color: '#d45bc9'
+    }
+  }
+}
+
+function getCategoryObj(category){
+  if(category == 'humanrights'){
+    return {
+      "catId" : "humanrights",
+      "name" : {
+          "es" : "Derechos Humanos"
+      },
+      "icon" : "fa-globe"
+    }
+  }
+  if(category == 'productsservices'){
+    return {
+      "catId" : "productsservices",
+      "name" : {
+          "es" : "Productos y Servicios"
+      },
+      "icon" : "fa-shopping"
+    }
+  }
+  if(category == 'environment'){
+    return {
+      "catId" : "environment",
+      "name" : {
+          "es" : "Medio Ambiente"
+      },
+      "icon" : "fa-pagelines"
+    }
+  }
+  if(category == 'artculture'){
+    return {
+      "catId" : "artculture",
+      "name" : {
+          "es" : "Arte y Cultura"
+      },
+      "icon" : "fa-paint"
+    }
+  }
+  if(category == 'gender'){
+    return {
+      "catId" : "gender",
+      "name" : {
+          "es" : "Género"
+      },
+      "icon" : "fa-transgender"
+    }
+  }
+  if(category == 'health'){
+    return {
+      "catId" : "health",
+      "name" : {
+          "es" : "Salud"
+      },
+      "icon" : "fa-medkit"
+    }
+  }
+  if(category == 'education'){
+    return {
+      "catId" : "education",
+      "name" : {
+          "es" : "Educación"
+      },
+      "icon" : "fa-book"
+    }
+  }
+  if(category == 'workshops'){
+    return {
+      "catId" : "workshops",
+      "name" : {
+          "es" : "Talleres"
+      },
+      "icon" : "fa-puzzle"
+    }
+  }
+  if(category == 'community'){
+    return {
+      "catId" : "community",
+      "name" : {
+          "es" : "Comunidad"
+      },
+      "icon" : "fa-users"
+    }
+  }
+  if(category == 'food'){
+    return {
+      "catId" : "food",
+      "name" : {
+          "es" : "Comida"
+      },
+      "icon" : "fa-cutlery"
+    }
+  }
+  if(category == 'housing'){
+    return {
+      "catId" : "housing",
+      "name" : {
+          "es" : "Vivienda"
+      },
+      "icon" : "fa-home"
+    }
+  }
+  if(category == 'clothing'){
+    return {
+      "catId" : "clothing",
+      "name" : {
+          "es" : "Vestido"
+      },
+      "icon" : "fa-scissors"
+    }
+  }
+  if(category == 'communication'){
+    return {
+      "catId" : "communication",
+      "name" : {
+          "es" : "Comunicación"
+      },
+      "icon" : "fa-bullhorn"
+    }
+  }
+  if(category == 'technology'){
+    return {
+      "catId" : "technology",
+      "name" : {
+          "es" : "Tecnología"
+      },
+      "icon" : "fa-cogs"
+    }
+  }
+  if(category == 'transport'){
+    return {
+      "catId" : "transport",
+      "name" : {
+          "es" : "Transporte"
+      },
+      "icon" : "fa-bicycle"
+    }
+  }
+}
+
+function setDataAuth(request, callback){
+  var data = {
+    isAuthenticated: SessionController.isAuthenticated(request),
+  }
+  if (data.isAuthenticated) {
+    data.credentials = SessionController.getSession(request)
+    data.isAdmin = data.credentials.scope && 
+                  ( data.credentials.scope == 'admin' || 
+                    data.credentials.scope.indexOf('admin')>0)
+    if(data.credentials.projects){
+      SessionController.getProjects(request, function(res){
+        data.myProjects = res
+        callback(data)
+      })
+    } else callback(data)
+  } else callback(data) 
+}

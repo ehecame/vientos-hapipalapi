@@ -1,9 +1,11 @@
 var CategoryManager = require('./../managers/category')
 var ProjectManager = require('./../managers/project')
+var CodeManager = require('./../managers/code')
 var SessionController = require('./../controllers/session')
 var Bcrypt = require('bcrypt-nodejs')
 var multiparty = require('multiparty')
 var fs = require('fs')
+var _ = require('underscore')
 
 module.exports = function () {
   return [
@@ -12,15 +14,10 @@ module.exports = function () {
       path: '/',
       config: {
         handler: function (request  , reply) {
-          var data = {
-            isAuthenticated: SessionController.isAuthenticated(request),
-            withFooter: true
-          }
-          if (data.isAuthenticated) {
-            data.credentials = SessionController.getSession(request)
-          }
-          console.log(require('bcrypt-nodejs').hashSync('juanelas'))
-          reply.view('index', data)
+          setDataAuth(request, function(data){
+            data.withFooter = true
+            reply.view('index', data)
+          })
         }
       // auth: {
       //   mode: 'try',
@@ -30,59 +27,47 @@ module.exports = function () {
       }
     }, {
       method: 'GET',
-      path: '/search',
-      handler: function (request, reply) {
-        var db = request.mongo.db
-        CategoryManager.findAll(db, function (res) {
-          var data = {
-            categories: res
-          }
-          console.log(data)
-          reply.view('search', data)
-        })
-      }
-    }, {
-      method: 'GET',
       path: '/about',
       handler: function (request, reply) {
-        reply.view('about')
+        setDataAuth(request, function(data){
+          data.withFooter = true
+          reply.view('about', data)
+        })
       }
     }, {
       method: 'GET',
       path: '/collaborate',
       config: {
         handler: function (request, reply) {
-          var data = {
-            isAuthenticated: SessionController.isAuthenticated(request)
-          }
-          if (data.isAuthenticated) {
-            data.credentials = SessionController.getSession(request)
-          }
-          reply.view('collaborate', data)
+          setDataAuth(request, function(data){
+            data.withFooter = false
+            reply.view('collaborate', data)
+          })
         }
       // auth: false
       }
     }, {
       method: 'GET',
-      path: '/list',
+      path: '/userregister/{code?}',
       config: {
         handler: function (request, reply) {
-          var data = {
-            isAuthenticated: SessionController.isAuthenticated(request)
-          }
-          if (data.isAuthenticated) {
-            data.credentials = SessionController.getSession(request)
-          }
-          reply.view('list', data)
-        }
-      // auth: false
+          setDataAuth(request, function(data){
+            data.withFooter = false
+            data.code = request.params.code
+            reply.view('userRegister', data)
+          })
+        },
+        auth: false
       }
-    }, {
+    } , {
       method: 'GET',
 
       path: '/howtocollaborate',
       handler: function (request, reply) {
-        reply.view('howToCollaborate')
+        setDataAuth(request, function(data){
+          data.withFooter = true
+          reply.view('howToCollaborate', data)
+        })
       }
     }, {
       method: 'GET',
@@ -90,17 +75,7 @@ module.exports = function () {
       config: {
         handler: function (request, reply) {
           var data = {}
-          console.log('redirectTo:')
-          console.log(request.query)
           data.redirect = request.query.next ? request.query.next : '/myprofile'
-          // if (request.auth.credentials) {
-          //   console.log('credentials: ' + request.auth.credentials)
-          //   data = {
-          //     id: request.auth.credentials.id,
-          //     name: request.auth.credentials.name
-          //   }
-          // }
-
           reply.view('login', data)
         },
         auth: false
@@ -121,22 +96,26 @@ module.exports = function () {
       path: '/project/{projectId}',
       config: {
         handler: function (request, reply) {
-          var db = request.mongo.db
-          var objID = request.mongo.ObjectID
-          ProjectManager.findById(db, new objID(request.params.projectId), function (res) {
-            var data = res[0]
-            var credentials = SessionController.getSession(request)
-            data.isAuthenticated = SessionController.isAuthenticated(request)
-            data.withFooter = true
-            if (data.isAuthenticated) {
-              data.credentials = SessionController.getSession(request)
-              var isAdmin = data.credentials.scope && (data.credentials.scope == 'admin' || data.credentials.scope.indexOf('admin')>0)
-              data.isOwner = isAdmin || 
-                            ( data.ownsers && data.owners.indexOf(credentials.id) > -1 
-                              && credentials.projects && credentials.projects.indexOf(request.params.projectId) > -1)
-            }
-            reply.view('projectProfile', data)
-          })
+          setDataAuth(request, function(data){
+            data.withFooter = false
+            var db = request.mongo.db
+            var objID = request.mongo.ObjectID
+            ProjectManager.findById(db, new objID(request.params.projectId), {}, function (res) {
+              data.p = res
+              data.isOwner = data.isAdmin || 
+                            ( 
+                              data.owners && 
+                              data.owners.indexOf(data.credentials.id) > -1 && 
+                              credentials.projects && 
+                              credentials.projects.indexOf(request.params.projectId) > -1
+                            )    
+              if(!data.isAdmin)
+                delete data.p.projectCodes
+              data.p.categoriesIds = _.map(res.categories, function(cat){return cat.catId})
+              console.log(data.p)
+              reply.view('projectProfile', data)
+            })
+          })          
         } /*,
         auth: false*/
       }
@@ -163,11 +142,26 @@ module.exports = function () {
               })
             } 
           })
-        },
-        auth: {
-          strategy: 'standard'
         }
       }
     }
   ]
 }()
+
+function setDataAuth(request, callback){
+  var data = {
+    isAuthenticated: SessionController.isAuthenticated(request),
+  }
+  if (data.isAuthenticated) {
+    data.credentials = SessionController.getSession(request)
+    data.isAdmin = data.credentials.scope && 
+                  ( data.credentials.scope == 'admin' || 
+                    data.credentials.scope.indexOf('admin')>0)
+    if(data.credentials.projects){
+      SessionController.getProjects(request, function(res){
+        data.myProjects = res
+        callback(data)
+      })
+    } else callback(data)
+  } else callback(data)
+}

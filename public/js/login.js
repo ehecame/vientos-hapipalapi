@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  console.log('sí carguéeee!')
   $('#newInterestInput').keyup(function (event) {
     if (event.keyCode == 13) {
       $('#addInterestBtn').click()
@@ -7,6 +8,7 @@ $(document).ready(function () {
 })
 
 function login () {
+  console.log($('#loginForm').serialize())
   $.post(
     '/api/user/login',
     $('#loginForm').serialize(),

@@ -20,11 +20,8 @@ ProjectManager.prototype = (function () {
         callback(docs)
       })
     },
-    findById: function findById (db, project_id, callback) {
-      console.log(project_id)
-      db.collection('projects').find({'_id': project_id}).toArray(function (err, docs) {
-        console.log(docs)
-        console.log(err)
+    findById: function findById (db, project_id, fields,callback) {
+      db.collection('projects').findOne({'_id': project_id},fields, function (err, docs) {
         callback(docs)
       })
     },
@@ -64,6 +61,7 @@ ProjectManager.prototype = (function () {
     },
     update: function update (db, query, updateObject, callback) {
       console.log(updateObject)
+      console.log(query)
       db.collection('projects').update(query, updateObject, function (err, doc) {
         callback(doc)
       })

@@ -128,6 +128,8 @@ h1 {
 .slidingVertical{
     display: inline;
     text-indent: 8px;
+    position: relative;
+    top: 4px;
 }
 .slidingVertical span{
     animation: topToBottom 12.5s linear infinite 0s;
@@ -643,6 +645,56 @@ h1 {
     background-color: white;
     border-radius: 20px;
     padding: 20px; }
+.profile #secConfiguration  #categories .category {
+    width: 80px;
+    height: 80px;
+    background-color: purple;
+    padding: 12px;
+    color: white;
+    border-radius: 20px;
+    margin: 1px;
+    cursor: pointer;
+    font-size: .8em;
+    margin-top: 50px; 
+}
+.profile #secConfiguration  #categories .category i {
+    display: block;
+}
+.profile #secConfiguration  #categories .selected {
+    background-color: #ff6a00; 
+}
+.profile #secConfiguration #mapConf{
+    width: 90%;
+    height: 300px;
+}
+.profile #secConfiguration #mapElements{
+    position: absolute;
+}
+.profile #secConfiguration #mapElements #btnCloseToMe{
+    position: absolute;
+    left: 230px;
+    top: 10px;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background-color: #5997e6;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 11px;
+    cursor: pointer;
+}
+.profile #secConfiguration #mapElements #btnCloseToMe:hover{
+    background-color: #38c12d;
+}
+.profile #secConfiguration #schedules i{
+    cursor: pointer
+}
+
+.profile #secConfiguration  #newDaysInput,
+.profile #secConfiguration  #newHoursInput {
+    display: inline-block;
+    width: 30%;
+    margin-right: 2px; }
 #projectModelData {
     border: 1px solid #aaaaaa;
     border-radius: 5px;
@@ -1148,11 +1200,7 @@ h1 {
 #registerPage #newNeedInput {
     display: inline-block;
     width: 90%; }
-#registerPage #newDaysInput,
-#registerPage #newHoursInput {
-    display: inline-block;
-    width: 30%;
-    margin-right: 2px; }
+f
 #registerPage #addOfferBtn,
 #registerPage #addNeedBtn {
     display: inline-block;

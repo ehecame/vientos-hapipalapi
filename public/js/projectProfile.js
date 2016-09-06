@@ -1,23 +1,26 @@
 var map
-
+var configMap
+var marker
 $(document).ready(function () {
   addSectionBtnsFunc()
   addCollaborationFunc()
   addOffersAndNeedsFunc()
   addInterestsFunc()
-  initializeMap()
+  addConfigurationFunc()
+  initializeMaps()
 })
 
 function addSectionBtnsFunc () {
   $('#sectionTabs a').click(function (e) {
     e.preventDefault()
     $(this).tab('show')
+    configMap.invalidateSize()
   })
 }
 
-function initializeMap () {
-  var lat = $('#projectLat0').val()
-  var lon = $('#projectLon0').val()
+function initializeMaps () {
+  var lat = $('#projectLat0').val() ? $('#projectLat0').val() : '19.43211483346452'
+  var lon = $('#projectLon0').val() ? $('#projectLon0').val() : '-99.12551879882812'
   console.log('lat:' + lat)
   console.log('lon:' + lon)
   map = L.map('map', {zoomControl: false}).setView([lat, lon], 15)
@@ -27,36 +30,30 @@ function initializeMap () {
     id: 'ralexrdz.nnh64i75',
     accessToken: 'pk.eyJ1IjoicmFsZXhyZHoiLCJhIjoiY2lmdHB2aGo2MTZ4MnQ1bHkzeDJyaDMzNyJ9.UHhEm9gA1_uwAztXjb7iTQ'
   }).addTo(map)
+  configMap = L.map('mapConf', {zoomControl: false}).setView([lat, lon], 15)
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'ralexrdz.nnh64i75',
+    accessToken: 'pk.eyJ1IjoicmFsZXhyZHoiLCJhIjoiY2lmdHB2aGo2MTZ4MnQ1bHkzeDJyaDMzNyJ9.UHhEm9gA1_uwAztXjb7iTQ'
+  }).addTo(configMap)
   L.control.zoom({
     position: 'bottomright'
   }).addTo(map)
-  map.addLayer(L.marker([lat, lon]))
-}
-
-function sectionBtnClicked () {
-  var id = $(this).attr('id')
-  $('.userProfileSec').addClass('hidden')
-  $('.sectionBtn').removeClass('selected')
-  if (id == 'homeBtn') {
-    $('#homeBtn').addClass('selected')
-    $('#secHome').removeClass('hidden')
+  if($('#projectLat0').val()){
+    map.addLayer(L.marker([lat, lon]))
+    marker = L.marker([lat, lon]).addTo(configMap)
+    configMap.addLayer(marker)
   }
-  if (id == 'projectsBtn') {
-    $('#projectsBtn').addClass('selected')
-    $('#secProjects').removeClass('hidden')
-  }
-  if (id == 'offersAndNeedsBtn') {
-    $('#offersAndNeedsBtn').addClass('selected')
-    $('#secOffersAndNeeds').removeClass('hidden')
-  }
-  if (id == 'interestsBtn') {
-    $('#interestsBtn').addClass('selected')
-    $('#secInterests').removeClass('hidden')
-  }
-  if (id == 'configurationBtn') {
-    $('#configurationBtn').addClass('selected')
-    $('#secConfiguration').removeClass('hidden')
-  }
+  configMap.on('click', function (e) {
+    if (marker)
+      configMap.removeLayer(marker)
+    marker = L.marker([e.latlng.lat, e.latlng.lng])
+    configMap.addLayer(marker)
+    $('#hdnInputLat').val(e.latlng.lat)
+    $('#hdnInputLng').val(e.latlng.lng)
+    $('#editProfileBtn').removeClass('disabled')
+  })
 }
 
 function addCollaborationFunc () {
@@ -262,4 +259,91 @@ function editCollaboration () {
     data: data
   })
   return false
+}
+
+//CONF
+function addConfigurationFunc(){
+  $('#btnCloseToMe').click(centerMapMyLocation)
+  $('#btnCloseToMe').tooltip({placement: 'top'})
+  $('#projectDataForm :input').on('input', function(){
+    $('#editProfileBtn').removeClass('disabled')
+  })
+  $('#pictureFileInput').change(function(){
+    $('#uploadPIctureBtn').removeClass('disabled')
+  })
+  $('#schedules i').on('click', function(){
+    $(this).parent().remove()
+  })
+}
+
+function updateProfilePicture(){
+  var pictureName = $('#pictureFileInput').val().split(/(\\|\/)/g).pop()
+  $.ajax({
+    url: '/api/project/'+$(window.location.href.split('/')).last()[0],
+    type: 'PUT',
+    data: {profilePicture: pictureName},
+    success: function (data) {
+      console.log(data)
+    }
+  })
+  if ($('#pictureFileInput')[0].files.length > 0) {
+    console.log('sí tiene archivos')
+    var formData = new FormData()
+    formData.append('file', $('#pictureFileInput')[0].files[0])
+    console.log(formData)
+    $.ajax({
+      url: '/uploadPicture',
+      data: formData,
+      processData: false,
+      contentType: false,
+      type: 'POST',
+      success: function (data) {
+        console.log(data)
+      }
+    })
+  }
+  return false
+}
+
+function onEditBtnClicked () {
+  var projectDataForm = form2js('projectDataForm', '.')
+  $.ajax({
+    url: '/api/project/'+$(window.location.href.split('/')).last()[0],
+    type: 'PUT',
+    data: projectDataForm,
+    success: function (data) {
+      location.reload()
+    }
+  })
+  return false
+}
+
+function categoryClicked () {
+  var cat = $(this)
+  if (cat.hasClass('selected')) {
+    cat.removeClass('selected')
+    $('#selectedCategories').find('#cat_' + cat.attr('id'))[0].remove()
+  } else {
+    cat.addClass('selected')
+    $('#selectedCategories').append('<input type="hidden" name="categories[]" id="cat_' + cat.attr('id') + '" value="' + cat.attr('id') + '" />')
+  }
+  $('#editProfileBtn').removeClass('disabled')
+}
+
+function addSchedule () {
+  var nSchedules = $('.scheduleDays').length
+  $('#schedules').append('<div><input class="scheduleDays" name="schedule[' + nSchedules + '].days" value="' + $('#newDaysInput').val() + '"/><input class="scheduleHours" name="schedule[' + nSchedules + '].hours" value="' + $('#newHoursInput').val() + '"/><i class="fa fa-times mr-l-5"></i></div>')
+  $('#schedules i').on('click', function(){
+    $(this).parent().remove()
+  })
+  $('#newDaysInput').val('')
+  $('#newHoursInput').val('')
+}
+
+function centerMapMyLocation (e) {
+  navigator.geolocation.getCurrentPosition(setMapView)
+}
+
+function setMapView (location) {
+  configMap.setView([location.coords.latitude, location.coords.longitude], 15)
 }

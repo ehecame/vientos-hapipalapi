@@ -1,68 +1,78 @@
 <script type="text/javascript" src="/js/projectProfile"></script>
+{{#if isAdmin}}
+<script type="text/javascript" src="/js/projectCode"></script>
+{{/if}}
 <div id="projectProfile" class="profile">
 	<div class="fluid-container">
 	<div class="row" id="mapRow">
 		<div id="map"></div>
 		<div>
-			{{#each locations}}
-			<div id="locations{{@index}}">
-				<input type="hidden" value="{{lat}}" id="projectLat{{@index}}" />
-				<input type="hidden" value="{{lon}}"  id="projectLon{{@index}}"/>
-			</div>
-			{{/each}}
+      {{#if p.location}}
+  			{{#each p.location}}
+  			<div id="locations{{@index}}">
+  				<input type="hidden" value="{{lat}}" id="projectLat{{@index}}" />
+  				<input type="hidden" value="{{lon}}"  id="projectLon{{@index}}"/>
+  			</div>
+        {{/each}}
+      {{else}}
+      <div id="locations0">
+        <input type="hidden" value="19.34" id="projectLat0" />
+        <input type="hidden" value="-99.15"  id="projectLon0"/>
+      </div>
+			{{/if}}
 		</div>
 	</div>
 	<div class="row" id="resumeRow">
 		<div id="topBar">
 			<div class="row">
-				<div id="picture" class="col-md-2 col-sm-6">{{#if logo}}<img src="/img/{{logo}}">{{/if}}</div>
+				<div id="picture" class="col-md-2 col-sm-6">{{#if p.logo}}<img src="/img/{{p.logo}}">{{/if}}</div>
 				<div id="projectData" class="col-md-3 col-sm-6">
 					<div class="vcenter">
-						<div id="projectName">{{name}}</div>
+						<div id="projectName">{{p.name}}</div>
 						<div id="projectCategories">
-							{{#each categories}}
-								<i class="fa {{this.icon}} fa-lg" title="{{this.name.es}}"></i>
+							{{#each p.categories}}
+								<i class="fa {{icon}} fa-lg" title="{{name.es}}"></i>
 							{{/each}}
 						</div>
-						<div id="projectType" style="background-color:{{projectType.color}};">{{projectType.label}}</div>
+						<div id="projectType" style="background-color:{{p.projectType.color}};">{{p.projectType.label}}</div>
 					</div>
 				</div>
 				<div id="description" class="col-md-3 col-sm-6">
 					<div class="vcenter">
-						{{description}}
+						{{p.description}}
 					</div>
 				</div>
 				<div id="contactData" class="col-md-4 col-sm-6">
 					<div class="vcenter row">
-						{{#if email}}
-						<div class="col-md-1"><i class="fa fa-envelope fa-lg"></i></div><div class="col-md-11 tx-al-l">{{email}}</div>
+						{{#if p.email}}
+						<div class="col-md-1"><i class="fa fa-envelope fa-lg"></i></div><div class="col-md-11 tx-al-l">{{p.email}}</div>
 						{{/if}}
-						{{#if phone}}
-						<div class="col-md-1"><i class="fa fa-phone fa-lg"></i></div><div class="col-md-11 tx-al-l">{{email}}</div>
+						{{#if p.phone}}
+						<div class="col-md-1"><i class="fa fa-phone fa-lg"></i></div><div class="col-md-11 tx-al-l">{{p.email}}</div>
 						{{/if}}
-						{{#if mobile}}
-						<div class="col-md-1"><i class="fa fa-mobile fa-lg"></i></div><div class="col-md-11 tx-al-l">{{mobile}}</div>
+						{{#if p.mobile}}
+						<div class="col-md-1"><i class="fa fa-mobile fa-lg"></i></div><div class="col-md-11 tx-al-l">{{p.mobile}}</div>
 						{{/if}}
-						{{#if address}}
-						<div class="col-md-1"><i class="fa fa-map-signs fa-lg"></i></div><div class="col-md-11 tx-al-l 1-line" title="{{address}}">{{address}}</div>
+						{{#if p.address}}
+						<div class="col-md-1"><i class="fa fa-map-signs fa-lg"></i></div><div class="col-md-11 tx-al-l 1-line" title="{{p.address}}">{{p.address}}</div>
 						{{/if}}
-						{{#if schedule}}
+						{{#if p.schedule}}
 	          <div class="col-md-1"><i class="fa fa-clock-o fa-lg"></i></div>
 						<div class="col-md-11 tx-al-l" id="projectSchedule">
-							{{#each schedule}}
-								<div>{{this.days}}: {{this.hours}}</div>
+							{{#each p.schedule}}
+								<div>{{days}}: {{hours}}</div>
 							{{/each}}
 						</div>
 						{{/if}}
 						<div class="socialMedia">
-							{{#if facebook}}
-							<span class="facebook"><a href="{{facebook}}" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a> </span> 
+							{{#if p.facebook}}
+							<span class="facebook"><a href="{{p.facebook}}" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a> </span> 
 							{{/if}}
-							{{#if twitter}}
-	            <span class="twitter"><a href="{{twitter}}" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a> </span>
+							{{#if p.twitter}}
+	            <span class="twitter"><a href="{{p.twitter}}" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a> </span>
 							{{/if}}
-							{{#if webpage}}
-							<a id="projectWebSite" href="{{webpage}}" title="Visita su página de internet" target="_blank">
+							{{#if p.webpage}}
+							<a id="projectWebSite" href="{{p.webpage}}" title="Visita su página de internet" target="_blank">
 								WWW
 							</a>
 							{{/if}}
@@ -135,12 +145,12 @@
         <div id="offers" class="col-md-5">
           <h2 class="profileTitle">Ofrecimientos</h2>
           {{#if isOwner}}
-          <button class="btn btn-default {{#if (isEmpty offers)}}hidden{{/if}}" id="newOfferBtn"><i class="fa fa-plus"></i></button>
-          <div class="addCollaborationSec {{#if (notEmpty offers)}}hidden{{/if}}">
+          <button class="btn btn-default {{#if (isEmpty p.offers)}}hidden{{/if}}" id="newOfferBtn"><i class="fa fa-plus"></i></button>
+          <div class="addCollaborationSec {{#if (notEmpty p.offers)}}hidden{{/if}}">
             <div class="form-group row">
               <label class="col-md-3">Titulo:</label>
               <div class="col-md-9">
-                <input value="{{title}}" class="form-control newCollaborationTitle"/>
+                <input value="" class="form-control newCollaborationTitle"/>
               </div>
               <label class="col-md-3">Tipo:</label>
               <div class="col-md-9">
@@ -1433,109 +1443,123 @@
       </div>
     {{#if isOwner}}
 		<div id="secConfiguration" class="row profileSec tab-pane" role="tabpanel">
-			<form class="form-horizontal" id="registerForm">
+      <div>
+        <label for="" class="col-sm-2 control-label">Logo:</label>
+        <input type="file" name="file" id="pictureFileInput">
+        <button class="btn btn-default disabled" id="uploadPIctureBtn" onclick="updateProfilePicture()">Subir imagen</button>
+      </div>
+			<form class="form-horizontal" id="projectDataForm">
+          {{#if isAdmin}}
+          <div>
+            <div id="projectCodes">
+              {{#each p.projectCodes}}
+              <div>{{this}}</div>
+              {{/each}}
+            </div>
+            <a href="#" class="btn btn-default" onclick="return createProjectCode();">Crea código para proyecto</a>
+          </div>
+          {{/if}}
 				  <div class="form-group">
 				    <label for="inputName" class="col-sm-2 control-label">Nombre</label>
 				    <div class="col-sm-9">
-				      <input class="form-control" id="inputName" placeholder="Nombre del proyecto" name="name" value="{{name}}">
+				      <input class="form-control" id="inputName" placeholder="Nombre del proyecto" name="name" value="{{p.name}}">
 				    </div>
 				  </div>
 					<div class="form-group">
 						<label for="" class="col-sm-2 control-label">Descripción:</label>
 						<div class="col-sm-9">
-							<textarea class="form-control" id="descriptionInput" name="description" placeholder="Descripción" name="description" value="{{description}}"></textarea>
+							<textarea class="form-control" id="descriptionInput" name="description" placeholder="Descripción" name="description" >{{p.description}}</textarea>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="" class="col-sm-2 control-label">Logo:</label>
-		        <input type="file" name="file" id="pictureFileInput">
 					</div>
 					<div class="form-group">
 						<label for="" class="col-sm-2 control-label">Categoria:</label>
 						<div class="col-sm-9" id="categories">
 							<div class="row" id="categoriesSec">
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="humanrights"><i class="fa fa-globe fa-2x"></i>Derechos Humanos</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="productsservices"><i class="fa fa-shopping-basket fa-2x"></i>Productos y Servicios</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="environment"><i class="fa fa-pagelines fa-2x"></i>Medio Ambiente</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="artculture"><i class="fa fa-paint-brush fa-2x"></i>Arte y Cultura</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="gender"><i class="fa fa-transgender-alt fa-2x"></i>Género</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="health"><i class="fa fa-medkit fa-2x"></i>Salud</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="education"><i class="fa fa-book fa-2x"></i>Educación</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="workshops"><i class="fa fa-puzzle-piece fa-2x"></i>Talleres y Clases</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="community"><i class="fa fa-users fa-2x"></i>Comunidad</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="food"><i class="fa fa-cutlery fa-2x"></i>Comida</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="housing"><i class="fa fa-home fa-2x"></i>Vivienda</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="clothing"><i class="fa fa-scissors fa-2x"></i>Vestido</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="communication"><i class="fa fa-bullhorn fa-2x"></i>Comunicación</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="technology"><i class="fa fa-cogs fa-2x"></i>Tecnología</div>
-								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter" id="transport"><i class="fa fa-bicycle fa-2x"></i>Transporte</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'humanrights'}}selected" {{else}} "{{/ifcond}}" id="humanrights"><i class="fa fa-globe fa-2x"></i>Derechos Humanos</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'productsservices'}}selected" {{else}} "{{/ifcond}}" id="productsservices"><i class="fa fa-shopping-basket fa-2x"></i>Productos y Servicios</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'environment'}}selected" {{else}} "{{/ifcond}}" id="environment"><i class="fa fa-pagelines fa-2x"></i>Medio Ambiente</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'artculture'}}selected" {{else}} "{{/ifcond}}" id="artculture"><i class="fa fa-paint-brush fa-2x"></i>Arte y Cultura</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'gender'}}selected" {{else}} "{{/ifcond}}" id="gender"><i class="fa fa-transgender-alt fa-2x"></i>Género</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'health'}}selected" {{else}} "{{/ifcond}}" id="health"><i class="fa fa-medkit fa-2x"></i>Salud</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'education'}}selected" {{else}} "{{/ifcond}}" id="education"><i class="fa fa-book fa-2x"></i>Educación</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'workshops'}}selected" {{else}} "{{/ifcond}}" id="workshops"><i class="fa fa-puzzle-piece fa-2x"></i>Talleres y Clases</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'community'}}selected" {{else}} "{{/ifcond}}" id="community"><i class="fa fa-users fa-2x"></i>Comunidad</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'food'}}selected" {{else}} "{{/ifcond}}" id="food"><i class="fa fa-cutlery fa-2x"></i>Comida</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'housing'}}selected" {{else}} "{{/ifcond}}" id="housing"><i class="fa fa-home fa-2x"></i>Vivienda</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'clothing'}}selected" {{else}} "{{/ifcond}}" id="clothing"><i class="fa fa-scissors fa-2x"></i>Vestido</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'communication'}}selected" {{else}} "{{/ifcond}}" id="communication"><i class="fa fa-bullhorn fa-2x"></i>Comunicación</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'technology'}}selected" {{else}} "{{/ifcond}}" id="technology"><i class="fa fa-cogs fa-2x"></i>Tecnología</div>
+								<div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond p.categoriesIds 'contains' 'transport'}}selected" {{else}} "{{/ifcond}}" id="transport"><i class="fa fa-bicycle fa-2x"></i>Transporte</div>
 							</div>
 						</div>
 					</div>
 					<div id="selectedCategories">
+            {{#each p.categories}}
+            <input type="hidden" name="categories[]" id="cat_{{catId}}" value="{{catId}}" />
+            {{/each}}
 					</div>
 					<div class="form-group">
 						<label for="" class="col-sm-2 control-label">Tipo de Proyecto:</label>
 						<div class="col-sm-9">
 							<select class="form-control" name="projectType">
-								<option value="collective" {{#ifcond projectType.type '==' 'collective'}} 'select' {{else}}  {{/ifcond}}>Colectivo</option>
-								<option value="cooperative" {{#ifcond projectType.type '==' 'cooperative'}} 'select' {{else}} {{/ifcond}}>Cooperativa</option>
-								<option value="ngo" {{#ifcond projectType.type '==' 'ngo'}} 'select' {{else}} {{/ifcond}}>ONG</option>
-								<option value="ethicalbusiness" {{#ifcond projectType.type '==' 'ethicalbusiness'}} 'select' {{else}} {{/ifcond}}>Negocio Ético</option>
-								<option value="neighborsorg" {{#ifcond projectType.type '==' 'neighborsorg'}} 'select' {{else}} {{/ifcond}}>Organización vecinal</option>
-								<option value="startup" {{#ifcond projectType.type '==' 'startup'}} 'select' {{else}} {{/ifcond}}>Startup</option>
-								<option value="ontransition" {{#ifcond projectType.type '==' 'ontransition'}} 'select' {{else}} {{/ifcond}}>En transición</option>
+								<option value="collective" {{#ifcond p.projectType.type '==' 'collective'}} 'select' {{else}}  {{/ifcond}}>Colectivo</option>
+								<option value="cooperative" {{#ifcond p.projectType.type '==' 'cooperative'}} 'select' {{else}} {{/ifcond}}>Cooperativa</option>
+								<option value="ngo" {{#ifcond p.projectType.type '==' 'ngo'}} 'select' {{else}} {{/ifcond}}>ONG</option>
+								<option value="ethicalbusiness" {{#ifcond p.projectType.type '==' 'ethicalbusiness'}} 'select' {{else}} {{/ifcond}}>Negocio Ético</option>
+								<option value="neighborsorg" {{#ifcond p.projectType.type '==' 'neighborsorg'}} 'select' {{else}} {{/ifcond}}>Organización vecinal</option>
+								<option value="startup" {{#ifcond p.projectType.type '==' 'startup'}} 'select' {{else}} {{/ifcond}}>Startup</option>
+								<option value="ontransition" {{#ifcond p.projectType.type '==' 'ontransition'}} 'select' {{else}} {{/ifcond}}>En transición</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-sm-2 control-label">Página web:</label>
 						<div class="col-sm-9">
-							<input class="form-control" name="webpage" type="text" value="{{webpage}}"/>
+							<input class="form-control" name="webpage" type="text" value="{{p.webpage}}"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-sm-2 control-label">Twitter:</label>
 						<div class="col-sm-9">
-							<input class="form-control" name="twitter" type="text" value="{{twitter}}"/>
+							<input class="form-control" name="twitter" type="text" value="{{p.twitter}}"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-sm-2 control-label">Facebook:</label>
 						<div class="col-sm-9">
-							<input class="form-control" name="facebook" type="text" value="{{facebook}}"/>
+							<input class="form-control" name="facebook" type="text" value="{{p.facebook}}"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-sm-2 control-label">Email:</label>
 						<div class="col-sm-9">
-							<input class="form-control" name="email" type="text" value="{{email}}"/>
+							<input class="form-control" name="email" type="text" value="{{p.email}}"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-sm-2 control-label">Telefono:</label>
 						<div class="col-sm-9">
-							<input class="form-control" name="phone" type="text" value="{{phone}}"/>
+							<input class="form-control" name="phone" type="text" value="{{p.phone}}"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-sm-2 control-label">Celular:</label>
 						<div class="col-sm-9">
-							<input class="form-control" name="mobile" type="text" value="{{mobile}}"/>
+							<input class="form-control" name="mobile" type="text" value="{{p.mobile}}"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-sm-2 control-label">Dirección:</label>
 						<div class="col-sm-9">
-							<input class="form-control" name="address" type="text" value="{{address}}"/>
+							<input class="form-control" name="address" type="text" value="{{p.address}}"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="" class="col-sm-2 control-label">Horarios:</label>
 						<div class="col-sm-9">
-							<div id="schedule">
-								{{#each schedule}}
-								<div>{{this.days}}: {{this.hours}} <a href="#" id="removeSchedule{{@index}}"><i class="fa fa-times"></i></a></div>
+							<div id="schedules">
+								{{#each p.schedule}}
+								<div><input class="scheduleDays" name="schedule[{{@index}}].days" value="{{days}}"><input class="scheduleHours" name="schedule[0].hours" value="{{hours}}"><i class="fa fa-times mr-l-5"></i></div>
 								{{/each}}
 							</div>
 							<div>
@@ -1548,36 +1572,13 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="" class="col-sm-2 control-label">Ofrece:</label>
-						<div class="col-sm-9">
-							<div id="offers">
-								{{#each offers}}
-								<div>{{this}} <a href="#" id="removeOffer{{@index}}"><i class="fa fa-times"></i></a></div>
-								{{/each}}
-							</div>
-							<div>
-								<input class="form-control" type="text" id="newOfferInput"/>
-								<div class="btn btn-default" id="addOfferBtn" onclick="addOffer()">+</div>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="" class="col-sm-2 control-label">Necesita:</label>
-						<div class="col-sm-9">
-							<div id="needs">
-								{{#each needs}}
-								<div>{{this}} <a href="#" id="removeNeed{{@index}}"><i class="fa fa-times"></i></a></div>
-								{{/each}}
-							</div>
-							<div>
-								<input class="form-control" type="text" id="newNeedInput" />
-								<div class="btn btn-default" id="addNeedBtn" onclick="addNeed()">+</div>
-							</div>	
-						</div>					
-					</div>
-					<div class="form-group">
 						<label class="col-sm-2 control-label">Ubicación</label>
 						<div class="col-sm-9"><div id="mapConf"></div></div>
+            <div id="mapElements">
+              <div id="btnCloseToMe" class="" title="Cerca de mí" data-toggle="tooltip">
+                <i class="fa fa-crosshairs fa-2x" ></i>
+              </div>
+            </div>
 					</div>
 					<div>
 						<input type="hidden" id="hdnInputLat" name="latitude"/>
@@ -1585,7 +1586,7 @@
 					</div>
 				</form>
         <div class="col-md-10 col-md-offset-2">
-          <a href="#" id="editProfileBtn" class="btn btn-lg btn-primary disabled">Editar</a>
+          <a href="#" id="editProfileBtn" class="btn btn-lg btn-primary disabled" onclick="return onEditBtnClicked()">Editar</a>
         </div>
 		</div>
 		{{/if}}

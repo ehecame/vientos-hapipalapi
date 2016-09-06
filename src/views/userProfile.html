@@ -5,8 +5,8 @@
       <div id="topBar">
         <div class="row">
           <div id="picture" class="col-md-3 col-sm-6">
-            {{#if profilePicture}}
-            	<img src="/img/{{profilePicture}}">
+            {{#if u.profilePicture}}
+            	<img src="/img/{{u.profilePicture}}">
             {{else}}
             <div class="vcenter">
               <div class="fakePicture">FOTO</div>
@@ -15,19 +15,19 @@
           </div>
           <div id="personalData" class="col-md-3 col-sm-6">
             <div class="vcenter ">
-              <div><strong>{{name}} {{lastname}}</strong></div>
-              <div>{{email}}</div>
-              {{#if mobile}}
-              <div>{{mobile}}</div>
-              {{/if}} {{#if phone}}
-              <div>{{phone}}</div>
+              <div><strong>{{u.name}} {{u.lastname}}</strong></div>
+              <div>{{u.email}}</div>
+              {{#if u.mobile}}
+              <div>{{u.mobile}}</div>
+              {{/if}} {{#if u.phone}}
+              <div>{{u.phone}}</div>
               {{/if}}
             </div>
             <div class="right-border"></div>
           </div>
           <div id="interests" class="col-md-3 col-sm-6">
             <div class="vcenter">
-              {{#each interests}} #{{this}} {{/each}}
+              {{#each u.interests}} #{{this}} {{/each}}
             </div>
             <div class="right-border"></div>
           </div>
@@ -394,12 +394,12 @@
       <div id="secOffersNeeds" class="row profileSec tab-pane" role="tabpanel">
         <div id="offers" class="col-md-5">
           <h2 class="profileTitle">Ofrecimientos</h2>
-	        <button class="btn btn-default {{#if (isEmpty offers)}}hidden{{/if}}" id="newOfferBtn"><i class="fa fa-plus"></i></button>
-	        <div class="addCollaborationSec {{#if (notEmpty needs)}}hidden{{/if}}">
+	        <button class="btn btn-default {{#if (isEmpty u.offers)}}hidden{{/if}}" id="newOfferBtn"><i class="fa fa-plus"></i></button>
+	        <div class="addCollaborationSec {{#if (notEmpty u.needs)}}hidden{{/if}}">
           	<div class="form-group row">
           		<label class="col-md-3">Titulo:</label>
           		<div class="col-md-9">
-          			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+          			<input value="" class="form-control newCollaborationTitle"/>
           		</div>
           		<label class="col-md-3">Tipo:</label>
           		<div class="col-md-9">
@@ -424,15 +424,15 @@
           	</div>
           </div>
           <div id="offerList" class="row">
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'material'))}}hidden{{/if}}" id="materialOfferColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.offers 'material'))}}hidden{{/if}}" id="materialOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/material" class="icon">
                 <strong>Materiales</strong>
-                <span class="label label-default" id="materialOfferNum">{{#count (filterByType offers 'material')}}{{/count}}</span>
+                <span class="label label-default" id="materialOfferNum">{{#count (filterByType u.offers 'material')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="materialOfferColCatList">
-          			{{#each (filterByType offers 'material')}}
+          			{{#each (filterByType u.offers 'material')}}
                 <div class="offer">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -470,15 +470,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'knowledge'))}}hidden{{/if}}" id="knowledgeOfferColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.offers 'knowledge'))}}hidden{{/if}}" id="knowledgeOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/knowledge" class="icon">
                 <strong>Conocimientos y Habilidades</strong>
-                <span class="label label-default" id="knowledgeOfferNum">{{#count (filterByType offers 'knowledge')}}{{/count}}</span>
+                <span class="label label-default" id="knowledgeOfferNum">{{#count (filterByType u.offers 'knowledge')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="knowledgeOfferColCatList">
-          			{{#each (filterByType offers 'knowledge')}}
+          			{{#each (filterByType u.offers 'knowledge')}}
                 <div class="offer">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -516,15 +516,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'product'))}}hidden{{/if}}" id="productOfferColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.offers 'product'))}}hidden{{/if}}" id="productOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/product" class="icon">
                 <strong>Productos</strong>
-                <span class="label label-default" id="productOfferNum">{{#count (filterByType offers 'product')}}{{/count}}</span>
+                <span class="label label-default" id="productOfferNum">{{#count (filterByType u.offers 'product')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="productOfferColCatList">
-          			{{#each (filterByType offers 'product')}}
+          			{{#each (filterByType u.offers 'product')}}
                 <div class="offer">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -562,15 +562,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'service'))}}hidden{{/if}}" id="serviceOfferColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.offers 'service'))}}hidden{{/if}}" id="serviceOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/service" class="icon">
                 <strong>Servicios</strong>
-                <span class="label label-default" id="serviceOfferNum">{{#count (filterByType offers 'service')}}{{/count}}</span>
+                <span class="label label-default" id="serviceOfferNum">{{#count (filterByType u.offers 'service')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="serviceOfferColCatList">
-          			{{#each (filterByType offers 'service')}}
+          			{{#each (filterByType u.offers 'service')}}
                 <div class="offer">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -608,15 +608,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'event'))}}hidden{{/if}}" id="eventOfferColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.offers 'event'))}}hidden{{/if}}" id="eventOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/event" class="icon">
                 <strong>Eventos y Actividades</strong>
-                <span class="label label-default" id="eventOfferNum">{{#count (filterByType offers 'event')}}{{/count}}</span>
+                <span class="label label-default" id="eventOfferNum">{{#count (filterByType u.offers 'event')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="eventOfferColCatList">
-          			{{#each (filterByType offers 'event')}}
+          			{{#each (filterByType u.offers 'event')}}
                 <div class="offer">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -654,15 +654,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'job'))}}hidden{{/if}}" id="jobOfferColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.offers 'job'))}}hidden{{/if}}" id="jobOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/job" class="icon">
                 <strong>Chambas</strong>
-                <span class="label label-default" id="jobOfferNum">{{#count (filterByType offers 'job')}}{{/count}}</span>
+                <span class="label label-default" id="jobOfferNum">{{#count (filterByType u.offers 'job')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="jobOfferColCatList">
-          			{{#each (filterByType offers 'job')}}
+          			{{#each (filterByType u.offers 'job')}}
                 <div class="offer">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -700,15 +700,15 @@
                 {{/each}}
               </div>
             </div>
-	            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'volunteer'))}}hidden{{/if}}" id="volunteerOfferColCat">
+	            <div class="collaborationCategory {{#if (isEmpty (filterByType u.offers 'volunteer'))}}hidden{{/if}}" id="volunteerOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/volunteer" class="icon">
                 <strong>Tequio y Voluntariado</strong>
-                <span class="label label-default" id="volunteerOfferNum">{{#count (filterByType offers 'volunteer')}}{{/count}}</span>
+                <span class="label label-default" id="volunteerOfferNum">{{#count (filterByType u.offers 'volunteer')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="volunteerOfferColCatList">
-          			{{#each (filterByType offers 'volunteer')}}
+          			{{#each (filterByType u.offers 'volunteer')}}
                 <div class="offer">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -746,15 +746,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'spread'))}}hidden{{/if}}" id="spreadOfferColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.offers 'spread'))}}hidden{{/if}}" id="spreadOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/spread" class="icon">
                 <strong>Difusión de Proyectos</strong>
-                <span class="label label-default" id="spreadOfferNum">{{#count (filterByType offers 'spread')}}{{/count}}</span>
+                <span class="label label-default" id="spreadOfferNum">{{#count (filterByType u.offers 'spread')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="spreadOfferColCatList">
-          			{{#each (filterByType offers 'spread')}}
+          			{{#each (filterByType u.offers 'spread')}}
                 <div class="offer">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -792,15 +792,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'space'))}}hidden{{/if}}" id="spaceOfferColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.offers 'space'))}}hidden{{/if}}" id="spaceOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/space" class="icon">
                 <strong>Espacios</strong>
-                <span class="label label-default" id="spaceOfferNum">{{#count (filterByType offers 'space')}}{{/count}}</span>
+                <span class="label label-default" id="spaceOfferNum">{{#count (filterByType u.offers 'space')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="spaceOfferColCatList">
-          			{{#each (filterByType offers 'space')}}
+          			{{#each (filterByType u.offers 'space')}}
                 <div class="offer">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -838,15 +838,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'link'))}}hidden{{/if}}" id="linkOfferColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.offers 'link'))}}hidden{{/if}}" id="linkOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/link" class="icon">
                 <strong>Recomienda y Vincula</strong>
-                <span class="label label-default" id="linkOfferNum">{{#count (filterByType offers 'link')}}{{/count}}</span>
+                <span class="label label-default" id="linkOfferNum">{{#count (filterByType u.offers 'link')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="linkOfferColCatList">
-          			{{#each (filterByType offers 'link')}}
+          			{{#each (filterByType u.offers 'link')}}
                 <div class="offer">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -884,15 +884,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'art'))}}hidden{{/if}}" id="artOfferColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.offers 'art'))}}hidden{{/if}}" id="artOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/art" class="icon">
                 <strong>Comparte tu arte</strong>
-                <span class="label label-default" id="artOfferNum">{{#count (filterByType offers 'art')}}{{/count}}</span>
+                <span class="label label-default" id="artOfferNum">{{#count (filterByType u.offers 'art')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="artOfferColCatList">
-          			{{#each (filterByType offers 'art')}}
+          			{{#each (filterByType u.offers 'art')}}
                 <div class="offer">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -930,15 +930,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType offers 'funding'))}}hidden{{/if}}" id="fundingOfferColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.offers 'funding'))}}hidden{{/if}}" id="fundingOfferColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/funding" class="icon">
                 <strong>Fondeo colectivo</strong>
-                <span class="label label-default" id="fundingOfferNum">{{#count (filterByType offers 'funding')}}{{/count}}</span>
+                <span class="label label-default" id="fundingOfferNum">{{#count (filterByType u.offers 'funding')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="fundingOfferColCatList">
-          			{{#each (filterByType offers 'funding')}}
+          			{{#each (filterByType u.offers 'funding')}}
                 <div class="offer">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -980,12 +980,12 @@
         </div>
         <div id="needs" class="col-md-5 col-md-offset-1">
           <h2 class="profileTitle">Necesidades</h2>
-          <button class="btn btn-default {{#if (isEmpty needs)}}hidden{{/if}}" id="newNeedBtn"><i class="fa fa-plus"></i></button>
-          <div class="addCollaborationSec {{#if (notEmpty needs)}}hidden{{/if}}">
+          <button class="btn btn-default {{#if (isEmpty u.needs)}}hidden{{/if}}" id="newNeedBtn"><i class="fa fa-plus"></i></button>
+          <div class="addCollaborationSec {{#if (notEmpty u.needs)}}hidden{{/if}}">
           	<div class="form-group row">
           		<label class="col-md-3">Titulo:</label>
           		<div class="col-md-9">
-          			<input value="{{title}}" class="form-control newCollaborationTitle"/>
+          			<input value="" class="form-control newCollaborationTitle"/>
           		</div>
           		<label class="col-md-3">Tipo:</label>
           		<div class="col-md-9">
@@ -1010,15 +1010,15 @@
           	</div>
           </div>
           <div id="needList" class="row">
-            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'material'))}}hidden{{/if}}" id="materialNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.needs 'material'))}}hidden{{/if}}" id="materialNeedColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/material" class="icon">
                 <strong>Materiales</strong>
-                <span class="label label-default" id="materialNeedNum">{{#count (filterByType needs 'material')}}{{/count}}</span>
+                <span class="label label-default" id="materialNeedNum">{{#count (filterByType u.needs 'material')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="materialNeedColCatList">
-          			{{#each (filterByType needs 'material')}}
+          			{{#each (filterByType u.needs 'material')}}
                 <div class="need">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -1056,15 +1056,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'knowledge'))}}hidden{{/if}}" id="knowledgeNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.needs 'knowledge'))}}hidden{{/if}}" id="knowledgeNeedColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/knowledge" class="icon">
                 <strong>Conocimientos y Habilidades</strong>
-                <span class="label label-default" id="knowledgeNeedNum">{{#count (filterByType needs 'knowledge')}}{{/count}}</span>
+                <span class="label label-default" id="knowledgeNeedNum">{{#count (filterByType u.needs 'knowledge')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="knowledgeNeedColCatList">
-          			{{#each (filterByType needs 'knowledge')}}
+          			{{#each (filterByType u.needs 'knowledge')}}
                 <div class="need">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -1102,15 +1102,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'product'))}}hidden{{/if}}" id="productNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.needs 'product'))}}hidden{{/if}}" id="productNeedColCat">
               <div class="collaborationCategoryTitle">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/product" class="icon"/>
                 <strong>Productos</strong>
-                <span class="label label-default" id="productNeedNum">{{#count (filterByType needs 'product')}}{{/count}}</span>
+                <span class="label label-default" id="productNeedNum">{{#count (filterByType u.needs 'product')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="productNeedColCatList">
-          			{{#each (filterByType needs 'product')}}
+          			{{#each (filterByType u.needs 'product')}}
                 <div class="need">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -1148,15 +1148,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'service'))}}hidden{{/if}}" id="serviceNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.needs 'service'))}}hidden{{/if}}" id="serviceNeedColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/service" class="icon">
                 <strong>Servicios</strong>
-                <span class="label label-default" id="serviceNeedNum">{{#count (filterByType needs 'service')}}{{/count}}</span>
+                <span class="label label-default" id="serviceNeedNum">{{#count (filterByType u.needs 'service')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="serviceNeedColCatList">
-          			{{#each (filterByType needs 'service')}}
+          			{{#each (filterByType u.needs 'service')}}
                 <div class="need">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -1194,15 +1194,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'event'))}}hidden{{/if}}" id="eventNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.needs 'event'))}}hidden{{/if}}" id="eventNeedColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/event" class="icon">
                 <strong>Eventos y Actividades</strong>
-                <span class="label label-default" id="eventNeedNum">{{#count (filterByType needs 'event')}}{{/count}}</span>
+                <span class="label label-default" id="eventNeedNum">{{#count (filterByType u.needs 'event')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="eventNeedColCatList">
-          			{{#each (filterByType needs 'event')}}
+          			{{#each (filterByType u.needs 'event')}}
                 <div class="need">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -1240,15 +1240,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'job'))}}hidden{{/if}}" id="jobNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.needs 'job'))}}hidden{{/if}}" id="jobNeedColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/job" class="icon">
                 <strong>Chambas</strong>
-                <span class="label label-default" id="jobNeedNum">{{#count (filterByType needs 'job')}}{{/count}}</span>
+                <span class="label label-default" id="jobNeedNum">{{#count (filterByType u.needs 'job')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="jobNeedColCatList">
-          			{{#each (filterByType needs 'job')}}
+          			{{#each (filterByType u.needs 'job')}}
                 <div class="need">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -1286,15 +1286,15 @@
                 {{/each}}
               </div>
             </div>
-	            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'volunteer'))}}hidden{{/if}}" id="volunteerNeedColCat">
+	            <div class="collaborationCategory {{#if (isEmpty (filterByType u.needs 'volunteer'))}}hidden{{/if}}" id="volunteerNeedColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/volunteer" class="icon">
                 <strong>Tequio y Voluntariado</strong>
-                <span class="label label-default" id="volunteerNeedNum">{{#count (filterByType needs 'volunteer')}}{{/count}}</span>
+                <span class="label label-default" id="volunteerNeedNum">{{#count (filterByType u.needs 'volunteer')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="volunteerNeedColCatList">
-          			{{#each (filterByType needs 'volunteer')}}
+          			{{#each (filterByType u.needs 'volunteer')}}
                 <div class="need">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -1332,15 +1332,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'spread'))}}hidden{{/if}}" id="spreadNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.needs 'spread'))}}hidden{{/if}}" id="spreadNeedColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/spread" class="icon">
                 <strong>Difusión de Proyectos</strong>
-                <span class="label label-default" id="spreadNeedNum">{{#count (filterByType needs 'spread')}}{{/count}}</span>
+                <span class="label label-default" id="spreadNeedNum">{{#count (filterByType u.needs 'spread')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="spreadNeedColCatList">
-          			{{#each (filterByType needs 'spread')}}
+          			{{#each (filterByType u.needs 'spread')}}
                 <div class="need">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -1378,15 +1378,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'space'))}}hidden{{/if}}" id="spaceNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.needs 'space'))}}hidden{{/if}}" id="spaceNeedColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/space" class="icon">
                 <strong>Espacios</strong>
-                <span class="label label-default" id="spaceNeedNum">{{#count (filterByType needs 'space')}}{{/count}}</span>
+                <span class="label label-default" id="spaceNeedNum">{{#count (filterByType u.needs 'space')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="spaceNeedColCatList">
-          			{{#each (filterByType needs 'space')}}
+          			{{#each (filterByType u.needs 'space')}}
                 <div class="need">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -1424,15 +1424,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'link'))}}hidden{{/if}}" id="linkNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.needs 'link'))}}hidden{{/if}}" id="linkNeedColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/link" class="icon">
                 <strong>Recomienda y Vincula</strong>
-                <span class="label label-default" id="linkNeedNum">{{#count (filterByType needs 'link')}}{{/count}}</span>
+                <span class="label label-default" id="linkNeedNum">{{#count (filterByType u.needs 'link')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="linkNeedColCatList">
-          			{{#each (filterByType needs 'link')}}
+          			{{#each (filterByType u.needs 'link')}}
                 <div class="need">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -1470,15 +1470,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'art'))}}hidden{{/if}}" id="artNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.needs 'art'))}}hidden{{/if}}" id="artNeedColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/art" class="icon">
                 <strong>Comparte tu arte</strong>
-                <span class="label label-default" id="artNeedNum">{{#count (filterByType needs 'art')}}{{/count}}</span>
+                <span class="label label-default" id="artNeedNum">{{#count (filterByType u.needs 'art')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="artNeedColCatList">
-          			{{#each (filterByType needs 'art')}}
+          			{{#each (filterByType u.needs 'art')}}
                 <div class="need">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -1516,15 +1516,15 @@
                 {{/each}}
               </div>
             </div>
-            <div class="collaborationCategory {{#if (isEmpty (filterByType needs 'funding'))}}hidden{{/if}}" id="fundingNeedColCat">
+            <div class="collaborationCategory {{#if (isEmpty (filterByType u.needs 'funding'))}}hidden{{/if}}" id="fundingNeedColCat">
               <div class="collaborationCategoryTitle ">
                 <i class="fa fa-caret-right"></i>
                 <img src="svg/funding" class="icon">
                 <strong>Fondeo colectivo</strong>
-                <span class="label label-default" id="fundingNeedNum">{{#count (filterByType needs 'funding')}}{{/count}}</span>
+                <span class="label label-default" id="fundingNeedNum">{{#count (filterByType u.needs 'funding')}}{{/count}}</span>
               </div>
               <div class="collaborationCategoryList hidden" id="fundingNeedColCatList">
-          			{{#each (filterByType needs 'funding')}}
+          			{{#each (filterByType u.needs 'funding')}}
                 <div class="need">
                   <div class="collaborationTitle"><strong>{{title}}</strong></div>
                   <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
@@ -1569,49 +1569,49 @@
         <div id="categories">
           <h2 class="profileTitle">Categorías</h2>
           <div class="row" id="categoriesSec">
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'humanrights'}}selected" {{else}} "{{/ifcond}}" id="humanrights">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'humanrights'}}selected" {{else}} "{{/ifcond}}" id="humanrights">
               <i class="fa fa-globe fa-3x"></i>Derechos Humanos
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'productsservices'}}selected" {{else}} "{{/ifcond}}" id="productsservices">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'productsservices'}}selected" {{else}} "{{/ifcond}}" id="productsservices">
               <i class="fa fa-shopping-basket fa-3x"></i>Productos y Servicios
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'environment'}}selected" {{else}} "{{/ifcond}}" id="environment">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'environment'}}selected" {{else}} "{{/ifcond}}" id="environment">
               <i class="fa fa-pagelines fa-3x"></i>Medio Ambiente
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'artculture'}}selected" {{else}} "{{/ifcond}}" id="artculture">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'artculture'}}selected" {{else}} "{{/ifcond}}" id="artculture">
               <i class="fa fa-paint-brush fa-3x"></i>Arte y Cultura
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'gender'}}selected" {{else}} "{{/ifcond}}" id="gender">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'gender'}}selected" {{else}} "{{/ifcond}}" id="gender">
               <i class="fa fa-transgender fa-3x"></i>Género
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'health'}}selected" {{else}} "{{/ifcond}}" id="health">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'health'}}selected" {{else}} "{{/ifcond}}" id="health">
               <i class="fa fa-medkit fa-3x"></i>Salud
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'education'}}selected" {{else}} "{{/ifcond}}" id="education">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'education'}}selected" {{else}} "{{/ifcond}}" id="education">
               <i class="fa fa-book fa-3x"></i>Educación
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'workshops'}}selected" {{else}} "{{/ifcond}}" id="workshops">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'workshops'}}selected" {{else}} "{{/ifcond}}" id="workshops">
               <i class="fa fa-puzzle-piece fa-3x"></i>Talleres y Clases
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'community'}}selected" {{else}} "{{/ifcond}}" id="community">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'community'}}selected" {{else}} "{{/ifcond}}" id="community">
               <i class="fa fa-users fa-3x"></i>Comunidad
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'food'}}selected" {{else}} "{{/ifcond}}" id="food">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'food'}}selected" {{else}} "{{/ifcond}}" id="food">
               <i class="fa fa-cutlery fa-3x"></i>Comida
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'housing'}}selected" {{else}} "{{/ifcond}}" id="housing">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'housing'}}selected" {{else}} "{{/ifcond}}" id="housing">
               <i class="fa fa-home fa-3x"></i>Vivienda
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'clothing'}}selected" {{else}} "{{/ifcond}}" id="clothing">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'clothing'}}selected" {{else}} "{{/ifcond}}" id="clothing">
               <i class="fa fa-scissors fa-3x"></i>Vestido
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'communication'}}selected" {{else}} "{{/ifcond}}" id="communication">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'communication'}}selected" {{else}} "{{/ifcond}}" id="communication">
               <i class="fa fa-bullhorn fa-3x"></i>Comunicación
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'technology'}}selected" {{else}} "{{/ifcond}}" id="technology">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'technology'}}selected" {{else}} "{{/ifcond}}" id="technology">
               <i class="fa fa-cogs fa-3x"></i>Tecnología
             </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond categories 'contains' 'transport'}}selected" {{else}} "{{/ifcond}}" id="transport">
+            <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'transport'}}selected" {{else}} "{{/ifcond}}" id="transport">
               <i class="fa fa-bicycle fa-3x"></i>Transporte
             </div>
           </div>
@@ -1622,7 +1622,7 @@
             <input placeholder="ingresa un interés" id="newInterestInput" class="form-control" />
             <button id="addInterestBtn" class="btn btn-default">Agrega <i class="fa fa-plus-circle mr-l-5 green"></i></button>
             <div class="well mr-t-10 fs-125" id="interestList">
-              {{#each interests}}
+              {{#each u.interests}}
               <span class="label label-default">{{this}}<a href="#"><i class="fa fa-times mr-l-10"></i></a></span> {{/each}}
             </div>
           </div>
@@ -1641,9 +1641,9 @@
           <button id="addSkillBtn" class="btn btn-default">Agrega<i class="fa fa-plus-circle green mr-l-5"></i></button>
           <div class="mr-t-10">
             <ul class="list-group" id="skillList">
-              {{#each skills}}
+              {{#each u.skills}}
               <li class="list-group-item skill">
-                <span class="badge"><a href="#"><i class="fa fa-times"></i></a></span> {{this.skill}} {{#each this.wantTo}} <i class="fa fa-{{this}} mr-l-5"></i>{{/each}}
+                <span class="badge"><a href="#"><i class="fa fa-times"></i></a></span> {{skill}} {{#each wantTo}} <i class="fa fa-{{this}} mr-l-5"></i>{{/each}}
               </li>
               {{/each}}
             </ul>
@@ -1665,12 +1665,12 @@
         </div>
         <div>
           <form id="personalDataForm">
-          	<input type="hidden" name="location.lat" id="lat" value="{{location.lat}}">
-          	<input type="hidden" name="location.lon" id="lon" value="{{location.lon}}">
+          	<input type="hidden" name="location.lat" id="lat" value="{{u.location.lat}}">
+          	<input type="hidden" name="location.lon" id="lon" value="{{u.location.lon}}">
             <div class="form-group row">
               <label for="nameInput" class="col-xs-2 hidden-xs">Nombre</label>
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-                <input type="text" class="form-control" id="nameInput" name="name" placeholder="Nombre" value="{{name}}"/>
+                <input type="text" class="form-control" id="nameInput" name="name" placeholder="Nombre" value="{{u.name}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
 				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini"/>
 				      </span>
@@ -1679,7 +1679,7 @@
             <div class="form-group row">
               <label for="nameInput" class="col-xs-2 hidden-xs">Apellido</label>
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-                <input type="text" class="form-control" id="lastnameInput" name="lastname" placeholder="Apellido" value="{{lastname}}"/>
+                <input type="text" class="form-control" id="lastnameInput" name="lastname" placeholder="Apellido" value="{{u.lastname}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
 					      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini"/>
 					      </span>
@@ -1688,7 +1688,7 @@
             <div class="form-group row">
               <label for="usernameInput" class="col-xs-2 hidden-xs">Username:</label>
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-                <input type="text" class="form-control" id="usernameInput" name="username" placeholder="Username" value="{{username}}"/>
+                <input type="text" class="form-control" id="usernameInput" name="username" placeholder="Nombre de usuario" value="{{u.username}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
 				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini">
 				      </span>
@@ -1697,7 +1697,7 @@
             <div class="form-group row">
               <label for="emailInput" class="col-xs-2 hidden-xs">Correo Electrónico:</label>
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-                <input type="text" class="form-control" id="emailInput" name="email" placeholder="Correo Electrónico" value="{{email}}"/>
+                <input type="text" class="form-control" id="emailInput" name="email" placeholder="Correo Electrónico" value="{{u.email}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
 				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini">
 				      </span>
@@ -1718,7 +1718,7 @@
             <div class="form-group row">
               <label for="twitterInput" class="col-xs-2 hidden-xs">Twitter:</label>
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-                <input type="text" class="form-control" id="twitterInput" name="twitter" placeholder="Twitter" value="{{twitter}}"/>
+                <input type="text" class="form-control" id="twitterInput" name="twitter" placeholder="Twitter" value="{{u.twitter}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
 				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini">
 				      </span>
@@ -1736,7 +1736,7 @@
             <div class="form-group row">
               <label for="phoneInput" class="col-xs-2 hidden-xs">Telefono:</label>
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-                <input type="text" class="form-control" id="phoneInput" name="name" placeholder="Teléfono" value="{{phone}}"/>
+                <input type="text" class="form-control" id="phoneInput" name="name" placeholder="Teléfono" value="{{u.phone}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
 				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini">
 				      </span>
@@ -1745,7 +1745,7 @@
             <div class="form-group row">
               <label for="cellphoneInput" class="col-xs-2 hidden-xs">Celular:</label>
               <div class="col-xs-offset-1 col-xs-10 col-sm-9 input-group">
-                <input type="text" class="form-control" id="cellphoneInput" name="cellphone" placeholder="Celular" value="{{mobile}}"/>
+                <input type="text" class="form-control" id="cellphoneInput" name="cellphone" placeholder="Celular" value="{{u.mobile}}"/>
                 <span class="input-group-addon" style="padding: 0px 10px">
 				      	<input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="Publico" data-off="Privado" data-width="80" data-size="mini">
 				      </span>

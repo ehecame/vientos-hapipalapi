@@ -58,7 +58,24 @@
              </li>
             {{#if isAuthenticated}}
                 <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
-                <li class="navBarBtn"><a href="/myprofile">{{credentials.name}} {{credentials.lastname}}</a></li>
+                <li class="navBarBtn">
+                {{#if projects}}
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user mr-r-5"></i>{{credentials.name}} {{credentials.lastname}} <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/myprofile">Mi perfil</a></li>
+                            <li role="separator" class="divider"></li>
+                            {{#each projects}}
+                            <li><a href="/project/{{_id}}">{{name}}</a></li>
+                            {{/each}}
+                        </ul>
+                {{else}}
+                    <a href="/myprofile">
+                        <i class="fa fa-user mr-r-5"></i>
+                        {{credentials.name}} {{credentials.lastname}}
+                    </a>
+                {{/if}}
+                </li>
+
                 <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
                 <li class="navBarBtn"><a href="/logout">LOG OUT</a></li>
                 <li class="navBarBtn no_mobile"><a href="#">&nbsp;</a></li>

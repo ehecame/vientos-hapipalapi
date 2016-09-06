@@ -45,13 +45,17 @@ UserController.prototype = (function () {
       var newuser = {
         email: request.payload.email,
         password: require('bcrypt-nodejs').hashSync(request.payload.password),
-        username: request.payload.username
+        username: request.payload.username,
+        name: request.payload.name,
+        lastname: request.payload.lastname
       }
-      var db = request.mongo.db
-      UserManager.insert(db, newuser, function (res) {
-        console.log(res)
-        reply(res)
-      })
+      console.log(newuser)
+      reply('gooot')
+      // var db = request.mongo.db
+      // UserManager.insert(db, newuser, function (res) {
+      //   console.log(res)
+      //   reply(res)
+      // })
     },
     logout: function logout (request, reply) {
       request.cookieAuth.clear()
@@ -69,12 +73,32 @@ UserController.prototype = (function () {
         if (request.payload.password)
           request.payload.password = require('bcrypt-nodejs').hashSync(request.payload.password)
         // reply('gooot')
-        UserManager.update(request.mongo.db, {'username': credentials.username}, {$set: updatedUser}, function (res) {
+        UserManager.update(db, {'username': credentials.username}, {$set: updatedUser}, function (res) {
           reply(res)
         })
       } else {
         reply('not Authenticated')
       }
+    },
+    existsUserName: function existsUserName (request, reply) {
+      console.log('existsUserName')
+      var db = request.mongo.db
+      UserManager.findOne(db, {'username': request.query.username}, {_id:1}, function (res) {
+        if(res)
+          reply(true)
+        else 
+          reply(false)
+      })
+    },
+    existsEmail: function existsEmail (request, reply) {
+      console.log('existsEmail')
+      var db = request.mongo.db
+      UserManager.findOne(db, {'email': request.query.email}, {_id:1}, function (res) {
+        if(res)
+          reply(true)
+        else 
+          reply(false)
+      })
     },
     // COLLABORATION
     addCollaboration: function addCollaboration (request, reply) {

@@ -1,14 +1,12 @@
-'use strict'
+var _ = require('lodash');
+var MongoClient = require('mongodb').MongoClient;
 
-const Hapi = require('hapi')
+var url = 'mongodb://localhost:27018/vientos-test'
 
-const server = new Hapi.Server()
-server.connection({ port: 3001 })
+MongoClient.connect(url, function(err, db) {
+  var codesCol = db.collection("codes")
+  _.each(codes, function(code){
+    codesCol.insert({code: code}, function(res){console.log(res)})
+  })
+});
 
-server.start((err) => {
-
-  if (err) {
-    throw err
-  }
-  console.log('Server running at:', server.info.uri)
-})

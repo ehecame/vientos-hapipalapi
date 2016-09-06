@@ -18,9 +18,7 @@ module.exports = function () {
       path: '/api/user/register',
       config: {
         handler: UserController.register,
-        auth: {
-          scope: 'admin'
-        }
+        auth: false
       }
     }, {
       method: 'DELETE',
@@ -30,10 +28,19 @@ module.exports = function () {
       }
     },
     {
-      method: 'PUT',
-      path: '/api/user',
+      method: 'GET',
+      path: '/api/user/existsusername',
       config: {
-        handler: UserController.update
+        handler: UserController.existsUserName,
+        auth: false
+      }
+    },
+    {
+      method: 'GET',
+      path: '/api/user/existsemail',
+      config: {
+        handler: UserController.existsEmail,
+        auth: false
       }
     },
     // COLLABORATIONS

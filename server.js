@@ -1,4 +1,4 @@
-﻿'use strict'
+'use strict'
 const Hapi = require('hapi')
 var routes = require('./src/routes')
 var credentials = require('./credentials.json')
@@ -35,7 +35,7 @@ server.register(
 
 // Registro de plugin hapi-auth-cokie y definición de estrategia de autenticación
 server.register(require('hapi-auth-cookie'), function (err) {
-  server.auth.strategy('standard', 'cookie', true, {
+  server.auth.strategy('standard', 'cookie', true, { // if true, all routes have authentication by default
     password: credentials.cookie_pass, // TODO debe de venir de ENV
     cookie: 'sidVientos',
     redirectTo: '/login',
@@ -65,7 +65,7 @@ server.register(require('vision'), function (err) {
   })
 })
 
-// Registro de plugin inert
+// Registro de plugin inert. SIN EL NO PUEDO HACER reply.file para staticFiles
 server.register(require('inert') , function (err) {
   if (err) {
     console.error(err)

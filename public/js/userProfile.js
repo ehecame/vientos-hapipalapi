@@ -143,7 +143,8 @@ function initiateInterestsSkillsFunc () {
 
 function addInterest () {
   if ($('#newInterestInput').val().length > 0) {
-    $('#interestList').append('<span class="label label-default">' + $('#newInterestInput').val() + '<i class="fa fa-times mr-l-10"></i></span>')
+    $('#interestList').append('<span class="label label-default">' + $('#newInterestInput').val() + '<a href="#"><i class="fa fa-times mr-l-10"></i></a></span>')
+    $('#interestList a').click(removeInterest)
     var data = {interests: $('#newInterestInput').val()}
     $('#newInterestInput').val('')
         $.ajax({
@@ -207,6 +208,7 @@ function addSkill () {
 function removeSkill (e) {
   e.preventDefault()
   var skill = $(this).parent().parent()[0]
+  console.log(skill)
   var data = {skill: skill.innerText.trim()}
   console.log(data);
   $.ajax({
@@ -347,7 +349,7 @@ function initializeConfigurationFunc(){
   $('#btnCloseToMe').tooltip({placement: 'top'})
   //$('changeLocationBtn').tooltip({placement: 'right'})
   $('#editProfileBtn').click(editProfile)
-  $('#personalDataForm :input').on('input', function(){
+  $('#projectDataForm :input').on('input', function(){
     $('#editProfileBtn').removeClass('disabled')
   })
   initializeMap()
@@ -421,30 +423,32 @@ function setMapView (location) {
 }
 
 function updateProfilePicture(){
-  var pictureName = $('#pictureFileInput').val().split(/(\\|\/)/g).pop()
-  $.ajax({
-    url: '/api/user',
-    type: 'PUT',
-    data: {profilePicture: pictureName},
-    success: function (data) {
-      console.log(data)
-    }
-  })
-  if ($('#pictureFileInput')[0].files.length > 0) {
-    console.log('sí tiene archivos')
-    var formData = new FormData()
-    formData.append('file', $('#pictureFileInput')[0].files[0])
-    console.log(formData)
+  if( $('#pictureFileInput').val()!=''){
+    var pictureName = $('#pictureFileInput').val().split(/(\\|\/)/g).pop()
     $.ajax({
-      url: '/uploadPicture',
-      data: formData,
-      processData: false,
-      contentType: false,
-      type: 'POST',
+      url: '/api/user',
+      type: 'PUT',
+      data: {profilePicture: pictureName},
       success: function (data) {
         console.log(data)
       }
     })
+    if ($('#pictureFileInput')[0].files.length > 0) {
+      console.log('sí tiene archivos')
+      var formData = new FormData()
+      formData.append('file', $('#pictureFileInput')[0].files[0])
+      console.log(formData)
+      $.ajax({
+        url: '/uploadPicture',
+        data: formData,
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        success: function (data) {
+          console.log(data)
+        }
+      })
+    }
   }
   return false
 }

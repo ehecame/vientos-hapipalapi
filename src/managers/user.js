@@ -6,6 +6,11 @@ UserManager.prototype = (function () {
         callback(docs)
       })
     },
+    findOne: function findOne (db, query, fields , callback) {
+      db.collection('users').findOne(query, fields, function (err, doc) {
+        callback(doc)
+      })
+    },
     insert: function insert (db, user, callback) {
       console.log('insertingUser')
       console.log(user)

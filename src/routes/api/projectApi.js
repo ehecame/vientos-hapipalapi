@@ -91,6 +91,12 @@ module.exports = function () {
       config: {
         handler: ProjectController.removeCollaboration
       }
-    }
+    },{
+      method: 'POST',
+      path: '/api/project/addcode',
+      config: {
+        handler: ProjectController.addCode
+      }
+    },
   ]
 }()
