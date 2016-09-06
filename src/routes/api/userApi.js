@@ -21,6 +21,12 @@ module.exports = function () {
         auth: false
       }
     }, {
+      method: 'PUT',
+      path: '/api/user',
+      config: {
+        handler: UserController.update,
+      }
+    }, {
       method: 'DELETE',
       path: '/api/user/logout',
       config: {
