@@ -264,7 +264,7 @@ function editCollaboration () {
 //CONF
 function addConfigurationFunc(){
   $('#btnCloseToMe').click(centerMapMyLocation)
-  $('#btnCloseToMe').tooltip({placement: 'top'})
+  $('#btnCloseToMe').tooltip({placement: 'bottom'})
   $('#projectDataForm :input').on('input', function(){
     $('#editProfileBtn').removeClass('disabled')
   })
