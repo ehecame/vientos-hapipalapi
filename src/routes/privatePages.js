@@ -12,6 +12,7 @@ module.exports = function () {
           setDataAuth(request, function(data){
             data.withFooter = false
             if(data.isAuthenticated){
+              console.log(data)
               var db = request.mongo.db
               var query = {username: data.credentials.username}
               var fields = {}

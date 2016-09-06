@@ -181,7 +181,6 @@ function getRandomProjectType () {
 function addMarkers (projectList) {
   var marker
   var myIcon
-  console.log(projectList)
   $.each(projectList, function (i, m) {
     console.log(m)
     m.categoryIcon = getCategoryIcon(m.categories[0].catId)
@@ -194,7 +193,6 @@ function addMarkers (projectList) {
       console.log('No tengo categorías =S : ' + m.name)
     }
     var icon = m.categories ? m.categories[0].icon : m.categoryIcon
-    console.log()
     if (m.latitude && m.longitude) {
       myIcon = L.divIcon({
         html: '<div class="myIcon fa-stack fa-2x">' +
@@ -207,7 +205,7 @@ function addMarkers (projectList) {
           '</div> ',
         popupAnchor: new L.Point(-5, -40)
       })
-      marker = L.marker([m.latitude, m.longitude], {icon: myIcon, riseOnHover: true})
+      marker = L.marker([m.location.lat, m.location.lon], {icon: myIcon, riseOnHover: true})
       marker.on('mouseover', function (e) {
         $(this._icon).find('.markerPopUp').show()
         $(this._icon).find('.markerPopUpName').show()
@@ -216,7 +214,7 @@ function addMarkers (projectList) {
         $(this._icon).find('.markerPopUp').hide()
       })
       marker.on('click', function (e) {
-        map.setView([m.latitude, m.longitude], 16, {animate: true})
+        map.setView([m.location.lat, m.location.lon], 16, {animate: true})
         showSideBar(m)
       })
       markers.addLayer(marker)

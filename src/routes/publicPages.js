@@ -104,13 +104,14 @@ module.exports = function () {
               data.p = res
               data.isOwner = data.isAdmin || 
                             ( 
-                              data.owners && 
-                              data.owners.indexOf(data.credentials.id) > -1 && 
-                              credentials.projects && 
-                              credentials.projects.indexOf(request.params.projectId) > -1
+                              data.p.owners && 
+                              data.p.owners.indexOf(data.credentials.id) > -1 && 
+                              data.credentials.projects && 
+                              data.credentials.projects.indexOf(request.params.projectId) > -1
                             )    
               if(!data.isAdmin)
                 delete data.p.projectCodes
+              delete data.p.owners
               data.p.categoriesIds = _.map(res.categories, function(cat){return cat.catId})
               console.log(data.p)
               reply.view('projectProfile', data)

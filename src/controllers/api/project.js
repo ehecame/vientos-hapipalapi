@@ -12,7 +12,19 @@ ProjectController.prototype = (function () {
       var db = request.mongo.db
       ProjectManager.findAll(db, function (res) {
         console.log('projects: ' + res.length)
-        reply(res)
+        reply(_.map(res, function(p){
+          var filter = {}
+          if(p.pilot){
+            filter = ṕ
+          }else{
+            filter.name = 'No ha sido activado'
+            filter.description = p.description
+            filter.location = p.location
+            filter.projectType = p.projectType
+            filter.categories = p.categories
+          }
+          return filter
+        }))
       })
     },
     findAutogestival: function findAutogestival (request, reply) {
