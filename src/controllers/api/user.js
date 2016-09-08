@@ -28,9 +28,6 @@ UserController.prototype = (function () {
                   projects: user.projects,
                   id: user._id.valueOf() + '',
                 }
-                console.log('buen log in')
-                console.log(account)
-                console.log(typeof account.id)
                 request.cookieAuth.set(account)
                 return reply('success')
               } else {

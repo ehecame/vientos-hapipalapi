@@ -1,8 +1,13 @@
 $(document).ready(function () {
   console.log('sí carguéeee!')
-  $('#newInterestInput').keyup(function (event) {
+  $('#usernameInput').keyup(function (event) {
     if (event.keyCode == 13) {
-      $('#addInterestBtn').click()
+      $('#passwordInput').focus()
+    }
+  })
+  $('#passwordInput').keyup(function (event) {
+    if (event.keyCode == 13) {
+      $('#loginBtn').click()
     }
   })
 })
@@ -16,6 +21,10 @@ function login () {
       console.log(data)
       if (data == 'success')
         window.location.href = $('#redirect').val()
+      if (data == 'wrong password')
+        alert('Contraseña incorrecta')
+      if (data == 'wrong username')
+        alert('Ese nombre de usuario no existe')
     }
   )
 }

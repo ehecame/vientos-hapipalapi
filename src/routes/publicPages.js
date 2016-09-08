@@ -48,7 +48,7 @@ module.exports = function () {
       }
     }, {
       method: 'GET',
-      path: '/userregister/{code?}',
+      path: '/user/register/{code?}',
       config: {
         handler: function (request, reply) {
           setDataAuth(request, function(data){

@@ -28,7 +28,7 @@ module.exports = function () {
       }
     }, {
       method: 'GET',
-      path: '/projectregister',
+      path: '/project/register',
       config: {
         handler: function (request, reply) {
           setDataAuth(request, function(data){
