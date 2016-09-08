@@ -1019,6 +1019,8 @@ h1 {
 
 .myIcon {
     z-index: 98; }
+.opa {
+    opacity: 0.5; }
 .markerPopUp {
     background-color: rgba(85, 85, 85, 0.9);
     font-size: .7em;

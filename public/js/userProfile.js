@@ -472,4 +472,4 @@ function editProfile(){
   else
     alert('por favor confirma la contraseña')
   return false
-}
+} 

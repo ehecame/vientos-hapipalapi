@@ -193,9 +193,9 @@ function addMarkers (projectList) {
       console.log('No tengo categorías =S : ' + m.name)
     }
     var icon = m.categories ? m.categories[0].icon : m.categoryIcon
-    if (m.latitude && m.longitude) {
+    if (m.locations && m.locations.length>0) {
       myIcon = L.divIcon({
-        html: '<div class="myIcon fa-stack fa-2x">' +
+        html: '<div class="myIcon ' + (m.pilot ? '' : 'opa' ) +' fa-stack fa-2x">' +
           '<i class="fa fa-map-marker fa-stack-2x" style="color:' + m.projectType.color + ';"></i>' +
           '<i class="fa fa-circle fa-stack-1x" style="margin-top: -.2em; color:' + m.projectType.color + ';"></i> ' +
           '<i class="fa ' + icon + ' fa-stack-1x" style="margin-top: -.3em; font-size: .7em; color: white; " ></i>' +
@@ -205,7 +205,7 @@ function addMarkers (projectList) {
           '</div> ',
         popupAnchor: new L.Point(-5, -40)
       })
-      marker = L.marker([m.location.lat, m.location.lon], {icon: myIcon, riseOnHover: true})
+      marker = L.marker([m.locations[0].lat, m.locations[0].lon], {icon: myIcon, riseOnHover: true})
       marker.on('mouseover', function (e) {
         $(this._icon).find('.markerPopUp').show()
         $(this._icon).find('.markerPopUpName').show()
@@ -214,7 +214,7 @@ function addMarkers (projectList) {
         $(this._icon).find('.markerPopUp').hide()
       })
       marker.on('click', function (e) {
-        map.setView([m.location.lat, m.location.lon], 16, {animate: true})
+        map.setView([m.locations[0].lat, m.locations[0].lon], 16, {animate: true})
         showSideBar(m)
       })
       markers.addLayer(marker)

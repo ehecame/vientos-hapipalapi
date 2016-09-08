@@ -13,58 +13,136 @@ ProjectController.prototype = (function () {
       ProjectManager.findAll(db, function (res) {
         console.log('projects: ' + res.length)
         reply(_.map(res, function(p){
-          var filter = {}
-          if(p.pilot){
-            filter = ṕ
-          }else{
-            filter.name = 'No ha sido activado'
-            filter.description = p.description
-            filter.location = p.location
-            filter.projectType = p.projectType
-            filter.categories = p.categories
+          if(!p.pilot){
+            p.name = 'No ha sido activado'
+            delete p.logo 
+            delete p.address 
+            delete p.facebook 
+            delete p.twitter 
+            delete p.webpage
+            delete p.phone 
+            delete p.cellphone 
+            delete p.email
           }
-          return filter
+          return p
         }))
       })
     },
     findAutogestival: function findAutogestival (request, reply) {
       var db = request.mongo.db
       ProjectManager.findAutogestival(db, function (res) {
-        reply(res)
+        reply(_.map(res, function(p){
+          if(!p.pilot){
+            p.name = 'No ha sido activado'
+            delete p.logo 
+            delete p.address 
+            delete p.facebook 
+            delete p.twitter 
+            delete p.webpage
+            delete p.phone 
+            delete p.cellphone 
+            delete p.email
+          }
+          return p
+        }))
       })
     },
     findById: function findById (request, reply) {
       var db = request.mongo.db
       var objID = request.mongo.ObjectID
       ProjectManager.findById(db, new objID(request.params.project_id), {}, function (res) {
-        reply(res)
+        reply(_.map(res, function(p){
+          if(!p.pilot){
+            p.name = 'No ha sido activado'
+            delete p.logo 
+            delete p.address 
+            delete p.facebook 
+            delete p.twitter 
+            delete p.webpage
+            delete p.phone 
+            delete p.cellphone 
+            delete p.email
+          }
+          return p
+        }))
       })
     },
     findByCategoryId: function findByCategoryId (request, reply) {
       var db = request.mongo.db
       ProjectManager.findByCategoryId(db, request.params.category_id, function (res) {
         console.log(res)
-        reply(res)
+        reply(_.map(res, function(p){
+          if(!p.pilot){
+            p.name = 'No ha sido activado'
+            delete p.logo 
+            delete p.address 
+            delete p.facebook 
+            delete p.twitter 
+            delete p.webpage
+            delete p.phone 
+            delete p.cellphone 
+            delete p.email
+          }
+          return p
+        }))
       })
     },
     findByTypeId: function findByTypeId (request, reply) {
       var db = request.mongo.db
       ProjectManager.findByTypeId(db, request.params.type_id, function (res) {
-        console.log(res)
-        reply(res)
+        reply(_.map(res, function(p){
+          if(!p.pilot){
+            p.name = 'No ha sido activado'
+            delete p.logo 
+            delete p.address 
+            delete p.facebook 
+            delete p.twitter 
+            delete p.webpage
+            delete p.phone 
+            delete p.cellphone 
+            delete p.email
+          }
+          return p
+        }))
       })
     },
     findByCollaborationWay: function findByCollaborationWay (request, reply) {
       var db = request.mongo.db
       ProjectManager.findByCollaborationWay(db, request.params.collaboration_type_id, function (res) {
         console.log(res)
-        reply(res)
+        reply(_.map(res, function(p){
+          if(!p.pilot){
+            p.name = 'No ha sido activado'
+            delete p.logo 
+            delete p.address 
+            delete p.facebook 
+            delete p.twitter 
+            delete p.webpage
+            delete p.phone 
+            delete p.cellphone 
+            delete p.email
+          }
+          return p
+        }))
       })
     },
     findByKeyWords: function findByKeyWords (request, reply) {
       var db = request.mongo.db
       ProjectManager.findByKeyWords(db, request.params.keywords, function (res) {
-        reply(res)
+        reply(_.map(res, function(p){
+          if(!p.pilot){
+            p.name = 'No ha sido activado'
+            delete p.logo 
+            delete p.address 
+            delete p.facebook 
+            delete p.twitter 
+            delete p.webpage
+            delete p.phone 
+            delete p.cellphone 
+            delete p.email
+          }
+          return p
+        }))
       })
     },
     shortRegister: function shortRegister (request, reply) {

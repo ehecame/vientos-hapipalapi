@@ -61,12 +61,14 @@ UserController.prototype = (function () {
             newuser.projects = [code.projectLinked]
             UserManager.insert(db, newuser, function(user){
               CodeManager.delete(db, code._id, function(res){
-                ProjectManager.update(db, 
-                                      {_id: new objId(code.projectLinked)}, 
-                                      {$pull: {projectCodes: code.code}, $push:{owners:user.insertedIds[0]+''}}, 
-                                      function(pro){
-                  reply('registered')  
-                })
+                ProjectManager.update(
+                  db, 
+                  {_id: new objId(code.projectLinked)}, 
+                  {$pull: {projectCodes: code.code}, $push:{owners:user.insertedIds[0]+''},$set: {pilot: true}}, 
+                  function(pro){
+                    reply('registered')  
+                  }
+                )
               })              
             })
           }
