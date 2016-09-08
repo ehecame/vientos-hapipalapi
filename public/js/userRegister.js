@@ -18,7 +18,7 @@ function onRegisterBtnClicked () {
 	    '/api/user/register',
 	    form,
 	    function (data) {
-	      alert('Ya estás registrado')
+	      window.location.href = "/user/welcome"
 	    }
 	  )
 	}

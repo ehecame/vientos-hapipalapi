@@ -1220,3 +1220,36 @@ f
     background-color: #ff6a00; }
 #registerPage #categories .category i {
     display: block; }
+#welcomeMessage{
+    padding: 100px 200px;
+    position: relative;}
+#welcomeMessage p{
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: #666;
+}
+#welcomeMessage div{
+    font-size: 1.2em;
+    color: #666;
+}
+#welcomeMessage a{
+    color: blue;
+}
+#welcomeMessage img{
+    position: absolute;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    height: auto;
+    opacity: 0.1;
+}
+#loginWelcome{
+    padding: 0px 100px;
+    position: relative;
+    top: 20px;
+}
+#loginWelcome #loginForm{
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 20px;
+}

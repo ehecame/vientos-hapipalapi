@@ -61,6 +61,18 @@ module.exports = function () {
       }
     } , {
       method: 'GET',
+      path: '/user/welcome',
+      config: {
+        handler: function (request, reply) {
+          setDataAuth(request, function(data){
+            data.withFooter = false
+            reply.view('welcome', data)
+          })
+        },
+        auth: false
+      }
+    } , {
+      method: 'GET',
 
       path: '/howtocollaborate',
       handler: function (request, reply) {
