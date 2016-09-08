@@ -9,6 +9,7 @@ function UserController () { }
 UserController.prototype = (function () {
   return {
     login: function login (request, reply) {
+      console.log(request.payload.username)
       UserManager.find(
         request.mongo.db,
         {username: request.payload.username},
