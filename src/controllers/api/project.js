@@ -11,21 +11,10 @@ ProjectController.prototype = (function () {
       var db = request.mongo.db
       ProjectManager.findAll(db, function (res) {
         setDataAuth(request, function(data){
-          if(data.isAdmin)
+          if(data.isAdmin){
+            console.log('proyectos completos')
             reply(res)
-          else {
-            var filtPro = hideFieldsForNotPilot(res)
-            reply(filtPro)
           }
-        })
-      })
-    },
-    findAutogestival: function findAutogestival (request, reply) {
-      var db = request.mongo.db
-      ProjectManager.findAutogestival(db, function (res) {
-        setDataAuth(request, function(data){
-          if(data.isAdmin)
-            reply(p)
           else {
             var filtPro = hideFieldsForNotPilot(res)
             reply(filtPro)

@@ -34,7 +34,6 @@ function addAllProjects () {
     function (data) {
       addMarkers(data)
       addProjectCells(data)
-      $('.projectCard').click(showSideBar)
       $('.nano').nanoScroller()
     }
   )
@@ -121,7 +120,6 @@ function filterCollaborationWay(id){
 function filterByKeyWords () {
   removeAllMarkers()
   var keywords = $('#keyWordsInput').val()
-  console.log('keywords: ' + keywords)
   $.get(
     '/api/project/keywords/' + keywords,
     function (data) {
@@ -182,15 +180,12 @@ function addMarkers (projectList) {
   var marker
   var myIcon
   $.each(projectList, function (i, m) {
-    console.log(m)
     m.categoryIcon = getCategoryIcon(m.categories[0].catId)
     if (!m.projectType) {
       m.projectType = getRandomProjectType()
     } else {
-      console.log('ya tiene projectType')
     }
     if (!m.categories) {
-      console.log('No tengo categorías =S : ' + m.name)
     }
     var icon = m.categories ? m.categories[0].icon : m.categoryIcon
     if (m.locations && m.locations.length>0) {
@@ -242,7 +237,7 @@ function getCategoryIcon (id) {
 }
 
 function showSideBar (m) {
-  console.log(m)
+
   if(!m.pilot){
     $('#projectProfileLink').addClass('hidden')
   } else{
@@ -257,7 +252,6 @@ function showSideBar (m) {
   $('#projectDetails').find('#projectName').html(m.name)
   $('#projectDetails').find('#projectDescription').html(m.description)
   $('#projectDetails').find('#projectProfileLink').attr('href', '/project/' + m._id)
-  console.log(m.projectType)
   $('#projectDetails').find('#projectType').html(m.projectType.label)
   $('#projectDetails').find('#projectType').css('background-color', m.projectType.color)
   if (m.facebook) {
@@ -267,14 +261,12 @@ function showSideBar (m) {
     $('#projectDetails').find('#projectFacebook').hide()
   }
   if (m.twitter) {
-    console.log('tiene twitter')
     $('#projectDetails').find('#projectTwitter').attr('href', m.twitter)
     $('#projectDetails').find('#projectTwitter').show()
   } else {
     $('#projectDetails').find('#projectTwitter').hide()
   }
   if (m.webpage) {
-    console.log('tiene web')
     $('#projectDetails').find('#projectWebSite').attr('href', m.webpage)
     $('#projectDetails').find('#projectWebSite').attr('tittle', m.webpage)
     $('#projectDetails').find('#projectWebSite').show()
@@ -282,28 +274,24 @@ function showSideBar (m) {
     $('#projectDetails').find('#projectWebSite').hide()
   }
   if (m.phone) {
-    console.log('tiene phone')
     $('#projectDetails').find('#projectPhone span').html(m.phone)
     $('#projectDetails').find('#projectPhone').show()
   } else {
     $('#projectDetails').find('#projectPhone').hide()
   }
   if (m.mobile) {
-    console.log('tiene mobile')
     $('#projectDetails').find('#projectMobile span').html(m.mobile)
     $('#projectDetails').find('#projectMobile').show()
   } else {
     $('#projectDetails').find('#projectMobile').hide()
   }
   if (m.email) {
-    console.log('tiene email')
     $('#projectDetails').find('#projectEmail span').html(m.email)
     $('#projectDetails').find('#projectEmail').show()
   } else {
     $('#projectDetails').find('#projectEmail').hide()
   }
   if (m.address) {
-    console.log('tiene address')
     $('#projectDetails').find('#projectAddress span').html(m.address)
     $('#projectDetails').find('#projectAddress').show()
   }
@@ -321,7 +309,6 @@ function showSideBar (m) {
     $('#offersNeedsRow').show()
   }
   if (m.schedule) {
-    console.log('tiene schedule')
     $('#projectDetails').find('#projectSchedule').html(createScheduleMarkup(m.schedule))
     $('#projectDetails').find('#scheduleSec').show()
   } else {
@@ -351,9 +338,7 @@ function createNeedsMarkup (needs) {
 
 function createScheduleMarkup (schedule) {
   var html = ''
-  console.log(schedule)
   $.each(schedule, function (i, day) {
-    console.log(day)
     html += '<div class="day">' + day.days + ' : ' + day.hours + '</div>'
   })
   return html
@@ -395,7 +380,6 @@ function setCollaborationWayBarFunc(){
 }
 
 function collaborationBtnClicked(){
-  console.log('filtrandoCollaborationWay')
   filterCollaborationWay(this.id)
   $('.collaborationWay').removeClass('selected')
   $(this).addClass('selected')
