@@ -12,7 +12,7 @@ function initializeConfigMap(){
   var lon = $('#projectLon0').val() ? $('#projectLon0').val() : '-99.12551879882812'
   console.log('lat:' + lat)
   console.log('lon:' + lon)
-	configMap = L.map('mapConf', {zoomControl: false}).setView([lat, lon], 15)
+	configMap = L.map('mapConf').setView([lat, lon], 15)
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     maxZoom: 18,
