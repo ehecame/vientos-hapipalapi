@@ -125,9 +125,17 @@ module.exports = function () {
                 delete data.p.projectCodes
               }
               delete data.p.owners
-              if(!data.isOwner){
-                var filterProject = hideFieldsForNotPilot(data.p)
-                data.p = filterProject
+              if(!data.p.pilot){
+                p.name = 'No ha sido activado'
+                delete data.p.description
+                delete data.p.logo 
+                delete data.p.address 
+                delete data.p.facebook 
+                delete data.p.twitter 
+                delete data.p.webpage
+                delete data.p.phone 
+                delete data.p.cellphone 
+                delete data.p.email
               }
               if(request.query.conf){
                 data.showConf = true
@@ -183,22 +191,4 @@ function setDataAuth(request, callback){
       })
     } else callback(data)
   } else callback(data)
-}
-
-function hideFieldsForNotPilot(res){
-  return _.map(res, function(p){
-          if(!p.pilot){
-            p.name = 'No ha sido activado'
-            delete p.description
-            delete p.logo 
-            delete p.address 
-            delete p.facebook 
-            delete p.twitter 
-            delete p.webpage
-            delete p.phone 
-            delete p.cellphone 
-            delete p.email
-          }
-          return p
-        })
 }
