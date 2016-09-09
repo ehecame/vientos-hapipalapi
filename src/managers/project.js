@@ -63,6 +63,8 @@ ProjectManager.prototype = (function () {
       console.log(updateObject)
       console.log(query)
       db.collection('projects').update(query, updateObject, function (err, doc) {
+        if(err)
+          console.log(err)
         callback(doc)
       })
     },

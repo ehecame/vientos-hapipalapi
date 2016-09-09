@@ -14,10 +14,8 @@ SessionController.prototype = (function () {
     	var db = request.mongo.db
     	var objId = request.mongo.ObjectID
     	if(!request.auth.credentials.projects) {
-    		console.log('notProjects')
     		return null
     	} else {
-    		console.log('withProjects')
 	    	var projectIds = _.map(request.auth.credentials.projects, function(p){return new objId(p)})
 	    	ProjectManager.find(db, {_id:{ $in: projectIds}},{_id:1,name:1}, callback)
 	    }

@@ -11,6 +11,7 @@ $(document).ready(function(){
 })
 
 function onRegisterBtnClicked () {
+	$('#userRegisterBtn').addClass('disabled')
 	if(validateRegister()){
 	  var form = $('#registerForm').serialize()
 	  console.log(form)

@@ -243,6 +243,11 @@ function getCategoryIcon (id) {
 
 function showSideBar (m) {
   console.log(m)
+  if(!m.pilot){
+    $('#projectProfileLink').addClass('hidden')
+  } else{
+    $('#projectProfileLink').removeClass('hidden')
+  }
   if (m.logo) {
     $('#projectDetails').find('#projectLogo').css('background-image', 'url("/img/' + m.logo + '")')
     $('#projectDetails').find('#projectLogo').show()
@@ -365,6 +370,11 @@ function setTopBarBtnsFunc () {
   $('#categoriesBtn').click(categoriesBtnClicked)
   $('#typesBtn').click(typesBtnClicked)
   $('#waysOfCollaborationBtn').click(waysOfCollaborationBtnClicked)
+  $('#keyWordsInput').keyup(function (event) {
+    if (event.keyCode == 13) {
+      $('#loginBtn').click()
+    }
+  })
 // $('#projectsBtn').click(projectsBtnClicked)
 // $('#businessBtn').click(businessBtnClicked)
 // $('#evetnsBtn').click(evetnsBtnClicked)

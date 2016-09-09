@@ -5,7 +5,6 @@ module.exports = function () {
       path: '/js/{file}',
       config: {
         handler: function (request, reply) {
-          console.log('js:' + request.params.file)
           reply.file('public/js/' + request.params.file + '.js')
         },
         auth: false

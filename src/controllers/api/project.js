@@ -8,141 +8,95 @@ function ProjectController () { }
 ProjectController.prototype = (function () {
   return {
     findAll: function findAll (request, reply) {
-      console.log('FindAllProjects')
       var db = request.mongo.db
       ProjectManager.findAll(db, function (res) {
-        console.log('projects: ' + res.length)
-        reply(_.map(res, function(p){
-          if(!p.pilot){
-            p.name = 'No ha sido activado'
-            delete p.logo 
-            delete p.address 
-            delete p.facebook 
-            delete p.twitter 
-            delete p.webpage
-            delete p.phone 
-            delete p.cellphone 
-            delete p.email
+        setDataAuth(request, function(data){
+          if(data.isAdmin)
+            reply(res)
+          else {
+            var filtPro = hideFieldsForNotPilot(res)
+            reply(filtPro)
           }
-          return p
-        }))
+        })
       })
     },
     findAutogestival: function findAutogestival (request, reply) {
       var db = request.mongo.db
       ProjectManager.findAutogestival(db, function (res) {
-        reply(_.map(res, function(p){
-          if(!p.pilot){
-            p.name = 'No ha sido activado'
-            delete p.logo 
-            delete p.address 
-            delete p.facebook 
-            delete p.twitter 
-            delete p.webpage
-            delete p.phone 
-            delete p.cellphone 
-            delete p.email
+        setDataAuth(request, function(data){
+          if(data.isAdmin)
+            reply(p)
+          else {
+            var filtPro = hideFieldsForNotPilot(res)
+            reply(filtPro)
           }
-          return p
-        }))
+        })
       })
     },
     findById: function findById (request, reply) {
       var db = request.mongo.db
       var objID = request.mongo.ObjectID
       ProjectManager.findById(db, new objID(request.params.project_id), {}, function (res) {
-        reply(_.map(res, function(p){
-          if(!p.pilot){
-            p.name = 'No ha sido activado'
-            delete p.logo 
-            delete p.address 
-            delete p.facebook 
-            delete p.twitter 
-            delete p.webpage
-            delete p.phone 
-            delete p.cellphone 
-            delete p.email
+        setDataAuth(request, function(data){
+          if(data.isAdmin)
+            reply(res)
+          else {
+            var filtPro = hideFieldsForNotPilot(res)
+            reply(filtPro)
           }
-          return p
-        }))
+        })
       })
     },
     findByCategoryId: function findByCategoryId (request, reply) {
       var db = request.mongo.db
       ProjectManager.findByCategoryId(db, request.params.category_id, function (res) {
-        console.log(res)
-        reply(_.map(res, function(p){
-          if(!p.pilot){
-            p.name = 'No ha sido activado'
-            delete p.logo 
-            delete p.address 
-            delete p.facebook 
-            delete p.twitter 
-            delete p.webpage
-            delete p.phone 
-            delete p.cellphone 
-            delete p.email
+        setDataAuth(request, function(data){
+          if(data.isAdmin)
+            reply(res)
+          else {
+            var filtPro = hideFieldsForNotPilot(res)
+            reply(filtPro)
           }
-          return p
-        }))
+        })
       })
     },
     findByTypeId: function findByTypeId (request, reply) {
       var db = request.mongo.db
       ProjectManager.findByTypeId(db, request.params.type_id, function (res) {
-        reply(_.map(res, function(p){
-          if(!p.pilot){
-            p.name = 'No ha sido activado'
-            delete p.logo 
-            delete p.address 
-            delete p.facebook 
-            delete p.twitter 
-            delete p.webpage
-            delete p.phone 
-            delete p.cellphone 
-            delete p.email
+        setDataAuth(request, function(data){
+          if(data.isAdmin)
+            reply(res)
+          else {
+            var filtPro = hideFieldsForNotPilot(res)
+            reply(filtPro)
           }
-          return p
-        }))
+        })
       })
     },
     findByCollaborationWay: function findByCollaborationWay (request, reply) {
       var db = request.mongo.db
       ProjectManager.findByCollaborationWay(db, request.params.collaboration_type_id, function (res) {
-        console.log(res)
-        reply(_.map(res, function(p){
-          if(!p.pilot){
-            p.name = 'No ha sido activado'
-            delete p.logo 
-            delete p.address 
-            delete p.facebook 
-            delete p.twitter 
-            delete p.webpage
-            delete p.phone 
-            delete p.cellphone 
-            delete p.email
+        setDataAuth(request, function(data){
+          if(data.isAdmin)
+            reply(res)
+          else {
+            var filtPro = hideFieldsForNotPilot(res)
+            reply(filtPro)
           }
-          return p
-        }))
+        })
       })
     },
     findByKeyWords: function findByKeyWords (request, reply) {
       var db = request.mongo.db
       ProjectManager.findByKeyWords(db, request.params.keywords, function (res) {
-        reply(_.map(res, function(p){
-          if(!p.pilot){
-            p.name = 'No ha sido activado'
-            delete p.logo 
-            delete p.address 
-            delete p.facebook 
-            delete p.twitter 
-            delete p.webpage
-            delete p.phone 
-            delete p.cellphone 
-            delete p.email
+        setDataAuth(request, function(data){
+          if(data.isAdmin)
+            reply(res)
+          else {
+            var filtPro = hideFieldsForNotPilot(res)
+            reply(filtPro)
           }
-          return p
-        }))
+        })
       })
     },
     shortRegister: function shortRegister (request, reply) {
@@ -159,9 +113,7 @@ ProjectController.prototype = (function () {
       var db = request.mongo.db
       var objID = request.mongo.ObjectID
       var logo
-      console.log(request.payload)
       var parsedProject = qs.parse(request.payload)
-      console.log(parsedProject)
       if (request.payload.file) {
         var fullPath = request.payload.file
         var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'))
@@ -169,7 +121,6 @@ ProjectController.prototype = (function () {
         if (logo.indexOf('\\') === 0 || logo.indexOf('/') === 0) {
           logo = logo.substring(1)
         }
-        console.log(logo)
       }
       var newProject = {
         email: parsedProject.email,
@@ -189,7 +140,6 @@ ProjectController.prototype = (function () {
         logo: logo,
         schedule: parsedProject.schedule,
       }
-      console.log(newProject)
       // reply('gooot')
       ProjectManager.insert(db, newProject, function (res) {
         reply(res)
@@ -198,7 +148,6 @@ ProjectController.prototype = (function () {
     update: function update (request, reply) {
       var db = request.mongo.db
       var objID = request.mongo.ObjectID
-      console.log(request.payload)
       var query = {'_id': new objID(request.params.id)}
       var parsedProject = qs.parse(request.payload)
       var updatedProject = {$set: {
@@ -218,22 +167,24 @@ ProjectController.prototype = (function () {
         facebook: parsedProject.facebook,
         schedule: parsedProject.schedule,
       }}
+      console.log(updatedProject['$set'].projectType)
       setDataAuth(request, function(data){
-        console.log(data)
-        ProjectManager.findById(db, query,{}, function (res) {
+        ProjectManager.findById(db, new objID(request.params.id),{} , function (res) {
           data.p = res
-          console.log(res)
+          console.log(data.p.owners)
+          console.log(data.p.owners.indexOf(data.credentials.id) > -1)
+          console.log(data.credentials.projects)
+          console.log(data.credentials.projects.indexOf(request.params.id) )
           data.isOwner = data.isAdmin || 
                         ( 
-                          data.owners && 
-                          data.owners.indexOf(credentials.id) > -1 && 
-                          credentials.projects && 
-                          credentials.projects.indexOf(request.params.projectId) > -1
+                          data.p.owners && 
+                          data.p.owners.indexOf(data.credentials.id) > -1 && 
+                          data.credentials.projects && 
+                          data.credentials.projects.indexOf(request.params.id) > -1
                         )    
           if(data.isOwner){
             ProjectManager.update(db, query, updatedProject, function (res2) {
-               console.log(res2)
-               reply('uṕdated')
+               reply('updated')
             })
           }
           else reply('notAuthorized')
@@ -281,7 +232,6 @@ ProjectController.prototype = (function () {
               type: request.payload.type
             }
             ProjectManager.update(request.mongo.db, {'_id': new objID(request.payload.projectId) }, {$push: newCollaboration}, function (res2) {
-              console.log(res2)
               reply(res2)
             })
           } else {
@@ -351,55 +301,59 @@ var ProjectController = new ProjectController()
 module.exports = ProjectController
 
 function getProjectTypeObj(projectType){
-  if (projectType == 'collective') {
-    return {
+  console.log(projectType)
+  var projectObj
+  if (projectType == 'cooperative') {
+    projectObj = {
       type: projectType,
       label: 'Cooperativa',
       color: '#800000'
     }
   }
-  if (projectType == 'cooperative') {
-    return {
+  if (projectType == 'collective') {
+    projectObj = {
       type: projectType,
       label: 'Colectivo',
       color: '#008B8B'
     }
   }
   if (projectType == 'ngo') {
-    return {
+    projectObj = {
       type: projectType,
       label: 'ONG',
       color: '#556B2F'
     }
   }
   if (projectType == 'ethicalbusiness') {
-    return {
+    projectObj = {
       type: projectType,
       label: 'Negocio Ético',
       color: '#B8860B'
     }
   }
   if (projectType == 'neighborsorg') {
-    return {
+    projectObj = {
       type: projectType,
       label: 'Iniciativa Ciudadana',
       color: '#C63D1E'
     }
   }
   if (projectType == 'startup') {
-    return {
+    projectObj = {
       type: projectType,
       label: 'Startup',
       color: '#58376C'
     }
   }
   if (projectType == 'ontransition') {
-    return {
+    projectObj = {
       type: projectType,
       label: 'En Transición',
       color: '#d45bc9'
     }
   }
+  console.log(projectObj)
+  return projectObj
 }
 
 function getCategoryObj(category){
@@ -556,4 +510,22 @@ function setDataAuth(request, callback){
       })
     } else callback(data)
   } else callback(data) 
+}
+
+function hideFieldsForNotPilot(res){
+  return _.map(res, function(p){
+          if(!p.pilot){
+            p.name = 'No ha sido activado'
+            delete p.description
+            delete p.logo 
+            delete p.address 
+            delete p.facebook 
+            delete p.twitter 
+            delete p.webpage
+            delete p.phone 
+            delete p.cellphone 
+            delete p.email
+          }
+          return p
+        })
 }

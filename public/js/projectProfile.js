@@ -307,12 +307,17 @@ function updateProfilePicture(){
 
 function onEditBtnClicked () {
   var projectDataForm = form2js('projectDataForm', '.')
+  projectDataForm.id = 
   $.ajax({
     url: '/api/project/'+$(window.location.href.split('/')).last()[0],
     type: 'PUT',
     data: projectDataForm,
     success: function (data) {
-      location.reload()
+      console.log(data)
+      if(data=='updated'){
+        console.log('ajaaa')
+        window.location.href = window.location.pathname+'?conf=1'
+      }        
     }
   })
   return false

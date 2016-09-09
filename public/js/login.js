@@ -7,13 +7,12 @@ $(document).ready(function () {
   })
   $('#passwordInput').keyup(function (event) {
     if (event.keyCode == 13) {
-      $('#loginBtn').click()
+      $('#searchBtn').click()
     }
   })
 })
 
 function login () {
-  console.log($('#loginForm').serialize())
   $.post(
     '/api/user/login',
     $('#loginForm').serialize(),

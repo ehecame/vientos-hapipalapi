@@ -84,17 +84,17 @@
 	</div>
 	<div id="sectionTabsRow" class="row" data-spy="affix" data-offset-top="400" role="tabpanel">
 		<ul class="nav nav-tabs" id="sectionTabs">
-		  <li role="presentation" id="homeTab" class="active" role="tab" data-toggle="tab">
+		  <li role="presentation" id="homeTab" role="tab" data-toggle="tab">
 		  	<a href="#secHome"><i class="fa fa-home mr-l-10 mr-r-10"></i></a>
 	  	</li>
-		  <li role="presentation" id="offersNeedsTab" role="tab" data-toggle="tab">
+		  <li role="presentation" id="offersNeedsTab" {{#if showConf}}{{else}}class="active"{{/if}} role="tab" data-toggle="tab">
 		  	<a href="#secOffersNeeds"><i class="fa fa-refresh mr-r-5"></i>Ofrezco y Necesito</a>
 	  	</li>
 		  <li role="presentation" id="eventsTab" role="tab" data-toggle="tab">
 		  	<a href="#secEvents"><i class="fa fa-calendar mr-r-5"></i>Eventos y Actividades</a>
 	  	</li>
 	  	{{#if isOwner}}
-		  <li role="presentation" id="configurationTab" role="tab" data-toggle="tab">
+		  <li role="presentation" id="configurationTab" {{#if showConf}}class="active"{{/if}} role="tab" data-toggle="tab">
 		  	<a href="#secConfiguration"><i class="fa fa-cogs mr-r-5"></i>Configuración</a>
 	  	</li>
 	  	{{/if}}
@@ -102,7 +102,7 @@
 	</div>
 
 	<div class="tab-content">
-		<div id="secHome" class="row profileSec tab-pane active" role="tabpanel">
+		<div id="secHome" class="row profileSec tab-pane" role="tabpanel">
 			<div id="nextCollaborationsSec">
 				<h3>Próximas colaboraciones</h3>
 				<div id="nextCollaborationList" class="row">
@@ -141,7 +141,7 @@
 				<div></div>
 			</div>
 		</div>
-		<div id="secOffersNeeds" class="row profileSec tab-pane" role="tabpanel">
+		<div id="secOffersNeeds" class="row profileSec tab-pane {{#if showConf}}{{else}}active{{/if}}" role="tabpanel">
         <div id="offers" class="col-md-5">
           <h2 class="profileTitle">Ofrecimientos</h2>
           {{#if isOwner}}
@@ -1442,7 +1442,7 @@
         </div>
       </div>
     {{#if isOwner}}
-		<div id="secConfiguration" class="row profileSec tab-pane" role="tabpanel">
+		<div id="secConfiguration" class="row profileSec tab-pane {{#if showConf}}active{{/if}}" role="tabpanel">
       <div>
         <label for="" class="col-sm-2 control-label">Logo:</label>
         <input type="file" name="file" id="pictureFileInput">
@@ -1502,13 +1502,13 @@
 						<label for="" class="col-sm-2 control-label">Tipo de Proyecto:</label>
 						<div class="col-sm-9">
 							<select class="form-control" name="projectType">
-								<option value="collective" {{#ifcond p.projectType.type '==' 'collective'}} 'select' {{else}}  {{/ifcond}}>Colectivo</option>
-								<option value="cooperative" {{#ifcond p.projectType.type '==' 'cooperative'}} 'select' {{else}} {{/ifcond}}>Cooperativa</option>
-								<option value="ngo" {{#ifcond p.projectType.type '==' 'ngo'}} 'select' {{else}} {{/ifcond}}>ONG</option>
-								<option value="ethicalbusiness" {{#ifcond p.projectType.type '==' 'ethicalbusiness'}} 'select' {{else}} {{/ifcond}}>Negocio Ético</option>
-								<option value="neighborsorg" {{#ifcond p.projectType.type '==' 'neighborsorg'}} 'select' {{else}} {{/ifcond}}>Organización vecinal</option>
-								<option value="startup" {{#ifcond p.projectType.type '==' 'startup'}} 'select' {{else}} {{/ifcond}}>Startup</option>
-								<option value="ontransition" {{#ifcond p.projectType.type '==' 'ontransition'}} 'select' {{else}} {{/ifcond}}>En transición</option>
+								<option value="collective" {{#ifcond p.projectType.type '==' 'collective'}} selected {{else}}  {{/ifcond}}>Colectivo</option>
+								<option value="cooperative" {{#ifcond p.projectType.type '==' 'cooperative'}} selected {{else}} {{/ifcond}}>Cooperativa</option>
+								<option value="ngo" {{#ifcond p.projectType.type '==' 'ngo'}} selected {{else}} {{/ifcond}}>ONG</option>
+								<option value="ethicalbusiness" {{#ifcond p.projectType.type '==' 'ethicalbusiness'}} selected {{else}} {{/ifcond}}>Negocio Ético</option>
+								<option value="neighborsorg" {{#ifcond p.projectType.type '==' 'neighborsorg'}} selected {{else}} {{/ifcond}}>Organización vecinal</option>
+								<option value="startup" {{#ifcond p.projectType.type '==' 'startup'}} selected {{else}} {{/ifcond}}>Startup</option>
+								<option value="ontransition" {{#ifcond p.projectType.type '==' 'ontransition'}} selected {{else}} {{/ifcond}}>En transición</option>
 							</select>
 						</div>
 					</div>

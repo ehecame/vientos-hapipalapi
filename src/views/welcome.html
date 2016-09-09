@@ -1,4 +1,4 @@
-<script type="text/javascript" src="js/welcome"></script>
+<script type="text/javascript" src="/js/welcome"></script>
 <div id="welcomeMessage">
   <h1>Bienvenidxs compas</h1>
   <p>Nos da mucho gusto invitarlxs a formar parte de la etapa piloto de esta plataforma de colaboración.</p>
@@ -36,8 +36,11 @@
         <input type="password" class="form-control" id="passwordInput" name="password" placeholder="Contraseña" />
       </div>
     </div>
+    <div>
+      <input type="hidden" name="firstlogin" value="true">
+    </div>
 		<div>
-			<a id="loginBtn" href="#" class="btn btn-success" onclick="return login()">Login</a>
+			<a id="loginBtn" href="#" class="btn btn-success" onclick="return loginw()">Login</a>
 		</div>
 	</form>
 </div>

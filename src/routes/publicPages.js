@@ -121,11 +121,18 @@ module.exports = function () {
                               data.credentials.projects && 
                               data.credentials.projects.indexOf(request.params.projectId) > -1
                             )    
-              if(!data.isAdmin)
+              if(!data.isAdmin){
                 delete data.p.projectCodes
+              }
               delete data.p.owners
+              if(!data.isOwner){
+                var filterProject = hideFieldsForNotPilot(data.p)
+                data.p = filterProject
+              }
+              if(request.query.conf){
+                data.showConf = true
+              }
               data.p.categoriesIds = _.map(res.categories, function(cat){return cat.catId})
-              console.log(data.p)
               reply.view('projectProfile', data)
             })
           })          
@@ -142,7 +149,6 @@ module.exports = function () {
           parse: false
         },
         handler: function (requset, reply) {
-          console.log('subiendo Foto')
           var form = new multiparty.Form()
           form.parse(requset.payload, function (err, fields, files) {
             if (err) return reply(err)
@@ -177,4 +183,22 @@ function setDataAuth(request, callback){
       })
     } else callback(data)
   } else callback(data)
+}
+
+function hideFieldsForNotPilot(res){
+  return _.map(res, function(p){
+          if(!p.pilot){
+            p.name = 'No ha sido activado'
+            delete p.description
+            delete p.logo 
+            delete p.address 
+            delete p.facebook 
+            delete p.twitter 
+            delete p.webpage
+            delete p.phone 
+            delete p.cellphone 
+            delete p.email
+          }
+          return p
+        })
 }

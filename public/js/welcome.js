@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  console.log('sí carguéeee!')
   $('#usernameInput').keyup(function (event) {
     if (event.keyCode == 13) {
       $('#passwordInput').focus()
@@ -12,19 +11,25 @@ $(document).ready(function () {
   })
 })
 
-function login () {
-  console.log($('#loginForm').serialize())
+function loginw() {
+  var data = $('#loginForm').serialize()
   $.post(
     '/api/user/login',
-    $('#loginForm').serialize(),
+    data,
     function (data) {
       console.log(data)
-      if (data == 'success')
-        window.location.href = "/"
-      if (data == 'wrong password')
-        alert('Contraseña incorrecta')
-      if (data == 'wrong username')
-        alert('Ese nombre de usuario no existe')
+      switch(data) {
+        case 'success':
+          window.location.href = "/"
+          break;
+        case 'wrong password':
+          alert('Contraseña incorrecta')
+          break;
+        case 'wrong username':
+          alert('Ese nombre de usuario no existe')
+        default:
+          window.location.href = "/project/"+data+"?conf=1"
+      }
     }
   )
   return false
