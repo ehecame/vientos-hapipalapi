@@ -1,14 +1,14 @@
 <script type="text/javascript" src="/js/projectProfile"></script>
-{{#if isAdmin}}
-<script type="text/javascript" src="/js/projectCode"></script>
+{{#if isOwner}}
+<script type="text/javascript" src="/js/projectProfileConf"></script>
 {{/if}}
 <div id="projectProfile" class="profile">
 	<div class="fluid-container">
 	<div class="row" id="mapRow">
 		<div id="map"></div>
 		<div>
-      {{#if p.location}}
-  			{{#each p.location}}
+      {{#if p.locations}}
+  			{{#each p.locations}}
   			<div id="locations{{@index}}">
   				<input type="hidden" value="{{lat}}" id="projectLat{{@index}}" />
   				<input type="hidden" value="{{lon}}"  id="projectLon{{@index}}"/>

@@ -125,8 +125,8 @@ module.exports = function () {
                 delete data.p.projectCodes
               }
               delete data.p.owners
-              if(!data.p.pilot){
-                p.name = 'No ha sido activado'
+              if(!data.p.pilot && !data.isOwner){
+                data.p.name = 'No ha sido activado'
                 delete data.p.description
                 delete data.p.logo 
                 delete data.p.address 

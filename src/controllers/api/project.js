@@ -130,7 +130,7 @@ ProjectController.prototype = (function () {
         address: parsedProject.address,
         latitude: parsedProject.latitude,
         longitude: parsedProject.longitude,
-        location: [{
+        locations: [{
           lat: parsedProject.latitude,
           lon: parsedProject.longitude
         }],
@@ -158,7 +158,7 @@ ProjectController.prototype = (function () {
         address: parsedProject.address,
         latitude: parsedProject.latitude,
         longitude: parsedProject.longitude,
-        location: [{
+        locations: [{
           lat: parsedProject.latitude,
           lon: parsedProject.longitude
         }],
