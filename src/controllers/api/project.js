@@ -130,15 +130,17 @@ ProjectController.prototype = (function () {
         address: parsedProject.address,
         latitude: parsedProject.latitude,
         longitude: parsedProject.longitude,
-        locations: [{
-          lat: parsedProject.latitude,
-          lon: parsedProject.longitude
-        }],
         projectType: getProjectTypeObj(parsedProject.projectType),
         webpage: parsedProject.webpage,
         facebook: parsedProject.facebook,
         logo: logo,
         schedule: parsedProject.schedule,
+      }
+      if(parsedProject.latitude && parsedProject.longitude){
+        parsedProject.locations= [{
+          lat: parsedProject.latitude,
+          lon: parsedProject.longitude
+        }]
       }
       // reply('gooot')
       ProjectManager.insert(db, newProject, function (res) {
@@ -150,7 +152,7 @@ ProjectController.prototype = (function () {
       var objID = request.mongo.ObjectID
       var query = {'_id': new objID(request.params.id)}
       var parsedProject = qs.parse(request.payload)
-      var updatedProject = {$set: {
+      var updatedProject = {
         email: parsedProject.email,
         name: parsedProject.name,
         description: parsedProject.description,
@@ -158,16 +160,17 @@ ProjectController.prototype = (function () {
         address: parsedProject.address,
         latitude: parsedProject.latitude,
         longitude: parsedProject.longitude,
-        locations: [{
-          lat: parsedProject.latitude,
-          lon: parsedProject.longitude
-        }],
         projectType: getProjectTypeObj(parsedProject.projectType),
         webpage: parsedProject.webpage,
         facebook: parsedProject.facebook,
         schedule: parsedProject.schedule,
-      }}
-      console.log(updatedProject['$set'].projectType)
+      }
+      if(parsedProject.latitude && parsedProject.longitude){
+        updatedProject.locations= [{
+          lat: parsedProject.latitude,
+          lon: parsedProject.longitude
+        }]
+      }
       setDataAuth(request, function(data){
         ProjectManager.findById(db, new objID(request.params.id),{} , function (res) {
           data.p = res
@@ -179,7 +182,7 @@ ProjectController.prototype = (function () {
                           data.credentials.projects.indexOf(request.params.id) > -1
                         )    
           if(data.isOwner){
-            ProjectManager.update(db, query, updatedProject, function (res2) {
+            ProjectManager.update(db, query, {$set: updatedProject}, function (res2) {
                reply('updated')
             })
           }
@@ -297,7 +300,6 @@ var ProjectController = new ProjectController()
 module.exports = ProjectController
 
 function getProjectTypeObj(projectType){
-  console.log(projectType)
   var projectObj
   if (projectType == 'cooperative') {
     projectObj = {
@@ -348,7 +350,6 @@ function getProjectTypeObj(projectType){
       color: '#d45bc9'
     }
   }
-  console.log(projectObj)
   return projectObj
 }
 
