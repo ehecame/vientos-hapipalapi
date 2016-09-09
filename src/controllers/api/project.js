@@ -171,10 +171,6 @@ ProjectController.prototype = (function () {
       setDataAuth(request, function(data){
         ProjectManager.findById(db, new objID(request.params.id),{} , function (res) {
           data.p = res
-          console.log(data.p.owners)
-          console.log(data.p.owners.indexOf(data.credentials.id) > -1)
-          console.log(data.credentials.projects)
-          console.log(data.credentials.projects.indexOf(request.params.id) )
           data.isOwner = data.isAdmin || 
                         ( 
                           data.p.owners && 
@@ -372,7 +368,7 @@ function getCategoryObj(category){
       "name" : {
           "es" : "Productos y Servicios"
       },
-      "icon" : "fa-shopping"
+      "icon" : "fa-shopping-basket"
     }
   }
   if(category == 'environment'){

@@ -3,6 +3,7 @@ var configMap
 var marker
 
 $(document).ready(function () {
+	addConfigurationFunc()
   initializeConfigMap()
 })
 
