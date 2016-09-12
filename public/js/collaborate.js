@@ -48,7 +48,8 @@ function addProjectCells(projectList){
     $('#projectsGrid').append(project)
     $('#projectsGrid #projectCell_'+p._id).on('click', function (e) {
       e.preventDefault()
-      map.setView([p.latitude, p.longitude], 16, {animate: true})
+      if(p.latitude)
+        map.setView([p.latitude, p.longitude], 16, {animate: true})
       showSideBar(p)
     })
   })
@@ -237,8 +238,7 @@ function getCategoryIcon (id) {
 }
 
 function showSideBar (m) {
-
-  if(!m.pilot){
+  if(!m.pilot && !m.isAdmin){
     $('#projectProfileLink').addClass('hidden')
   } else{
     $('#projectProfileLink').removeClass('hidden')

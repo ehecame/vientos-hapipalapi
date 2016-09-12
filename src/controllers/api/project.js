@@ -13,7 +13,7 @@ ProjectController.prototype = (function () {
         setDataAuth(request, function(data){
           if(data.isAdmin){
             console.log('proyectos completos')
-            reply(res)
+            reply(_.map(res, function(p){p.isAdmin = true; return p}))
           }
           else {
             var filtPro = hideFieldsForNotPilot(res)
@@ -28,7 +28,7 @@ ProjectController.prototype = (function () {
       ProjectManager.findById(db, new objID(request.params.project_id), {}, function (res) {
         setDataAuth(request, function(data){
           if(data.isAdmin)
-            reply(res)
+            reply(_.map(res, function(p){p.isAdmin = true; return p}))
           else {
             var filtPro = hideFieldsForNotPilot(res)
             reply(filtPro)
@@ -41,7 +41,7 @@ ProjectController.prototype = (function () {
       ProjectManager.findByCategoryId(db, request.params.category_id, function (res) {
         setDataAuth(request, function(data){
           if(data.isAdmin)
-            reply(res)
+            reply(_.map(res, function(p){p.isAdmin = true; return p}))
           else {
             var filtPro = hideFieldsForNotPilot(res)
             reply(filtPro)
@@ -54,7 +54,7 @@ ProjectController.prototype = (function () {
       ProjectManager.findByTypeId(db, request.params.type_id, function (res) {
         setDataAuth(request, function(data){
           if(data.isAdmin)
-            reply(res)
+            reply(_.map(res, function(p){p.isAdmin = true; return p}))
           else {
             var filtPro = hideFieldsForNotPilot(res)
             reply(filtPro)
@@ -67,7 +67,7 @@ ProjectController.prototype = (function () {
       ProjectManager.findByCollaborationWay(db, request.params.collaboration_type_id, function (res) {
         setDataAuth(request, function(data){
           if(data.isAdmin)
-            reply(res)
+            reply(_.map(res, function(p){p.isAdmin = true; return p}))
           else {
             var filtPro = hideFieldsForNotPilot(res)
             reply(filtPro)
@@ -80,7 +80,7 @@ ProjectController.prototype = (function () {
       ProjectManager.findByKeyWords(db, request.params.keywords, function (res) {
         setDataAuth(request, function(data){
           if(data.isAdmin)
-            reply(res)
+            reply(_.map(res, function(p){p.isAdmin = true; return p}))
           else {
             var filtPro = hideFieldsForNotPilot(res)
             reply(filtPro)
@@ -111,6 +111,8 @@ ProjectController.prototype = (function () {
           logo = logo.substring(1)
         }
       }
+      console.log('lat:' + parsedProject.latitude)
+      console.log('lon:' + parsedProject.longitude)
       var newProject = {
         email: parsedProject.email,
         name: parsedProject.name,
