@@ -160,7 +160,7 @@ function getRandomProjectType () {
     },
     {
       type: 'ethicalbusiness',
-      label: 'Negocio Ético',
+      label: 'Economía solidaria',
       color: '#B8860B'
     },
     {
