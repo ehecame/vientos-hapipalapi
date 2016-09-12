@@ -13,16 +13,19 @@ $(document).ready(function(){
 function onRegisterBtnClicked () {
 	$('#userRegisterBtn').addClass('disabled')
 	if(validateRegister()){
+		console.log('registrando')
 	  var form = $('#registerForm').serialize()
 	  console.log(form)
 	  $.post(
 	    '/api/user/register',
 	    form,
 	    function (data) {
+	    	console.log('registrado')
 	      window.location.href = "/user/welcome"
 	    }
 	  )
 	}
+	return false
 }
 
 function validateRegister(){
@@ -36,7 +39,7 @@ function validateRegister(){
 		$('#userRegisterBtn').removeClass('disabled')
 	else
 		$('#userRegisterBtn').addClass('disabled')
-
+	return(vName && vLastName && vUserName && vEmail && vPasswords && vCode)	
 }
 
 function validateName(){
@@ -44,11 +47,11 @@ function validateName(){
 	var valid = $('#inputName').val().length > 1
 	if(valid){
 		showFeedback($('#inputName').parents('.form-group'),{type:'success'})
-		$('#validPasswords').val(1)
+		$('#validName').val(1)
 	}
 	else{
 		showFeedback($('#inputName').parents('.form-group'),{type:'warning', text:'tu nombre es requerido'})
-		$('#validPasswords').val(0)
+		$('#validName').val(0)
 	}
 }
 
@@ -57,11 +60,11 @@ function validateLastName(){
 	var valid = $('#inputLastName').val().length > 1
 	if(valid){
 		showFeedback($('#inputLastName').parents('.form-group'),{type:'success'})
-		$('#validPasswords').val(1)
+		$('#validLastName').val(1)
 	}
 	else{
 		showFeedback($('#inputLastName').parents('.form-group'),{type:'warning', text:'tu apellido es requerido'})
-		$('#validPasswords').val(0)
+		$('#validLastName').val(0)
 	}
 }
 
@@ -203,18 +206,6 @@ function validateCode(){
 	}
 }
 
-function submitRegister(e){
-	console.log('registrando')
-	$.post(
-    '/api/user/register',
-    $('#registerForm').serialize(),
-    function (data) {
-      console.log(data)
-    }
-  )
-  return false
-}
-
 function showFeedback(formGroup, options){
 	console.log(options)
 	console.log(formGroup)
@@ -238,10 +229,3 @@ function showFeedback(formGroup, options){
 	}
 
 }
-
-// TODO onchange para email y username
-// alertas para cuando ya están ocupados
-
-// TODO verificar contraseña y comparar con confirmación
-
-// TODO Ponerle captcha
