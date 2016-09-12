@@ -261,11 +261,12 @@ function addConfigurationFunc(){
 function updateProfilePicture(){
   var pictureName = $('#pictureFileInput').val().split(/(\\|\/)/g).pop()
   $.ajax({
-    url: '/api/project/'+$(window.location.href.split('/')).last()[0]+'/logo',
+    url: '/api/logo/project/'+$(window.location.href.split('/')).last()[0],
     type: 'PUT',
     data: {logo: pictureName},
     success: function (data) {
-      console.log(data)
+      if(data=='updated')
+        location.reload()
     }
   })
   if ($('#pictureFileInput')[0].files.length > 0) {

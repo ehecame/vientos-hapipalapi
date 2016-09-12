@@ -66,7 +66,7 @@ module.exports = function () {
     },
     {
       method: 'PUT',
-      path: '/api/project/{id}/logo',
+      path: '/api/logo/project/{id}',
       config: {
         handler: ProjectController.updateLogo
       }
