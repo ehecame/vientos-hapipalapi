@@ -65,6 +65,13 @@ module.exports = function () {
       }
     },
     {
+      method: 'PUT',
+      path: '/api/project/{id}/logo',
+      config: {
+        handler: ProjectController.updateLogo
+      }
+    },
+    {
       method: 'DELETE',
       path: '/api/project/{id}',
       config: {

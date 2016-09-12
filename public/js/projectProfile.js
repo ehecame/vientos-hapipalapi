@@ -261,9 +261,9 @@ function addConfigurationFunc(){
 function updateProfilePicture(){
   var pictureName = $('#pictureFileInput').val().split(/(\\|\/)/g).pop()
   $.ajax({
-    url: '/api/project/'+$(window.location.href.split('/')).last()[0],
+    url: '/api/project/'+$(window.location.href.split('/')).last()[0]+'/logo',
     type: 'PUT',
-    data: {profilePicture: pictureName},
+    data: {logo: pictureName},
     success: function (data) {
       console.log(data)
     }
@@ -280,7 +280,12 @@ function updateProfilePicture(){
       contentType: false,
       type: 'POST',
       success: function (data) {
-        console.log(data)
+        if(data=="newLogo"){
+          location.reload()
+        }
+        else{
+          console.log(data)
+        }
       }
     })
   }

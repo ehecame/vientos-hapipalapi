@@ -171,8 +171,24 @@ ProjectController.prototype = (function () {
           }
           else reply('notAuthorized')
         })        
+      })      
+    },
+    updateLogo: function updateLogo(request, reply){
+      var db = request.mongo.db
+      var objID = request.mongo.ObjectID
+      var projectId = request.params.id
+      setDataAuth(request, function(data){
+        ProjectManager.findById(db, new objID(projectId),{} , function (res) {
+          data.p = res
+          data.isOwner = isOwner(data,projectId)  
+          if(data.isOwner){
+            ProjectManager.update(db, {_id: new objID(projectId)}, {$set: {logo: request.payload.logo}}, function (res2) {
+               reply('newLogo')
+            })
+          }
+          else reply('notAuthorized')
+        })        
       })
-      
     },
     delete: function (request, reply) {
       var db = request.mongo.db
