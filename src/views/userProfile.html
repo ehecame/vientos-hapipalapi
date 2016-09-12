@@ -1762,4 +1762,39 @@
     </div>
   </div><!-- /fluid container-->
 </div>
-
+<script id="collaboration-template" type="text/x-handlebars-template">
+  <div class="\{{offerOrNeed}}">
+    <div class="collaborationTitle"><strong>\{{title}}</strong></div>
+    <a href="#" class="deleteIcon"><i class="fa fa-trash"></i></a>
+    <a href="#" class="editIcon"><i class="fa fa-pencil-square-o"></i></a>
+    <div class="collaborationDescription"></div>
+    <div class="editCollaboration hidden">
+      <div class="form-group row">
+        <label class="col-md-3">Titulo:</label>
+        <div class="col-md-9">
+          <input value="{{title}}" class="form-control newCollaborationTitle"/>
+        </div>
+        <label class="col-md-3">Tipo:</label>
+        <div class="col-md-9">
+          <select class="form-control newCollaborationType">
+            <option value="material" \{{isSelected type 'material'}}>Material o Herramienta</option>
+            <option value="knowledge" \{{isSelected type 'knowledge'}}>Conocimiento o Habilidad</option>
+            <option value="product" \{{isSelected type 'product'}}>Producto</option>
+            <option value="service" \{{isSelected type 'service'}}>Servicio</option>
+            <option value="event" \{{isSelected type 'event'}}>Evento o Actividad</option>
+            <option value="job" \{{isSelected type 'job'}}>Chamba</option>
+            <option value="volunteer" \{{isSelected type 'volunteer'}}>Voluntariado</option>
+            <option value="spread" \{{isSelected type 'spread'}}>Difusión de Proyecto</option>
+            <option value="space" \{{isSelected type 'space'}}>Espacio</option>
+            <option value="link" \{{isSelected type 'link'}}>Recomendación o Vínculo</option>
+            <option value="art" \{{isSelected type 'art'}}>Arte</option>
+            <option value="funding" \{{isSelected type 'funding'}}>Fondeo Colectivo</option>
+          </select>
+        </div>
+        <div>
+          <a href="#" class="btn btn-primary editCollaborationBtn">Editar</a>
+          <a href="#" class="btn btn-danger cancelEditCollaborationBtn">Cancelar</a></div>
+      </div>
+    </div>
+  </div>
+</script>

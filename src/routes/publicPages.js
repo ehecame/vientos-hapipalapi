@@ -141,6 +141,7 @@ module.exports = function () {
                 data.showConf = true
               }
               data.p.categoriesIds = _.map(res.categories, function(cat){return cat.catId})
+              console.log(data)
               reply.view('projectProfile', data)
             })
           })          

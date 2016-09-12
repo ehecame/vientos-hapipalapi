@@ -163,13 +163,7 @@ ProjectController.prototype = (function () {
       setDataAuth(request, function(data){
         ProjectManager.findById(db, new objID(request.params.id),{} , function (res) {
           data.p = res
-          data.isOwner = data.isAdmin || 
-                        ( 
-                          data.p.owners && 
-                          data.p.owners.indexOf(data.credentials.id) > -1 && 
-                          data.credentials.projects && 
-                          data.credentials.projects.indexOf(request.params.id) > -1
-                        )    
+          data.isOwner = isOwner(data,request.params.id)  
           if(data.isOwner){
             ProjectManager.update(db, query, {$set: updatedProject}, function (res2) {
                reply('updated')
@@ -208,80 +202,90 @@ ProjectController.prototype = (function () {
     addCollaboration: function addCollaboration (request, reply) {
       var objID = request.mongo.ObjectID
       var db = request.mongo.db
-      var isAuthenticated = SessionController.isAuthenticated(request)
-      if (isAuthenticated) {
-        var credentials = SessionController.getSession(request)
-        ProjectManager.findById(db, new objID(request.payload.projectId), {owners: 1}, function (res) {
-          if (credentials.scope == 'admin' || (res.owners && res.owners.indexOf(credentials.id) > -1 &&
-            credentials.projects && credentials.projects.indexOf(request.payload.projectId) > -1)) {
-            var newCollaboration = {}
-            newCollaboration[request.payload.offerOrNeed] = {
-              title: request.payload.title,
-              type: request.payload.type
+      var projectId = request.payload.projectId
+      setDataAuth(request, function(data){
+        if(data.isAuthenticated){
+          ProjectManager.findById(db, new objID(projectId),{} , function (res) {
+            data.p = res
+            data.isOwner = isOwner(data, projectId)    
+            if(data.isOwner){
+              var newCollaboration = {}
+              newCollaboration[request.payload.offerOrNeed] = {
+                title: request.payload.title,
+                type: request.payload.type
+              }
+              ProjectManager.update(request.mongo.db, {'_id': new objID(request.payload.projectId) }, {$push: newCollaboration}, function (res2) {
+                reply(res2)
+              })
+            } else {
+              reply('not Authorized')
             }
-            ProjectManager.update(request.mongo.db, {'_id': new objID(request.payload.projectId) }, {$push: newCollaboration}, function (res2) {
-              reply(res2)
-            })
-          } else {
-            reply('notAuthorized')
-          }
-        })
-      } else {
-        reply('not Authenticated')
-      }
+          })
+        } else {
+          reply('not Authenticated')
+        }
+      })
     },
     updateCollaboration: function updateCollaboration (request, reply) {
       var db = request.mongo.db
       var objID = request.mongo.ObjectID
-      var isAuthenticated = SessionController.isAuthenticated(request)
-      if (isAuthenticated) {
-        var credentials = SessionController.getSession(request)
-        ProjectManager.findById(db, new objID(request.payload.projectId), {owners:1}, function (res) {
-          if (credentials.scope == 'admin' || (res.owners && res.owners.indexOf(credentials.id) > -1 &&
-            credentials.projects && credentials.projects.indexOf(request.payload.projectId) > -1)) {
-            var query = {
-              '_id': new objID(request.payload.projectId)
+      var projectId = request.payload.projectId
+      setDataAuth(request, function(data){
+        if(data.isAuthenticated){
+          ProjectManager.findById(db, new objID(projectId),{} , function (res) {
+            data.p = res
+            data.isOwner = isOwner(data, projectId)    
+            if(data.isOwner){
+              var query = {
+                '_id': new objID(projectId)
+              }
+              query[request.payload.offerOrNeed + 's.title'] = request.payload.oldTitle
+              var updatedCollaboration = {}
+              updatedCollaboration[request.payload.offerOrNeed + 's.$.type'] = request.payload.newType
+              updatedCollaboration[request.payload.offerOrNeed + 's.$.title'] = request.payload.newTitle
+              ProjectManager.update(
+                request.mongo.db,
+                query,
+                {$set: updatedCollaboration},
+                function (res) {
+                  reply(res)
+                }
+              )
+            } else {
+              reply('not Authorized')
             }
-            query[request.payload.offerOrNeed + 's.title'] = request.payload.oldTitle
-            var updatedCollaboration = {}
-            updatedCollaboration[request.payload.offerOrNeed + 's.$.type'] = request.payload.newType
-            updatedCollaboration[request.payload.offerOrNeed + 's.$.title'] = request.payload.newTitle
-            ProjectManager.update(
-              request.mongo.db,
-              query,
-              {$set: updatedCollaboration},
-              function (res) {
-                reply(res)
-              })
-          } else {
-            reply('notAuthorized')
-          }
-        })
-      } else {
-        reply('not Authenticated')
-      }
-    },
-    removeCollaboration: function removeCollaboration (request, reply) {
-      var objID = request.mongo.ObjectID
-      var isAuthenticated = SessionController.isAuthenticated(request)
-      if (isAuthenticated) {
-        var credentials = SessionController.getSession(request)
-        if (credentials.scope == 'admin' || (res[0].owners && res[0].owners.indexOf(credentials.id) > -1 &&
-          credentials.projects && credentials.projects.indexOf(request.payload.projectId) > -1)) {
-          var query = {
-            '_id': new objID(request.payload.projectId)
-          }
-          var collaborationToRemove = {}
-          collaborationToRemove[request.payload.offerOrNeed + 's'] = {'title': request.payload.title}
-          ProjectManager.update(request.mongo.db, query, {$pull: collaborationToRemove}, function (res) {
-            reply(res)
           })
         } else {
-          reply('notAuthorized')
+          reply('not Authenticated')
         }
-      } else {
-        reply('not Authenticated')
-      }
+      })
+    },
+    removeCollaboration: function removeCollaboration (request, reply) {
+      var db = request.mongo.db
+      var objID = request.mongo.ObjectID
+      var projectId = request.payload.projectId
+      setDataAuth(request, function(data){
+        if(data.isAuthenticated){
+          ProjectManager.findById(db, new objID(projectId),{} , function (res) {
+            data.p = res
+            data.isOwner = isOwner(data, projectId)    
+            if(data.isOwner){
+              var query = {
+                '_id': new objID(projectId)
+              }
+              var collaborationToRemove = {}
+              collaborationToRemove[request.payload.offerOrNeed + 's'] = {'title': request.payload.title}
+              ProjectManager.update(request.mongo.db, query, {$pull: collaborationToRemove}, function (res) {
+                reply(res)
+              })
+            } else {
+              reply('not Authorized')
+            }
+          })
+        } else {
+          reply('not Authenticated')
+        }
+      })
     }
   }
 })()
@@ -514,4 +518,14 @@ function hideFieldsForNotPilot(res){
           }
           return p
         })
+}
+
+function isOwner(data, projectId){
+  return data.isAdmin || 
+    ( 
+      data.p.owners && 
+      data.p.owners.indexOf(data.credentials.id) > -1 && 
+      data.credentials.projects && 
+      data.credentials.projects.indexOf(projectId) > -1
+    )
 }
