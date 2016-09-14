@@ -336,7 +336,7 @@ function getProjectTypeObj(projectType){
   if (projectType == 'ethicalbusiness') {
     projectObj = {
       type: projectType,
-      label: 'Negocio Ético',
+      label: 'Economía solidaria',
       color: '#B8860B'
     }
   }

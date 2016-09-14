@@ -10,7 +10,7 @@ ProjectManager.prototype = (function () {
     },
     findAll: function findAll (db, callback) {
       console.log('findAllProjects')
-      db.collection('projects').find().sort({pilot:1}).toArray(function (err, docs) {
+      db.collection('projects').find().sort({pilot:-1}).toArray(function (err, docs) {
         console.log(docs.length)
         callback(docs)
       })
@@ -26,17 +26,17 @@ ProjectManager.prototype = (function () {
       })
     },
     findByCategoryId: function findByCategoryId (db, category_id, callback) {
-      db.collection('projects').find({'categories.catId': category_id}).sort({pilot: 1}).toArray(function (err, docs) {
+      db.collection('projects').find({'categories.catId': category_id}).sort({pilot: -1}).toArray(function (err, docs) {
         callback(docs)
       })
     },
     findByTypeId: function findByTypeId (db, type_id, callback) {
-      db.collection('projects').find({'projectType.type': type_id}).sort({pilot:1}).toArray(function (err, docs) {
+      db.collection('projects').find({'projectType.type': type_id}).sort({pilot:-1}).toArray(function (err, docs) {
         callback(docs)
       })
     },
     findByCollaborationWay: function findByCollaborationWay (db, collaboration_type_id, callback) {
-      db.collection('projects').find({$or: [{'needs.type': collaboration_type_id},{'offers.type': collaboration_type_id}]}).sort({pilot:1}).toArray(function (err, docs) {
+      db.collection('projects').find({$or: [{'needs.type': collaboration_type_id},{'offers.type': collaboration_type_id}]}).sort({pilot:-1}).toArray(function (err, docs) {
         callback(docs)
       })
     },

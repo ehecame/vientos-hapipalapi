@@ -32,6 +32,7 @@ function addAllProjects () {
   $.get(
     '/api/projects',
     function (data) {
+      console.log(data)
       addMarkers(data)
       addProjectCells(data)
       $('.nano').nanoScroller()
