@@ -1,5 +1,5 @@
 var map
-var markers 
+var markers
 var source
 var projectCellTemplate
 
@@ -358,7 +358,7 @@ function setTopBarBtnsFunc () {
   $('#waysOfCollaborationBtn').click(waysOfCollaborationBtnClicked)
   $('#keyWordsInput').keyup(function (event) {
     if (event.keyCode == 13) {
-      $('#loginBtn').click()
+      $('#searchBtn').click()
     }
   })
 // $('#projectsBtn').click(projectsBtnClicked)

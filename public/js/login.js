@@ -7,7 +7,12 @@ $(document).ready(function () {
   })
   $('#passwordInput').keyup(function (event) {
     if (event.keyCode == 13) {
-      $('#searchBtn').click()
+      $('#loginBtn').click()
+    }
+  })
+  $('#subsEmailInput').keyup(function (event) {
+    if (event.keyCode == 13) {
+      $('#subscribeBtn').click()
     }
   })
 })
@@ -27,4 +32,26 @@ function login () {
     }
   )
   return false
+}
+
+function subscribe() {
+  if(validateEmail())
+  $.post(
+    '/api/subscribe',
+    $('#subscribeForm').serialize(),
+    function (data) {
+      alert(data)
+    }
+  )
+  else{
+    alert("Escribe un email válido")
+  }
+  return false
+}
+
+function validateEmail(){
+	var emailInput = $('#subsEmailInput')
+	var email = emailInput.val()
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
 }

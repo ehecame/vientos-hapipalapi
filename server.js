@@ -42,7 +42,7 @@ server.register(require('hapi-auth-cookie'), function (err) {
     isSecure: false,
     appendNext: true,
     clearInvalid: true,
-    ttl: 1800000
+    ttl: 43200000
   })
 })
 
@@ -74,7 +74,7 @@ server.register(require('inert') , function (err) {
 }
 )
 
-// Empezando servidor 
+// Empezando servidor
 server.start(function () {
   console.log('Server running at:', server.info.uri)
 })

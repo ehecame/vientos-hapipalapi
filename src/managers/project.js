@@ -5,14 +5,14 @@ ProjectManager.prototype = (function () {
   return {
     find: function find (db, query, fields , callback) {
       db.collection('projects').find(query, fields).toArray(function (err, docs) {
-        callback(docs)
+        callback(orderAndShuflle(docs))
       })
     },
     findAll: function findAll (db, callback) {
       console.log('findAllProjects')
       db.collection('projects').find().sort({pilot:-1}).toArray(function (err, docs) {
         console.log(docs.length)
-        callback(docs)
+        callback(orderAndShuflle(docs))
       })
     },
     findAutogestival: function findAutogestival (db, callback) {
@@ -22,27 +22,27 @@ ProjectManager.prototype = (function () {
     },
     findById: function findById (db, project_id, fields,callback) {
       db.collection('projects').findOne({'_id': project_id},fields, function (err, docs) {
-        callback(docs)
+        callback(orderAndShuflle(docs))
       })
     },
     findByCategoryId: function findByCategoryId (db, category_id, callback) {
       db.collection('projects').find({'categories.catId': category_id}).sort({pilot: -1}).toArray(function (err, docs) {
-        callback(docs)
+        callback(orderAndShuflle(docs))
       })
     },
     findByTypeId: function findByTypeId (db, type_id, callback) {
       db.collection('projects').find({'projectType.type': type_id}).sort({pilot:-1}).toArray(function (err, docs) {
-        callback(docs)
+        callback(orderAndShuflle(docs))
       })
     },
     findByCollaborationWay: function findByCollaborationWay (db, collaboration_type_id, callback) {
       db.collection('projects').find({$or: [{'needs.type': collaboration_type_id},{'offers.type': collaboration_type_id}]}).sort({pilot:-1}).toArray(function (err, docs) {
-        callback(docs)
+        callback(orderAndShuflle(docs))
       })
     },
     findByKeyWords: function findByKeyWords (db, keyWords, callback) {
-      // var query = { $text: { $search: keyWords } } //3.2      
-      // db.collection('projects').find(query).toArray(function (err, docs) {
+      // var query = { $text: { $search: keyWords } } //3.2
+      // db.collection('projects').find(query).toArray(function (err, orderAndShuflle(docs)) {
       //  callback(docs)
       // })
       console.log(keyWords)
@@ -92,3 +92,14 @@ ProjectManager.prototype = (function () {
 
 var ProjectManager = new ProjectManager()
 module.exports = ProjectManager
+
+function orderAndShuflle(projects){
+  return _.chain(projects)
+          .groupBy('pilot')
+          .map(function(p){
+            console.log(p[0].pilot)
+            return _.shuffle(p)
+          })
+          .flatten()
+          .value()
+}

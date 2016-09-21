@@ -165,15 +165,15 @@ ProjectController.prototype = (function () {
       setDataAuth(request, function(data){
         ProjectManager.findById(db, new objID(request.params.id),{} , function (res) {
           data.p = res
-          data.isOwner = isOwner(data,request.params.id)  
+          data.isOwner = isOwner(data,request.params.id)
           if(data.isOwner){
             ProjectManager.update(db, query, {$set: updatedProject}, function (res2) {
                reply('updated')
             })
           }
           else reply('notAuthorized')
-        })        
-      })      
+        })
+      })
     },
     updateLogo: function updateLogo(request, reply){
       var db = request.mongo.db
@@ -182,14 +182,14 @@ ProjectController.prototype = (function () {
       setDataAuth(request, function(data){
         ProjectManager.findById(db, new objID(projectId),{} , function (res) {
           data.p = res
-          data.isOwner = isOwner(data,projectId)  
+          data.isOwner = isOwner(data,projectId)
           if(data.isOwner){
             ProjectManager.update(db, {_id: new objID(projectId)}, {$set: {logo: request.payload.logo}}, function (res2) {
                reply('newLogo')
             })
           }
           else reply('notAuthorized')
-        })        
+        })
       })
     },
     delete: function (request, reply) {
@@ -212,9 +212,9 @@ ProjectController.prototype = (function () {
           CodeManager.insert(db, {code: code, projectLinked: request.payload.id}, function(res){
             reply(code)
           })
-        })        
-      } else 
-        reply('notAuthorized')                 
+        })
+      } else
+        reply('notAuthorized')
     },
     // COLLABORATION
     addCollaboration: function addCollaboration (request, reply) {
@@ -225,7 +225,7 @@ ProjectController.prototype = (function () {
         if(data.isAuthenticated){
           ProjectManager.findById(db, new objID(projectId),{} , function (res) {
             data.p = res
-            data.isOwner = isOwner(data, projectId)    
+            data.isOwner = isOwner(data, projectId)
             if(data.isOwner){
               var newCollaboration = {}
               newCollaboration[request.payload.offerOrNeed] = {
@@ -252,7 +252,7 @@ ProjectController.prototype = (function () {
         if(data.isAuthenticated){
           ProjectManager.findById(db, new objID(projectId),{} , function (res) {
             data.p = res
-            data.isOwner = isOwner(data, projectId)    
+            data.isOwner = isOwner(data, projectId)
             if(data.isOwner){
               var query = {
                 '_id': new objID(projectId)
@@ -286,7 +286,7 @@ ProjectController.prototype = (function () {
         if(data.isAuthenticated){
           ProjectManager.findById(db, new objID(projectId),{} , function (res) {
             data.p = res
-            data.isOwner = isOwner(data, projectId)    
+            data.isOwner = isOwner(data, projectId)
             if(data.isOwner){
               var query = {
                 '_id': new objID(projectId)
@@ -508,8 +508,8 @@ function setDataAuth(request, callback){
   }
   if (data.isAuthenticated) {
     data.credentials = SessionController.getSession(request)
-    data.isAdmin = data.credentials.scope && 
-                  ( data.credentials.scope == 'admin' || 
+    data.isAdmin = data.credentials.scope &&
+                  ( data.credentials.scope == 'admin' ||
                     data.credentials.scope.indexOf('admin')>0)
     if(data.credentials.projects){
       SessionController.getProjects(request, function(res){
@@ -517,7 +517,7 @@ function setDataAuth(request, callback){
         callback(data)
       })
     } else callback(data)
-  } else callback(data) 
+  } else callback(data)
 }
 
 function hideFieldsForNotPilot(res){
@@ -525,13 +525,13 @@ function hideFieldsForNotPilot(res){
           if(!p.pilot){
             p.name = 'No ha sido activado'
             delete p.description
-            delete p.logo 
-            delete p.address 
-            delete p.facebook 
-            delete p.twitter 
+            delete p.logo
+            delete p.address
+            delete p.facebook
+            delete p.twitter
             delete p.webpage
-            delete p.phone 
-            delete p.cellphone 
+            delete p.phone
+            delete p.cellphone
             delete p.email
           }
           return p
@@ -539,11 +539,11 @@ function hideFieldsForNotPilot(res){
 }
 
 function isOwner(data, projectId){
-  return data.isAdmin || 
-    ( 
-      data.p.owners && 
-      data.p.owners.indexOf(data.credentials.id) > -1 && 
-      data.credentials.projects && 
+  return data.isAdmin ||
+    (
+      data.p.owners &&
+      data.p.owners.indexOf(data.credentials.id) > -1 &&
+      data.credentials.projects &&
       data.credentials.projects.indexOf(projectId) > -1
     )
 }

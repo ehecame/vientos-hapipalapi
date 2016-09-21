@@ -1,280 +1,172 @@
-<script src="js/index"></script>
-<div class="fluid-container">
+  <script src="js/index"></script>
+<div class="fluid-container" id="index-page">
   <div id="home-row" class="row">
-  	<img src="/img/fondoHome.jpg" id="homeImage">
+  	<img src="/img/VientosFondo.png" id="homeImage">
   	<div id="imageAction"></div>
 
 	</div><!--     /home-container       -->
-	
-	<div id="categories-row" class="row"><!--     CATEGORIAS     -->
+
+	<div id="categories-row" class="row circles-row"><!--     CATEGORIAS     -->
 		<div>
-			<div id="categoryTitle"><span class="showBigger">Personas</span>, <span class="showBigger">Proyectos Sociales</span> y <span class="showBigger"> de la Economía solidaria</span> colaborando en: </div>		
-		</div>
-		<div class="col-md-3 col-sm-6">
-			<div class="category" id="humanrights">
-				<div class="circle"><i class="fa fa-globe vcenter" title="Derechos Humanos"></i></div>
-				<div class="catLabel">Derechos Humanos</div>
-			</div>
-			<div class="category" id="productsservices">
-				<div class="circle"><i class="fa fa-shopping-basket vcenter" title="Productos y Servicios"></i></div>
-				<div class="catLabel">Productos y Servicios</div>
-			</div>
-			<div class="category" id="environment">
-				<div class="circle"><i class="fa fa-pagelines vcenter" title="Medio Ambiente"></i></div>
-				<div class="catLabel">Medio Ambiente</div>
-			</div>
-			<div class="category" id="artculture">
-				<div class="circle"><i class="fa fa-paint-brush vcenter" title="Arte y Cultura"></i></div>
-				<div class="catLabel">Arte y Cultura</div>
-			</div>	
-		</div>
-		<div class="col-md-3 col-sm-6">
-			<div class="category" id="gender">
-				<div class="circle"><i class="fa fa-transgender-alt vcenter" title="Género"></i></div>
-				<div class="catLabel">Género</div>
-			</div>
-			<div class="category" id="health">
-				<div class="circle"><i class="fa fa-medkit vcenter" title="Salud"></i></div>
-				<div class="catLabel">Salud</div>
-			</div>
-			<div class="category" id="education">
-				<div class="circle"><i class="fa fa-book vcenter" title="Educación"></i></div>
-				<div class="catLabel">Educación</div>
-			</div>
-			<div class="category" id="workshops">
-				<div class="circle"><i class="fa fa-puzzle-piece vcenter" title=""></i></div>
-				<div class="catLabel">Talleres y Clases</div>
+			<div class="titles">
+        <div id="title1">{{tags.together}}</div>
+        <div id="separator" class="hidden-xs"></div>
+        <div id="title2">{{tags.collaborating}}</div>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-6">
-			<div class="category" id="community">
-				<div class="circle"><i class="fa fa-users vcenter" title="Comunidad"></i></div>
-				<div class="catLabel">Comunidad</div>
-			</div>
-			<div class="category" id="food">
-				<div class="circle"><i class="fa fa-cutlery vcenter" title="Alimentación"></i></div>
-				<div class="catLabel">Alimentación</div>
-			</div>
-			<div class="category" id="housing">
-				<div class="circle"><i class="fa fa-home vcenter" title="Vivienda"></i></div>
-				<div class="catLabel">Vivienda</div>
-			</div>
-			<div class="category" id="clothing">
-				<div class="circle"><i class="fa fa-scissors vcenter" title="Vestido"></i></div>
-				<div class="catLabel">Vestido</div>
+		{{#each categories}}
+		<div class="col-md-2 col-sm-4 col-xs-6">
+			<div class="category" id="{{id}}">
+				<div class="circle"><i class="fa {{icon}} vcenter" title="{{catTag}}"></i></div>
+				<div class="catLabel">{{catTag}}</div>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-6">
-			<div class="category" id="communication">
-				<div class="circle"><i class="fa fa-bullhorn vcenter" title="Comunicación"></i></div>
-				<div class="catLabel">Comunicación</div>
-			</div>
-			<div class="category">
-				<div class="circle" id="technology"><i class="fa fa-cogs vcenter" title="Tecnología"></i></div>
-				<div class="catLabel">Tecnología</div>
-			</div>
-			<div class="category" id="transport">
-				<div class="circle"><i class="fa fa-bicycle vcenter" title="Transporte"></i></div>
-				<div class="catLabel">Transporte</div>
+		{{/each}}
+    <div class="col-md-2 col-sm-4 col-xs-6" id="showMoreCatsBtn">
+        <a href="#" class="btn btn-success">¡Ver todas!</a>
+    </div>
+    {{#each hiddenCats}}
+		<div class="col-md-2 col-sm-4 col-xs-6 hidden">
+			<div class="category" id="{{id}}">
+				<div class="circle"><i class="fa {{icon}} vcenter" title="{{collTag}}"></i></div>
+				<div class="catLabel">{{collTag}}</div>
 			</div>
 		</div>
+		{{/each}}
 	</div>
-	<div id="collaborate-row" class="row">
-		<div>
-			<div id="collaborateTitle">La <span class="showBigger">colaboración</span> es diversa: </div>
-		</div>
-		<div class="col-md-3 col-sm-6">
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/material" class="icon"></div>
-				<div class="colLabel">Materiales y Herramientas</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/knowledge" class="icon"></div>
-				<div class="colLabel">Conocimientos y Habilidades</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/product" class="icon"></div>
-				<div class="colLabel">Productos</div>
+	<div id="collaborate-row" class="row circles-row">
+    <div>
+			<div class="titles">
+        <div id="title1">Puedes colaborar</div>
+        <div id="separator" class="hidden-xs"></div>
+        <div id="title2">de muchas maneras</div>
 			</div>
 		</div>
-		<div class="col-md-3 col-sm-6">
+    {{#each collaborations}}
+		<div class="col-md-2 col-sm-4 col-xs-6">
 			<div class="collaborationWay">
-				<div class="circle"><img src="svg/service" class="icon"></div>
-				<div class="colLabel">Servicios</div>
+				<div class="circle"><img src="svg/{{icon}}" class="icon"></div>
+				<div class="colLabel">{{tag}}</div>
 			</div>
+    </div>
+    {{/each}}
+    <div class="col-md-2 col-sm-4 col-xs-6" id="showMoreCollsBtn">
+        <a href="#" class="btn btn-success">¡Ver todas!</a>
+    </div>
+    {{#each hiddenColls}}
+		<div class="col-md-2 col-sm-4 col-xs-6 hidden">
 			<div class="collaborationWay">
-				<div class="circle"><img src="svg/event" class="icon"></div>
-				<div class="colLabel">Eventos y Actividades</div>
+				<div class="circle"><img src="svg/{{icon}}" class="icon"></div>
+				<div class="colLabel">{{tag}}</div>
 			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/job" class="icon"></div>
-				<div class="colLabel">Chambas</div>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6">
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/volunteer" class="icon"></div>
-				<div class="colLabel">Voluntariado y Tequio</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/spread" class="icon"></div>
-				<div class="colLabel">Difusión de proyectos</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/space" class="icon"></div>
-				<div class="colLabel">Espacios</div>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6">
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/funding" class="icon"></div>
-				<div class="colLabel">Fondeo Colectivo</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/art" class="icon"></div>
-				<div class="colLabel">Comparte tu arte</div>
-			</div>
-			<div class="collaborationWay">
-				<div class="circle"><img src="svg/link" class="icon"></div>
-				<div class="colLabel">Recomienda y vincula</div>
-			</div>
-		</div>
+    </div>
+    {{/each}}
 	</div>
 	<div id="benefits-row" class="row animated fadeIn" > <!--     BENEFECIOS      -->
 		<div class="col-md-4 benefit" id="projects">
 			<h1 >Proyectos Sociales</h1>
-			<div class="card">
-				<div class="front">
-					<div class="text-center">
-						<img src="/svg/light" alt="">
-					</div>
-				</div>
-				<div class="back">
-					<div class="text-center">
-						<div>Recursos disponibles en tu zona</div>
-						<div>No gastes, colabora</div>
-						<div>Agrega tu proyecto al mapa </div>
-						<div>Difunde tu proyecto y actividades </div>
-						<div>Encuentra proyectos y crea alianzas</div>
-					</div>
-				</div>
+			<div class="points">
+        <div><i class="fa fa-circle"></i> Recursos compartidos en tu zona</div>
+        <div><i class="fa fa-circle"></i> No gastes, colabora</div>
+        <div><i class="fa fa-circle"></i> Agrega tu proyecto al mapa </div>
+        <div><i class="fa fa-circle"></i> Difunde tu proyecto y actividades </div>
 			</div>
-			<div class="btn_registrate btn btn-default">
+			<div class="tx-al-c btn_registrate">
+        <a class="btn btn-default">
 				REGíSTRATE
+        </a>
 			</div>
 		</div>
 		<div class="col-md-4 benefit" id="business">
 			<h1>Economía solidaria</h1>
-			<div class="card">
-				<div class="front">
-					<div class="text-center">
-						<img src="/svg/service" alt="">
-					</div>
-				</div>
-				<div class="back">
-					<div class="text-center">
-						<div>Red Comercio justo y solidario</div>
-						<div>Agrega tu negocio al mapa ético</div>
-						<div>Compra, venta y trueque</div>
-						<div>Productos y Servicios Locales</div>
-						<div>Cuenta la historia de tu negocio</div>
-					</div>
-				</div>
+			<div class="points">
+				<div><i class="fa fa-circle"></i> Red Comercio justo y solidario</div>
+        <div><i class="fa fa-circle"></i> Cuenta la historia de tu negocio</div>
+				<div><i class="fa fa-circle"></i> Compra, venta y trueque</div>
+				<div><i class="fa fa-circle"></i> Productos y Servicios de tu comunidad</div>
 			</div>
-			<div class="btn_registrate btn btn-default">REGíSTRATE
+			<div class="tx-al-c btn_registrate">
+        <a class="btn btn-default">REGíSTRATE</a>
 			</div>
 		</div>
 		<div class="col-md-4 benefit" id="individual">
 			<h1>Personas</h1>
-			<div class="card">
-				<div class="front">
-					<div class="text-center">
-						<img src="/svg/individual" alt="">
-					</div>
-				</div>
-				<div class="back">
-					<div class="text-center">
-						<div>Colabora con proyectos sociales</div>
-						<div>Eventos, clases y talleres</div>
-						<div>Chambas y voluntariado</div>
-						<div>Comparte tu idea, llévala a cabo</div>
-						<div>Intercambia materiales y recursos</div>
-						<div>Compra local y de negocios éticos</div>
-						<div>Promociones y descuentos</div>
-					</div>
-				</div>
+			<div class="points">
+				<div><i class="fa fa-circle"></i> Colabora con proyectos sociales</div>
+				<div><i class="fa fa-circle"></i> Eventos, clases y talleres</div>
+				<div><i class="fa fa-circle"></i> Chambas y voluntariado</div>
+				<div><i class="fa fa-circle"></i> Compra local. Apoya negocios éticos</div>
+				<div><i class="fa fa-circle"></i> Tus intereses. Tus habilidades</div>
 			</div>
-			<div class="btn_registrate btn btn-default ">REGíSTRATE</div>
+			<div class="tx-al-c btn_registrate">
+        <a class="btn btn-default">REGíSTRATE</a>
+      </div>
 		</div>
 	</div>
 	<!--     /BENEFECIOS      -->
 	<div id="casos-row" class="row">
-		<h1>Los más colaboradores</h1>	
+		<h1>Los más colaboradores</h1>
 		<div class="col-md-4">
-			<div class="foto_project foto1"></div>
-			<div class="texto_project text-justify">
-				“Somos una colaborativa que desea poner en su mesa un pan integral, nutritivo y delicioso. Queremos formar relaciones económicas fraternas, generando una red o comunidad en dónde podamos satisfacer la mayor parte de nuestras necesidades.”
-				<div class="text-right sign">
-					<span class="brand">PROYECTO1</span> · Semillas al pan
+			<div class="projectLogo_circle foto1"></div>
+			<div class="projectDesc">
+        <div class="projectTitle">
+					Colectivo · Semillas al pan
 				</div>
+        <div class="projectText">
+  				“Queremos formar relaciones económicas fraternas, generando una red o comunidad en dónde podamos satisfacer la mayor parte de nuestras necesidades.”
+        </div>
 			</div>
 		</div>
 		<div class="col-md-4">
-			<div class="foto_project foto2"></div>
-			<div class="texto_project text-justify">
-				“Reúne diversas actividades socio-culturales al beneficio de la humanidad. Laboratorio que alberga proyectos creativos.”
-				<div class="text-right sign">
-					<span class="brand">PROYECTO2</span> · Crater Invertido
+      <div class="projectLogo_circle foto2"></div>
+			<div class="projectDesc">
+        <div class="projectTitle">
+					Cooperativa · Crater Invertido
 				</div>
-			</div>
+        <div class="projectText">
+          A través del estudio y acción en torno a imaginario colectivo, autoformación, producción editorial crítica y circulación comunitaria de publicaciones buscamos construir redes de cooperación.
+        </div>
+      </div>
 		</div>
 		<div class="col-md-4">
-			<div class="foto_project foto3"></div>
-			<div class="texto_project text-justify">
-				“Los vecinos de la colonia Santa María la Rivera abrieron y organizan un espacio comunitario de truque, talleres y acopio de saberes.”
-				<div class="text-right sign">
-					<span class="brand">PROYECTO3</span> · Santa María
+      <div class="projectLogo_circle foto3"></div>
+			<div class="projectDesc">
+        <div class="projectTitle">
+					<span class="type">Organización Vecinal</span> · Santa María
 				</div>
+  			<div class="projectText">
+          Los vecinos de la colonia Santa María abrimos y organizamos un espacio comunitario de truque, talleres y acopio de saberes.
+        </div>
+      </div>
+		</div>
+	</div>
+	<div id="us-row" class="row" >
+		<h1>NOSOTRXS</h1>
+		<div class="col-lg-6 col-md-6" id="usText">
+			<p>
+				Vientos es una plataforma de fortalecimiento de proyectos sociales y de la economía solidaria mediante la colaboración entre ellos y con su comunidad.
+      </p>
+      <p>
+        Somos un proyecto independiente, sin fines de lucro y bajo los principios de código libre y tecnología cívica.
+			</p>
+			<p>
+				Los criterios que definen qué tan ético es un proyecto o negocio son votados por todos los usuarios de la página.
+			</p>
+    </div>
+    <div class="col-lg-6 col-md-6">
+      <div id="principlesText">Impulsamos y practicamos valores como:</div>
+			<div class="row" id="principles">
+        {{#each principles}}
+				<div class="col-md-{{size}} col-sm-6 ">
+					<i class="fa fa-asterisk"></i>{{tag}}
+				</div>
+        {{/each}}
 			</div>
 		</div>
 	</div>
-	<div id="we-row" class="row" >
-		<h1>NOSOTROS</h1>
-		<div class="col-md-8 col-md-offset-2 text-justify us">
-			<p>
-				Vientos es una plataforma de fortalecimiento de proyectos sociales y negocios éticos. Somos un proyecto independiente, sin fines de lucro y bajo los principios de cultura libre y código abierto. 
-			</p>
-			<p>
-				Los criterios que definen qué tan ético es un negocio, son votados por los usuarios de la página. Impulsamos y practicamos valores como: 
-			</p>
-			<div class="row principles">
-				<div class="col-md-4">
-					<i class="fa fa-asterisk"></i>Sustentabilidad
-				</div>
-				<div class="col-md-8">
-					<i class="fa fa-asterisk"></i>Desarrollo Económico Local y Solidario
-				</div>	
-				<div class="col-md-4">
-					<i class="fa fa-asterisk"></i>Cultura en Red
-				</div>	
-				<div class="col-md-4">
-					<i class="fa fa-asterisk"></i>Lo Comunitario
-				</div>	
-				<div class="col-md-4">
-					<i class="fa fa-asterisk"></i>Lo Artesanal
-				</div>	
-				<div class="col-md-5">
-					<i class="fa fa-asterisk"></i>Cuidado del Medio Ambiente
-				</div>	
-				<div class="col-md-7">
-					<i class="fa fa-asterisk"></i>Distribución Equitativa de la Riqueza
-				</div>
-			</div>
-		</div>
-	</div> 
 	<div id="map-row" class="row">
 		<div id="map" class="map_footer text-center">
 		    <img src="svg/map4" alt="">
 		</div>
-	</div> 
+	</div>
 </div>

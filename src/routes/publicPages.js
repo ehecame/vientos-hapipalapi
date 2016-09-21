@@ -14,16 +14,23 @@ module.exports = function () {
       path: '/',
       config: {
         handler: function (request  , reply) {
+          var lan = request.query.lan == "en" ? "en" : "es"
           setDataAuth(request, function(data){
             data.withFooter = true
+            data.categories = getCategoriesArray(lan)
+            data.hiddenCats = getHiddenCatsArray(lan)
+            data.collaborations = getCollaborationWaysArray(lan)
+            data.hiddenColls = getHiddenCollsArray(lan)
+            data.principles = getPrinciples(lan)
+            data.tags = getIndexTags(lan)
             reply.view('index', data)
           })
-        }
-      // auth: {
-      //   mode: 'try',
-      //   strategy: 'standard'
-      // },
-      // plugins: { 'hapi-auth-cookie': { redirectTo: false } }
+        },
+        auth: {
+           mode: 'try',
+           strategy: 'standard'
+        },
+        plugins: { 'hapi-auth-cookie': { redirectTo: false } }
       }
     }, {
       method: 'GET',
@@ -114,13 +121,13 @@ module.exports = function () {
             var objID = request.mongo.ObjectID
             ProjectManager.findById(db, new objID(request.params.projectId), {}, function (res) {
               data.p = res
-              data.isOwner = data.isAdmin || 
-                            ( 
-                              data.p.owners && 
-                              data.p.owners.indexOf(data.credentials.id) > -1 && 
-                              data.credentials.projects && 
+              data.isOwner = data.isAdmin ||
+                            (
+                              data.p.owners &&
+                              data.p.owners.indexOf(data.credentials.id) > -1 &&
+                              data.credentials.projects &&
                               data.credentials.projects.indexOf(request.params.projectId) > -1
-                            )    
+                            )
               if(!data.isAdmin){
                 delete data.p.projectCodes
               }
@@ -128,13 +135,13 @@ module.exports = function () {
               if(!data.p.pilot && !data.isOwner){
                 data.p.name = 'No ha sido activado'
                 delete data.p.description
-                delete data.p.logo 
-                delete data.p.address 
-                delete data.p.facebook 
-                delete data.p.twitter 
+                delete data.p.logo
+                delete data.p.address
+                delete data.p.facebook
+                delete data.p.twitter
                 delete data.p.webpage
-                delete data.p.phone 
-                delete data.p.cellphone 
+                delete data.p.phone
+                delete data.p.cellphone
                 delete data.p.email
               }
               if(request.query.conf){
@@ -144,7 +151,7 @@ module.exports = function () {
               console.log(data)
               reply.view('projectProfile', data)
             })
-          })          
+          })
         } /*,
         auth: false*/
       }
@@ -168,7 +175,7 @@ module.exports = function () {
                    else return reply('File uploaded : ' + files.file[0].originalFilename)
                 })
               })
-            } 
+            }
           })
         }
       }
@@ -182,8 +189,8 @@ function setDataAuth(request, callback){
   }
   if (data.isAuthenticated) {
     data.credentials = SessionController.getSession(request)
-    data.isAdmin = data.credentials.scope && 
-                  ( data.credentials.scope == 'admin' || 
+    data.isAdmin = data.credentials.scope &&
+                  ( data.credentials.scope == 'admin' ||
                     data.credentials.scope.indexOf('admin')>0)
     if(data.credentials.projects){
       SessionController.getProjects(request, function(res){
@@ -192,4 +199,134 @@ function setDataAuth(request, callback){
       })
     } else callback(data)
   } else callback(data)
+}
+
+function getCategoriesArray(lan){
+  var cats = {
+    es: [
+      { id: 'humanrights', icon: 'fa-globe', catTag: 'Derechos Humanos'},
+      { id: 'productsservices', icon: 'fa-shopping-basket', catTag: 'Consumo Ético'},
+      { id: 'environment', icon: 'fa-pagelines', catTag: 'Medio Ambiente'},
+      { id: 'artculture', icon: 'fa-paint-brush', catTag: 'Arte y Cultura'},
+      { id: 'gender', icon: 'fa-transgender-alt', catTag: 'Género'}
+    ],
+    en: [
+      { id: 'humanrights', icon: 'fa-globe', catTag: 'Human Rights'},
+      { id: 'productsservices', icon: 'fa-shopping-basket', catTag: 'Products and services '},
+      { id: 'environment', icon: 'fa-pagelines', catTag: 'Environment '},
+      { id: 'artculture', icon: 'fa-paint-brush', catTag: 'Art and Culture'},
+      { id: 'gender', icon: 'fa-transgender-alt', catTag: 'Gender & Sexuality'}
+    ]
+  }
+  return _.shuffle(cats[lan])
+}
+
+function getHiddenCatsArray(lan){
+  var hCats = {
+    es: [
+      { id: 'health', icon: 'fa-medkit', catTag: 'Salud'},
+      { id: 'education', icon: 'fa-book', catTag: 'Educación'},
+      { id: 'food', icon: 'fa-cutlery', catTag: 'Alimentación'},
+      { id: 'housing', icon: 'fa-home', catTag: 'Vivienda'},
+      { id: 'clothing', icon: 'fa-scissors', catTag: 'Vestido'},
+      { id: 'communication', icon: 'fa-bullhorn', catTag: 'Comunicación'},
+      { id: 'technology', icon: 'fa-cogs', catTag: 'Tecnología'},
+      { id: 'transport', icon: 'fa-bicycle', catTag: 'Transporte'},
+      { id: 'networks', icon: 'fa-cubes', catTag: 'Red'}
+    ],
+    en: [
+      { id: 'health', icon: 'fa-medkit', catTag: 'Health'},
+      { id: 'education', icon: 'fa-book', catTag: 'Education'},
+      { id: 'food', icon: 'fa-cutlery', catTag: 'Nutrition '},
+      { id: 'housing', icon: 'fa-home', catTag: 'Housing '},
+      { id: 'clothing', icon: 'fa-scissors', catTag: 'Clothing'},
+      { id: 'communication', icon: 'fa-bullhorn', catTag: 'Communication'},
+      { id: 'technology', icon: 'fa-cogs', catTag: 'Technology '},
+      { id: 'transport', icon: 'fa-bicycle', catTag: 'Transport'},
+      { id: 'networks', icon: 'fa-cubes', catTag: 'Network'}
+    ]
+  }
+  return _.shuffle(hCats[lan])
+}
+
+function getCollaborationWaysArray(lan){
+  var colls ={
+    es: [
+      { icon: 'material', collTag: 'Materiales y Herramientas'},
+      { icon: 'knowledge', collTag: 'Conocimientos y Habilidades'},
+      { icon: 'event',collTag: 'Eventos y Talleres'},
+      { icon: 'volunteer', collTag: 'Trabajo Comunitario'},
+      { icon: 'spread', collTag: 'Difusión de proyectos'}
+    ],
+    en: [
+      { icon: 'material', collTag: 'Tools and Materials'},
+      { icon: 'knowledge', collTag: 'Knowledge and Skills'},
+      { icon: 'event',collTag: 'Activities and Events'},
+      { icon: 'volunteer', collTag: 'Volunteering'},
+      { icon: 'spread', collTag: 'Spread the word'}
+    ]
+  }
+  return _.shuffle(colls[lan])
+}
+
+function getHiddenCollsArray(lan){
+  var hiddenColls = {
+    es: [
+      { icon: 'product', collTag: 'Productos'},
+      { icon: 'service', collTag: 'Servicios'},
+      { icon: 'job',collTag: 'Chambas'},
+      { icon: 'space', collTag: 'Espacios'},
+      { icon: 'link', collTag: 'Recomienda y vincula'},
+      { icon: 'art', collTag: 'Comparte tu arte'},
+      { icon: 'funding', collTag: 'Fondeo Colectivo'}
+    ],
+    en: [
+      { icon: 'product', collTag: 'Products'},
+      { icon: 'service', collTag: 'Services'},
+      { icon: 'job',collTag: 'Jobs'},
+      { icon: 'space', collTag: 'Spaces'},
+      { icon: 'link', collTag: 'Connect and Recommend'},
+      { icon: 'art', collTag: 'Share your Art'},
+      { icon: 'funding', collTag: 'Crowdfunding'}
+    ]
+  }
+  return _.shuffle(hiddenColls[lan])
+}
+
+function getPrinciples(lan){
+  var principles = {
+    es: [
+      {size:4, tag:'Sustentabilidad'},
+      {size:4, tag:'Cultura en Red'},
+      {size:4, tag:'Apoyo mutuo'},
+      {size:6, tag:'Producción Local y Artesanal '},
+      {size:6, tag:'Cuidado del Medio Ambiente'},
+      {size:6, tag:'Distribución de la Riqueza'},
+      {size:4, tag:'Trabajo digno'}
+    ],
+    en: [
+      {size:4, tag:'Sustainability'},
+      {size:4, tag:'Local economic development'},
+      {size:4, tag:'Collaborative culture'},
+      {size:6, tag:'Community engagement'},
+      {size:6, tag:'Artisans and small producers'},
+      {size:6, tag:'Protection of the environment'},
+      {size:4, tag:'Equitable distribution of wealth'}
+    ]
+  }
+  return _.shuffle(principles[lan])
+}
+
+function getIndexTags(lan){
+  var tags = {
+    es: {
+      together: 'Juntxs',
+      collaborating: 'Colaborando en',
+    },
+    en: {
+      together: 'Together',
+      collaborating: 'Collaborating on',
+    }
+  }
+  return tags[lan]
 }

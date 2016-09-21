@@ -13,6 +13,16 @@ $(document).ready(function () {
   $('#imageAction').click(function(){
     window.location.href = '/collaborate'
   })
+  $('#showMoreCatsBtn a').click(function(){
+    $('#showMoreCatsBtn').addClass('hidden')
+    $('.category').parent().removeClass('hidden')
+    return false
+  })
+  $('#showMoreCollsBtn a').click(function(){
+    $('#showMoreCollsBtn').addClass('hidden')
+    $('.collaborationWay').parent().removeClass('hidden')
+    return false
+  })
 })
 
 function categoryIconClicked () {

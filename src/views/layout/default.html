@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js" type="text/javascript"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script> 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="/js/form2js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/lodash/4.15.0/lodash.min.js"></script>
     <!-- <script type="text/javascript" src="//rawgit.com/opencagedata/leaflet-opencage-search/master/dist/js/L.Control.OpenCageSearch.dev.js"></script> -->
     <link rel="stylesheet" type="text/css" href="//rawgit.com/opencagedata/leaflet-opencage-search/master/dist/css/L.Control.OpenCageSearch.dev.css" />
     <link rel="stylesheet" href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
@@ -28,7 +29,7 @@
 
 <!--     MENU       -->
  <div id="top-container ">
-    <nav class="navbar navbar-vientos navbar-fixed-top">      
+    <nav class="navbar navbar-vientos navbar-fixed-top">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           <i class="fa fa-bars fa-lg"></i>
@@ -39,20 +40,25 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right fix-right">
+            <li id="closeToMe_btn">
+                <a href="/collaborate?close=1">
+                    <span> <!--  class="slidingVertical" -->
+                        Cerca de mí
+                    </span>
+                    <i class="fa fa-crosshairs"></i>
+                </a>
+            </li>
+            <li class="navBarBtn hidden-sm hidden-xs"><p class="navbar-text">/</p></li>
             <li id="map_btn">
                 <a href="/collaborate">
-                    <span class="slidingVertical">
-                        <span>Colabora</span>
-                        <span>Encuentra</span>
-                        <span>Mapa</span>
-                        <span>Proyectos</span>
-                        <span>Filtra</span>
+                    <span> <!--  class="slidingVertical" -->
+                        Colabora
                     </span>
                     <img src="/svg/map2" alt="">
                 </a>
-             </li>
+            </li>
             {{#if isAuthenticated}}
-                <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
+                <li class="navBarBtn hidden-sm hidden-xs"><p class="navbar-text">/</p></li>
                 <li class="navBarBtn">
                 {{#if myProjects}}
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user mr-r-5"></i>{{credentials.name}} {{credentials.lastname}} <span class="caret"></span></a>
@@ -71,29 +77,29 @@
                 {{/if}}
                 </li>
 
-                <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
+                <li class="navBarBtn hidden-xs hidden-sm"><p class="navbar-text">/</p></li>
                 <li class="navBarBtn"><a href="/logout">LOG OUT</a></li>
-                <li class="navBarBtn no_mobile"><a href="#">&nbsp;</a></li>
+                <li class="navBarBtn hidden-xs hidden-sm"><a href="#">&nbsp;</a></li>
             {{else}}
-                <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
-                <li class="navBarBtn"><a href="/shortregister"><strong>REGíSTRATE</strong></a></li>
-                <li class="navBarBtn no_mobile"><p class="navbar-text">/</p></li>
-                <li class="navBarBtn"><a href="#loginPopUp">LOGIN</a></li>
-                <li class="navBarBtn no_mobile"><a href="#">&nbsp;</a></li>
+                <li class="navBarBtn hidden-xs hidden-sm"><p class="navbar-text">/</p></li>
+                <li class="navBarBtn"><a href="/login"><strong>REGíSTRATE</strong></a></li>
+                <li class="navBarBtn hidden-xs hidden-sm"><p class="navbar-text">/</p></li>
+                <li class="navBarBtn"><a href="/login">LOGIN</a></li>
+                <li class="navBarBtn hidden-xs hidden-sm"><a href="#">&nbsp;</a></li>
             {{/if}}
           </ul>
-        </div><!--/.nav-collapse -->    
+        </div><!--/.nav-collapse -->
     </nav>
 </div>
 <div>
     {{{content}}}
 </div>
 {{#if withFooter}}
-<div class="footer-container">    
-    <div class="col-md-6 text-right datos_contacto">    
+<div class="footer-container">
+    <div class="col-md-6 text-right datos_contacto">
             <a href="#">Faqs</a>
             <a href="#">Terminos Legales</a>
-            <a href="#">Mapa</a>        
+            <a href="#">Mapa</a>
         <h1></h1>
         <br><br>
             <a href="">55-23-12-12</a><br>
@@ -102,7 +108,7 @@
     <div class="col-md-6 redes">
         <div class="col-md-6">
             <p>
-                <span class="facebook"><a href="#"><i class="fa fa-facebook"></i></a> </span> 
+                <span class="facebook"><a href="#"><i class="fa fa-facebook"></i></a> </span>
                 <span class="twitter"><a href="#"><i class="fa fa-twitter"></i></a> </span>
                 <span class="github"><a href="#"><i class="fa fa-github-alt"></i></a></span>
             </p>

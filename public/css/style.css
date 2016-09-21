@@ -26,15 +26,6 @@
     background-size: cover;
 }
 @font-face {
-    font-family: circular_black;
-    src: url("../fonts/circular_black.ttf"); }
-@font-face {
-    font-family: circular_bold;
-    src: url("../fonts/circular_bold.ttf"); }
-@font-face {
-    font-family: circular_book;
-    src: url("../fonts/circular_book.ttf"); }
-@font-face {
     font-family: roboto-light;
     src: url("../fonts/Roboto-Light.ttf"); }
 @font-face {
@@ -46,9 +37,6 @@
 @font-face {
     font-family: roboto-black;
     src: url("../fonts/Roboto-Black.ttf"); }
-@font-face {
-    font-family: circular_medium;
-    src: url("../fonts/circular_medium.ttf"); }
 
 body{
     font-family: roboto-regular;
@@ -77,7 +65,7 @@ a:focus{
 }
 
 h1{
-    font-family: circular_bold;
+    font-family: roboto-bold;
     padding-left: 15px !important;
 }
 
@@ -316,12 +304,47 @@ h1{
     font-family: roboto-bold;
     letter-spacing: 1.5px;
     width: 150px;
+    position: relative;
+}
+
+#map_btn a span{
+  text-indent: 8px;
+  position: relative;
+  top: 4px;
+  left: 7px;
 }
 
 #map_btn img{
     padding-bottom: 5px;
     height: 30px;
     float: right;
+    margin-right: 5px;
+}
+
+#closeToMe_btn a{
+    padding: 6px 15px;
+    color: white;
+    background: #5eccc4;
+    border-radius: 25px;
+    margin-top: 5px;
+    height: 40px;
+    cursor: pointer;
+    font-family: roboto-bold;
+    letter-spacing: 1.5px;
+    width: 170px;
+    position: relative;
+}
+
+#closeToMe_btn a span{
+  text-indent: 8px;
+  position: relative;
+  top: 4px;
+  left: 7px;
+}
+
+#closeToMe_btn i{
+  float: right;
+  font-size: 2em;
 }
 
 .container-fluid{
@@ -336,7 +359,7 @@ h1{
 }
 
 #home-row{
-    height: 80vh;
+    height: 95vh;
     margin-top: 50px;
     vertical-align: middle;
     text-align: center;
@@ -367,57 +390,66 @@ h1{
 }
 
 #benefits-row h1{
-    margin: 0px;
+    margin-top: 30px;
     padding: 0px;
-    font-family: roboto-regular;
-    padding-bottom: 30px;
+    font-family: roboto-bold;
+    padding-bottom: 50px;
     text-align: center;
     font-size: 25px;
-}
-
-#benefits-row img{
-    height: 100px;
-    margin-bottom: 30px;
 }
 
 #benefits-row #projects,
 #benefits-row #business,
 #benefits-row #individual{
     padding-top: 20px;
+    height: 500px;
 }
 
 #benefits-row #projects{
-    background-color: #18a50e;
+    background-color: #345d89;
     color: white;
 }
 
 #benefits-row #business{
-    background-color: #09417c;
+    background-color: #5cb756;
     color: white;
 }
 
 #benefits-row #individual{
-    background-color: #ede9de;
-    color: #333;
+    background-color: #6a427c  ;
+    color: white;
 }
 
-#benefits-row .card{
+#benefits-row .points{
     font-size: 1.3em;
     height: 250px;
+    margin-bottom: 20px;
+}
+
+#benefits-row .points div{
+}
+
+#benefits-row .points i{
+  margin-bottom: 30px;
+  margin-right: 10px;
+  color: #d4641e;
 }
 
 #benefits-row .btn_registrate{
-    z-index: 100;
-    background-color: #5151F4;
-    color: #1D1D57;
-    border: 0px;
-    padding: 15px;
-    border-radius: 6px;
+    margin-top: 10px;
+}
+
+#benefits-row .btn_registrate a{
+  background-color: #eee;
+  color: #1D1D57;
+  border-radius: 20px;
+  padding: 15px;
 }
 
 #collaborate-row{
-    margin-top: 30px;
-    margin-bottom: 30px;
+  padding: 50px 100px 50px 100px;
+  margin-bottom: 20px 0px;
+  background-color: #f5f5f5 ;
 }
 
 #collaborate-row #collaborateTitle{
@@ -429,6 +461,7 @@ h1{
 
 #collaborate-row > div{
     text-align: center;
+    height: 200px;
 }
 
 #collaborate-row .collaborationWay{
@@ -439,13 +472,14 @@ h1{
 
 #collaborate-row .collaborationWay .circle{
     border: solid 2px #dddddd;
-    height: 80px;
-    width: 80px;
-    border-radius: 40px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    background-color: white;
 }
 
 #collaborate-row .collaborationWay .icon{
-    height: 80px;
+    height: 100px;
 }
 
 #collaborate-row .collaborationWay .more{
@@ -454,28 +488,51 @@ h1{
 }
 
 #collaborate-row .collaborationWay .colLabel{
-    width: 80px;
-    font-size: .8em;
+    width: 100px;
+    font-size: 1.2em;
+    margin-top: 20px;
 }
 
 #categories-row{
-    margin: 30px 0px 60px 0px;
+    padding: 50px 100px 50px 100px;
+    margin-top: 20px;
+    background-color: #f5f5f5;
 }
 
-#categories-row #categoryTitle{
-    text-align: left;
-    font-size: 1.7em;
-    margin-left: 50px;
-    margin-bottom: 30px;
+.circles-row .titles{
+  margin-bottom: 35px;
+  color: #337ab7;
 }
 
-#categories-row #categoryTitle .showBigger{
-    font-family: roboto-bold;
-    font-size: 1.2em;
+.circles-row .titles #title1{
+  font-size: 2em;
+  margin-right: 50px;
+  display: inline-block;
+  position: relative;
+  top: -65px;
+  width: 275px;
+  text-align: right;
+}
+.circles-row .titles #title2{
+  display: inline-block;
+  font-size: 2em;
+  margin-left: 50px;
+  position: relative;
+  top: -30px;
+  width: 275px;
+  text-align: left;
+}
+
+.circles-row .titles #separator{
+  display: inline-block;
+  height: 120px;
+  background-color: #CCC;
+  width: 4px;
 }
 
 #categories-row > div{
     text-align: center;
+    height: 200px;
 }
 
 #categories-row .category{
@@ -490,9 +547,9 @@ h1{
 
 #categories-row .category .circle{
     background-color: #38c12d;
-    height: 60px;
-    width: 60px;
-    border-radius: 30px;
+    height: 120px;
+    width: 120px;
+    border-radius: 60px;
     box-shadow: 5px 5px 5px #ddd;
 }
 
@@ -512,12 +569,19 @@ h1{
 
 #categories-row .category i{
     color: white;
-    font-size: 2em;
+    font-size: 4em;
 }
 
 #categories-row .category .catLabel{
-    width: 50px;
-    font-size: .8em;
+    width: 120px;
+    font-size: 1.4em;
+    margin-top: 20px;
+}
+
+#categories-row #showMoreCatsBtn{
+  position: relative;
+  top: 40px;
+  left: 50px;
 }
 
 #casos-row{
@@ -529,22 +593,32 @@ h1{
     padding-bottom: 20px;
 }
 
-#casos-row .foto_project{
-    background-color: black;
-    height: 236px;
-    border-radius: 10px 10px 0px 0px;
+#casos-row .projectLogo_circle{
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+  margin: auto;
 }
 
-#casos-row .texto_project{
-    background-color: #F5F6F7;
-    padding: 35px;
-    padding-top: 40px;
-    border-radius: 0px 0px 10px 10px;
-    font-size: 18px;
+#casos-row .projectDesc{
+    text-align: center;
+}
+
+#casos-row .projectDesc .projectTitle{
+  font-size: 1.5em;
+    font-family: roboto-bold;
+    color: #066529;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#casos-row .projectDesc .projectText{
+  padding: 30px;
 }
 
 #casos-row .col-md-4{
     padding-bottom: 5px;
+    max-width: 500px;
 }
 
 #casos-row .sign{
@@ -564,26 +638,41 @@ h1{
     margin: 20px;
 }
 
-#we-row{
+#us-row{
     padding-top: 30px;
     padding-bottom: 30px;
     background-color: #F5F6F7;
 }
 
-#we-row .us{
+#us-row #usText{
     font-size: 1.5em;
-    margin-bottom: 50px;
+    padding: 50px;
 }
 
-#we-row .us p{
+#us-row #usText p{
     padding-bottom: 35px;
 }
 
-#we-row .us .principles div{
-    height: 50px;
+#us-row #principlesText{
+  font-size: 1.5em;
+  margin-bottom: 30px;
 }
 
-#we-row .us .principles i{
+#us-row #principles{
+  font-size: 1.3em;
+}
+
+#us-row #principles div{
+  height: 50px;
+  background-color: #57a25d;
+  margin: 5px;
+  border-radius: 25px;
+  padding: 12px;
+  padding-top: 12px;
+  color: white;
+}
+
+#us-row #principles i{
     margin-right: 10px;
 }
 
@@ -665,9 +754,26 @@ h1{
     max-height: 500px;
 }
 
-#loginFormContainer{
-    height: 100%;
-    padding-top: 200px;
+#loginSec{
+    padding-top: 20vh;
+}
+#loginSec #loginForm{
+  padding: 20px;
+  background-color: #a9e2b7;
+  border-radius: 20px;
+}
+
+#subscribeSec{
+  padding: 10vh 10vw 10vw 10vh;
+}
+#subscribeSec p{
+  font-size: 1.3em;
+  margin-left: 15px;}
+
+#subscribeSec #subscribeForm{
+  padding: 20px;
+  background-color: #eee;
+  border-radius: 20px;
 }
 
 .overlay{
@@ -1169,7 +1275,7 @@ h1{
 }
 
 #searchPage .project #projectPhone,
-#searchPage .project #projectMobile,
+#searchPage .project #project,
 #searchPage .project #projectEmail,
 #searchPage .project #projectAddress{
     display: inline-block;
