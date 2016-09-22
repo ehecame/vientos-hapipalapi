@@ -43,7 +43,7 @@
             <li id="closeToMe_btn">
                 <a href="/collaborate?close=1">
                     <span> <!--  class="slidingVertical" -->
-                        Cerca de mí
+                        {{tags.closeToMe}}
                     </span>
                     <i class="fa fa-crosshairs"></i>
                 </a>
@@ -52,7 +52,7 @@
             <li id="map_btn">
                 <a href="/collaborate">
                     <span> <!--  class="slidingVertical" -->
-                        Colabora
+                        {{tags.collaborate}}
                     </span>
                     <img src="/svg/map2" alt="">
                 </a>
@@ -63,7 +63,7 @@
                 {{#if myProjects}}
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user mr-r-5"></i>{{credentials.name}} {{credentials.lastname}} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/myprofile">Mi perfil</a></li>
+                            <li><a href="/myprofile">{{tag.myProfile}}</a></li>
                             <li role="separator" class="divider"></li>
                             {{#each myProjects}}
                             <li><a href="/project/{{_id}}">{{name}}</a></li>
@@ -137,7 +137,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="/js/main"></script>
-<script src="/js/login"></script>
 <script src="/js/jquery.flip.min"></script>
 <script src="/js/bootstrap-multiselect"></script>
 <script src="/js/autosize"></script>

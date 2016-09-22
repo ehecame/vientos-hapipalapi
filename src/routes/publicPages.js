@@ -320,13 +320,92 @@ function getPrinciples(lan){
 function getIndexTags(lan){
   var tags = {
     es: {
+      closeToMe: 'Cerca de mí',
+      collaborate: 'Colabora',
+      login: 'Inicia sesión',
+      logout: 'Cierra sesión',
+      myProfile: "Mi Perfil",
       together: 'Juntxs',
       collaborating: 'Colaborando en',
+      showMore:'¡Ver todas!',
+      youCanCollaborate: 'Puedes colaborar',
+      inLotsOfWays: 'de muchas maneras',
+      solidarityEconomy: 'Economía Solidaria',
+      solidarityEconomyBullets: [
+        "Red Comercio justo y solidario",
+        "Cuenta la historia de tu negocio",
+        "Compra, venta y trueque",
+        "Productos y Servicios de tu comunidad"
+      ],
+      individuals: "Personas",
+      individualsBullets: [
+        "Colabora con proyectos sociales",
+        "Eventos, clases y talleres",
+        "Chambas y voluntariado",
+        "Compra local. Apoya negocios éticos",
+        "Tus intereses. Tus habilidades"
+      ],
+      socialProjects: "Proyectos Sociales",
+      socialProjectsBullets: [
+        "Recursos compartidos en tu zona",
+        "No gastes, colabora",
+        "Agrega tu proyecto al mapa",
+        "Difunde tu proyecto y actividades"
+      ],
+      register: "Regístrate",
+      topCollaborators: "Más colaboradores",
+      aboutUs: "Nosotrxs",
+      aboutUsTexts: [
+        "Vientos es una plataforma de fortalecimiento de proyectos sociales y de la economía solidaria mediante la colaboración entre ellos y con su comunidad.",
+        "Somos un proyecto independiente, sin fines de lucro y bajo los principios de código libre y tecnología cívica.",
+        "Los criterios que definen qué tan ético es un proyecto o negocio son votados por todos los usuarios de la página."
+      ],
+      principlesTitle: "Impulsamos y practicamos valores como:"
     },
     en: {
+      closeToMe: 'Close to me',
+      collaborate: 'Collaborate',
+      login: 'Log in',
+      logout: 'Log out',
+      myProfile: 'My Profile',
       together: 'Together',
       collaborating: 'Collaborating on',
+      showMore:'See all!',
+      youCanCollaborate: 'You can collaborate',
+      inLotsOfWays: 'in lots of ways',
+      solidarityEconomy: 'Solidarity Economy',
+      solidarityEconomyBullets:  [
+        "Fair trade and solidarity network",
+        "Tell your business story",
+        "Buy, sell, lend, borrow, barter",
+        "Local products and services"
+      ],
+      individuals: "Individuals",
+      individualsBullets: [
+        "Collaborate with social projects ",
+        "Events, classes and workshops",
+        "Jobs and volunteering ",
+        "Buy local. Support ethical businesses ",
+        "Your Interests. Your Skills"
+      ],
+      socialProjects: "Social Projects",
+      socialProjectsBullets:[
+        "Shared resources in your area",
+        "Save money, collaborate ",
+        "Add your project to the map",
+        "Spread the word about your activities "
+      ],
+      register: "Register",
+      topCollaborators: "Top Collaborators",
+      aboutUs: "About Us",
+      aboutUsTexts: [
+        "Vientos is a platform that fosters collaboration and networks of support for social projects and ethical businesses.",
+        "We are a nonprofit, independent project that promotes the principles of civic technology and open source.",
+        "The criteria for ethical businesses is voted for by all users of the platform."
+      ],
+      principlesTitle: "We further values such as:"
     }
+
   }
   return tags[lan]
 }
