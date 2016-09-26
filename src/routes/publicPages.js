@@ -48,6 +48,13 @@ module.exports = function () {
         handler: function (request, reply) {
           setDataAuth(request, function(data){
             data.withFooter = false
+            data.tags = {
+              closeToMe: 'Cerca de mí',
+              collaborate: 'Colabora',
+              login: 'Inicia sesión',
+              logout: 'Cierra sesión',
+              myProfile: "Mi Perfil"
+            }
             reply.view('collaborate', data)
           })
         }

@@ -380,6 +380,12 @@ h1{
     cursor: pointer;
 }
 
+#home-row #languageToggle{
+  position: absolute;
+  top: 70px;
+  right: 50px;
+}
+
 #benefits-row{
     background-color: #33AA96;
 }
@@ -1020,11 +1026,11 @@ h1{
 .profile #secInterests{
 }
 
-.profile #secInterests #categories #categoriesSec{
+.profile #secInterests #categoriesSec #categories{
     margin-top: 70px;
 }
 
-.profile #secInterests #categories .category{
+.profile #secInterests #categoriesSec #categories .category{
     width: 100px;
     height: 100px;
     border: 2px solid grey;
@@ -1036,18 +1042,14 @@ h1{
     overflow-wrap: break-word;
 }
 
-.profile #secInterests #categories .selected{
+.profile #secInterests #categoriesSec #categories .selected{
     background-color: #38c12d;
     border: none;
     color: white;
 }
 
-.profile #secInterests #categories .category i{
+.profile #secInterests #categoriesSec #categories .category i{
     display: block;
-}
-
-.profile #secInterests #interests{
-    padding: 0px;
 }
 
 .profile #secInterests #interestList{
@@ -1056,6 +1058,7 @@ h1{
     background-color: white;
     margin-top: 20px;
     margin-right: 20px;
+    line-height: 30px;
 }
 
 .profile #secInterests #skillList{
@@ -1256,6 +1259,7 @@ h1{
     -o-animation-play-state: initial;
     -moz-animation-play-state: initial;
     animation-play-state: initial;
+    background-color: rgb(74, 199, 67)
 }
 
 @-webkit-keyframes pulsate{
@@ -1374,6 +1378,11 @@ h1{
     margin-bottom: 10px;
 }
 
+#searchPage #typesContainer .typeBtn:hover{
+    padding-left: 40px;
+    border: 2px solid #c810c1
+}
+
 #searchPage #typesContainer #cooperative{
     background-color: #800000;
 }
@@ -1420,6 +1429,18 @@ h1{
     margin-bottom: 4px;
     line-height: 6vh;
     cursor: pointer;
+}
+
+#searchPage #waysOfCollaborationContainer .collaborationWay:hover{
+    background-color: #244760;
+}
+
+#searchPage #waysOfCollaborationContainer .selected{
+  position: relative;
+  left: 15px;
+  text-align: right;
+  background-color: #244760;
+  padding-right: 10px;
 }
 
 #searchPage #waysOfCollaborationContainer .collaborationWay .circle{

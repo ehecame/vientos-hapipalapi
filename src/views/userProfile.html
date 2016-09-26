@@ -976,7 +976,7 @@
                 {{/each}}
               </div>
             </div>
-          </div>          
+          </div>
         </div>
         <div id="needs" class="col-md-5 col-md-offset-1">
           <h2 class="profileTitle">Necesidades</h2>
@@ -1566,9 +1566,9 @@
         </div>
       </div>
       <div id="secInterests" class="row profileSec tab-pane active" role="tabpanel">
-        <div id="categories">
+        <div class="col-md-6" id="categoriesSec">
           <h2 class="profileTitle">Categorías</h2>
-          <div class="row" id="categoriesSec">
+          <div class="row" id="categories">
             <div class="col-md-2 col-sm-4 col-xs-6 category vcenter {{#ifcond u.categories 'contains' 'humanrights'}}selected" {{else}} "{{/ifcond}}" id="humanrights">
               <i class="fa fa-globe fa-3x"></i>Derechos Humanos
             </div>
@@ -1616,7 +1616,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5 form-inline" id="interests">
+        <div class="col-md-6 form-inline" id="interests">
           <h2 class="profileTitle">Intereses</h2>
           <div id="hashTags">
             <input placeholder="ingresa un interés" id="newInterestInput" class="form-control" />
@@ -1627,7 +1627,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-7 form-inline" id="skills">
+        <div class="col-md-6 form-inline" id="skills">
           <h2 class="profileTitle">Habilidades</h2>
           <input placeholder="ingresa una habilidad" type="text" id="newSkillInput" class="form-control" />
           <span>Quiero:</span>

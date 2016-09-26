@@ -11,6 +11,13 @@ module.exports = function () {
         handler: function (request, reply) {
           setDataAuth(request, function(data){
             data.withFooter = false
+            data.tags = {
+              closeToMe: 'Cerca de mí',
+              collaborate: 'Colabora',
+              login: 'Inicia sesión',
+              logout: 'Cierra sesión',
+              myProfile: "Mi Perfil"
+            }
             if(data.isAuthenticated){
               console.log(data)
               var db = request.mongo.db
@@ -24,7 +31,7 @@ module.exports = function () {
               reply.redirect('/login?next=%2Fmyprofile')
             }
           })
-        }  
+        }
       }
     }, {
       method: 'GET',
@@ -50,8 +57,8 @@ function setDataAuth(request, callback){
   }
   if (data.isAuthenticated) {
     data.credentials = SessionController.getSession(request)
-    var isAdmin = data.credentials.scope && 
-                  ( data.credentials.scope == 'admin' || 
+    var isAdmin = data.credentials.scope &&
+                  ( data.credentials.scope == 'admin' ||
                     data.credentials.scope.indexOf('admin')>0)
     if(data.credentials.projects){
       SessionController.getProjects(request, function(res){
