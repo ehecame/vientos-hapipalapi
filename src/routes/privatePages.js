@@ -19,7 +19,6 @@ module.exports = function () {
               myProfile: "Mi Perfil"
             }
             if(data.isAuthenticated){
-              console.log(data)
               var db = request.mongo.db
               var query = {username: data.credentials.username}
               var fields = {}

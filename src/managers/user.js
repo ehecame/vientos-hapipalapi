@@ -12,15 +12,11 @@ UserManager.prototype = (function () {
       })
     },
     insert: function insert (db, user, callback) {
-      console.log('insertingUser')
-      console.log(user)
       db.collection('users').insert(user, {w: 1}, function (err, doc) {
-        console.log(doc)
         callback(doc)
       })
     },
     update: function update (db, query, updateObject, callback) {
-      console.log(updateObject)
       db.collection('users').update(query, updateObject, function (err, doc) {
         callback(doc)
       })

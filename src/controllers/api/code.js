@@ -4,15 +4,14 @@ function CodeController() { };
 CodeController.prototype = (function () {
     return {
         find: function find(request, reply) {
-            var db = request.mongo.db;  
+            var db = request.mongo.db;
             CodeManager.find(db, request.payload,{}, function (res) {
                 reply(res);
             });
         },
         goodCode: function goodCode(request, reply) {
-            var db = request.mongo.db;  
+            var db = request.mongo.db;
             CodeManager.findOne(db, request.query.code, function (res) {
-                console.log(res)
                 if(res)
                     reply(true)
                 else
@@ -32,7 +31,7 @@ CodeController.prototype = (function () {
             })
         },
         delete: function (request, reply) {
-            var db = request.mongo.db;  
+            var db = request.mongo.db;
             CodeManager.delete(db, request.params.id, function (res) {
                 reply(res);
             });

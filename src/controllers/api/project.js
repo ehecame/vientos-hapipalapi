@@ -12,7 +12,6 @@ ProjectController.prototype = (function () {
       ProjectManager.findAll(db, function (res) {
         setDataAuth(request, function(data){
           if(data.isAdmin){
-            console.log('proyectos completos')
             reply(_.map(res, function(p){p.isAdmin = true; return p}))
           }
           else {
@@ -111,8 +110,6 @@ ProjectController.prototype = (function () {
           logo = logo.substring(1)
         }
       }
-      console.log('lat:' + parsedProject.latitude)
-      console.log('lon:' + parsedProject.longitude)
       var newProject = {
         email: parsedProject.email,
         name: parsedProject.name,

@@ -9,9 +9,7 @@ ProjectManager.prototype = (function () {
       })
     },
     findAll: function findAll (db, callback) {
-      console.log('findAllProjects')
       db.collection('projects').find().sort({pilot:-1}).toArray(function (err, docs) {
-        console.log(docs.length)
         callback(orderAndShuflle(docs))
       })
     },
@@ -22,7 +20,7 @@ ProjectManager.prototype = (function () {
     },
     findById: function findById (db, project_id, fields,callback) {
       db.collection('projects').findOne({'_id': project_id},fields, function (err, docs) {
-        callback(orderAndShuflle(docs))
+        callback(docs)
       })
     },
     findByCategoryId: function findByCategoryId (db, category_id, callback) {
@@ -45,23 +43,17 @@ ProjectManager.prototype = (function () {
       // db.collection('projects').find(query).toArray(function (err, orderAndShuflle(docs)) {
       //  callback(docs)
       // })
-      console.log(keyWords)
       var results = db.command({ text: 'projects', search: keyWords }, function (err, res) {
-        console.log(err)
-        console.log(res)
         callback(_.map(res.results, function (s) {return s.obj}))
       })
     },
     insert: function insert (db, project, callback) {
-      console.log(project)
       db.collection('projects').insert(project, {w: 1}, function (err, doc) {
-        console.log(doc)
         callback(doc)
       })
     },
     update: function update (db, query, updateObject, callback) {
-      console.log(updateObject)
-      console.log(query)
+      console.log(updateObject['$set'].schedule)
       db.collection('projects').update(query, updateObject, function (err, doc) {
         if(err)
           console.log(err)
@@ -71,20 +63,6 @@ ProjectManager.prototype = (function () {
     delete: function (db, id, callback) {
       db.collection('projects').remove({ _id: id }, function (err, doc) {
         callback(doc)
-      })
-    },
-    modifyOfferAndNeeds: function modifyOfferAndNeeds (db, callback) {
-      var updatedNeeds, updatedOffers
-      db.collection('projects').find({'needsa': {$exists: true}}).toArray(function (err, docs) {
-        _.each(docs, function (project, index) {
-          updatedNeeds = _.map(project.needsa, function (need) {return {'title': need, 'type': 'product'}})
-          updatedOffers = _.map(project.offersa, function (offer) {return {'title': offer, 'type': 'product'}})
-          db.collection('projects').updateMany({name: project.name}, {$set: {'needs': updatedNeeds}}, function (err, results) {
-            console.log(results)})
-          db.collection('projects').updateMany({name: project.name}, {$set: {'offers': updatedOffers}}, function (err, results) {
-            console.log(results)})
-        })
-        callback()
       })
     }
   }
@@ -97,7 +75,6 @@ function orderAndShuflle(projects){
   return _.chain(projects)
           .groupBy('pilot')
           .map(function(p){
-            console.log(p[0].pilot)
             return _.shuffle(p)
           })
           .flatten()

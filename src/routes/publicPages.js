@@ -1,4 +1,3 @@
-var CategoryManager = require('./../managers/category')
 var ProjectManager = require('./../managers/project')
 var CodeManager = require('./../managers/code')
 var SessionController = require('./../controllers/session')
@@ -155,7 +154,6 @@ module.exports = function () {
                 data.showConf = true
               }
               data.p.categoriesIds = _.map(res.categories, function(cat){return cat.catId})
-              console.log(data)
               reply.view('projectProfile', data)
             })
           })

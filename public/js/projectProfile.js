@@ -5,6 +5,7 @@ $(document).ready(function () {
   addOffersAndNeedsFunc()
   addInterestsFunc()
   initializeMap()
+  autosize($('textarea'))
 })
 
 function addSectionBtnsFunc () {
@@ -27,7 +28,7 @@ function initializeMap () {
     id: 'ralexrdz.nnh64i75',
     accessToken: 'pk.eyJ1IjoicmFsZXhyZHoiLCJhIjoiY2lmdHB2aGo2MTZ4MnQ1bHkzeDJyaDMzNyJ9.UHhEm9gA1_uwAztXjb7iTQ'
   }).addTo(map)
-  
+
   L.control.zoom({
     position: 'bottomright'
   }).addTo(map)
@@ -242,22 +243,6 @@ function editCollaboration () {
   return false
 }
 
-//CONF
-function addConfigurationFunc(){
-  $('#btnCloseToMe').click(centerMapMyLocation)
-  $('#btnCloseToMe').tooltip({placement: 'bottom'})
-  $('#projectDataForm input').on('input', function(){
-    console.log('input escribiendo')
-    $('#editProfileBtn').removeClass('disabled')
-  })
-  $('#pictureFileInput').change(function(){
-    $('#uploadPIctureBtn').removeClass('disabled')
-  })
-  $('#schedules i').on('click', function(){
-    $(this).parent().remove()
-  })
-}
-
 function updateProfilePicture(){
   var pictureName = $('#pictureFileInput').val().split(/(\\|\/)/g).pop()
   $.ajax({
@@ -295,7 +280,7 @@ function updateProfilePicture(){
 
 function onEditBtnClicked () {
   var projectDataForm = form2js('projectDataForm', '.')
-  projectDataForm.id = 
+  projectDataForm.id =
   $.ajax({
     url: '/api/project/'+$(window.location.href.split('/')).last()[0],
     type: 'PUT',
@@ -305,7 +290,7 @@ function onEditBtnClicked () {
       if(data=='updated'){
         console.log('ajaaa')
         window.location.href = window.location.pathname+'?conf=1'
-      }        
+      }
     }
   })
   return false

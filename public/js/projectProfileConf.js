@@ -34,6 +34,24 @@ function initializeConfigMap(){
   })
 }
 
+//CONF
+function addConfigurationFunc(){
+  $('#btnCloseToMe').click(centerMapMyLocation)
+  $('#btnCloseToMe').tooltip({placement: 'bottom'})
+  $('#projectDataForm input').on('input', function(){
+    $('#editProfileBtn').removeClass('disabled')
+  })
+	$('#projectDataForm textarea').on('input', function(){
+    $('#editProfileBtn').removeClass('disabled')
+  })
+  $('#pictureFileInput').change(function(){
+    $('#uploadPIctureBtn').removeClass('disabled')
+  })
+  $('#schedules i').on('click', function(){
+    $(this).parent().remove()
+  })
+}
+
 function createProjectCode(){
 	var projID = $(window.location.href.split('/')).last()[0]
 	$.ajax({

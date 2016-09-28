@@ -2,7 +2,6 @@ var map
 var marker
 
 $(document).ready(function () {
-  console.log('hola')
   initializeMap()
   $('.category').click(categoryClicked)
   $('#newNeedInput').keyup(function (event) {
@@ -15,7 +14,7 @@ $(document).ready(function () {
       $('#addOfferBtn').click()
     }
   })
-// addAllProjects()
+  autosize($('textarea'))
 })
 
 function onRegisterBtnClicked () {

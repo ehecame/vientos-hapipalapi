@@ -1,4 +1,3 @@
-var CategoryManager = require('./../managers/category')
 var ProjectManager = require('./../managers/project')
 var LabelManager = require('./../managers/label')
 
