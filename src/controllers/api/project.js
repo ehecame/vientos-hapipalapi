@@ -152,6 +152,8 @@ ProjectController.prototype = (function () {
         webpage: parsedProject.webpage,
         facebook: parsedProject.facebook,
         schedule: parsedProject.schedule,
+        phone: parsedProject.phone,
+        twitter: parsedProject.twitter
       }
       if(parsedProject.latitude && parsedProject.longitude){
         updatedProject.locations= [{
