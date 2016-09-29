@@ -15036,12 +15036,16 @@ div, header, footer, section, article {
   padding: 7.5px !important; }
 
 /* Inicio */
-#inicio-categorias .categoria .circle {
-  background-color: #38C12D;
-  height: 100px;
-  width: 100px;
-  border-radius: 50px;
-  box-shadow: 5px 5px 5px #DDD; }
+#inicio-categorias .categoria {
+  text-align: center; }
+  #inicio-categorias .categoria .circle {
+    background-color: #38C12D;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    box-shadow: 5px 5px 5px #DDD;
+    margin-left: auto;
+    margin-right: auto; }
 
 /* Utilidades */
 .cortina-clara {
@@ -15072,6 +15076,24 @@ div, header, footer, section, article {
   -ms-animation-timing-function: ease-in-out;
   animation-name: spin;
   animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out; }
+
+#portada-logotipo .imagen {
+  webkit-animation-name: spin;
+  -webkit-animation-duration: 30000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-name: spin;
+  -moz-animation-duration: 30000ms;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: ease-in-out;
+  -ms-animation-name: spin;
+  -ms-animation-duration: 30000ms;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: ease-in-out;
+  animation-name: spin;
+  animation-duration: 30000ms;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out; }
 
