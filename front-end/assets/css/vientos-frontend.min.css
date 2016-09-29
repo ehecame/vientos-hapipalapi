@@ -15031,9 +15031,32 @@ div, header, footer, section, article {
 .v-center {
   opacity: 0; }
 
+/* Menú */
 .navbar-nav li a {
   padding: 7.5px !important; }
 
+/* Inicio */
+#inicio-categorias .categoria .circle {
+  background-color: #38C12D;
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  box-shadow: 5px 5px 5px #DDD; }
+
+/* Utilidades */
+.cortina-clara {
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.5); }
+
+.txshw, .tarjeta {
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3); }
+
+.icono, .tarjeta {
+  transition: transform 0.3s ease-in-out; }
+  .icono:hover, .tarjeta:hover {
+    transform: scale(1.02); }
+
+/* Animaciones */
 #cargando .imagen.imagen-girando {
   webkit-animation-name: spin;
   -webkit-animation-duration: 5000ms;
@@ -15057,7 +15080,3 @@ div, header, footer, section, article {
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
-
-.cortina-clara {
-  z-index: 1;
-  background-color: rgba(255, 255, 255, 0.5); }
