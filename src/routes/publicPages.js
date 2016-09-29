@@ -33,12 +33,16 @@ module.exports = function () {
       }
     }, {
       method: 'GET',
-      path: '/about',
-      handler: function (request, reply) {
-        setDataAuth(request, function(data){
-          data.withFooter = true
-          reply.view('about', data)
-        })
+      path: '/home',
+      config: {
+        handler: function (request, reply) {
+          setDataAuth(request, function(data){
+            data.withFooter = true
+            data.tags = getIndexTags('es')
+            reply.view('index2', data, { layout: 'default2' });
+          })
+        },
+        auth: false
       }
     }, {
       method: 'GET',

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Vientos</title>
+
+  <link rel="stylesheet" href="/css/vientos-frontend.min">
+</head>
+<body>
+
+<!--     MENU       -->
+<header id="cabecera" class="container-fluid h-10-v text-center">
+   <nav class="navbar navbar-default navbar-fixed-top h-10-v z1k">
+     <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+       <div class="navbar-header p-0">
+         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </button>
+         <div class="col-xs-4 col-sm-3 col-md-2 col-lg-1 h-10-v p-0 m-0">
+            <a class="w-a h-100 navbar-brand" href="#">
+               <div class="logotipo h-100">
+                  <img
+                  data-src="/img/logotipo-75w.png" alt=""
+                  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                  class="b-lazy h-100"
+                  />
+               </div>
+            </a>
+         </div>
+       </div>
+
+
+       <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse p-t-0-1">
+           <ul class="nav navbar-nav">
+               <!-- markup para links activos:  -->
+             <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
+
+             <li class="btn p-0 color-primario-bg"><a href="#" class="color-white">{{tags.closeToMe}}<i class="fa fa-crosshairs p-l-1 font-l"></i></a></li>
+             <li class="btn p-0 color-secundario-bg"><a href="#" class="color-white">{{tags.collaborate}} <i class="fa fa-map-marker p-l-1 font-l"></i></a></li>
+
+           </ul>
+
+           <ul class="nav navbar-nav navbar-right">
+              <li class="btn p-0 color-primario-bg"><a href="/login" class="color-white">{{tags.register}} <i class="fa fa-pencil p-l-1 font-l"></i></a></li>
+              <li class="btn p-0 color-secundario-bg"><a href="/login" class="color-white">{{tags.login}}<i class="fa fa-user p-l-1 font-l"></i></a></li>
+           </ul>
+
+         </div><!-- /.navbar-collapse -->
+
+
+
+     </div>
+   </nav>
+</header>
+<div>
+    {{{content}}}
+</div>
+{{#if withFooter}}
+<footer id="pie" class="container-fluid h-10-v text-center color-neutral_oscuro-bg color-white font-s">
+   <nav id="pie-menu" class="col-md-6 h-100 v-center">
+      <ul>
+         <li class="col-xs-6 h-100 v-center">
+            <div class="h-a">
+               Preguntas Frecuentes
+            </div>
+         </li>
+         <li class="col-xs-6 h-100 v-center">
+            <div class="h-a">
+               Términos Legales
+            </div>
+         </li>
+      </ul>
+   </nav>
+   <nav id="pie-redes" class="col-md-4 col-md-offset-2 col-lg-3  col-lg-offset-3 col-xl-2 col-xl-offset-4 h-100 font-l">
+      <ul class="h-100">
+         <li class="col-xs-4 h-100 v-center">
+            <a href="#" class="h-a">
+               <i class="fa fa-facebook"></i>
+            </a>
+         </li>
+         <li class="col-xs-4 h-100 v-center">
+            <a href="#" class="h-a">
+               <i class="fa fa-twitter"></i>
+            </a>
+         </li>
+         <li class="col-xs-4 h-100 v-center">
+            <a href="#" class="h-a">
+               <i class="fa fa-github"></i>
+            </a>
+
+         </li>
+      </ul>
+   </nav>
+</footer>
+{{/if}}
+<div>
+    <input type="hidden" id="redirect" value="/myprofile"/>
+</div>
+<script src="/js/vientos-frontend.min" type="text/javascript"></script>
+</body>
+</html>
