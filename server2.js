@@ -1,12 +1,17 @@
-var _ = require('lodash');
-var MongoClient = require('mongodb').MongoClient;
+var nodemailer = require('nodemailer')
 
-var url = 'mongodb://localhost:27018/vientos-test'
+// create reusable transporter object using the default SMTP transport
+var transporter = nodemailer.createTransport('smtps://mailvientos:EmailVientos11@mail.mayfirst.org')
 
-MongoClient.connect(url, function(err, db) {
-  var codesCol = db.collection("codes")
-  _.each(codes, function(code){
-    codesCol.insert({code: code}, function(res){console.log(res)})
-  })
-});
+var mailData = {
+    from: '"Vientos" <hola@vientos.org.mx>',
+    to: 'tianfut@gmail.com',
+    cc: 'ralexrdz@gmail.com',
+    subject: '¿Adivina qué, papatzul?',
+    text: '¡Ya jalan los mails!'
+};
 
+transporter.sendMail(mailData, function(err){
+  if(err) console.log(err)
+  else console.log('mailenviado')
+})
