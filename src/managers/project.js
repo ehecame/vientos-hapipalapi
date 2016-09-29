@@ -53,7 +53,7 @@ ProjectManager.prototype = (function () {
       })
     },
     update: function update (db, query, updateObject, callback) {
-      console.log(updateObject['$set'].schedule)
+      //console.log(updateObject['$set'].schedule)
       db.collection('projects').update(query, updateObject, function (err, doc) {
         if(err)
           console.log(err)
