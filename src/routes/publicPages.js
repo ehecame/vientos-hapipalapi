@@ -188,6 +188,28 @@ module.exports = function () {
           })
         }
       }
+    }, {
+      method: 'GET',
+      path: '/demo/collaborate',
+      config: {
+        handler: function (request, reply) {
+          setDataAuth(request, function(data){
+            reply.view('demoCol', data, { layout: 'empty' });
+          })
+        },
+        auth: false
+      }
+    }, {
+      method: 'GET',
+      path: '/demo/sidebar',
+      config: {
+        handler: function (request, reply) {
+          setDataAuth(request, function(data){
+            reply.view('demoSide', data, { layout: 'empty' });
+          })
+        },
+        auth: false
+      }
     }
   ]
 }()
