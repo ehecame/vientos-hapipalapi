@@ -13,7 +13,7 @@ module.exports = function () {
       path: '/',
       config: {
         handler: function (request  , reply) {
-          var lan = request.query.lan == "en" ? "en" : "es"
+          var lan = request.query.lang == "en" ? "en" : "es"
           setDataAuth(request, function(data){
             data.withFooter = true
             data.categories = getCategoriesArray(lan)

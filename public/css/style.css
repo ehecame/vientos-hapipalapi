@@ -382,8 +382,11 @@ h1{
 
 #home-row #languageToggle{
   position: absolute;
-  top: 70px;
-  right: 50px;
+  top: 25px;
+  right: 30px; }
+
+#home-row #languageToggle img{
+  height: 40px;
 }
 
 #benefits-row{

@@ -3,18 +3,18 @@
   <div id="home-row" class="row">
   	<img src="/img/VientosFondo.png" id="homeImage">
   	<div id="imageAction"></div>
-    <!-- <div id="languageToggle">
-      <input type="checkbox" class="col-md-2" data-toggle="toggle" data-on="ES" data-off="EN" data-width="50" data-size="mini">
-    </div> -->
+    <div id="languageToggle">
+      <a href="/?lang=en"><img src="/img/english.png" alt=""></a>
+    </div>
 
 	</div><!--     /home-container       -->
 
 	<div id="categories-row" class="row circles-row"><!--     CATEGORIAS     -->
 		<div>
 			<div class="titles">
-        <div id="title1">{{tags.together}}</div>
-        <div id="separator" class="hidden-xs"></div>
-        <div id="title2">{{tags.collaborating}}</div>
+           <div id="title1">{{tags.together}}</div>
+           <div id="separator" class="hidden-xs"></div>
+           <div id="title2">{{tags.collaborating}}</div>
 			</div>
 		</div>
 		{{#each categories}}
