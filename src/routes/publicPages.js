@@ -13,7 +13,7 @@ module.exports = function () {
       path: '/',
       config: {
         handler: function (request  , reply) {
-          var lan = request.query.lang == "en" ? "en" : "es"
+          var lan = request.query.lan == "en" ? "en" : "es"
           setDataAuth(request, function(data){
             data.withFooter = true
             data.categories = getCategoriesArray(lan)
@@ -330,7 +330,7 @@ function getPrinciples(lan){
       {size:4, tag:'Sustentabilidad'},
       {size:4, tag:'Cultura en Red'},
       {size:4, tag:'Apoyo mutuo'},
-      {size:6, tag:'Producción Local y Artesanal '},
+      {size:6, tag:'Producción Local y Artesanal'},
       {size:6, tag:'Cuidado del Medio Ambiente'},
       {size:6, tag:'Distribución de la Riqueza'},
       {size:4, tag:'Trabajo digno'}
@@ -388,12 +388,13 @@ function getIndexTags(lan){
       aboutUs: "Nosotrxs",
       aboutUsTexts: [
         "Vientos es una plataforma de fortalecimiento de proyectos sociales y de la economía solidaria mediante la colaboración entre ellos y con su comunidad.",
-        "Somos un proyecto independiente, sin fines de lucro y bajo los principios de código libre y tecnología cívica.",
+        "Somos una cooperativa independiente que trabaja bajo los principios de código libre y tecnología cívica.",
         "Los criterios que definen qué tan ético es un proyecto o negocio son votados por todos los usuarios de la página."
       ],
       principlesTitle: "Impulsamos y practicamos valores como:"
     },
     en: {
+      language: 'EN',
       closeToMe: 'Close to me',
       collaborate: 'Collaborate',
       login: 'Log in',
