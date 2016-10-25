@@ -12,89 +12,122 @@
 <body>
 
 <!--     MENU       -->
-<header id="cabecera" class="container-fluid h-10-v text-center">
-   <nav class="navbar navbar-default navbar-fixed-top h-10-v z1k">
-     <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-       <div class="navbar-header p-0">
-         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-           <span class="sr-only">Toggle navigation</span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-         </button>
-         <div class="col-xs-4 col-sm-3 col-md-2 col-lg-1 h-10-v p-0 m-0">
-            <a class="w-a h-100 navbar-brand" href="#">
-               <div class="logotipo h-100">
-                  <img
-                  data-src="/img/logotipo-75w.png" alt=""
-                  src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-                  class="b-lazy h-100"
-                  />
-               </div>
-            </a>
+<header id="cabecera" class="container-fluid w-100-v h-10-v fixed z1k1 text-center p-0 color-neutral_claro-bg bxsh">
+
+   <div id="logo" class="col-xs-4 col-sm-3 col-md-2 col-lg-1 m-0 p-0-2 text-left">
+      <a class="h-50-sm m-t-xs-0-2 m-t-0-1 m-l-0" href="#">
+         <div class="logotipo h-100 p-0">
+            <img
+            data-src="/img/logotipo-75w.png" alt=""
+            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+            class="b-lazy h-100"
+            />
          </div>
-       </div>
+      </a>
+   </div>
+
+   <nav id="menu" class="col-md-10 col-lg-11 hidden-sm hidden-xs">
+
+      <ul class="col-md-4 col-lg-3">
+
+         <li class="col-md-6 h-10-v v-center p-l-1 text-right">
+            <a href="#" class="btn p-0 color-primario-bg color-white p-0-2">Cerca de mí <i class="fa fa-crosshairs p-l-1 font-l"></i></a>
+         </li>
+         <li class="col-md-6 h-10-v v-center p-l-1 text-left">
+            <a href="#" class="btn p-0 color-secundario-bg color-white p-0-2">Colabora <i class="fa fa-map-marker p-l-1 font-l"></i></a>
+         </li>
+
+      </ul>
+
+      <ul class="col-md-4 col-lg-3 col-md-offset-4 col-lg-offset-6">
+         <li class="col-md-6 h-10-v v-center p-l-1 text-right">
+            <a href="#" class="btn p-0 color-primario-bg color-white p-0-2">Regístrate <i class="fa fa-pencil p-l-1 font-l"></i></a>
+         </li>
+         <li class="col-md-6 h-10-v v-center p-l-1 text-left">
+            <a href="#" class="btn p-0 color-secundario-bg color-white p-0-2">Ingresa <i class="fa fa-user p-l-1 font-l"></i></a>
+         </li>
+      </ul>
+
+   </nav>
+
+   <div class="col-xs-4 col-sm-3 col-xs-offset-4 col-sm-offset-6 hidden-md hidden-lg hidden-xl h-100 p-0-2 color-black text-right">
+      <a href="#" id="menu-movil-boton" type="button" class="p-r-0-2">
+         <div class="i fa fa-bars font-xxl color-secundario"></div>
+
+      </a>
+   </div>
+
+   <!-- /.navbar-collapse -->
 
 
-       <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse p-t-0-1">
-           <ul class="nav navbar-nav">
-               <!-- markup para links activos:  -->
-             <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
 
-             <li class="h-10-v v-center m-l-1"><a href="/collaborate" class="btn p-0 color-primario-bg color-white p-0-2">{{tags.closeToMe}}<i class="fa fa-crosshairs p-l-1 font-l"></i></a></li>
-             <li class="h-10-v v-center m-l-1"><a href="#" class="btn p-0 color-secundario-bg color-white p-0-2">{{tags.collaborate}} <i class="fa fa-map-marker p-l-1 font-l"></i></a></li>
+   <nav id="menu-movil" class="w-100-v h-100-v hidden-md-up abs z1k1 p-0 m-0 hidden">
 
-           </ul>
+      <div class="col-xs-4 absUpR p-0-2 p-r-1 text-right"><a href="" id="menu-movil-boton-cerrar" class="color-white"><i class="fa fa-close font-xxl"></i></a></div>
 
-           <ul class="nav navbar-nav navbar-right">
-              <li class="h-10-v v-center m-l-1"><a href="/login" class="btn p-0 color-primario-bg color-white p-0-2">{{tags.register}} <i class="fa fa-pencil p-l-1 font-l"></i></a></li>
-              <li class="h-10-v v-center m-l-1"><a href="/login" class="btn p-0 color-secundario-bg color-white p-0-2">{{tags.login}}<i class="fa fa-user p-l-1 font-l"></i></a></li>
-           </ul>
-
-         </div><!-- /.navbar-collapse -->
-
-
-
-     </div>
+      <ul class="wh-100 p-0 m-0">
+         <li class="h-25-v v-center m-0 color-primario-bg color-white">
+            <a href="#" class="color-white">
+               Cerca de mí <i class="fa fa-crosshairs p-l-1 font-l"></i>
+            </a>
+         </li>
+         <li class="h-25-v v-center m-0 color-secundario-bg color-white">
+            <a href="#" class="color-white">
+               Colabora <i class="fa fa-map-marker p-l-1 font-l"></i>
+            </a>
+         </li>
+         <li class="h-25-v v-center m-0 color-primario-bg color-white">
+            <a href="#" class="color-white">
+               Regístrate <i class="fa fa-pencil p-l-1 font-l"></i>
+            </a>
+         </li>
+         <li class="h-25-v v-center m-0 color-secundario-bg color-white">
+            <a href="#" class="color-white">
+               Ingresa <i class="fa fa-user p-l-1 font-l"></i>
+            </a>
+         </li>
+      </ul>
    </nav>
 </header>
 <div>
     {{{content}}}
 </div>
 {{#if withFooter}}
-<footer id="pie" class="container-fluid h-10-v text-center color-neutral_oscuro-bg color-white font-s">
-   <nav id="pie-menu" class="col-md-6 h-100 v-center">
+<footer id="pie" class="container-fluid h-10-v h-40-sm-v text-center color-neutral_oscuro-bg color-white font-s">
+   <nav id="pie-menu" class="col-md-6 h-100 h-50-sm v-center">
       <ul>
          <li class="col-xs-6 h-100 v-center">
             <div class="h-a">
-               Preguntas Frecuentes
+               <a href="#" class="color-white">
+                  Preguntas Frecuentes
+               </a>
             </div>
          </li>
          <li class="col-xs-6 h-100 v-center">
             <div class="h-a">
-               Términos Legales
+               <a href="#" class="color-white">
+                  Términos Legales
+               </a>
             </div>
          </li>
       </ul>
    </nav>
-   <nav id="pie-redes" class="col-md-4 col-md-offset-2 col-lg-3  col-lg-offset-3 col-xl-2 col-xl-offset-4 h-100 font-l">
+   <nav id="pie-redes" class="col-md-4 col-md-offset-2 col-lg-3 col-lg-offset-3 col-xl-2 col-xl-offset-4 h-100 h-50-sm font-l color-neutral_oscuro">
       <ul class="h-100">
          <li class="col-xs-4 h-100 v-center">
-            <a href="#" class="h-a">
+            <a href="#" class="h-a color-secundario">
                <i class="fa fa-facebook"></i>
             </a>
          </li>
          <li class="col-xs-4 h-100 v-center">
-            <a href="#" class="h-a">
+            <a href="#" class="h-a color-primario">
                <i class="fa fa-twitter"></i>
             </a>
          </li>
          <li class="col-xs-4 h-100 v-center">
-            <a href="#" class="h-a">
+            <a href="#" class="h-a color-terciario">
                <i class="fa fa-github"></i>
             </a>
-
          </li>
       </ul>
    </nav>

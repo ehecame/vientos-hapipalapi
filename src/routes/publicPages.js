@@ -13,17 +13,22 @@ module.exports = function () {
       path: '/',
       config: {
         handler: function (request  , reply) {
-          var lan = request.query.lan == "en" ? "en" : "es"
-          setDataAuth(request, function(data){
+           setDataAuth(request, function(data){
             data.withFooter = true
-            data.categories = getCategoriesArray(lan)
-            data.hiddenCats = getHiddenCatsArray(lan)
-            data.collaborations = getCollaborationWaysArray(lan)
-            data.hiddenColls = getHiddenCollsArray(lan)
-            data.principles = getPrinciples(lan)
-            data.tags = getIndexTags(lan)
-            reply.view('index', data)
+            data.tags = getIndexTags('es')
+            reply.view('index2', data, { layout: 'default2' });
           })
+         //  var lan = request.query.lan == "en" ? "en" : "es"
+         //  setDataAuth(request, function(data){
+         //    data.withFooter = true
+         //    data.categories = getCategoriesArray(lan)
+         //    data.hiddenCats = getHiddenCatsArray(lan)
+         //    data.collaborations = getCollaborationWaysArray(lan)
+         //    data.hiddenColls = getHiddenCollsArray(lan)
+         //    data.principles = getPrinciples(lan)
+         //    data.tags = getIndexTags(lan)
+         //    reply.view('index', data)
+         //  })
         },
         auth: {
            mode: 'try',
@@ -187,28 +192,6 @@ module.exports = function () {
             }
           })
         }
-      }
-    }, {
-      method: 'GET',
-      path: '/demo/collaborate',
-      config: {
-        handler: function (request, reply) {
-          setDataAuth(request, function(data){
-            reply.view('demoCol', data, { layout: 'empty' });
-          })
-        },
-        auth: false
-      }
-    }, {
-      method: 'GET',
-      path: '/demo/sidebar',
-      config: {
-        handler: function (request, reply) {
-          setDataAuth(request, function(data){
-            reply.view('demoSide', data, { layout: 'empty' });
-          })
-        },
-        auth: false
       }
     }
   ]
