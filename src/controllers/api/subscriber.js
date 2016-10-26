@@ -5,7 +5,10 @@ SubscriberController.prototype = (function () {
     return {
         insert: function insert(request, reply) {
             var db = request.mongo.db
-            var newSubscriber = {email: request.payload.subsEmail}
+            var newSubscriber = {
+               email: request.payload.subsEmail,
+               name: request.payload.subsName 
+            }
             SubscriberManager.insert(db, newSubscriber, function (res) {
                 reply('¡Listo!');
             })
