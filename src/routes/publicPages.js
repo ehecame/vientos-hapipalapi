@@ -18,17 +18,34 @@ module.exports = function () {
             data.tags = getIndexTags('es')
             reply.view('index2', data, { layout: 'default2' });
           })
-         //  var lan = request.query.lan == "en" ? "en" : "es"
-         //  setDataAuth(request, function(data){
-         //    data.withFooter = true
-         //    data.categories = getCategoriesArray(lan)
-         //    data.hiddenCats = getHiddenCatsArray(lan)
-         //    data.collaborations = getCollaborationWaysArray(lan)
-         //    data.hiddenColls = getHiddenCollsArray(lan)
-         //    data.principles = getPrinciples(lan)
-         //    data.tags = getIndexTags(lan)
-         //    reply.view('index', data)
-         //  })
+          //  var lan = request.query.lan == "en" ? "en" : "es"
+          //  setDataAuth(request, function(data){
+          //    data.withFooter = true
+          //    data.categories = getCategoriesArray(lan)
+          //    data.hiddenCats = getHiddenCatsArray(lan)
+          //    data.collaborations = getCollaborationWaysArray(lan)
+          //    data.hiddenColls = getHiddenCollsArray(lan)
+          //    data.principles = getPrinciples(lan)
+          //    data.tags = getIndexTags(lan)
+          //    reply.view('index', data)
+          //  })
+        },
+        auth: {
+           mode: 'try',
+           strategy: 'standard'
+        },
+        plugins: { 'hapi-auth-cookie': { redirectTo: false } }
+      }
+    }, {
+      method: 'GET',
+      path: '/en',
+      config: {
+        handler: function (request  , reply) {
+           setDataAuth(request, function(data){
+            data.withFooter = true
+            data.tags = getIndexTags('es')
+            reply.view('index2EN', data, { layout: 'default2EN' });
+          })
         },
         auth: {
            mode: 'try',
@@ -41,11 +58,22 @@ module.exports = function () {
       path: '/home',
       config: {
         handler: function (request, reply) {
-          setDataAuth(request, function(data){
-            data.withFooter = true
-            data.tags = getIndexTags('es')
-            reply.view('index2', data, { layout: 'default2' });
-          })
+         //  setDataAuth(request, function(data){
+         //    data.withFooter = true
+         //    data.tags = getIndexTags('es')
+         //    reply.view('index2', data, { layout: 'default2' });
+         //  })
+           var lan = request.query.lan == "en" ? "en" : "es"
+           setDataAuth(request, function(data){
+             data.withFooter = true
+             data.categories = getCategoriesArray(lan)
+             data.hiddenCats = getHiddenCatsArray(lan)
+             data.collaborations = getCollaborationWaysArray(lan)
+             data.hiddenColls = getHiddenCollsArray(lan)
+             data.principles = getPrinciples(lan)
+             data.tags = getIndexTags(lan)
+             reply.view('index', data)
+           })
         },
         auth: false
       }
@@ -415,7 +443,7 @@ function getIndexTags(lan){
       aboutUs: "About Us",
       aboutUsTexts: [
         "Vientos is a platform that fosters collaboration and networks of support for social projects and ethical businesses.",
-        "We are a nonprofit, independent project that promotes the principles of civic technology and open source.",
+        "We are an civic technology cooperative that works under the open source principles.",
         "The criteria for ethical businesses is voted for by all users of the platform."
       ],
       principlesTitle: "We further values such as:"
