@@ -1,0 +1,25 @@
+#loginSec{
+    padding-top: 20vh;
+}
+#loginSec #loginForm{
+  padding: 35px;
+  background-color: #ec7237!important;
+  border-radius: 20px;
+  color: white;
+  margin: 10px
+}
+
+#subscribeSec{
+  padding: 10vh 10vw 10vw 10vh;
+}
+#subscribeSec p{
+  font-size: 1.3em;
+  margin-left: 15px;}
+
+#subscribeSec #subscribeForm{
+  padding: 35px;
+  background-color:#42b27f!important ;
+  border-radius: 20px;
+  color: white;
+  margin:10px;
+}

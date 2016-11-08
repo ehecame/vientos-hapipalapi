@@ -40,7 +40,7 @@ function subscribe() {
     '/api/subscribe',
     $('#subscribeForm').serialize(),
     function (data) {
-      alert(data)
+      alert('¡Vientos!')
     }
   )
   else{

@@ -768,8 +768,9 @@ h1{
 }
 #loginSec #loginForm{
   padding: 20px;
-  background-color: #a9e2b7;
+  background-color: #ec7237!important;
   border-radius: 20px;
+  color: white;
 }
 
 #subscribeSec{
@@ -1900,4 +1901,9 @@ f
     background-color: #eee;
     padding: 20px;
     border-radius: 20px;
+}
+
+#calendarContainer{
+   margin: 55px;
+   height: 80vh;
 }

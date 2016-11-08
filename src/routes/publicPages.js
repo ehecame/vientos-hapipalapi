@@ -138,7 +138,18 @@ module.exports = function () {
         handler: function (request, reply) {
           var data = {}
           data.redirect = request.query.next ? request.query.next : '/myprofile'
-          reply.view('login', data)
+          reply.view('login', data,  { layout: 'default2' })
+        },
+        auth: false
+      }
+    },     {
+      method: 'GET',
+      path: '/en/login',
+      config: {
+        handler: function (request, reply) {
+          var data = {}
+          data.redirect = request.query.next ? request.query.next : '/myprofile'
+          reply.view('loginEN', data, { layout: 'default2EN' })
         },
         auth: false
       }
