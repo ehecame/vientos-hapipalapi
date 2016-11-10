@@ -74,6 +74,20 @@ server.register(require('inert') , function (err) {
 }
 )
 
+//Register raven service
+if (credentials.sentry_dsn) {
+  server.register({
+    register: require('hapi-raven'),
+    options: {
+      dsn: credentials.sentry_dsn
+    }
+  }, (err) => {
+    if (err) {
+      console.log('Failed loading hapi-raven')
+    }
+  })
+}
+
 // Empezando servidor
 server.start(function () {
   console.log('Server running at:', server.info.uri)
