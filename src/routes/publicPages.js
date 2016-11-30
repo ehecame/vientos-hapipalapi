@@ -373,91 +373,91 @@ function getPrinciples(lan){
 function getIndexTags(lan){
   var tags = {
     es: {
-      closeToMe: 'Cerca de mí',
-      collaborate: 'Colabora',
-      login: 'Inicia sesión',
-      logout: 'Cierra sesión',
-      myProfile: "Mi Perfil",
-      together: 'Juntxs',
-      collaborating: 'Colaborando en',
-      showMore:'¡Ver todas!',
-      youCanCollaborate: 'Puedes colaborar',
-      inLotsOfWays: 'de muchas maneras',
-      solidarityEconomy: 'Economía Solidaria',
-      solidarityEconomyBullets: [
+      "closeToMe": 'Cerca de mí',
+      "collaborate": 'Colabora',
+      "login": 'Inicia sesión',
+      "logout": 'Cierra sesión',
+      "myProfile": "Mi Perfil",
+      "together": 'Juntxs',
+      "collaborating": 'Colaborando en',
+      "showMore":'¡Ver todas!',
+      "youCanCollaborate": 'Puedes colaborar',
+      "inLotsOfWays": 'de muchas maneras',
+      "solidarityEconomy": 'Economía Solidaria',
+      "solidarityEconomyBullets": [
         "Red Comercio justo y solidario",
         "Cuenta la historia de tu negocio",
         "Compra, venta y trueque",
         "Productos y Servicios de tu comunidad"
       ],
-      individuals: "Personas",
-      individualsBullets: [
+      "individuals": "Personas",
+      "individualsBullets": [
         "Colabora con proyectos sociales",
         "Eventos, clases y talleres",
         "Chambas y voluntariado",
         "Compra local. Apoya negocios éticos",
         "Tus intereses. Tus habilidades"
       ],
-      socialProjects: "Proyectos Sociales",
-      socialProjectsBullets: [
+      "socialProjects": "Proyectos Sociales",
+      "socialProjectsBullets": [
         "Recursos compartidos en tu zona",
         "No gastes, colabora",
         "Agrega tu proyecto al mapa",
         "Difunde tu proyecto y actividades"
       ],
-      register: "Regístrate",
-      topCollaborators: "Más colaboradores",
-      aboutUs: "Nosotrxs",
-      aboutUsTexts: [
+      "register": "Regístrate",
+      "topCollaborators": "Más colaboradores",
+      "aboutUs": "Nosotrxs",
+      "aboutUsTexts": [
         "Vientos es una plataforma de fortalecimiento de proyectos sociales y de la economía solidaria mediante la colaboración entre ellos y con su comunidad.",
         "Somos una cooperativa independiente que trabaja bajo los principios de código libre y tecnología cívica.",
         "Los criterios que definen qué tan ético es un proyecto o negocio son votados por todos los usuarios de la página."
       ],
-      principlesTitle: "Impulsamos y practicamos valores como:"
+      "principlesTitle": "Impulsamos y practicamos valores como:"
     },
     en: {
-      language: 'EN',
-      closeToMe: 'Close to me',
-      collaborate: 'Collaborate',
-      login: 'Log in',
-      logout: 'Log out',
-      myProfile: 'My Profile',
-      together: 'Together',
-      collaborating: 'Collaborating on',
-      showMore:'See all!',
-      youCanCollaborate: 'You can collaborate',
-      inLotsOfWays: 'in lots of ways',
-      solidarityEconomy: 'Solidarity Economy',
-      solidarityEconomyBullets:  [
-        "Fair trade and solidarity network",
-        "Tell your business story",
-        "Buy, sell, lend, borrow, barter",
-        "Local products and services"
-      ],
-      individuals: "Individuals",
-      individualsBullets: [
-        "Collaborate with social projects ",
-        "Events, classes and workshops",
-        "Jobs and volunteering ",
-        "Buy local. Support ethical businesses ",
-        "Your Interests. Your Skills"
-      ],
-      socialProjects: "Social Projects",
-      socialProjectsBullets:[
-        "Shared resources in your area",
-        "Save money, collaborate ",
-        "Add your project to the map",
-        "Spread the word about your activities "
-      ],
-      register: "Register",
-      topCollaborators: "Top Collaborators",
-      aboutUs: "About Us",
-      aboutUsTexts: [
-        "Vientos is a platform that fosters collaboration and networks of support for social projects and ethical businesses.",
-        "We are an civic technology cooperative that works under the open source principles.",
-        "The criteria for ethical businesses is voted for by all users of the platform."
-      ],
-      principlesTitle: "We further values such as:"
+      "language": 'EN',
+      "closeToMe": 'Close to me',
+      "collaborate": 'Collaborate',
+      "login": 'Log in',
+      "logout": 'Log out',
+      "myProfile": 'My Profile',
+      "together": 'Together',
+      "collaborating": 'Collaborating on',
+      "showMore":'See all!',
+      "youCanCollaborate": 'You can collaborate',
+      "inLotsOfWays": 'in lots of ways',
+      "solidarityEconomy": 'Solidarity Economy',
+      "solidarityEconomyBullets":  {
+        "fair":"Fair trade and solidarity network",
+        "story":"Tell your business story",
+        "local":"Local products and services",
+        "exchange":"Buy, sell, lend, borrow, barter"
+     },
+      "individuals": "Individuals",
+      "individualsBullets": {
+        "project":"Collaborate with social projects ",
+        "activities":"Events, classes and workshops",
+        "jobs":"Jobs and volunteering ",
+        "local":"Buy local. Support ethical businesses ",
+        "interests":"Your Interests. Your Skills"
+      },
+      "socialProjects": "Social Projects",
+      "socialProjectsBullets":{
+        "share":"Shared resources in your area",
+        "save":"Save money, collaborate ",
+        "map":"Add your project to the map",
+        "activities":"Spread the word about your activities "
+      },
+      "register": "Register",
+      "topCollaborators": "Top Collaborators",
+      "aboutUs": "About Us",
+      "aboutUsTexts": {
+        "vientos":"Vientos is a platform that fosters collaboration and networks of support for social projects and ethical businesses.",
+        "civic":"We are an civic technology cooperative that works under the open source principles.",
+        "criteria":"The criteria for ethical businesses is voted for by all users of the platform."
+      },
+      "principlesTitle": "We further values such as:"
     }
 
   }

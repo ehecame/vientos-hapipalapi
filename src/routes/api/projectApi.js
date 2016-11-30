@@ -6,7 +6,7 @@ module.exports = function () {
       method: 'GET',
       path: '/api/projects',
       config: {
-        handler: ProjectController.findAll
+        handler: ProjectController.findAll,
       }
     },
     {

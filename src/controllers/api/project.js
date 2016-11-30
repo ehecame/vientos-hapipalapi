@@ -140,7 +140,8 @@ ProjectController.prototype = (function () {
       var objID = request.mongo.ObjectID
       var query = {'_id': new objID(request.params.id)}
       var parsedProject = qs.parse(request.payload)
-      var updatedProject = {
+
+      var updatedProject = _.pick({
         email: parsedProject.email,
         name: parsedProject.name,
         description: parsedProject.description,
@@ -154,7 +155,8 @@ ProjectController.prototype = (function () {
         schedule: parsedProject.schedule,
         phone: parsedProject.phone,
         twitter: parsedProject.twitter
-      }
+     }, _.identity)
+      if(!parsedProject.categories) delete updatedProject.categories
       if(parsedProject.latitude && parsedProject.longitude){
         updatedProject.locations= [{
           lat: parsedProject.latitude,
