@@ -6,7 +6,10 @@ var credentials = require('./credentials.json')
 const server = new Hapi.Server()
 
 // Definición de puerto donde correrá el servidor
-server.connection({ port: credentials.server_port })
+server.connection({
+  port: credentials.server_port ,
+  routes: { cors: { credentials: true}}
+})
 
 // Datos de Configuración de Base de Datos
 var dbOpts = {
