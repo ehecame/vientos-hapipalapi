@@ -109,6 +109,19 @@ module.exports = function () {
         },
         auth: false
       }
+    },  {
+      method: 'GET',
+      path: '/user/resetpassword/{code?}',
+      config: {
+        handler: function (request, reply) {
+          setDataAuth(request, function(data){
+            data.withFooter = false
+            data.code = request.params.code
+            reply.view('resetPassword', data)
+          })
+        },
+        auth: false
+      }
     } , {
       method: 'GET',
       path: '/user/welcome',
