@@ -11,7 +11,7 @@ UserController.prototype = (function () {
     login: function login (request, reply) {
       UserManager.find(
         request.mongo.db,
-        {username: request.payload.username},
+        {email: request.payload.email},
         {},
         function (res) {
           if (res.length > 0) {
@@ -19,7 +19,6 @@ UserController.prototype = (function () {
             var samePass = Bcrypt.compareSync(request.payload.password, user.password)
             if (samePass) {
               var account = {
-                username: request.payload.username,
                 email: user.email,
                 name: user.name,
                 lastname: user.lastname,
@@ -30,15 +29,7 @@ UserController.prototype = (function () {
                 account.projects = user.projects
               }
               request.cookieAuth.set(account)
-              if(request.payload.firstlogin){
-                if(account.projects){
-                  reply(account.projects[0])
-                }
-                else
-                  reply('success')
-              } else {
-                reply('success')
-              }
+              reply(account)
             } else {
               reply('wrong password')
             }
@@ -54,43 +45,13 @@ UserController.prototype = (function () {
       var newuser = {
         email: request.payload.email,
         password: require('bcrypt-nodejs').hashSync(request.payload.password),
-        username: request.payload.username,
-        name: request.payload.name,
-        lastname: request.payload.lastname
+        name: request.payload.name
       }
-      CodeManager.findOne(request.mongo.db, request.payload.code, function(code){
-        if(code){
-          if(code.projectLinked){
-            newuser.projects = [code.projectLinked]
-            UserManager.insert(db, newuser, function(user){
-              CodeManager.delete(db, code._id, function(res){
-                ProjectManager.update(
-                  db, 
-                  {_id: new objId(code.projectLinked)}, 
-                  {$pull: {projectCodes: code.code}, $push:{owners:user.insertedIds[0]+''},$set: {pilot: true}}, 
-                  function(pro){
-                    reply('registered')  
-                  }
-                )
-              })              
-            })
-          }
-          else{
-            UserManager.insert(db, newuser, function(user){
-              CodeManager.delete(db, code._id, function(res){
-                reply('registered')
-              })              
-            })
-          }
-        }
-        else{
-          reply('wrongCode')
-        }
+      UserManager.insert(db, newuser, function (res) {
+        newuser.id = res.insertedIds[0]
+        newUser.password = null
+        reply(newuser)
       })
-      // var db = request.mongo.db
-      // UserManager.insert(db, newuser, function (res) {
-      //   reply(res)
-      // })
     },
     logout: function logout (request, reply) {
       request.cookieAuth.clear()
@@ -118,7 +79,7 @@ UserController.prototype = (function () {
       UserManager.findOne(db, {'username': request.query.username}, {_id:1}, function (res) {
         if(res)
           reply(true)
-        else 
+        else
           reply(false)
       })
     },
@@ -127,7 +88,7 @@ UserController.prototype = (function () {
       UserManager.findOne(db, {'email': request.query.email}, {_id:1}, function (res) {
         if(res)
           reply(true)
-        else 
+        else
           reply(false)
       })
     },
