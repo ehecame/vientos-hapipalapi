@@ -35,14 +35,6 @@ module.exports = function () {
     },
     {
       method: 'GET',
-      path: '/api/user/existsusername',
-      config: {
-        handler: UserController.existsUserName,
-        auth: false
-      }
-    },
-    {
-      method: 'GET',
       path: '/api/user/existsemail',
       config: {
         handler: UserController.existsEmail,

@@ -23,7 +23,7 @@ UserController.prototype = (function () {
                 name: user.name,
                 lastname: user.lastname,
                 scope: user.scope,
-                id: user._id.valueOf() + '',
+                id: user._id.valueOf(),
               }
               if(user.projects){
                 account.projects = user.projects
@@ -34,7 +34,7 @@ UserController.prototype = (function () {
               reply('wrong password')
             }
           } else {
-            reply('wrong username')
+            reply('wrong email')
           }
         }
       )
@@ -67,21 +67,12 @@ UserController.prototype = (function () {
         if (request.payload.password)
           request.payload.password = require('bcrypt-nodejs').hashSync(request.payload.password)
         // reply('gooot')
-        UserManager.update(db, {'username': credentials.username}, {$set: updatedUser}, function (res) {
+        UserManager.update(db, {'_id': credentials.id}, {$set: updatedUser}, function (res) {
           reply(res)
         })
       } else {
         reply('not Authenticated')
       }
-    },
-    existsUserName: function existsUserName (request, reply) {
-      var db = request.mongo.db
-      UserManager.findOne(db, {'username': request.query.username}, {_id:1}, function (res) {
-        if(res)
-          reply(true)
-        else
-          reply(false)
-      })
     },
     existsEmail: function existsEmail (request, reply) {
       var db = request.mongo.db
@@ -102,7 +93,7 @@ UserController.prototype = (function () {
           title: request.payload.title,
           type: request.payload.type
         }
-        UserManager.update(request.mongo.db, {'username': credentials.username}, {$push: newCollaboration}, function (res) {
+        UserManager.update(request.mongo.db, {'_id': credentials.id}, {$push: newCollaboration}, function (res) {
           reply(res)
         })
       } else {
@@ -113,9 +104,7 @@ UserController.prototype = (function () {
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
-        var query = {
-          'username': credentials.username
-        }
+        var query = {'_id': credentials.id}
         query[request.payload.offerOrNeed + 's.title'] = request.payload.oldTitle
         var updatedCollaboration = {}
         updatedCollaboration[request.payload.offerOrNeed + 's.$.type'] = request.payload.newType
@@ -137,7 +126,7 @@ UserController.prototype = (function () {
         var credentials = SessionController.getSession(request)
         var collaborationToRemove = {}
         collaborationToRemove[request.payload.offerOrNeed + 's'] = {'title': request.payload.title}
-        UserManager.update(request.mongo.db, {'username': credentials.username}, {$pull: collaborationToRemove}, function (res) {
+        UserManager.update(request.mongo.db, {'_id': credentials.id}, {$pull: collaborationToRemove}, function (res) {
           reply(res)
         })
       } else {
@@ -149,7 +138,7 @@ UserController.prototype = (function () {
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
-        UserManager.update(request.mongo.db, {'username': credentials.username}, {$push: request.payload}, function (res) {
+        UserManager.update(request.mongo.db, {'_id': credentials.id}, {$push: request.payload}, function (res) {
           reply(res)
         })
       } else {
@@ -160,7 +149,7 @@ UserController.prototype = (function () {
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
-        UserManager.update(request.mongo.db, {'username': credentials.username}, {$pull: request.payload}, function (res) {
+        UserManager.update(request.mongo.db, {'_id': credentials.id}, {$pull: request.payload}, function (res) {
           reply(res)
         })
       } else {
@@ -172,7 +161,7 @@ UserController.prototype = (function () {
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
-        UserManager.update(request.mongo.db, {'username': credentials.username}, {$push: request.payload}, function (res) {
+        UserManager.update(request.mongo.db, {'_id': credentials.id}, {$push: request.payload}, function (res) {
           reply(res)
         })
       } else {
@@ -183,7 +172,7 @@ UserController.prototype = (function () {
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
-        UserManager.update(request.mongo.db, {'username': credentials.username}, {$pull: request.payload}, function (res) {
+        UserManager.update(request.mongo.db, {'_id': credentials.id}, {$pull: request.payload}, function (res) {
           reply(res)
         })
       } else {
@@ -207,7 +196,7 @@ UserController.prototype = (function () {
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
-        UserManager.update(request.mongo.db, {'username': credentials.username}, {$push: {skills: newSkill}}, function (res) {
+        UserManager.update(request.mongo.db, {'_id': credentials.id}, {$push: {skills: newSkill}}, function (res) {
           reply(res)
         })
       } else {
@@ -218,7 +207,7 @@ UserController.prototype = (function () {
       var isAuthenticated = SessionController.isAuthenticated(request)
       if (isAuthenticated) {
         var credentials = SessionController.getSession(request)
-        UserManager.update(request.mongo.db, {'username': credentials.username}, {$pull: {'skills': request.payload}}, function (res) {
+        UserManager.update(request.mongo.db, {'_id': credentials.id}, {$pull: {'skills': request.payload}}, function (res) {
           reply(res)
         })
       } else {

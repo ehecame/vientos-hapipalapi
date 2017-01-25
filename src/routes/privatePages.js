@@ -20,7 +20,7 @@ module.exports = function () {
             }
             if(data.isAuthenticated){
               var db = request.mongo.db
-              var query = {username: data.credentials.username}
+              var query = {_id: data.credentials.id}
               var fields = {}
               UserManager.find(db, query, fields, function (res) {
                 data.u = res[0]
