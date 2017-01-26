@@ -8,11 +8,12 @@ Web plataform aiming to create a collaboration community between social projects
 Developed using these free and open source technologies:
 
 * [NodeJS](http://nodejs.org/en/about) - Asynchronous event driven framework, designed to build scalable network applications
-* [HapiJS](http://hapijs.com) - Web and API framework 
+* [HapiJS](http://hapijs.com) - Web and API framework
 * [MongoDB](http://www.mongodb.org) - Cross-platform JSON-like document-oriented NoSQL database
 * [OpenStreetMaps](https://www.openstreetmap.org) - [Leaflet](http://leafletjs.com) (JS library)  - [MapBox](https://www.mapbox.com/) (Style and Geolocalization)
 
-To load credentials.json, create it and copy from credentials.example.json and fill it with yours
+### ENV
 
-
-
+* HAPI_PORT - overwrites port which server binds to *(default: 3000)*
+* MONGO_URL - overwrites MongoDB connection string  (eg. mongodb://user:pass@localhost:27017) *(default: mongodb://localhost:27017)*
+* COOKIE_PASS - password for cookies

@@ -6,5 +6,3 @@ exports.subscriberApi = require('./api/subscriberApi.js')
 //NOT API
 exports.publicPages = require('./publicPages.js')
 exports.privatePages = require('./privatePages.js')
-exports.otherpages = require('./otherpages.js')
-exports.assets = require('./assets.js')

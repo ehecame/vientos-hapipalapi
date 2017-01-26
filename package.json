@@ -5,17 +5,14 @@
   "main": "server.js",
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
-    "handlebars": "^3.0.3",
     "hapi": "^12.0.0",
     "hapi-auth-cookie": "^6.1.1",
     "hapi-mongodb": "^4.1.0",
     "hapi-raven": "^4.3.0",
-    "inert": "^3.2.0",
     "multiparty": "^4.1.2",
     "nodemailer": "^2.6.4",
     "qs": "^6.3.0",
-    "underscore": "^1.8.3",
-    "vision": "^4.0.1"
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "code": "^2.2.0",
