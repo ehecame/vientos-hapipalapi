@@ -55,28 +55,6 @@ for (var route in routes) {
   server.route(routes[route])
 }
 
-// Registro de plugin vision y definición de configuración para Views y Layouts
-server.register(require('vision'), function (err) {
-  server.views({
-    engines: {
-      html: require('handlebars')
-    },
-    path: './src/views',
-    layoutPath: './src/views/layout',
-    layout: 'default',
-    helpersPath: 'src/views/helpers'
-  })
-})
-
-// Registro de plugin inert. SIN EL NO PUEDO HACER reply.file para staticFiles
-server.register(require('inert') , function (err) {
-  if (err) {
-    console.error(err)
-    throw err
-  }
-}
-)
-
 // Empezando servidor
 server.start(function () {
   console.log('Server running at:', server.info.uri)
