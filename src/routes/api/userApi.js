@@ -103,6 +103,20 @@ module.exports = function () {
       config: {
         handler: UserController.removeSkill
       }
-    }
+    },
+    // FOLLOWS
+    {
+      method: 'POST',
+      path: '/api/user/follows',
+      config: {
+        handler: UserController.addFollow
+      }
+    }, {
+      method: 'DELETE',
+      path: '/api/user/follows/{id}',
+      config: {
+        handler: UserController.removeFollow
+      }
+    },
   ]
 }()

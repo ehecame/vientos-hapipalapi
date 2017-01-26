@@ -49,7 +49,7 @@ UserController.prototype = (function () {
       }
       UserManager.insert(db, newuser, function (res) {
         newuser.id = res.insertedIds[0]
-        newUser.password = null
+        newuser.password = null
         reply(newuser)
       })
     },
@@ -213,7 +213,23 @@ UserController.prototype = (function () {
       } else {
         reply('not Authenticated')
       }
-    }
+    },
+    // FOLLOWS
+    addFollow: function addFollow (request, reply) {
+      var credentials = SessionController.getSession(request)
+      var userId = new request.mongo.ObjectID(credentials.id)
+      UserManager.update(request.mongo.db, {'_id': userId},
+      {$push: {follows: request.payload.id}}, function (res) {
+        reply(res)
+      })
+    },
+    removeFollow: function removeFollow (request, reply) {
+      var credentials = SessionController.getSession(request)
+      var userId = new request.mongo.ObjectID(credentials.id)
+      UserManager.update(request.mongo.db, {'_id':userId}, {$pull: {follows: request.params.id}}, function (res) {
+        reply(res)
+      })
+    },
   }
 })()
 var UserController = new UserController()
