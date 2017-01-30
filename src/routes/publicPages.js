@@ -16,7 +16,7 @@ module.exports = function () {
            setDataAuth(request, function(data){
             data.withFooter = true
             data.tags = getIndexTags('es')
-            reply.view('index2', data, { layout: 'default2' });
+            // reply.view('index2', data, { layout: 'default2' });
           })
           //  var lan = request.query.lan == "en" ? "en" : "es"
           //  setDataAuth(request, function(data){
@@ -44,7 +44,7 @@ module.exports = function () {
            setDataAuth(request, function(data){
             data.withFooter = true
             data.tags = getIndexTags('es')
-            reply.view('index2EN', data, { layout: 'default2EN' });
+            // reply.view('index2EN', data, { layout: 'default2EN' });
           })
         },
         auth: {
@@ -72,7 +72,7 @@ module.exports = function () {
              data.hiddenColls = getHiddenCollsArray(lan)
              data.principles = getPrinciples(lan)
              data.tags = getIndexTags(lan)
-             reply.view('index', data)
+            //  reply.view('index', data)
            })
         },
         auth: false
@@ -91,7 +91,7 @@ module.exports = function () {
               logout: 'Cierra sesión',
               myProfile: "Mi Perfil"
             }
-            reply.view('collaborate', data)
+            // reply.view('collaborate', data)
           })
         }
       // auth: false
@@ -104,7 +104,7 @@ module.exports = function () {
           setDataAuth(request, function(data){
             data.withFooter = false
             data.code = request.params.code
-            reply.view('userRegister', data)
+            // reply.view('userRegister', data)
           })
         },
         auth: false
@@ -117,7 +117,7 @@ module.exports = function () {
           setDataAuth(request, function(data){
             data.withFooter = false
             data.code = request.params.code
-            reply.view('resetPassword', data)
+            // reply.view('resetPassword', data)
           })
         },
         auth: false
@@ -129,7 +129,7 @@ module.exports = function () {
         handler: function (request, reply) {
           setDataAuth(request, function(data){
             data.withFooter = false
-            reply.view('welcome', data)
+            // reply.view('welcome', data)
           })
         },
         auth: false
@@ -141,7 +141,7 @@ module.exports = function () {
       handler: function (request, reply) {
         setDataAuth(request, function(data){
           data.withFooter = true
-          reply.view('howToCollaborate', data)
+          // reply.view('howToCollaborate', data)
         })
       }
     }, {
@@ -151,7 +151,7 @@ module.exports = function () {
         handler: function (request, reply) {
           var data = {}
           data.redirect = request.query.next ? request.query.next : '/myprofile'
-          reply.view('login', data,  { layout: 'default2' })
+          // reply.view('login', data,  { layout: 'default2' })
         },
         auth: false
       }
@@ -162,7 +162,7 @@ module.exports = function () {
         handler: function (request, reply) {
           var data = {}
           data.redirect = request.query.next ? request.query.next : '/myprofile'
-          reply.view('loginEN', data, { layout: 'default2EN' })
+          // reply.view('loginEN', data, { layout: 'default2EN' })
         },
         auth: false
       }
@@ -215,7 +215,7 @@ module.exports = function () {
                 data.showConf = true
               }
               data.p.categoriesIds = _.map(res.categories, function(cat){return cat.catId})
-              reply.view('projectProfile', data)
+              // reply.view('projectProfile', data)
             })
           })
         } /*,

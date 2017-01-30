@@ -28,6 +28,9 @@ UserController.prototype = (function () {
               if(user.projects){
                 account.projects = user.projects
               }
+              if(user.follows){
+                account.follows = user.follows
+              }
               request.cookieAuth.set(account)
               reply(account)
             } else {
@@ -215,6 +218,7 @@ UserController.prototype = (function () {
       }
     },
     // FOLLOWS
+    // TODO: check if doesn't already follow (array should have unique values)
     addFollow: function addFollow (request, reply) {
       var credentials = SessionController.getSession(request)
       var userId = new request.mongo.ObjectID(credentials.id)

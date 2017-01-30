@@ -24,7 +24,7 @@ module.exports = function () {
               var fields = {}
               UserManager.find(db, query, fields, function (res) {
                 data.u = res[0]
-                reply.view('userProfile', data)
+                // reply.view('userProfile', data)
               })
             } else {
               reply.redirect('/login?next=%2Fmyprofile')
@@ -38,7 +38,7 @@ module.exports = function () {
       config: {
         handler: function (request, reply) {
           setDataAuth(request, function(data){
-            reply.view('projectRegister', data)
+            // reply.view('projectRegister', data)
           })
         },
         auth: {
